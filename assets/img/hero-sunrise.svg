@@ -1,0 +1,55 @@
+<svg viewBox="0 0 1200 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="heroTitle">
+  <title id="heroTitle">A circle of young people, silhouetted, facing a golden sunrise together</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#362F4B"/>
+      <stop offset="45%" stop-color="#4a3f63"/>
+      <stop offset="72%" stop-color="#c97b3f"/>
+      <stop offset="100%" stop-color="#E8A94C"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="100%" r="75%">
+      <stop offset="0%" stop-color="#FBF5EA" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#E8A94C" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#E8A94C" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c2640"/>
+      <stop offset="100%" stop-color="#1f1b30"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="640" fill="url(#sky)"/>
+  <circle cx="600" cy="560" r="420" fill="url(#sun)"/>
+  <circle cx="600" cy="480" r="110" fill="#FBF5EA" opacity="0.92"/>
+
+  <!-- light rays -->
+  <g stroke="#FBF5EA" stroke-opacity="0.18" stroke-width="3">
+    <line x1="600" y1="480" x2="600" y2="230"/>
+    <line x1="600" y1="480" x2="430" y2="270"/>
+    <line x1="600" y1="480" x2="770" y2="270"/>
+    <line x1="600" y1="480" x2="320" y2="380"/>
+    <line x1="600" y1="480" x2="880" y2="380"/>
+  </g>
+
+  <!-- ground -->
+  <path d="M0,560 Q600,500 1200,560 L1200,640 L0,640 Z" fill="url(#ground)"/>
+
+  <!-- silhouettes: a loose circle of figures, backs to viewer, facing the light -->
+  <g fill="#211c33">
+    <!-- figure 1 -->
+    <ellipse cx="430" cy="548" rx="17" ry="20"/>
+    <path d="M405,640 Q400,575 430,566 Q460,575 455,640 Z"/>
+    <!-- figure 2 (taller, center-left) -->
+    <ellipse cx="520" cy="520" rx="19" ry="23"/>
+    <path d="M490,640 Q484,545 520,534 Q556,545 550,640 Z"/>
+    <!-- figure 3 (center, arms slightly raised) -->
+    <ellipse cx="610" cy="505" rx="20" ry="24"/>
+    <path d="M572,640 Q568,530 596,520 L610,540 L624,520 Q652,530 648,640 Z"/>
+    <!-- figure 4 -->
+    <ellipse cx="700" cy="522" rx="19" ry="23"/>
+    <path d="M670,640 Q664,547 700,536 Q736,547 730,640 Z"/>
+    <!-- figure 5 (smaller, child) -->
+    <ellipse cx="780" cy="556" rx="14" ry="17"/>
+    <path d="M760,640 Q757,585 780,578 Q803,585 800,640 Z"/>
+  </g>
+</svg>
