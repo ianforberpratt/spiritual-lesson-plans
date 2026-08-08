@@ -764,8 +764,80 @@ section { padding: 72px 0; }
 }
 .feedback-field textarea { min-height: 100px; resize: vertical; }
 
+/* ---------- Utility bar (translate) ---------- */
+
+.utility-bar {
+  background: var(--deep-dusk);
+  color: var(--dawn-cream);
+}
+.utility-bar .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  min-height: 34px;
+}
+.translate-trigger {
+  background: none;
+  border: 1px solid rgba(251, 245, 234, 0.35);
+  color: var(--dawn-cream);
+  border-radius: 999px;
+  padding: 4px 13px;
+  font-size: 0.8rem;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.translate-trigger:hover { border-color: var(--dawn-cream); }
+
+#google_translate_element { display: none; align-items: center; }
+#google_translate_element .goog-te-gadget { font-family: var(--font-sans) !important; font-size: 0; color: transparent; }
+#google_translate_element .goog-te-gadget .goog-te-combo {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(251, 245, 234, 0.35);
+  background: var(--deep-dusk);
+  color: var(--dawn-cream);
+}
+/* Suppress Google's own translated-page banner iframe — we show our own trigger instead */
+.goog-te-banner-frame { display: none !important; }
+.goog-te-gadget-icon { display: none !important; }
+body { top: 0px !important; }
+
+/* ---------- Cookie banner ---------- */
+
+.cookie-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 250;
+  background: var(--deep-dusk);
+  color: rgba(251, 245, 234, 0.92);
+  padding: 14px 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 0.9rem;
+  box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.25);
+}
+.cookie-banner.show { display: flex; }
+.cookie-banner p { margin: 0; max-width: 640px; }
+.cookie-banner .btn { flex: 0 0 auto; padding: 10px 20px; }
+
+body.has-cookie-banner .feedback-btn { bottom: 84px; }
+
 /* ---------- Utility ---------- */
 
 .center { text-align: center; }
 .mt-0 { margin-top: 0; }
-.text-muted { color: rgba(54, 47, 75, 0.65); }
+.text-muted { color: rgba(54, 47, 75, 0.72); }

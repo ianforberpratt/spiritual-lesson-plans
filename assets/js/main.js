@@ -153,4 +153,40 @@ document.addEventListener("DOMContentLoaded", function () {
       fbForm.reset();
     });
   }
+
+  var translateTrigger = document.querySelector(".translate-trigger");
+  var translateContainer = document.getElementById("google_translate_element");
+  if (translateTrigger && translateContainer) {
+    translateTrigger.addEventListener("click", function () {
+      if (window.__translateLoaded) return;
+      window.__translateLoaded = true;
+      translateTrigger.style.display = "none";
+      translateContainer.style.display = "inline-flex";
+      window.googleTranslateElementInit = function () {
+        new google.translate.TranslateElement(
+          { pageLanguage: "en" },
+          "google_translate_element"
+        );
+      };
+      var script = document.createElement("script");
+      script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      document.body.appendChild(script);
+    });
+  }
+
+  var cookieBanner = document.getElementById("cookie-banner");
+  var cookieAccept = document.getElementById("cookie-accept");
+  if (cookieBanner && cookieAccept) {
+    var cookieSeen = false;
+    try { cookieSeen = !!localStorage.getItem("cookieNoticeSeen"); } catch (err) { cookieSeen = false; }
+    if (!cookieSeen) {
+      cookieBanner.classList.add("show");
+      document.body.classList.add("has-cookie-banner");
+    }
+    cookieAccept.addEventListener("click", function () {
+      try { localStorage.setItem("cookieNoticeSeen", "1"); } catch (err) { /* ignore */ }
+      cookieBanner.classList.remove("show");
+      document.body.classList.remove("has-cookie-banner");
+    });
+  }
 });
