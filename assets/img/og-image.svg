@@ -1,0 +1,37 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ogTitle">
+  <title id="ogTitle">Spiritual Lesson Plans — free lessons for mentoring young people</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#362F4B"/>
+      <stop offset="55%" stop-color="#453c5c"/>
+      <stop offset="100%" stop-color="#2c2640"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="100%" r="75%">
+      <stop offset="0%" stop-color="#E8A94C" stop-opacity="0.38"/>
+      <stop offset="100%" stop-color="#E8A94C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <circle cx="600" cy="120" r="3" fill="#A9C9D9" opacity="0.6"/>
+  <circle cx="980" cy="90" r="3" fill="#FBF5EA" opacity="0.4"/>
+  <circle cx="220" cy="80" r="3" fill="#FBF5EA" opacity="0.4"/>
+
+  <text x="600" y="270" text-anchor="middle" font-family="Georgia, 'Iowan Old Style', serif" font-size="66" font-weight="600" fill="#FBF5EA">
+    Spiritual Lesson Plans
+  </text>
+  <text x="600" y="330" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-style="italic" fill="#E8A94C">
+    Every young person is already whole, pure, and loved.
+  </text>
+
+  <text x="600" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#FBF5EA" opacity="0.82">
+    Free, interactive lessons for mentoring young people &#8212; any faith background welcome.
+  </text>
+
+  <g transform="translate(490,470)" opacity="0.9">
+    <rect x="0" y="0" width="220" height="42" rx="21" fill="none" stroke="#FBF5EA" stroke-opacity="0.35"/>
+    <text x="110" y="27" text-anchor="middle" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1" fill="#FBF5EA">CREATIVE COMMONS</text>
+  </g>
+</svg>

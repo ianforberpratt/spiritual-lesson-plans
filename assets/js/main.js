@@ -86,14 +86,25 @@ document.addEventListener("DOMContentLoaded", function () {
   var fbOverlay = document.querySelector(".feedback-overlay");
   var fbClose = document.querySelector(".feedback-close");
   var fbForm = document.querySelector(".feedback-form");
+  var fbModal = document.querySelector(".feedback-modal");
 
-  if (fbBtn && fbOverlay && fbForm) {
+  if (fbBtn && fbOverlay && fbForm && fbModal) {
+    var getFocusable = function () {
+      return Array.prototype.slice.call(
+        fbModal.querySelectorAll('a[href], button, select, textarea, input, [tabindex]:not([tabindex="-1"])')
+      ).filter(function (el) { return !el.disabled && el.offsetParent !== null; });
+    };
+
     var openFeedback = function () {
       fbOverlay.classList.add("open");
       var firstField = fbForm.querySelector("select, textarea");
       if (firstField) firstField.focus();
     };
-    var closeFeedback = function () { fbOverlay.classList.remove("open"); };
+    var closeFeedback = function () {
+      if (!fbOverlay.classList.contains("open")) return;
+      fbOverlay.classList.remove("open");
+      fbBtn.focus();
+    };
 
     fbBtn.addEventListener("click", openFeedback);
     if (fbClose) fbClose.addEventListener("click", closeFeedback);
@@ -101,7 +112,24 @@ document.addEventListener("DOMContentLoaded", function () {
       if (e.target === fbOverlay) closeFeedback();
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeFeedback();
+      if (!fbOverlay.classList.contains("open")) return;
+      if (e.key === "Escape") {
+        closeFeedback();
+        return;
+      }
+      if (e.key === "Tab") {
+        var focusable = getFocusable();
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     });
 
     fbForm.addEventListener("submit", function (e) {

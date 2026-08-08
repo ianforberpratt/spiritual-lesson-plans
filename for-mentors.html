@@ -5,6 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Mentors — Spiritual Lesson Plans</title>
 <meta name="description" content="How to facilitate these lessons: the adult-learning pedagogy behind them, and practical guidance for mentors leading young people through spiritual questions.">
+<link rel="canonical" href="https://www.spirituallessonplans.org/for-mentors">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spiritual Lesson Plans">
+<meta property="og:url" content="https://www.spirituallessonplans.org/for-mentors">
+<meta property="og:title" content="For Mentors — Spiritual Lesson Plans">
+<meta property="og:description" content="How to facilitate these lessons: the adult-learning pedagogy behind them, and practical guidance for mentors leading young people through spiritual questions.">
+<meta property="og:image" content="https://www.spirituallessonplans.org/assets/img/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Spiritual Lesson Plans">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="For Mentors — Spiritual Lesson Plans">
+<meta name="twitter:description" content="How to facilitate these lessons: the adult-learning pedagogy behind them, and practical guidance for mentors leading young people through spiritual questions.">
+<meta name="twitter:image" content="https://www.spirituallessonplans.org/assets/img/og-image.png">
+<meta name="twitter:image:alt" content="Spiritual Lesson Plans">
+<meta name="theme-color" content="#362F4B">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,12 +28,13 @@
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-<nav class="site-nav">
+<nav class="site-nav" aria-label="Main">
   <div class="wrap">
     <a href="/" class="brand">Spiritual <strong>Lesson Plans</strong></a>
-    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
-    <ul class="nav-links">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
+    <ul class="nav-links" id="primary-nav">
       <li><a href="/">Home</a></li>
       <li><a href="/lessons">Lessons</a></li>
       <li><a href="/for-mentors" aria-current="page">For Mentors</a></li>
@@ -26,6 +43,8 @@
     </ul>
   </div>
 </nav>
+
+<main id="main" tabindex="-1">
 
 <header class="page-hero">
   <div class="wrap">
@@ -117,6 +136,8 @@
   </div>
 </section>
 
+</main>
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
@@ -136,10 +157,10 @@
 </footer>
 
 <button class="feedback-btn" type="button">&#128172; Feedback</button>
-<div class="feedback-overlay">
+<div class="feedback-overlay" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
   <div class="feedback-modal">
     <button class="feedback-close" type="button" aria-label="Close">&times;</button>
-    <h3>Got a question, or something's off?</h3>
+    <h3 id="feedback-title">Got a question, or something's off?</h3>
     <p class="lead">Tell us anything &mdash; confused by a lesson, found a bug, or just want to say hi. We read every one of these.</p>
     <form class="feedback-form">
       <div class="feedback-field">

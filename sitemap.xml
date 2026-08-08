@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.spirituallessonplans.org/</loc></url>
-  <url><loc>https://www.spirituallessonplans.org/lessons</loc></url>
-  <url><loc>https://www.spirituallessonplans.org/for-mentors</loc></url>
-  <url><loc>https://www.spirituallessonplans.org/what-we-believe</loc></url>
-  <url><loc>https://www.spirituallessonplans.org/about</loc></url>
+  <url><loc>https://www.spirituallessonplans.org/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/words-that-open-doors</loc><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/when-someone-feels-like-the-enemy</loc><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/is-regret-a-fair-teacher</loc><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/does-god-make-my-decisions</loc><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/learning-to-hear-the-nudge</loc><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/off-days-are-allowed</loc><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/trust-the-mover</loc><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/finding-the-bigger-us</loc><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/for-mentors</loc><priority>0.7</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/what-we-believe</loc><priority>0.6</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/about</loc><priority>0.5</priority></url>
 </urlset>
