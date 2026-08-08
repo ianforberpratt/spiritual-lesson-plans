@@ -1,0 +1,58 @@
+<svg viewBox="0 0 816 1056" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <rect x="0" y="0" width="816" height="1056" fill="#FAF8F5"/>
+
+  <!-- Header -->
+  <text x="60" y="70" font-size="12" letter-spacing="2" fill="#B8763F" font-family="Helvetica, Arial, sans-serif" font-weight="600">A HANDOUT &#183; WORDS THAT OPEN DOORS</text>
+  <text x="60" y="124" font-size="42" fill="#362F4B" font-weight="700">Door or Wall?</text>
+  <rect x="60" y="142" width="72" height="4" fill="#B8763F"/>
+  <text x="60" y="178" font-size="15" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Cut these apart. Sort them into two piles: words that feel like a door,</text>
+  <text x="60" y="200" font-size="15" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">and words that feel like a wall. No wrong answers &#8212; this is noticing, not confessing.</text>
+
+  <!-- Row 0 -->
+  <rect x="60" y="260" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="140" y="322" font-size="21" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Master</text>
+  <rect x="232" y="260" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="312" y="322" font-size="21" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Worship</text>
+  <rect x="404" y="260" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="484" y="322" font-size="21" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Sin</text>
+  <rect x="576" y="260" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="656" y="322" font-size="21" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Holy</text>
+
+  <!-- Row 1 -->
+  <rect x="60" y="384" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="140" y="446" font-size="21" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Faith</text>
+  <rect x="232" y="384" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="312" y="446" font-size="21" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Church</text>
+  <rect x="404" y="384" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="484" y="446" font-size="19" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Sacrifice</text>
+  <rect x="576" y="384" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="656" y="446" font-size="21" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Grace</text>
+
+  <!-- Row 2 -->
+  <rect x="60" y="508" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="140" y="570" font-size="21" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Prayer</text>
+  <rect x="232" y="508" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="312" y="570" font-size="19" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Disciple</text>
+  <rect x="404" y="508" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="484" y="570" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Obedience</text>
+  <rect x="576" y="508" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="656" y="570" font-size="19" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Blessed</text>
+
+  <!-- Row 3 -->
+  <rect x="60" y="632" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="140" y="694" font-size="19" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Sacred</text>
+  <rect x="232" y="632" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="312" y="694" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Righteous</text>
+  <rect x="404" y="632" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="484" y="694" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Salvation</text>
+  <rect x="576" y="632" width="160" height="110" rx="10" fill="#FFFFFF" stroke="#362F4B" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="656" y="686" font-size="16" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">Congre-</text>
+  <text x="656" y="706" font-size="16" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">gation</text>
+
+  <text x="408" y="800" font-size="14" fill="#8B8496" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-style="italic">Add your own blank cards for words from your own family, culture, or tradition.</text>
+
+  <!-- footer -->
+  <line x1="60" y1="960" x2="756" y2="960" stroke="#E4DED0" stroke-width="1.5"/>
+  <text x="60" y="990" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">Spiritual Lesson Plans &#183; spirituallessonplans.org</text>
+  <text x="756" y="990" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif" text-anchor="end">Free to use, adapt, and share &#183; CC BY-SA 4.0</text>
+</svg>

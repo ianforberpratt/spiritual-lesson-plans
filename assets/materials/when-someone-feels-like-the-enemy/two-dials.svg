@@ -1,0 +1,84 @@
+<svg viewBox="0 0 816 1056" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <rect x="0" y="0" width="816" height="1056" fill="#FAF8F5"/>
+
+  <!-- Header -->
+  <text x="60" y="86" font-size="12" letter-spacing="2" fill="#B8763F" font-family="Helvetica, Arial, sans-serif" font-weight="600">A HANDOUT &#183; WHEN SOMEONE FEELS LIKE THE ENEMY</text>
+  <text x="60" y="140" font-size="46" fill="#362F4B" font-weight="700">Two Dials</text>
+  <rect x="60" y="158" width="72" height="4" fill="#B8763F"/>
+
+  <text x="60" y="196" font-size="16" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Love and closeness aren&#8217;t the same dial. Mark an X where you are today on</text>
+  <text x="60" y="220" font-size="16" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">each one. They don&#8217;t have to match &#8212; that&#8217;s the whole point.</text>
+
+  <text x="756" y="196" font-size="13" fill="#8B8496" font-family="Helvetica, Arial, sans-serif" text-anchor="end">Name: ______________</text>
+  <text x="756" y="220" font-size="13" fill="#8B8496" font-family="Helvetica, Arial, sans-serif" text-anchor="end">Date: ______________</text>
+
+  <!-- DIAL 1 -->
+  <text x="204" y="270" font-size="16" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600" text-anchor="middle">How close do I stay</text>
+  <text x="204" y="292" font-size="16" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600" text-anchor="middle">to this person?</text>
+
+  <g transform="translate(0,140)">
+    <path d="M79,390 A125,125 0 0 1 329,390" fill="none" stroke="#362F4B" stroke-width="3"/>
+    <!-- minor ticks -->
+    <line x1="99.4" y1="356.0" x2="85.1" y2="351.4" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="115.0" y1="325.3" x2="102.9" y2="316.5" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="139.3" y1="301.0" x2="130.5" y2="288.9" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="170.0" y1="285.4" x2="165.4" y2="271.1" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="238.0" y1="285.4" x2="242.6" y2="271.1" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="268.7" y1="301.0" x2="277.5" y2="288.9" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="293.0" y1="325.3" x2="305.1" y2="316.5" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="308.6" y1="356.0" x2="322.9" y2="351.4" stroke="#C9C2D6" stroke-width="2"/>
+    <!-- major ticks: left, mid, right -->
+    <line x1="114" y1="390" x2="79" y2="390" stroke="#B8763F" stroke-width="4"/>
+    <line x1="204" y1="300" x2="204" y2="265" stroke="#B8763F" stroke-width="4"/>
+    <line x1="294" y1="390" x2="329" y2="390" stroke="#B8763F" stroke-width="4"/>
+    <!-- baseline -->
+    <line x1="60" y1="390" x2="348" y2="390" stroke="#362F4B" stroke-width="2"/>
+  </g>
+
+  <text x="79" y="558" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">Distant</text>
+  <text x="204" y="558" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">Some space</text>
+  <text x="329" y="558" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">Very close</text>
+
+  <!-- DIAL 2 -->
+  <text x="612" y="270" font-size="16" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600" text-anchor="middle">How much do I choose</text>
+  <text x="612" y="292" font-size="16" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600" text-anchor="middle">love toward them?</text>
+
+  <g transform="translate(408,140)">
+    <path d="M79,390 A125,125 0 0 1 329,390" fill="none" stroke="#362F4B" stroke-width="3"/>
+    <line x1="99.4" y1="356.0" x2="85.1" y2="351.4" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="115.0" y1="325.3" x2="102.9" y2="316.5" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="139.3" y1="301.0" x2="130.5" y2="288.9" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="170.0" y1="285.4" x2="165.4" y2="271.1" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="238.0" y1="285.4" x2="242.6" y2="271.1" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="268.7" y1="301.0" x2="277.5" y2="288.9" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="293.0" y1="325.3" x2="305.1" y2="316.5" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="308.6" y1="356.0" x2="322.9" y2="351.4" stroke="#C9C2D6" stroke-width="2"/>
+    <line x1="114" y1="390" x2="79" y2="390" stroke="#B8763F" stroke-width="4"/>
+    <line x1="204" y1="300" x2="204" y2="265" stroke="#B8763F" stroke-width="4"/>
+    <line x1="294" y1="390" x2="329" y2="390" stroke="#B8763F" stroke-width="4"/>
+    <line x1="60" y1="390" x2="348" y2="390" stroke="#362F4B" stroke-width="2"/>
+  </g>
+
+  <text x="487" y="558" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">Not yet</text>
+  <text x="612" y="558" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">Working on it</text>
+  <text x="737" y="558" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif" text-anchor="middle">Fully</text>
+
+  <!-- divider -->
+  <line x1="60" y1="610" x2="756" y2="610" stroke="#E4DED0" stroke-width="1.5"/>
+
+  <text x="408" y="652" font-size="17" fill="#B8763F" font-family="Georgia, serif" font-style="italic" text-anchor="middle">They don&#8217;t have to match. That&#8217;s the point.</text>
+
+  <!-- reflection prompts -->
+  <text x="60" y="710" font-size="15" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">One way I can love this person without staying close:</text>
+  <line x1="60" y1="745" x2="756" y2="745" stroke="#362F4B" stroke-width="1.2"/>
+  <line x1="60" y1="782" x2="756" y2="782" stroke="#362F4B" stroke-width="1.2"/>
+
+  <text x="60" y="832" font-size="15" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">One boundary I have (or need) that is actually an act of love, not a punishment:</text>
+  <line x1="60" y1="867" x2="756" y2="867" stroke="#362F4B" stroke-width="1.2"/>
+  <line x1="60" y1="904" x2="756" y2="904" stroke="#362F4B" stroke-width="1.2"/>
+
+  <!-- footer -->
+  <line x1="60" y1="970" x2="756" y2="970" stroke="#E4DED0" stroke-width="1.5"/>
+  <text x="60" y="998" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">Spiritual Lesson Plans &#183; spirituallessonplans.org</text>
+  <text x="756" y="998" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif" text-anchor="end">Free to use, adapt, and share &#183; CC BY-SA 4.0</text>
+</svg>

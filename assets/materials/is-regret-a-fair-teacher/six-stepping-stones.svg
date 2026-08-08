@@ -1,0 +1,58 @@
+<svg viewBox="0 0 816 1056" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <rect x="0" y="0" width="816" height="1056" fill="#FAF8F5"/>
+
+  <!-- Header -->
+  <text x="60" y="70" font-size="12" letter-spacing="2" fill="#B8763F" font-family="Helvetica, Arial, sans-serif" font-weight="600">A KEEPSAKE &#183; IS REGRET A FAIR AND JUST TEACHER?</text>
+  <text x="60" y="124" font-size="42" fill="#362F4B" font-weight="700">Six Stepping Stones</text>
+  <rect x="60" y="142" width="72" height="4" fill="#B8763F"/>
+  <text x="60" y="178" font-size="15" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Keep this. The next time regret shows up, you already have a way through it.</text>
+
+  <!-- connecting path -->
+  <line x1="100" y1="210" x2="100" y2="960" stroke="#D8AF87" stroke-width="3" stroke-dasharray="2,8" stroke-linecap="round"/>
+
+  <!-- Stone 1 -->
+  <rect x="140" y="250" width="620" height="100" rx="14" fill="#FFFFFF" stroke="#E4DED0" stroke-width="1.5"/>
+  <circle cx="100" cy="300" r="30" fill="#362F4B"/>
+  <text x="100" y="308" font-size="22" fill="#FAF8F5" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">1</text>
+  <text x="170" y="290" font-size="18" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">See It Clearly</text>
+  <text x="170" y="316" font-size="13.5" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Look at the decision honestly &#8212; without judging yourself for having it.</text>
+
+  <!-- Stone 2 -->
+  <rect x="140" y="380" width="620" height="100" rx="14" fill="#FFFFFF" stroke="#E4DED0" stroke-width="1.5"/>
+  <circle cx="100" cy="430" r="30" fill="#362F4B"/>
+  <text x="100" y="438" font-size="22" fill="#FAF8F5" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">2</text>
+  <text x="170" y="420" font-size="18" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Set the Shame Down</text>
+  <text x="170" y="446" font-size="13.5" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Not forgetting it happened. Just refusing to re-try yourself for it every day.</text>
+
+  <!-- Stone 3 -->
+  <rect x="140" y="510" width="620" height="100" rx="14" fill="#FFFFFF" stroke="#E4DED0" stroke-width="1.5"/>
+  <circle cx="100" cy="560" r="30" fill="#362F4B"/>
+  <text x="100" y="568" font-size="22" fill="#FAF8F5" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">3</text>
+  <text x="170" y="550" font-size="18" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Name the Fear</text>
+  <text x="170" y="576" font-size="13.5" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Ask: is the story I&#8217;m telling myself actually true &#8212; or just loud?</text>
+
+  <!-- Stone 4 -->
+  <rect x="140" y="640" width="620" height="100" rx="14" fill="#FFFFFF" stroke="#E4DED0" stroke-width="1.5"/>
+  <circle cx="100" cy="690" r="30" fill="#362F4B"/>
+  <text x="100" y="698" font-size="22" fill="#FAF8F5" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">4</text>
+  <text x="170" y="680" font-size="18" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Choose</text>
+  <text x="170" y="706" font-size="13.5" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Pick what happens next &#8212; even if it&#8217;s small.</text>
+
+  <!-- Stone 5 -->
+  <rect x="140" y="770" width="620" height="100" rx="14" fill="#FFFFFF" stroke="#E4DED0" stroke-width="1.5"/>
+  <circle cx="100" cy="820" r="30" fill="#362F4B"/>
+  <text x="100" y="828" font-size="22" fill="#FAF8F5" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">5</text>
+  <text x="170" y="810" font-size="18" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Adjust If Needed</text>
+  <text x="170" y="836" font-size="13.5" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">A course correction isn&#8217;t failure &#8212; it&#8217;s what a student does.</text>
+
+  <!-- Stone 6 -->
+  <rect x="140" y="900" width="620" height="100" rx="14" fill="#FFFFFF" stroke="#E4DED0" stroke-width="1.5"/>
+  <circle cx="100" cy="950" r="30" fill="#B8763F"/>
+  <text x="100" y="958" font-size="22" fill="#FFFFFF" font-family="Helvetica, Arial, sans-serif" font-weight="700" text-anchor="middle">6</text>
+  <text x="170" y="940" font-size="18" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Give Thanks</text>
+  <text x="170" y="966" font-size="13.5" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Name one real thing this taught you &#8212; even if it was expensive.</text>
+
+  <!-- footer -->
+  <text x="60" y="1030" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">Spiritual Lesson Plans &#183; spirituallessonplans.org</text>
+  <text x="756" y="1030" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif" text-anchor="end">Free to use, adapt, and share &#183; CC BY-SA 4.0</text>
+</svg>

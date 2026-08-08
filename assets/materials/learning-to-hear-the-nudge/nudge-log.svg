@@ -1,0 +1,70 @@
+<svg viewBox="0 0 816 1056" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <rect x="0" y="0" width="816" height="1056" fill="#FAF8F5"/>
+
+  <!-- Header -->
+  <text x="60" y="70" font-size="12" letter-spacing="2" fill="#B8763F" font-family="Helvetica, Arial, sans-serif" font-weight="600">A POCKET CARD &#183; LEARNING TO HEAR THE NUDGE</text>
+  <text x="60" y="124" font-size="42" fill="#362F4B" font-weight="700">The Nudge Log</text>
+  <rect x="60" y="142" width="72" height="4" fill="#B8763F"/>
+  <text x="60" y="178" font-size="15" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">One week. Just notice &#8212; you don&#8217;t have to act on it perfectly, just notice.</text>
+  <text x="60" y="200" font-size="13" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">Practice on the small stuff. That&#8217;s what makes it easier to hear when it matters.</text>
+
+  <!-- Row: Mon -->
+  <text x="60" y="298" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Mon</text>
+  <rect x="150" y="272" width="20" height="20" rx="4" fill="none" stroke="#362F4B" stroke-width="1.5"/>
+  <text x="176" y="288" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Noticed a nudge</text>
+  <text x="60" y="322" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">What was it, and what did I do?</text>
+  <line x1="300" y1="326" x2="756" y2="326" stroke="#362F4B" stroke-width="1.1"/>
+  <line x1="60" y1="354" x2="756" y2="354" stroke="#E4DED0" stroke-width="1.2"/>
+
+  <!-- Row: Tue -->
+  <text x="60" y="392" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Tue</text>
+  <rect x="150" y="366" width="20" height="20" rx="4" fill="none" stroke="#362F4B" stroke-width="1.5"/>
+  <text x="176" y="382" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Noticed a nudge</text>
+  <text x="60" y="416" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">What was it, and what did I do?</text>
+  <line x1="300" y1="420" x2="756" y2="420" stroke="#362F4B" stroke-width="1.1"/>
+  <line x1="60" y1="448" x2="756" y2="448" stroke="#E4DED0" stroke-width="1.2"/>
+
+  <!-- Row: Wed -->
+  <text x="60" y="486" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Wed</text>
+  <rect x="150" y="460" width="20" height="20" rx="4" fill="none" stroke="#362F4B" stroke-width="1.5"/>
+  <text x="176" y="476" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Noticed a nudge</text>
+  <text x="60" y="510" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">What was it, and what did I do?</text>
+  <line x1="300" y1="514" x2="756" y2="514" stroke="#362F4B" stroke-width="1.1"/>
+  <line x1="60" y1="542" x2="756" y2="542" stroke="#E4DED0" stroke-width="1.2"/>
+
+  <!-- Row: Thu -->
+  <text x="60" y="580" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Thu</text>
+  <rect x="150" y="554" width="20" height="20" rx="4" fill="none" stroke="#362F4B" stroke-width="1.5"/>
+  <text x="176" y="570" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Noticed a nudge</text>
+  <text x="60" y="604" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">What was it, and what did I do?</text>
+  <line x1="300" y1="608" x2="756" y2="608" stroke="#362F4B" stroke-width="1.1"/>
+  <line x1="60" y1="636" x2="756" y2="636" stroke="#E4DED0" stroke-width="1.2"/>
+
+  <!-- Row: Fri -->
+  <text x="60" y="674" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Fri</text>
+  <rect x="150" y="648" width="20" height="20" rx="4" fill="none" stroke="#362F4B" stroke-width="1.5"/>
+  <text x="176" y="664" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Noticed a nudge</text>
+  <text x="60" y="698" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">What was it, and what did I do?</text>
+  <line x1="300" y1="702" x2="756" y2="702" stroke="#362F4B" stroke-width="1.1"/>
+  <line x1="60" y1="730" x2="756" y2="730" stroke="#E4DED0" stroke-width="1.2"/>
+
+  <!-- Row: Sat -->
+  <text x="60" y="768" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Sat</text>
+  <rect x="150" y="742" width="20" height="20" rx="4" fill="none" stroke="#362F4B" stroke-width="1.5"/>
+  <text x="176" y="758" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Noticed a nudge</text>
+  <text x="60" y="792" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">What was it, and what did I do?</text>
+  <line x1="300" y1="796" x2="756" y2="796" stroke="#362F4B" stroke-width="1.1"/>
+  <line x1="60" y1="824" x2="756" y2="824" stroke="#E4DED0" stroke-width="1.2"/>
+
+  <!-- Row: Sun -->
+  <text x="60" y="862" font-size="17" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="700">Sun</text>
+  <rect x="150" y="836" width="20" height="20" rx="4" fill="none" stroke="#362F4B" stroke-width="1.5"/>
+  <text x="176" y="852" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Noticed a nudge</text>
+  <text x="60" y="886" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">What was it, and what did I do?</text>
+  <line x1="300" y1="890" x2="756" y2="890" stroke="#362F4B" stroke-width="1.1"/>
+
+  <!-- footer -->
+  <line x1="60" y1="960" x2="756" y2="960" stroke="#E4DED0" stroke-width="1.5"/>
+  <text x="60" y="990" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">Spiritual Lesson Plans &#183; spirituallessonplans.org</text>
+  <text x="756" y="990" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif" text-anchor="end">Free to use, adapt, and share &#183; CC BY-SA 4.0</text>
+</svg>
