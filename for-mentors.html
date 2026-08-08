@@ -90,6 +90,24 @@
 
 <section>
   <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">When it doesn't go as planned</p>
+      <h2>If things get heavy (they will, sometimes)</h2>
+      <p>You don't need to be a therapist to lead these lessons. You do need to know what to do when the room gets quiet, tense, or real. Here's the honest version, worst case last.</p>
+    </div>
+    <div class="card reveal" style="margin-top: 28px;">
+      <ul class="list-clean">
+        <li><strong>Nobody's talking.</strong> That's not you failing &mdash; that's often someone actually thinking. Let it breathe. Ask the question once more, gently, then wait again.</li>
+        <li><strong>Someone pushes back or disagrees.</strong> Good. That's curiosity showing up, not a problem to fix. Meet it with more questions, not a correction.</li>
+        <li><strong>Someone gets really upset &mdash; tears, shutting down, anger.</strong> Pause the activity. Take a breath together, or just slow down. Check in with them quietly, one-on-one, without making them the center of everyone's attention.</li>
+        <li><strong>Someone tells you something serious &mdash; abuse, self-harm, anything urgent.</strong> Stop being a "lesson leader" in that moment and just be a caring adult. Stay calm, thank them for trusting you, don't promise to keep it secret. Then follow your own country's and organization's reporting obligations and loop in a trained professional or the right authority &mdash; you are not meant to carry this alone, and neither are they. This isn't legal advice, so please know your own local requirements before you're ever in this seat.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <div class="callout reveal">
       <p class="eyebrow" style="color: var(--morning-sky);">Ready to lead one</p>
       <h2>Pick a topic and get started</h2>
@@ -116,6 +134,36 @@
     </div>
   </div>
 </footer>
+
+<button class="feedback-btn" type="button">&#128172; Feedback</button>
+<div class="feedback-overlay">
+  <div class="feedback-modal">
+    <button class="feedback-close" type="button" aria-label="Close">&times;</button>
+    <h3>Got a question, or something's off?</h3>
+    <p class="lead">Tell us anything &mdash; confused by a lesson, found a bug, or just want to say hi. We read every one of these.</p>
+    <form class="feedback-form">
+      <div class="feedback-field">
+        <label for="fb-kind">What's this about?</label>
+        <select id="fb-kind" name="kind">
+          <option value="Question">I have a question</option>
+          <option value="Confused">Something confused me</option>
+          <option value="Not happy">I'm not happy about something</option>
+          <option value="Idea">I have an idea</option>
+          <option value="Just saying hi">Just saying hi</option>
+        </select>
+      </div>
+      <div class="feedback-field">
+        <label for="fb-message">Your message</label>
+        <textarea id="fb-message" name="message" required placeholder="Say as much or as little as you'd like."></textarea>
+      </div>
+      <div class="feedback-field">
+        <label for="fb-from">Your email (optional, if you want a reply)</label>
+        <input id="fb-from" name="from" type="email" placeholder="you@example.com">
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Send it</button>
+    </form>
+  </div>
+</div>
 
 <script src="/assets/js/main.js"></script>
 </body>

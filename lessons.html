@@ -96,6 +96,36 @@
   </div>
 </footer>
 
+<button class="feedback-btn" type="button">&#128172; Feedback</button>
+<div class="feedback-overlay">
+  <div class="feedback-modal">
+    <button class="feedback-close" type="button" aria-label="Close">&times;</button>
+    <h3>Got a question, or something's off?</h3>
+    <p class="lead">Tell us anything &mdash; confused by a lesson, found a bug, or just want to say hi. We read every one of these.</p>
+    <form class="feedback-form">
+      <div class="feedback-field">
+        <label for="fb-kind">What's this about?</label>
+        <select id="fb-kind" name="kind">
+          <option value="Question">I have a question</option>
+          <option value="Confused">Something confused me</option>
+          <option value="Not happy">I'm not happy about something</option>
+          <option value="Idea">I have an idea</option>
+          <option value="Just saying hi">Just saying hi</option>
+        </select>
+      </div>
+      <div class="feedback-field">
+        <label for="fb-message">Your message</label>
+        <textarea id="fb-message" name="message" required placeholder="Say as much or as little as you'd like."></textarea>
+      </div>
+      <div class="feedback-field">
+        <label for="fb-from">Your email (optional, if you want a reply)</label>
+        <input id="fb-from" name="from" type="email" placeholder="you@example.com">
+      </div>
+      <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">Send it</button>
+    </form>
+  </div>
+</div>
+
 <script src="/assets/js/main.js"></script>
 </body>
 </html>

@@ -36,6 +36,14 @@ perl scratchpad/serve.pl . 8123
 
 Then open `http://127.0.0.1:8123/`.
 
+## Hero video
+
+The homepage hero is built to show a background video (`assets/hero-video.mp4`, lazy-loaded,
+same pattern as thetiesfoundation.org's hero), but no video file has been supplied yet — the
+original SVG illustration (`assets/img/hero-sunrise.svg`) is used as the `poster` and displays
+as a static fallback until a real clip is added. Drop a licensed/owned MP4 at that path and it
+starts playing automatically; no other changes needed.
+
 ## License
 
 Lesson content is [CC BY-SA 4.0](LICENSE.md) — free to use and adapt, including commercially, as
