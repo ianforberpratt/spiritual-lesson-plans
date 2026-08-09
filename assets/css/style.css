@@ -876,6 +876,15 @@ section { padding: var(--section) 0; }
   margin-bottom: 10px;
 }
 
+.citation {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: var(--ink-faint);
+}
+.citation a { color: inherit; text-decoration-color: var(--rule-strong); }
+
 .safety-note {
   background: var(--cream);
   border-left: 2px solid var(--gold-deep);
