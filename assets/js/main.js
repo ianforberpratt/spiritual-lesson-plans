@@ -173,6 +173,35 @@
     var modal = document.querySelector(".feedback-modal");
     if (!btn || !overlay || !form || !modal) return;
 
+    // Honeypot field: invisible to real visitors, irresistible to bots that
+    // fill every field. Injected via JS rather than baked into every page's
+    // markup, since this file is the one place shared across the whole site.
+    var honeypot = document.createElement("input");
+    honeypot.type = "text";
+    honeypot.name = "hp";
+    honeypot.className = "feedback-hp";
+    honeypot.setAttribute("tabindex", "-1");
+    honeypot.setAttribute("autocomplete", "off");
+    honeypot.setAttribute("aria-hidden", "true");
+    form.appendChild(honeypot);
+
+    var status = document.createElement("p");
+    status.className = "feedback-status";
+    status.setAttribute("role", "status");
+    status.setAttribute("aria-live", "polite");
+    var submitBtn = form.querySelector('button[type="submit"]');
+    form.insertBefore(status, submitBtn);
+
+    function setStatus(text, kind) {
+      status.innerHTML = "";
+      if (text) {
+        status.textContent = text;
+        status.className = "feedback-status show" + (kind ? " " + kind : "");
+      } else {
+        status.className = "feedback-status";
+      }
+    }
+
     function focusable() {
       return Array.prototype.slice.call(
         modal.querySelectorAll('a[href], button, select, textarea, input, [tabindex]:not([tabindex="-1"])')
@@ -180,6 +209,7 @@
     }
 
     function open() {
+      setStatus("");
       overlay.classList.add("open");
       var first = form.querySelector("select, textarea");
       if (first) first.focus();
@@ -214,23 +244,62 @@
       }
     });
 
+    function mailtoFallback(kind, message, from) {
+      var lines = [message, ""];
+      if (from) lines.push("From: " + from);
+      lines.push("Page: " + window.location.href);
+      return "mailto:ianforberpratt@gmail.com"
+        + "?subject=" + encodeURIComponent("Spiritual Lesson Plans feedback: " + kind)
+        + "&body=" + encodeURIComponent(lines.join("\n"));
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var kind = form.querySelector("[name=kind]").value;
       var message = form.querySelector("[name=message]").value.trim();
       var from = form.querySelector("[name=from]").value.trim();
       if (!message) return;
+      if (honeypot.value) { close(); form.reset(); return; }
 
-      var lines = [message, ""];
-      if (from) lines.push("From: " + from);
-      lines.push("Page: " + window.location.href);
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "Sending…"; }
+      setStatus("Sending…");
 
-      window.location.href = "mailto:ianforberpratt@gmail.com"
-        + "?subject=" + encodeURIComponent("Spiritual Lesson Plans feedback: " + kind)
-        + "&body=" + encodeURIComponent(lines.join("\n"));
-
-      close();
-      form.reset();
+      fetch("/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kind: kind, message: message, from: from, hp: honeypot.value, page: window.location.href })
+      })
+        .then(function (res) {
+          return res.json().catch(function () { return {}; }).then(function (data) {
+            return { ok: res.ok, status: res.status, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            setStatus("Thanks — got it.", "is-ok");
+            form.reset();
+            window.setTimeout(close, 1600);
+            return;
+          }
+          if (result.status === 400 && result.data && result.data.error) {
+            // A fixable input problem (e.g. malformed email) — let them correct it.
+            setStatus(result.data.error, "is-error");
+            return;
+          }
+          throw new Error("send failed");
+        })
+        .catch(function () {
+          status.innerHTML = "";
+          status.className = "feedback-status show is-error";
+          status.appendChild(document.createTextNode("Couldn't send that. "));
+          var link = document.createElement("a");
+          link.href = mailtoFallback(kind, message, from);
+          link.textContent = "Email us directly instead.";
+          status.appendChild(link);
+        })
+        .then(function () {
+          if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Send it"; }
+        });
     });
   }
 

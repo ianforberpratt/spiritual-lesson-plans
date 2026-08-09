@@ -1152,6 +1152,26 @@ body { top: 0px !important; }
 .feedback-field textarea:focus,
 .feedback-field input:focus { border-color: var(--ink); }
 
+.feedback-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.feedback-status {
+  display: none;
+  margin: -6px 0 18px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.feedback-status.show { display: block; }
+.feedback-status.is-ok { color: var(--sage-text); }
+.feedback-status.is-error { color: var(--ink-soft); }
+.feedback-status a { color: var(--ink); }
+
 /* ---------- Cookie banner ---------- */
 
 .cookie-banner {
