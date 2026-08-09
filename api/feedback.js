@@ -3,7 +3,7 @@
 // Resend's REST API — no SDK dependency, matching the pattern used on
 // the Ties Foundation site's api/contact.js.
 
-const ALLOWED_KINDS = ["Question", "Confused", "Not happy", "Idea", "Just saying hi"];
+const ALLOWED_KINDS = ["Question", "Confused", "Not happy", "Idea", "Citation", "Lesson idea", "Just saying hi"];
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MAX_MESSAGE_LENGTH = 5000;
 

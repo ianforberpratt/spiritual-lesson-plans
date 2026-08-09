@@ -185,6 +185,26 @@
     honeypot.setAttribute("aria-hidden", "true");
     form.appendChild(honeypot);
 
+    // Two extra feedback kinds, added here rather than to every page's
+    // markup so the option list only has to be maintained in one place.
+    var kindSelect = form.querySelector("[name=kind]");
+    if (kindSelect) {
+      var lastOption = kindSelect.querySelector('option[value="Just saying hi"]');
+      [
+        { value: "Citation", label: "I have a citation to share" },
+        { value: "Lesson idea", label: "I have a lesson idea" }
+      ].forEach(function (item) {
+        var opt = document.createElement("option");
+        opt.value = item.value;
+        opt.textContent = item.label;
+        if (lastOption) {
+          kindSelect.insertBefore(opt, lastOption);
+        } else {
+          kindSelect.appendChild(opt);
+        }
+      });
+    }
+
     var status = document.createElement("p");
     status.className = "feedback-status";
     status.setAttribute("role", "status");
