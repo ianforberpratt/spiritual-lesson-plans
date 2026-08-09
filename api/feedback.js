@@ -53,7 +53,7 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: "Server is not configured to send email" });
   }
 
-  const notifyTo = process.env.NOTIFY_TO || "ianforberpratt@gmail.com";
+  const notifyTo = process.env.NOTIFY_TO || "connect@spirituallessonplans.org";
   const notifyFrom = process.env.NOTIFY_FROM || "onboarding@resend.dev";
 
   const bodyLines = [
