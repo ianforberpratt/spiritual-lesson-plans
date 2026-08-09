@@ -1,0 +1,77 @@
+<svg viewBox="0 0 816 1056" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <rect x="0" y="0" width="816" height="1056" fill="#FAF8F5"/>
+
+  <!-- Header -->
+  <text x="60" y="70" font-size="12" letter-spacing="2" fill="#B8763F" font-family="Helvetica, Arial, sans-serif" font-weight="600">A HANDOUT &#183; LGBTQIA+ YOUTH AND SPIRITUAL LEARNING</text>
+  <text x="60" y="124" font-size="38" fill="#362F4B" font-weight="700">A Message You Got Somewhere</text>
+  <rect x="60" y="142" width="72" height="4" fill="#B8763F"/>
+  <text x="60" y="178" font-size="15" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">This is private. You don&#8217;t have to share it with anyone &#8212; not even your mentor.</text>
+  <text x="60" y="200" font-size="13" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">About your own identity, or about people who are LGBTQIA+. Either counts.</text>
+
+  <!-- Block 1 -->
+  <text x="60" y="270" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">The message I received:</text>
+  <line x1="60" y1="284" x2="756" y2="284" stroke="#362F4B" stroke-width="1.1"/>
+  <text x="60" y="322" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">Where did it come from?</text>
+  <circle cx="75" cy="344" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="90" y="349" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Family</text>
+  <circle cx="200" cy="344" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="215" y="349" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Church</text>
+  <circle cx="330" cy="344" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="345" y="349" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Friends</text>
+  <circle cx="450" cy="344" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="465" y="349" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Online</text>
+  <circle cx="560" cy="344" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="575" y="349" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Somewhere else</text>
+  <text x="60" y="388" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">Did it make room &#8212; or shrink it?</text>
+  <circle cx="100" cy="410" r="9" fill="none" stroke="#B8763F" stroke-width="2"/>
+  <text x="115" y="415" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Made room</text>
+  <circle cx="360" cy="410" r="9" fill="none" stroke="#B8763F" stroke-width="2"/>
+  <text x="375" y="415" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Shrank the room</text>
+  <line x1="60" y1="450" x2="756" y2="450" stroke="#E4DED0" stroke-width="1.4"/>
+
+  <!-- Block 2 -->
+  <text x="60" y="510" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">The message I received:</text>
+  <line x1="60" y1="524" x2="756" y2="524" stroke="#362F4B" stroke-width="1.1"/>
+  <text x="60" y="562" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">Where did it come from?</text>
+  <circle cx="75" cy="584" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="90" y="589" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Family</text>
+  <circle cx="200" cy="584" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="215" y="589" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Church</text>
+  <circle cx="330" cy="584" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="345" y="589" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Friends</text>
+  <circle cx="450" cy="584" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="465" y="589" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Online</text>
+  <circle cx="560" cy="584" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="575" y="589" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Somewhere else</text>
+  <text x="60" y="628" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">Did it make room &#8212; or shrink it?</text>
+  <circle cx="100" cy="650" r="9" fill="none" stroke="#B8763F" stroke-width="2"/>
+  <text x="115" y="655" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Made room</text>
+  <circle cx="360" cy="650" r="9" fill="none" stroke="#B8763F" stroke-width="2"/>
+  <text x="375" y="655" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Shrank the room</text>
+  <line x1="60" y1="690" x2="756" y2="690" stroke="#E4DED0" stroke-width="1.4"/>
+
+  <!-- Block 3 -->
+  <text x="60" y="750" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">The message I received:</text>
+  <line x1="60" y1="764" x2="756" y2="764" stroke="#362F4B" stroke-width="1.1"/>
+  <text x="60" y="802" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">Where did it come from?</text>
+  <circle cx="75" cy="824" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="90" y="829" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Family</text>
+  <circle cx="200" cy="824" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="215" y="829" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Church</text>
+  <circle cx="330" cy="824" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="345" y="829" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Friends</text>
+  <circle cx="450" cy="824" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="465" y="829" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Online</text>
+  <circle cx="560" cy="824" r="8" fill="none" stroke="#8B8496" stroke-width="1.5"/>
+  <text x="575" y="829" font-size="13" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Somewhere else</text>
+  <text x="60" y="868" font-size="14" fill="#362F4B" font-family="Helvetica, Arial, sans-serif" font-weight="600">Did it make room &#8212; or shrink it?</text>
+  <circle cx="100" cy="890" r="9" fill="none" stroke="#B8763F" stroke-width="2"/>
+  <text x="115" y="895" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Made room</text>
+  <circle cx="360" cy="890" r="9" fill="none" stroke="#B8763F" stroke-width="2"/>
+  <text x="375" y="895" font-size="14" fill="#4A4356" font-family="Helvetica, Arial, sans-serif">Shrank the room</text>
+
+  <!-- footer -->
+  <line x1="60" y1="960" x2="756" y2="960" stroke="#E4DED0" stroke-width="1.5"/>
+  <text x="60" y="990" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif">Spiritual Lesson Plans &#183; spirituallessonplans.org</text>
+  <text x="756" y="990" font-size="12" fill="#8B8496" font-family="Helvetica, Arial, sans-serif" text-anchor="end">Free to use, adapt, and share &#183; CC BY-SA 4.0</text>
+</svg>
