@@ -1478,9 +1478,6 @@ html.js .hero-gloss {
   animation: lantern-flicker 7s ease-in-out infinite;
 }
 
-.lantern-grid > a:nth-child(3n+2) { top: 20px; }
-.lantern-grid > a:nth-child(5n+4) { top: -12px; }
-
 .lantern:nth-child(4n) { animation-duration: 8s; animation-delay: -2s; }
 .lantern:nth-child(4n+1) { animation-duration: 6.5s; animation-delay: -4s; }
 .lantern:nth-child(4n+2) { animation-duration: 7.5s; animation-delay: -1s; }
@@ -1540,10 +1537,6 @@ html.js .hero-gloss {
 .lantern:focus-visible .meta { opacity: 1; }
 .lantern:focus-visible { outline: none; }
 .lantern:focus-visible h3 { text-decoration: underline; }
-
-@media (max-width: 700px) {
-  .lantern-grid > a { top: 0 !important; }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .lantern { animation: none; }
