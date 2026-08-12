@@ -752,7 +752,6 @@ section + section { border-top: 1px solid var(--rule); }
   padding: clamp(36px, 5vw, 56px) clamp(28px, 5vw, 56px);
   max-width: 820px;
 }
-.callout-lens .lens-icon { display: block; margin-bottom: 22px; }
 .callout-lens .eyebrow { color: var(--sage-text); }
 .callout-lens h2 { margin-bottom: 0.6em; }
 .callout-lens p:last-child { margin-bottom: 0; }
