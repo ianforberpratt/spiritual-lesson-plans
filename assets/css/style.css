@@ -390,13 +390,6 @@ body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { backg
   text-align: center;
 }
 
-.hero .eyebrow {
-  color: var(--cream);
-  opacity: 0.88;
-  margin-bottom: 24px;
-  text-shadow: 0 1px 14px rgba(20, 16, 30, 0.6);
-}
-
 .hero h1 {
   font-size: clamp(2.15rem, 6vw, 4.7rem);
   font-weight: 300;
@@ -532,7 +525,6 @@ body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { backg
     padding: 108px 0 76px;
     align-items: center;
   }
-  .hero .eyebrow { margin-bottom: 16px; font-size: 0.64rem; letter-spacing: 0.16em; }
   .hero h1 { font-size: clamp(2rem, 8.2vw, 2.7rem); margin-bottom: 0.42em; }
   .hero .subhead { font-size: 1rem; line-height: 1.55; margin-bottom: 1.9em; }
   .hero-ctas { margin-bottom: 2em; }
@@ -773,6 +765,56 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .callout-lens-compact p { max-width: none; margin: 0; }
 .callout-lens-compact .link-more { margin-left: 4px; }
+
+/* ---------- FAQ accordion (What We Believe: Foundations) ---------- */
+
+.faq-list { margin-top: clamp(8px, 1.5vw, 16px); }
+
+.faq-item {
+  border-top: 1px solid var(--rule);
+}
+.faq-item:last-child { border-bottom: 1px solid var(--rule); }
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(16px, 3vw, 32px);
+  padding: clamp(20px, 3vw, 28px) 0;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::marker { content: ""; }
+
+.faq-item summary h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.faq-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  background: var(--ink);
+  transition: transform 0.25s ease;
+}
+.faq-icon::before { left: 0; top: 50%; width: 100%; height: 1.5px; transform: translateY(-50%); }
+.faq-icon::after { top: 0; left: 50%; width: 1.5px; height: 100%; transform: translateX(-50%); }
+.faq-item[open] .faq-icon::after { transform: translateX(-50%) rotate(90deg); }
+
+.faq-body {
+  max-width: var(--measure);
+  padding-bottom: clamp(20px, 3vw, 32px);
+}
+.faq-body p:last-child { margin-bottom: 0; }
 
 /* ---------- Plain-English statement ---------- */
 
@@ -1300,37 +1342,6 @@ html.js .hero-gloss {
   to { opacity: 1; }
 }
 
-/* ---------- Hero: sunrise scroll effect ---------- */
-
-:root { --sunrise-bg: var(--cream); }
-
-.hero-sunrise-edge {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  z-index: 1;
-  height: 240px;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent, var(--sunrise-bg));
-  opacity: 0;
-}
-
-body.home .statement { background-color: var(--sunrise-bg); }
-body.home .statement .eyebrow,
-body.home .statement .statement-lead,
-body.home .statement .statement-lead a,
-body.home .statement .statement-tail {
-  transition: color 0.25s ease;
-}
-body.home.sunrise-light-text .statement .eyebrow { color: var(--gold); opacity: 0.9; }
-body.home.sunrise-light-text .statement .statement-lead,
-body.home.sunrise-light-text .statement .statement-lead a { color: var(--cream); }
-body.home.sunrise-light-text .statement .statement-tail { color: rgba(251, 245, 234, 0.75); }
-
-@media (prefers-reduced-motion: reduce) {
-  body.home .statement { background-color: var(--cream) !important; }
-  .hero-sunrise-edge { display: none; }
-}
-
 /* ---------- Hero: easter egg ---------- */
 
 .hero-easter-egg {
@@ -1402,99 +1413,141 @@ body.home.sunrise-light-text .statement .statement-tail { color: rgba(251, 245, 
   .egg-msg { left: auto; right: 42px; }
 }
 
-/* ---------- Lessons: constellation map ---------- */
+/* ---------- Lessons: lantern field ----------
+   Each lesson is its own independent light — no lines drawn between them.
+   A loose, hand-felt scatter (via nth-child position offsets) instead of a
+   rigid grid, a slow per-lantern flicker, and a warm glow that follows the
+   cursor across the whole field. */
 
-.constellation-field {
+.lantern-field {
   position: relative;
-  min-height: 560px;
-  background: radial-gradient(ellipse at 50% 18%, #453c5c 0%, #241f33 55%, #171320 100%);
+  background: radial-gradient(ellipse at 50% 12%, #453c5c 0%, #241f33 55%, #171320 100%);
   border-radius: var(--radius);
   overflow: hidden;
+  padding: clamp(40px, 6vw, 72px) clamp(24px, 5vw, 52px) clamp(28px, 4vw, 52px);
   margin-bottom: clamp(20px, 3vw, 40px);
 }
 
-.constellation-hint {
-  position: absolute;
-  top: 16px;
-  left: 22px;
-  z-index: 3;
-  margin: 0;
+.lantern-field-hint {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 clamp(28px, 4vw, 48px);
   max-width: none;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(251, 245, 234, 0.48);
+  text-align: center;
 }
 
-.constellation-lines {
+.lantern-glow-follow {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   pointer-events: none;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 20%), rgba(232, 169, 76, 0.12), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
-.constellation-lines line {
-  stroke: rgba(251, 245, 234, 0.14);
-  stroke-width: 1;
-  transition: stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease;
-}
-.constellation-lines line.is-active {
-  stroke: var(--gold);
-  stroke-width: 1.4;
-  opacity: 0.95;
+.lantern-field:hover .lantern-glow-follow,
+.lantern-field:focus-within .lantern-glow-follow { opacity: 1; }
+
+.lantern-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: clamp(30px, 4vw, 50px) clamp(18px, 3vw, 32px);
 }
 
-.constellation-field .star {
-  position: absolute;
-  transform: translate(-50%, -50%);
+.lantern {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 9px;
-  width: 168px;
-  padding: 10px;
-  border: none;
+  padding: clamp(24px, 3vw, 32px) 14px;
+  border-radius: 22px;
   text-align: center;
-  color: var(--on-dark);
   text-decoration: none;
-}
-.constellation-field .star::after { display: none; }
-.constellation-field .star .tag,
-.constellation-field .star .meta { display: none; }
-.constellation-field .star h3 {
-  font-size: 0.92rem;
-  font-weight: 500;
-  line-height: 1.35;
-  color: var(--on-dark-faint);
-  transition: color 0.25s ease;
+  color: var(--on-dark);
+  background: radial-gradient(circle at 50% 32%, rgba(232, 169, 76, 0.14), rgba(69, 60, 92, 0.32) 72%);
+  border: 1px solid rgba(251, 245, 234, 0.1);
+  box-shadow: 0 0 22px rgba(232, 169, 76, 0.08);
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.25s ease;
+  animation: lantern-flicker 7s ease-in-out infinite;
 }
 
-.star-dot {
+.lantern-grid > a:nth-child(3n+2) { top: 20px; }
+.lantern-grid > a:nth-child(5n+4) { top: -12px; }
+
+.lantern:nth-child(4n) { animation-duration: 8s; animation-delay: -2s; }
+.lantern:nth-child(4n+1) { animation-duration: 6.5s; animation-delay: -4s; }
+.lantern:nth-child(4n+2) { animation-duration: 7.5s; animation-delay: -1s; }
+.lantern:nth-child(4n+3) { animation-duration: 6.8s; animation-delay: -3.4s; }
+
+@keyframes lantern-flicker {
+  0%, 100% { box-shadow: 0 0 20px rgba(232, 169, 76, 0.07); }
+  50% { box-shadow: 0 0 32px rgba(232, 169, 76, 0.15); }
+}
+
+.lantern-spark {
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: var(--gold);
-  box-shadow: 0 0 0 4px rgba(232, 169, 76, 0.16);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 12px 4px rgba(232, 169, 76, 0.45);
+  margin-bottom: 2px;
 }
 
-.constellation-field .star:hover,
-.constellation-field .star:focus-visible { z-index: 2; }
-.constellation-field .star:hover h3,
-.constellation-field .star:focus-visible h3,
-.constellation-field .star.is-related h3 { color: var(--cream); }
-.constellation-field .star:hover .star-dot,
-.constellation-field .star:focus-visible .star-dot,
-.constellation-field .star.is-related .star-dot {
-  box-shadow: 0 0 0 8px rgba(232, 169, 76, 0.28);
-  transform: scale(1.3);
+.lantern h3 {
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.32;
+  color: var(--cream);
+  margin: 0;
 }
-.constellation-field .star:focus-visible { outline: none; }
-.constellation-field .star:focus-visible h3 { text-decoration: underline; }
 
-@media (max-width: 899px) {
-  .constellation-field { display: none; }
+.lantern .tag {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  max-width: 24ch;
+  color: var(--on-dark-faint);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.lantern .meta {
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(232, 169, 76, 0.8);
+  opacity: 0.5;
+  transition: opacity 0.35s ease;
+}
+
+.lantern:hover,
+.lantern:focus-visible {
+  box-shadow: 0 0 44px rgba(232, 169, 76, 0.3);
+  border-color: rgba(232, 169, 76, 0.45);
+  transform: translateY(-4px);
+  z-index: 2;
+}
+.lantern:hover .tag,
+.lantern:focus-visible .tag,
+.lantern:hover .meta,
+.lantern:focus-visible .meta { opacity: 1; }
+.lantern:focus-visible { outline: none; }
+.lantern:focus-visible h3 { text-decoration: underline; }
+
+@media (max-width: 700px) {
+  .lantern-grid > a { top: 0 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lantern { animation: none; }
+  .lantern-glow-follow { display: none; }
 }
 
 /* ---------- Utility ---------- */

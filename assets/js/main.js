@@ -133,52 +133,6 @@
     }
   }
 
-  /* ---------- Hero: sunrise scroll effect ---------- */
-
-  function initSunrise() {
-    if (!document.body.classList.contains("home") || reduceMotion) return;
-    var heroEl = document.querySelector(".hero");
-    var statementEl = document.querySelector(".statement");
-    var edgeEl = document.querySelector(".hero-sunrise-edge");
-    if (!heroEl || !statementEl) return;
-
-    var dusk = [54, 47, 75];     // --ink
-    var gold = [232, 169, 76];   // --gold
-    var cream = [251, 245, 234]; // --cream
-
-    function lerp(a, b, t) { return a + (b - a) * t; }
-    function mixColor(t) {
-      var c1, c2, tt;
-      if (t < 0.5) { c1 = dusk; c2 = gold; tt = t / 0.5; }
-      else { c1 = gold; c2 = cream; tt = (t - 0.5) / 0.5; }
-      return [
-        Math.round(lerp(c1[0], c2[0], tt)),
-        Math.round(lerp(c1[1], c2[1], tt)),
-        Math.round(lerp(c1[2], c2[2], tt))
-      ];
-    }
-
-    var ticking = false;
-    function update() {
-      ticking = false;
-      var start = heroEl.offsetHeight * 0.25;
-      var end = statementEl.offsetTop + statementEl.offsetHeight * 0.55;
-      var progress = (window.scrollY - start) / (end - start);
-      progress = Math.max(0, Math.min(1, progress));
-      var rgb = mixColor(progress);
-      var css = "rgb(" + rgb.join(",") + ")";
-      document.documentElement.style.setProperty("--sunrise-bg", css);
-      document.body.classList.toggle("sunrise-light-text", progress < 0.62);
-      if (edgeEl) edgeEl.style.opacity = String(Math.min(1, progress / 0.35));
-    }
-    function requestUpdate() {
-      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
-    }
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-    update();
-  }
-
   /* ---------- Hero: easter egg ---------- */
 
   function initHeroEasterEgg() {
@@ -204,124 +158,16 @@
     });
   }
 
-  /* ---------- Lessons: constellation map ---------- */
+  /* ---------- Lessons: lantern field ---------- */
 
-  function initConstellation() {
-    var data = window.LESSON_CONSTELLATION;
-    var grid = document.querySelector(".topic-grid");
-    if (!data || !grid || reduceMotion) return;
-    if (!window.matchMedia("(min-width: 900px)").matches) return;
-    if (!("IntersectionObserver" in window)) return;
+  function initLanternField() {
+    var field = document.querySelector(".lantern-field");
+    if (!field || reduceMotion) return;
 
-    var cards = Array.prototype.slice.call(grid.querySelectorAll(".topic-card"));
-    if (!cards.length) return;
-
-    function idOf(card) {
-      return card.getAttribute("href").replace("/lessons/", "").replace(/\/$/, "");
-    }
-
-    var byId = {};
-    cards.forEach(function (card) { byId[idOf(card)] = card; });
-
-    var svgNS = "http://www.w3.org/2000/svg";
-    var field = document.createElement("div");
-    field.className = "constellation-field";
-
-    var hint = document.createElement("p");
-    hint.className = "constellation-hint";
-    hint.textContent = "Hover or focus a point of light to see how it connects";
-    field.appendChild(hint);
-
-    var svg = document.createElementNS(svgNS, "svg");
-    svg.setAttribute("class", "constellation-lines");
-    svg.setAttribute("aria-hidden", "true");
-    field.appendChild(svg);
-
-    grid.parentNode.insertBefore(field, grid);
-
-    // Deterministic scatter, seeded by index — no hand-authored coordinates,
-    // so a new lesson in the data automatically gets a position.
-    var positions = {};
-    var n = cards.length;
-    var golden = 137.508 * Math.PI / 180;
-    cards.forEach(function (card, i) {
-      var id = idOf(card);
-      var t = (i + 0.5) / n;
-      var r = 0.2 + t * 0.62;
-      var a = i * golden;
-      var x = Math.max(8, Math.min(92, 50 + Math.cos(a) * r * 46));
-      var y = Math.max(12, Math.min(88, 50 + Math.sin(a) * r * 40));
-      positions[id] = { x: x, y: y };
-
-      // Drop the generic scroll-reveal treatment: its "is-visible" state sets
-      // transform: none, which would wipe out the star's own centering
-      // transform (translate(-50%, -50%)) the moment it reveals.
-      card.classList.remove("reveal", "is-visible");
-      card.classList.add("star");
-      card.style.left = x + "%";
-      card.style.top = y + "%";
-
-      var dot = document.createElement("span");
-      dot.className = "star-dot";
-      dot.setAttribute("aria-hidden", "true");
-      card.insertBefore(dot, card.firstChild);
-
-      field.appendChild(card);
-    });
-
-    grid.remove();
-
-    var drawn = {};
-    data.forEach(function (item) {
-      (item.connections || []).forEach(function (otherId) {
-        var key = [item.id, otherId].sort().join("|");
-        if (drawn[key] || !byId[item.id] || !byId[otherId]) return;
-        drawn[key] = true;
-        var p1 = positions[item.id], p2 = positions[otherId];
-        if (!p1 || !p2) return;
-        var line = document.createElementNS(svgNS, "line");
-        line.setAttribute("x1", p1.x + "%");
-        line.setAttribute("y1", p1.y + "%");
-        line.setAttribute("x2", p2.x + "%");
-        line.setAttribute("y2", p2.y + "%");
-        line.setAttribute("data-pair", item.id + "|" + otherId);
-        svg.appendChild(line);
-      });
-    });
-
-    function relatedOf(id) {
-      var related = {};
-      data.forEach(function (item) {
-        if (item.id === id) (item.connections || []).forEach(function (c) { related[c] = true; });
-        if ((item.connections || []).indexOf(id) !== -1) related[item.id] = true;
-      });
-      return related;
-    }
-
-    function activate(id) {
-      Array.prototype.forEach.call(svg.querySelectorAll("line"), function (line) {
-        var pair = line.getAttribute("data-pair").split("|");
-        line.classList.toggle("is-active", pair.indexOf(id) !== -1);
-      });
-      var related = relatedOf(id);
-      cards.forEach(function (card) {
-        var cid = idOf(card);
-        card.classList.toggle("is-related", !!related[cid]);
-      });
-    }
-    function deactivate() {
-      Array.prototype.forEach.call(svg.querySelectorAll("line.is-active"), function (l) {
-        l.classList.remove("is-active");
-      });
-      cards.forEach(function (card) { card.classList.remove("is-related"); });
-    }
-
-    cards.forEach(function (card) {
-      var id = idOf(card);
-      card.addEventListener("mouseenter", function () { activate(id); });
-      card.addEventListener("mouseleave", deactivate);
-      card.addEventListener("focus", function () { activate(id); });
-      card.addEventListener("blur", deactivate);
+    field.addEventListener("mousemove", function (e) {
+      var r = field.getBoundingClientRect();
+      field.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100) + "%");
+      field.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100) + "%");
     });
   }
 
@@ -564,9 +410,8 @@
       initNav,
       initNavScrollState,
       initHeroVideo,
-      initSunrise,
       initHeroEasterEgg,
-      initConstellation,
+      initLanternField,
       initReveals,
       initFeedback,
       initTranslate,
