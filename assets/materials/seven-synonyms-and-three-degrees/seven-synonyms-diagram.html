@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sevenfold Name of God</title>
+<style>
+  @page{ size: letter; margin: 0.6in; }
+  :root{
+    --cream:#FBF5EA;
+    --gold:#E8A94C;
+    --sky:#A9C9D9;
+    --sage:#8CA37E;
+    --dusk:#362F4B;
+  }
+  *{box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--dusk);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    line-height:1.5;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:44px 24px 50px;}
+  header{text-align:center;margin-bottom:28px;}
+  h1{
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype","Book Antiqua",serif;
+    font-size:clamp(26px,5vw,38px);
+    margin:0;
+    letter-spacing:.01em;
+  }
+
+  .anchor-quote{
+    text-align:center;
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-style:italic;
+    font-size:19px;
+    max-width:520px;
+    margin:0 auto 8px;
+  }
+  .anchor-cite{
+    text-align:center;
+    font-size:12px;
+    color:var(--sage);
+    letter-spacing:.03em;
+    margin-bottom:32px;
+  }
+
+  .note-personal{
+    background:rgba(140,163,126,.12);
+    border:1px solid rgba(140,163,126,.4);
+    border-radius:12px;
+    padding:16px 20px;
+    font-size:13.5px;
+    text-align:center;
+    max-width:560px;
+    margin:0 auto 36px;
+    color:var(--dusk);
+  }
+  .note-personal .sig{
+    display:block;
+    margin-top:8px;
+    font-style:italic;
+    color:var(--sage);
+  }
+
+  .diagram-shell{ padding:4px 0 0; }
+  svg{display:block;margin:0 auto;width:100%;max-width:520px;height:auto;}
+
+  .node-label{
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-size:18px;
+    fill:var(--dusk);
+    font-weight:700;
+  }
+  .node-super{
+    font-size:9px;
+    fill:var(--dusk);
+    font-weight:700;
+    letter-spacing:.14em;
+    opacity:.6;
+  }
+
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    justify-content:center;
+    padding:18px 12px 6px;
+    font-size:12.5px;
+  }
+  .legend-item{display:flex;align-items:center;gap:7px;}
+  .legend-swatch{width:20px;height:3px;border-radius:2px;flex:0 0 auto;}
+
+  .quotes{margin-top:38px;display:grid;gap:14px;}
+  blockquote{
+    margin:0;
+    padding:16px 20px;
+    border-left:3px solid var(--gold);
+    background:rgba(232,169,76,.08);
+    border-radius:0 10px 10px 0;
+  }
+  blockquote.love{border-left-color:var(--gold); background:rgba(232,169,76,.14);}
+  blockquote.governing{border-left-color:var(--sage); background:rgba(140,163,126,.1);}
+  blockquote.being{border-left-color:var(--sky); background:rgba(169,201,217,.14);}
+  blockquote p{
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-style:italic;
+    font-size:15.5px;
+    margin:0 0 6px;
+  }
+  blockquote .tag{
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    opacity:.65;
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  blockquote cite{
+    font-style:normal;
+    font-size:12px;
+    opacity:.7;
+  }
+
+  .closing-quote{
+    text-align:center;
+    margin-top:36px;
+    padding-top:28px;
+    border-top:1px solid rgba(54,47,75,.15);
+  }
+  .closing-quote p{
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-style:italic;
+    font-size:16.5px;
+    max-width:520px;
+    margin:0 auto 8px;
+  }
+  .closing-quote cite{font-style:normal;font-size:12px;color:var(--sage);}
+
+  /* ---- The Three Degrees (p. 115) — separate section, near the circle above ---- */
+  .degrees{
+    margin-top:44px;
+    padding-top:32px;
+    border-top:1px solid rgba(54,47,75,.15);
+  }
+  .degrees h2{
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-size:24px;
+    text-align:center;
+    margin:0 0 4px;
+  }
+  .degrees-sub{
+    text-align:center;
+    font-size:12.5px;
+    color:var(--sage);
+    max-width:480px;
+    margin:0 auto 26px;
+  }
+
+  .immortal-trio{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-bottom:30px;
+    font-size:12.5px;
+  }
+  .immortal-trio div{
+    background:#fff;
+    border:1px solid rgba(54,47,75,.15);
+    border-radius:10px;
+    padding:10px 12px;
+    text-align:center;
+  }
+  .immortal-trio strong{
+    display:block;
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-size:13px;
+    letter-spacing:.05em;
+    margin-bottom:4px;
+  }
+  .immortal-trio .webster{opacity:.6;font-size:11px;}
+
+  .ladder{display:grid;gap:10px;}
+  .rung{
+    border-radius:12px;
+    padding:14px 18px;
+    border-left:5px solid transparent;
+  }
+  .rung.spiritual{background:rgba(232,169,76,.16); border-left-color:var(--gold);}
+  .rung.moral{background:rgba(140,163,126,.14); border-left-color:var(--sage);}
+  .rung.physical{background:rgba(54,47,75,.07); border-left-color:var(--dusk);}
+  .rung-head{
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-size:15px;
+    font-weight:700;
+    margin-bottom:4px;
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+  .rung-cat{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:10px;
+    letter-spacing:.1em;
+    font-weight:700;
+    opacity:.55;
+  }
+  .rung-body{font-size:13.5px;}
+
+  .degrees-close{
+    text-align:center;
+    font-family:Georgia,"Iowan Old Style",serif;
+    font-style:italic;
+    font-size:15px;
+    max-width:540px;
+    margin:26px auto 6px;
+  }
+  .degrees-cite{
+    text-align:center;
+    font-size:12px;
+    color:var(--sage);
+  }
+
+  footer{
+    margin-top:34px;
+    text-align:center;
+    font-size:11px;
+    color:var(--sage);
+  }
+
+  @media print{
+    .wrap{padding:0;}
+    body{background:white;}
+    .degrees{page-break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>The Sevenfold Name of God</h1>
+  </header>
+
+  <p class="anchor-quote">"God is incorporeal, divine, supreme, infinite Mind, Spirit, Soul, Principle, Life, Truth, Love."</p>
+  <p class="anchor-cite">— Mary Baker Eddy, Science and Health with Key to the Scriptures, p. 465</p>
+
+  <div class="note-personal">
+    This is one person's ongoing, unfolding read of these seven names for God — not a teaching, not official doctrine, and not meant to impose on anyone else's understanding. It's just where I currently am with it. It may well change.
+    <span class="sig">— Ian, August 2026</span>
+  </div>
+
+  <div class="diagram-shell">
+    <svg id="diagram" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div class="quotes">
+    <blockquote class="being">
+      <div class="tag">Being cluster — Mind, Spirit, Soul</div>
+      <p>"Soul is the only real consciousness which cognizes being."</p>
+      <cite>— Mary Baker Eddy, Rudimental Divine Science</cite>
+    </blockquote>
+
+    <blockquote>
+      <div class="tag">Active trio — Life, Truth, Love</div>
+      <p>"Divine Love always has met and always will meet every human need."</p>
+      <cite>— Mary Baker Eddy, Science and Health, p. 494:10</cite>
+    </blockquote>
+
+    <blockquote class="governing">
+      <div class="tag">Governing pair — Principle, Love</div>
+      <p>"Love is Principle, not person."</p>
+      <cite>— Mary Baker Eddy, No and Yes</cite>
+    </blockquote>
+
+    <blockquote class="love">
+      <div class="tag">Divine Love</div>
+      <p>"God is Love. Can we ask Him to be more?"</p>
+      <cite>— Mary Baker Eddy, Science and Health, p. 2:23</cite>
+    </blockquote>
+  </div>
+
+  <div class="closing-quote">
+    <p>"There is no life, truth, intelligence, nor substance in matter. All is infinite Mind and its infinite manifestation, for God is All-in-all."</p>
+    <cite>— Mary Baker Eddy, Science and Health, p. 468</cite>
+  </div>
+
+  <section class="degrees">
+    <h2>The Three Degrees</h2>
+    <p class="degrees-sub">Science and Health, p. 115 — mortal mind's ascent, read alongside the seven names of immortal Mind above. Eddy lists the seven in a different order here than on p. 465 — both are hers.</p>
+
+    <div class="immortal-trio">
+      <div><strong>GOD</strong>Divine Principle, Life, Truth, Love, Soul, Spirit, Mind.</div>
+      <div><strong>MAN</strong>God's spiritual idea, individual, perfect, eternal.</div>
+      <div><strong>IDEA</strong>An image in Mind; the immediate object of understanding. <span class="webster">— Webster</span></div>
+    </div>
+
+    <div class="ladder">
+      <div class="rung spiritual">
+        <div class="rung-head">Third Degree — Understanding <span class="rung-cat">SPIRITUAL</span></div>
+        <div class="rung-body">Wisdom, purity, spiritual understanding, spiritual power, love, health, holiness.</div>
+      </div>
+      <div class="rung moral">
+        <div class="rung-head">Second Degree — Evil beliefs disappearing <span class="rung-cat">MORAL</span></div>
+        <div class="rung-body">Humanity, honesty, affection, compassion, hope, faith, meekness, temperance.</div>
+      </div>
+      <div class="rung physical">
+        <div class="rung-head">First Degree — Depravity <span class="rung-cat">PHYSICAL</span></div>
+        <div class="rung-body">Evil beliefs, passions and appetites, fear, depraved will, self-justification, pride, envy, deceit, hatred, revenge, sin, sickness, disease, death.</div>
+      </div>
+    </div>
+
+    <p class="degrees-close">"In the third degree mortal mind disappears, and man as God's image appears. Science so reverses the evidence before the corporeal human senses, as to make this Scriptural testimony true in our hearts, 'The last shall be first, and the first last,' so that God and His idea may be to us what divinity really is and must of necessity be, — all-inclusive."</p>
+    <p class="degrees-cite">— Mary Baker Eddy, Science and Health, p. 115</p>
+  </section>
+
+  <footer>spirituallessonplans.org · free to use, adapt, and share under Creative Commons</footer>
+
+</div>
+
+<script>
+(function(){
+  var cx = 320, cy = 320, r = 210, nodeR = 46, haloR = 92;
+
+  // Eddy's own listed order (Science and Health, p. 465), rotated so Love sits
+  // at the top of the circle — still naturally clusters the being trio and the
+  // active trio on opposite arcs (Life–Truth–Love stay consecutive either way).
+  var names = ["Love","Mind","Spirit","Soul","Principle","Life","Truth"];
+
+  var groupColor = { active:"#E8A94C", governing:"#8CA37E", being:"#A9C9D9" };
+  var groupLabel = {
+    active:"Active trio — Life, Truth, Love",
+    governing:"Governing pair — Principle, Love",
+    being:"Being cluster — Mind, Spirit, Soul"
+  };
+
+  var relationships = [
+    {from:"Life", to:"Truth", group:"active"},
+    {from:"Truth", to:"Love", group:"active"},
+    {from:"Love", to:"Life", group:"active"},
+    {from:"Principle", to:"Love", group:"governing"},
+    {from:"Mind", to:"Spirit", group:"being"},
+    {from:"Spirit", to:"Soul", group:"being"},
+    {from:"Soul", to:"Mind", group:"being"}
+  ];
+
+  var haloTargets = ["Mind","Spirit","Soul","Principle","Truth","Life"];
+
+  var pos = {};
+  names.forEach(function(name, i){
+    var angle = (-90 + (360 / names.length) * i) * Math.PI / 180;
+    pos[name] = {
+      x: cx + r * Math.cos(angle),
+      y: cy + r * Math.sin(angle)
+    };
+  });
+
+  var svgns = "http://www.w3.org/2000/svg";
+  var svg = document.getElementById("diagram");
+
+  function el(tag, attrs){
+    var e = document.createElementNS(svgns, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  var defs = el("defs", {});
+  var grad = el("radialGradient", {id:"loveGlow", cx:"50%", cy:"50%", r:"50%"});
+  grad.appendChild(el("stop", {offset:"0%", "stop-color":"#E8A94C", "stop-opacity":"0.5"}));
+  grad.appendChild(el("stop", {offset:"60%", "stop-color":"#E8A94C", "stop-opacity":"0.15"}));
+  grad.appendChild(el("stop", {offset:"100%", "stop-color":"#E8A94C", "stop-opacity":"0"}));
+  defs.appendChild(grad);
+  svg.appendChild(defs);
+
+  // outer circle
+  svg.appendChild(el("circle", {cx:cx, cy:cy, r:r, fill:"none", stroke:"rgba(54,47,75,.18)", "stroke-width":1.5}));
+
+  // Divine Love's radiant halo — faint rays to every other name (no labels; visual only)
+  haloTargets.forEach(function(name){
+    var a = pos["Love"], b = pos[name];
+    svg.appendChild(el("line", {
+      x1:a.x, y1:a.y, x2:b.x, y2:b.y,
+      stroke:"#E8A94C",
+      "stroke-width":1.2,
+      "stroke-dasharray":"1,5",
+      opacity:0.5
+    }));
+  });
+
+  // glow behind Divine Love's node (kept radiant even at normal node size)
+  svg.appendChild(el("circle", {cx:pos["Love"].x, cy:pos["Love"].y, r:haloR, fill:"url(#loveGlow)"}));
+
+  // grouped relationship lines, bolder, on top of the halo
+  relationships.forEach(function(rel){
+    var a = pos[rel.from], b = pos[rel.to];
+    svg.appendChild(el("line", {
+      x1:a.x, y1:a.y, x2:b.x, y2:b.y,
+      stroke: groupColor[rel.group],
+      "stroke-width": 2.75,
+      opacity: 0.92
+    }));
+  });
+
+  // nodes — all seven now the same size; Love keeps its glow and two-line label only
+  names.forEach(function(name){
+    var p = pos[name];
+    var isLove = name === "Love";
+    var g = el("g", {});
+
+    var circle = el("circle", {
+      cx:p.x, cy:p.y, r:nodeR,
+      fill:"#FFFFFF",
+      stroke: isLove ? "#E8A94C" : "#362F4B",
+      "stroke-width": isLove ? 3 : 1.75
+    });
+    g.appendChild(circle);
+
+    if (isLove) {
+      var superText = el("text", {
+        x:p.x, y:p.y - 10,
+        "text-anchor":"middle",
+        class:"node-super"
+      });
+      superText.textContent = "DIVINE";
+      g.appendChild(superText);
+    }
+
+    var nameText = el("text", {
+      x:p.x, y: p.y + (isLove ? 14 : 6),
+      "text-anchor":"middle",
+      class:"node-label"
+    });
+    nameText.textContent = name;
+    g.appendChild(nameText);
+
+    svg.appendChild(g);
+  });
+
+  // legend
+  var legend = document.getElementById("legend");
+  ["being","active","governing"].forEach(function(k){
+    var item = document.createElement("div");
+    item.className = "legend-item";
+    var sw = document.createElement("div");
+    sw.className = "legend-swatch";
+    sw.style.background = groupColor[k];
+    var txt = document.createElement("span");
+    txt.textContent = groupLabel[k];
+    item.appendChild(sw);
+    item.appendChild(txt);
+    legend.appendChild(item);
+  });
+})();
+</script>
+
+</body>
+</html>
