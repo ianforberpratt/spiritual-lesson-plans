@@ -1279,7 +1279,7 @@ body { top: 0px !important; }
   font-size: 0.88rem;
 }
 .cookie-banner.show { display: flex; }
-.cookie-banner p { margin: 0; max-width: 66ch; }
+.cookie-banner p { margin: 0; max-width: 66ch; font-size: 0.78rem; color: var(--on-dark-faint); }
 .cookie-banner .btn { flex: 0 0 auto; padding: 11px 22px; }
 
 body.has-cookie-banner .feedback-btn { bottom: 92px; }
