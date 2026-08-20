@@ -1901,12 +1901,13 @@ body.home .site-nav.is-scrolled .age-switcher .age-switcher-value { color: var(-
    and softer than the eyebrow above it so it reads as an aside, not a
    second heading. */
 .band-section-tip {
+  align-self: stretch;
   margin: 0;
-  max-width: 62ch;
+  max-width: none;
   font-family: var(--font-serif);
-  font-size: 0.86rem;
-  font-style: italic;
-  line-height: 1.5;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: 1.55;
   color: var(--ink-faint);
 }
 
