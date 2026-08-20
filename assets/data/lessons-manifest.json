@@ -158,6 +158,18 @@
       ]
     },
     {
+      "slug": "the-pull-you-feel",
+      "title": "The Pull You Feel — In Tune or Out?",
+      "hook": "Attraction isn't the villain and it isn't the boss — this lesson gives you a real test for what's actually running it.",
+      "topicCategory": "relationships",
+      "landingUrl": "/lessons/the-pull-you-feel",
+      "bands": [
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "30–35 min", "title": "When You Really Like Someone", "hook": "There's more than one flavor of \"liking someone\" — this lesson helps you tell which one you're feeling.", "url": "/lessons/11-14/the-pull-you-feel" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "45–50 min", "title": "The Pull You Feel — In Tune or Out?", "hook": "Attraction isn't the villain and it isn't the boss — this lesson gives you a real test for what's actually running it.", "url": "/lessons/14-21/the-pull-you-feel" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "50–60 min", "title": "The Pull You Feel — In Tune or Out?", "hook": "A strong pull toward someone — even an inconvenient or uninvited one — can be tested, not just obeyed or suppressed.", "url": "/lessons/21-plus/the-pull-you-feel" }
+      ]
+    },
+    {
       "slug": "trust-the-mover",
       "title": "Trust the Mover",
       "hook": "What to do with real disappointment when your plans fall apart.",

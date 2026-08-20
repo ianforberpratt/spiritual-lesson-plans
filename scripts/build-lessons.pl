@@ -158,6 +158,23 @@ sub markdown_block_to_html {
     @lines = grep { length($_) } map { my $l = $_; $l =~ s/\s+$//; $l } @lines;
     next unless @lines;
 
+    if (@lines >= 2 && $lines[0] =~ /^\|.*\|\s*$/ && $lines[1] =~ /^\|(?:[\s:-]+\|)+\s*$/) {
+      # GFM-style pipe table: header row, separator row, then data rows.
+      my @rows = @lines;
+      my $header = shift @rows;
+      shift @rows; # separator row
+      my @head_cells = map { inline_html($_) } split_table_row($header);
+      my $thead = '<thead><tr>' . join('', map { "<th>$_</th>" } @head_cells) . '</tr></thead>';
+      my @body_html;
+      for my $row (@rows) {
+        my @cells = map { inline_html($_) } split_table_row($row);
+        push @body_html, '<tr>' . join('', map { "<td>$_</td>" } @cells) . '</tr>';
+      }
+      my $tbody = '<tbody>' . join('', @body_html) . '</tbody>';
+      push @out, qq{<div class="table-wrap"><table class="content-table">$thead$tbody</table></div>};
+      next;
+    }
+
     if (@lines == grep { /^>\s?/ } @lines) {
       # Blockquote: strip '>', join, split off trailing "— Citation".
       my $joined = join(' ', map { my $l = $_; $l =~ s/^>\s?//; $l } @lines);
@@ -188,6 +205,14 @@ sub markdown_block_to_html {
   }
 
   return join("\n", @out);
+}
+
+# Split one GFM pipe-table row ("| a | b |") into trimmed cell strings.
+sub split_table_row {
+  my ($line) = @_;
+  $line =~ s/^\s*\|//;
+  $line =~ s/\|\s*$//;
+  return map { my $c = $_; $c =~ s/^\s+|\s+$//g; $c } split /\|/, $line;
 }
 
 # Split a lesson body into its ## sections, keyed by heading text.

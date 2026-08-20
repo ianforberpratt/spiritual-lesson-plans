@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which Way Is It Pulling? &mdash; Spiritual Lesson Plans</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF5EA; --gold:#E8A94C; --gold-text:#935F1A;
+    --sage:#8CA37E; --sage-text:#3F5236; --sky:#A9C9D9;
+    --ink:#362F4B; --ink-soft:rgba(54,47,75,.72); --rule:rgba(54,47,75,.18);
+  }
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; }
+  body{
+    background:#EAE2D2;
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    min-height:100vh; display:flex; flex-direction:column; align-items:center;
+  }
+  .toolbar{
+    width:100%; background:var(--ink); color:var(--cream);
+    padding:14px 20px; display:flex; justify-content:space-between; align-items:center;
+    gap:16px; flex-wrap:wrap;
+  }
+  .toolbar a{ color:var(--cream); text-decoration:none; font-size:14px; opacity:.85; }
+  .toolbar a:hover{ opacity:1; text-decoration:underline; }
+  .toolbar button{
+    background:var(--gold); color:#3B2A0E; border:none; border-radius:4px;
+    padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer;
+  }
+  .sheet-wrap{ padding:28px 16px 48px; width:100%; display:flex; justify-content:center; }
+  .sheet{
+    background:var(--cream); box-shadow:0 12px 40px rgba(0,0,0,.18);
+    width:816px; max-width:100%; padding:52px 60px 44px;
+  }
+  .eyebrow{
+    font-size:11.5px; letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold-text); font-weight:600; margin:0 0 14px;
+  }
+  h1{
+    font-family:"Fraunces",Georgia,serif; font-size:38px; font-weight:600;
+    color:var(--ink); margin:0 0 12px; line-height:1.1;
+  }
+  .rule{ width:64px; height:4px; background:var(--gold); border-radius:2px; margin:0 0 20px; }
+  .frame{
+    font-family:"Fraunces",Georgia,serif; font-style:italic; font-size:17px;
+    line-height:1.55; color:var(--ink-soft); max-width:600px; margin:0 0 24px;
+  }
+  .quote{
+    font-family:"Fraunces",Georgia,serif; font-style:italic; font-size:14.5px;
+    line-height:1.55; color:var(--ink-soft); max-width:680px; margin:0 0 4px;
+  }
+  .cite{ font-size:12px; color:var(--ink-soft); margin:0 0 28px; }
+
+  .spectrum{ margin:0 0 8px; }
+  .spectrum-track{
+    height:14px; border-radius:999px;
+    background: linear-gradient(90deg, #B8763F 0%, var(--sage) 100%);
+  }
+  .spectrum-labels{ display:flex; justify-content:space-between; margin-top:8px; }
+  .spectrum-labels span{
+    font-weight:700; font-size:14px; letter-spacing:.02em;
+  }
+  .spectrum-labels .left{ color:#935F1A; }
+  .spectrum-labels .right{ color:var(--sage-text); }
+
+  table.pairs{ width:100%; border-collapse:collapse; margin:26px 0 6px; }
+  table.pairs th{
+    font-family:"Inter"; font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    text-align:left; padding:0 16px 10px; font-weight:700;
+  }
+  table.pairs th.left{ color:#935F1A; }
+  table.pairs th.right{ color:var(--sage-text); }
+  table.pairs td{
+    font-size:13.5px; line-height:1.45; color:var(--ink);
+    padding:10px 16px; border-top:1px solid var(--rule); vertical-align:top;
+  }
+  table.pairs td.left{ border-right:1px dashed var(--rule); }
+
+  .footnote{
+    font-size:12px; font-style:italic; color:var(--ink-soft);
+    text-align:center; margin:0 0 26px;
+  }
+
+  .pull{
+    font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:18px;
+    color:var(--gold-text); text-align:center; line-height:1.4; margin:6px 0 30px;
+  }
+  hr.divider{ border:none; border-top:1px solid var(--rule); margin:0 0 22px; }
+  h2{ font-family:"Fraunces",Georgia,serif; font-size:17px; font-weight:600; color:var(--ink); margin:0 0 14px; }
+  .prompt{ font-size:14px; font-weight:600; color:var(--ink); margin:0 0 8px; }
+  .writeline{ border:none; border-top:1px solid var(--ink); margin:0 0 22px; height:0; }
+  .foot{
+    display:flex; justify-content:space-between; font-size:12px; color:var(--ink-soft);
+    border-top:1px solid var(--rule); padding-top:16px; margin-top:8px;
+  }
+  @media print {
+    .toolbar{ display:none; }
+    body{ background:#fff; min-height:0; }
+    .sheet-wrap{ padding:0; }
+    .sheet{ box-shadow:none; width:auto; max-width:none; }
+    @page{ size:letter; margin:0.5in; }
+  }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <a href="/lessons/the-pull-you-feel">&larr; Back to the lesson</a>
+  <button type="button" onclick="window.print()">Print this handout</button>
+</div>
+<div class="sheet-wrap">
+  <div class="sheet">
+    <p class="eyebrow">A Visual &middot; The Pull You Feel</p>
+    <h1>Which Way Is It Pulling?</h1>
+    <div class="rule"></div>
+    <p class="frame">Attraction isn&rsquo;t the villain and it isn&rsquo;t the boss &mdash; it&rsquo;s something you can actually test.</p>
+
+    <p class="quote">&ldquo;Love makes the spiritual man, lust makes the material so-called man, and God made all that was made&hellip;&rdquo;</p>
+    <p class="cite">&mdash; Christian Healing, Mary Baker Eddy, p. 17:7</p>
+
+    <div class="spectrum">
+      <div class="spectrum-track"></div>
+      <div class="spectrum-labels">
+        <span class="left">Out of Tune</span>
+        <span class="right">Love</span>
+      </div>
+    </div>
+
+    <table class="pairs">
+      <tr><th class="left">Out of Tune</th><th class="right">Love</th></tr>
+      <tr><td class="left">Needs secrecy to survive</td><td class="right">Can stand in daylight</td></tr>
+      <tr><td class="left">Urgency &mdash; &ldquo;now, or I&rsquo;ll lose it&rdquo;</td><td class="right">Patience &mdash; can wait</td></tr>
+      <tr><td class="left">Wants to possess or control</td><td class="right">Respects the other person&rsquo;s freedom</td></tr>
+      <tr><td class="left">Focused on getting something</td><td class="right">Wants to give, not just receive</td></tr>
+      <tr><td class="left">The world narrows to this one craving</td><td class="right">You&rsquo;re warmer toward everyone, not just this one person</td></tr>
+      <tr><td class="left">Leaves anxiety, self-doubt</td><td class="right">Leaves harmony, more sense of self</td></tr>
+    </table>
+    <p class="footnote">The test is the same no matter who you&rsquo;re drawn to or what shape the relationship takes.</p>
+
+    <p class="pull">Wanting someone is different from needing them to complete you.</p>
+    <hr class="divider">
+
+    <h2>Notice</h2>
+    <p class="prompt">A pull I&rsquo;m feeling (or have felt) right now &mdash; where does it land on the dial?</p>
+    <div class="writeline"></div>
+    <div class="writeline"></div>
+    <p class="prompt">One sign from the &ldquo;Love&rdquo; side I want to be more true of me:</p>
+    <div class="writeline"></div>
+
+    <div class="foot">
+      <span>Spiritual Lesson Plans &middot; spirituallessonplans.org</span>
+      <span>Free to use, adapt, and share &middot; CC BY-SA 4.0</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

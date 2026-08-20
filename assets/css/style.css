@@ -774,6 +774,41 @@ section + section { border-top: 1px solid var(--rule); }
   box-shadow: 0 3px 10px rgba(206, 143, 52, 0.22);
 }
 
+/* ---------- Content tables (paired-signs tables inside lesson-flow prose) ---------- */
+
+.table-wrap {
+  max-width: var(--measure);
+  overflow-x: auto;
+  margin: 0 0 1.5em;
+}
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94em;
+}
+.content-table th {
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold-text);
+  padding: 0 16px 10px;
+}
+.content-table th:not(:first-child),
+.content-table td:not(:first-child) {
+  border-left: 1px dashed var(--rule);
+}
+.content-table td {
+  padding: 11px 16px;
+  border-top: 1px solid var(--rule);
+  color: var(--ink-soft);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.content-table tr:first-child td { border-top: 1px solid var(--rule-strong); }
+
 /* ---------- Callout band ---------- */
 
 .callout {
