@@ -735,6 +735,45 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .list-clean li:first-child { border-top: none; padding-top: 0; }
 
+/* ---------- Resource links (printable handouts, in "The materials") ----------
+   Auto-targets any link into assets/materials/*.html — no markup change needed
+   in the source markdown, so new handouts just need to be linked to pick this up. */
+
+.list-clean a[href^="/assets/materials/"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px 5px 10px;
+  margin: 2px 2px;
+  background: rgba(232, 169, 76, 0.14);
+  border: 1px solid rgba(232, 169, 76, 0.5);
+  border-radius: 999px;
+  color: var(--gold-text);
+  font-weight: 600;
+  font-size: 0.92em;
+  text-decoration: none;
+  line-height: 1.4;
+  white-space: nowrap;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+.list-clean a[href^="/assets/materials/"]::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23935F1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cline x1='9' y1='13' x2='15' y2='13'/%3E%3Cline x1='9' y1='17' x2='15' y2='17'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.list-clean a[href^="/assets/materials/"]:hover,
+.list-clean a[href^="/assets/materials/"]:focus-visible {
+  background: rgba(232, 169, 76, 0.26);
+  border-color: var(--gold-deep);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(206, 143, 52, 0.22);
+}
+
 /* ---------- Callout band ---------- */
 
 .callout {

@@ -68,7 +68,7 @@ In pairs or small groups: "Is there someone in your life right now — a spouse,
 
 ## What you'll need
 - Paper and pens, or a shared doc if meeting virtually
-- Nothing else. No printouts, no purchases.
+- Optional printables: Handout ["Both Things Are True"](/assets/materials/off-days-are-allowed/both-things-are-true.html); Keepsake ["Permission Slip"](/assets/materials/off-days-are-allowed/permission-slip.html)
 
 ## If it's not going well
 If what surfaces sounds like more than an ordinary off day — ongoing hopelessness, burnout that isn't lifting, signs of depression, marital distress that sounds unsafe, or any mention of self-harm — this has moved past a spiritual-practice conversation into a wellbeing one. Don't try to resolve it inside the group format. Take it seriously, follow the site's mentor safety guidelines (For Mentors page), and help the person connect with appropriate support — a counselor, physician, or in cases of safety concerns, appropriate crisis resources — rather than treating this lesson as sufficient on its own.

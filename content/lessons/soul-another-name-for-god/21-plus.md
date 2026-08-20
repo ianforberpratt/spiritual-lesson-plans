@@ -76,7 +76,7 @@ Discuss: "What's one specific, current situation where you might get to try this
 ## What you'll need
 
 - Paper and pens, or a shared doc for a virtual group
-- Nothing else required
+- Optional handout: ["Not the Impulse"](/assets/materials/soul-another-name-for-god/not-the-impulse.html)
 
 ## If it's not going well
 

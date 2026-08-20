@@ -63,7 +63,7 @@ Close with:
 
 ## What you'll need
 - Paper and pens, or a shared digital document/whiteboard for virtual meetings
-- Nothing additional required
+- Optional printables: Visual ["The Bigger Us"](/assets/materials/finding-the-bigger-us/the-bigger-us.html); Pocket card ["The Bridge Line"](/assets/materials/finding-the-bigger-us/the-bridge-line.html)
 
 ## If it's not going well
 If what emerges is real mistreatment, abuse, or an unsafe dynamic — in a marriage, a family, or a workplace — distinct from ordinary disagreement, finding common ground isn't appropriate, and this lesson shouldn't be used to encourage someone to stay in or make peace with a harmful situation. Don't ask a participant to locate shared ground with someone causing them harm. Redirect toward safety and appropriate outside support instead, and follow the site's mentor safety guidelines (For Mentors page) if you're unsure how to respond in the moment.

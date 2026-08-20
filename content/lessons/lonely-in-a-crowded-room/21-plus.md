@@ -53,7 +53,7 @@ Each person names one person they could reach out to this week — a spouse, an 
 
 ## What you'll need
 - Paper and pens — or a shared doc / whiteboard if you're meeting virtually
-- Optional printables: Pocket card "Three Steps for a Lonely Moment" (Determine, reframe, act); Handout "Write It Down"
+- Optional printables: Pocket card ["Three Steps for a Lonely Moment"](/assets/materials/lonely-in-a-crowded-room/three-steps-for-a-lonely-moment.html) (Determine, reframe, act); Handout ["Write It Down"](/assets/materials/lonely-in-a-crowded-room/write-it-down.html)
 
 ## If it's not going well
 Adult loneliness can sometimes be a symptom of something bigger than a season of life — ongoing marital pain, grief, isolation tied to caregiving, or real depression. If someone describes persistent hopelessness, a relationship that sounds unsafe rather than simply lonely, or anything beyond an occasional ache, pause and check in with them one-on-one. Consult the site's mentor safety guidelines (For Mentors page), and don't hesitate to point toward professional support alongside the spiritual conversation.

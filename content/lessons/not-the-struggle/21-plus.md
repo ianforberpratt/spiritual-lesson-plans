@@ -102,7 +102,7 @@ Discuss:
 - Paper and pens for each participant
 - A printed or projected copy of the four quotes (p. 84:3, p. 254:12, Unity of Good p. 5:3, and the closing line) for easy reference during Beats 2–3
 - A whiteboard, poster paper, or shared doc if you want to capture responses to Beat 4's discussion questions as a group
-- The "You Are Not the Struggle" wallet card (`notthestrugglewalletcard.pdf`) — printable, two per sheet, matches this lesson's quotes and three questions exactly
+- The "You Are Not the Struggle" [wallet card](/assets/materials/not-the-struggle/not-the-struggle-wallet-card-14-21-and-21-plus.html) — printable, two per sheet, matches this lesson's quotes and three questions exactly
 
 ## If it's not going well
 If the conversation opens into real disclosure — addiction, recovery, grief, abuse, or a genuine safety concern — pause the lesson itself and follow the site's mentor safety guidelines (For Mentors page). If someone becomes visibly emotional naming where they actually are on their own journey, that's not a sign to move faster; slow down, and let them lead how much they share.

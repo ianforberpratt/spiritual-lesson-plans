@@ -53,7 +53,7 @@ You don't have to know exactly why a plan changed to trust that something is sti
 
 ## What you'll need
 - Paper and pens — or a shared doc / whiteboard if you're meeting virtually
-- Nothing else. No printouts, no purchases.
+- Optional printables: Handout ["Main Character Energy"](/assets/materials/trust-the-mover/main-character-energy.html); Visual ["The Map and the Mover"](/assets/materials/trust-the-mover/the-map-and-the-mover.html)
 
 ## If it's not going well
 "This happened for a reason" can do real harm if it's pointed at genuine tragedy, grief, injustice, or crisis — and this risk is highest at this age, because adult disappointments can carry real stakes (income, family, health, housing) that make a too-quick reframe land as dismissive rather than comforting. Never use this lesson to explain away someone's real loss — a job loss that's created a financial crisis, a miscarriage, a divorce, a death, a diagnosis — or suggest they should be looking for a silver lining in something seriously bad. If real grief, trauma, or crisis surfaces, this isn't the right tool: slow down, listen, don't reframe, and follow the site's mentor safety guidelines (For Mentors page), which include when and how to point someone toward pastoral care, counseling, or other professional support beyond what this lesson format can hold.

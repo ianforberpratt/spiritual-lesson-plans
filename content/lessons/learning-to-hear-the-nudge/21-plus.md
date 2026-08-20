@@ -61,6 +61,7 @@ Discuss: "Is there a past decision you've quietly blamed yourself for not 'heari
 ## What you'll need
 - Paper and pens, or a shared doc for virtual meetings
 - Optional: a quiet corner or a few minutes of individual writing time before group discussion, for anyone who processes better that way
+- Optional printables: Visual ["Static, or Signal?"](/assets/materials/learning-to-hear-the-nudge/static-or-signal.html); Pocket card ["The Nudge Log"](/assets/materials/learning-to-hear-the-nudge/nudge-log.html)
 
 ## If it's not going well
 Adults sometimes use this lesson to voice real, unresolved grief or self-blame about a past major decision — a marriage, a career choice, a decision connected to someone else's harm. That's appropriate for this lesson to hold, gently, as long as it doesn't tip into a person deciding a bad outcome was their fault for "not listening well enough" — redirect that framing every time it appears, kindly but clearly. If someone discloses an inner voice currently directing them toward self-harm or harm to another person, that is not this lesson's "nudge" — stop, address it directly and privately with that person, and do not fold it back into group discussion. Follow the site's mentor safety guidelines (For Mentors page) for next steps.

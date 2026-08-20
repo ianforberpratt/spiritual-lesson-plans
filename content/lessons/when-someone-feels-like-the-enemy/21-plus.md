@@ -62,7 +62,7 @@ Without naming the person, what's one small, realistic way you could respond to 
 
 ## What you'll need
 - Paper and pens — or a shared doc / whiteboard if you're meeting virtually
-- Optional printable: Handout "Two Dials" — Love and closeness aren't the same dial — mark where you are on each one today, for this specific relationship
+- Optional printable: Handout ["Two Dials"](/assets/materials/when-someone-feels-like-the-enemy/two-dials.html) — Love and closeness aren't the same dial — mark where you are on each one today, for this specific relationship
 
 ## If it's not going well
 "Love your enemies" can be dangerously misread as "stay, and endure it." It never means that. If someone describes anything that sounds like ongoing abuse, a hostile or unsafe work environment, coercive control from a partner or family member, or an unsafe relationship of any kind, gently set the lesson's discussion aside and go straight to safety — loving someone is never a reason to stay somewhere unsafe, professionally or personally. Follow the site's mentor safety guidelines (For Mentors page) for how to respond, and be ready to point toward appropriate resources (HR, legal, domestic violence support) outside the scope of this lesson when the situation calls for it.

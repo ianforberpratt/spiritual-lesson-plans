@@ -93,7 +93,7 @@ Discuss: Which of the seven names do you want to practice reaching for first? Wh
 ## What you'll need
 
 - Paper and pens if running this live, for the Beat 4 personal-mapping discussion
-- A printed or projected version of the seven-names circle and the three-degrees diagram, if available, though the lesson works fine without them
+- A printed or projected version of the seven-names circle and the three-degrees diagram — ["The Sevenfold Name of God"](/assets/materials/seven-synonyms-and-three-degrees/seven-synonyms-diagram.html) — if available, though the lesson works fine without it
 
 ## If it's not going well
 

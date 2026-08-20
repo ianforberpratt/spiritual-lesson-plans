@@ -61,6 +61,7 @@ Closing statement: "You are not what you regret. You're allowed to learn from it
 ## What you'll need
 - Paper and pens, or a shared digital document
 - A private or semi-private space — adult-scale regrets often involve other real people and can be harder to voice in a large group
+- Optional keepsake: ["Six Stepping Stones"](/assets/materials/is-regret-a-fair-teacher/six-stepping-stones.html)
 
 ## If it's not going well
 Regret at this age can be entangled with clinical depression, complicated grief, or addiction in ways a single session isn't equipped to resolve. If a participant expresses that they don't deserve forgiveness, that a relationship or life is permanently ruined beyond any possibility of repair, or anything suggesting hopelessness about themselves or their future, treat it seriously — decelerate significantly, and follow the site's mentor safety guidelines (For Mentors page), which include guidance on when to point someone toward professional counseling alongside spiritual support.

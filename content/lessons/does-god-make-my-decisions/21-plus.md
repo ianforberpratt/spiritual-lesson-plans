@@ -68,7 +68,7 @@ Close by inviting each person to name, silently or aloud if they choose, one hon
 
 ## What you'll need
 - Paper and pens, or a shared doc if meeting virtually
-- Optional printables: Visual "You Don't Need the Whole Staircase"; Handout "The 10-10-10 Rule" (adult-decision version)
+- Optional printables: Visual ["You Don't Need the Whole Staircase"](/assets/materials/does-god-make-my-decisions/whole-staircase.html); Handout ["The 10-10-10 Rule"](/assets/materials/does-god-make-my-decisions/10-10-10-rule.html) (adult-decision version)
 
 ## If it's not going well
 This tool is built for genuine, difficult decisions — not for crises. If what surfaces goes beyond ordinary decision-making difficulty — domestic abuse, financial desperation with real safety implications, suicidal ideation, or a significant mental health concern — pause the framework. These situations call for a counselor, physician, or appropriate crisis resource, not a deliberative exercise. Follow the site's mentor safety guidelines (For Mentors page) and help the person connect with the right support rather than treating this lesson as sufficient on its own.

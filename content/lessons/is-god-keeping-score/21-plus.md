@@ -105,7 +105,7 @@ Discuss:
 
 - Paper and pens for each participant
 - A whiteboard, poster paper, or shared doc to write the three questions where everyone can see them for Beat 3
-- The "Three Questions" wallet card ([three-questions-wallet-card.pdf](/assets/materials/is-god-keeping-score/three-questions-wallet-card.pdf)) — printable, two per sheet, cut apart and laminate if you like. One for a wallet, one for a mirror.
+- The "Three Questions" [wallet card](/assets/materials/is-god-keeping-score/three-questions-wallet-card.pdf) — printable, two per sheet, cut apart and laminate if you like. One for a wallet, one for a mirror.
 
 ## If it's not going well
 

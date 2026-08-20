@@ -55,6 +55,7 @@ Close with: you don't need the perfect words, and you never will — not at twen
 ## What you'll need
 - Paper and pens, or a shared doc for virtual groups
 - Optional: index cards, one per person, for writing down a single word they're choosing to keep, retire, or translate — something they can literally hold, and decide whether to keep or set down at the end
+- Optional printables: Handout ["Door or Wall?"](/assets/materials/words-that-open-doors/door-or-wall.html); Handout ["Translate It"](/assets/materials/words-that-open-doors/translate-it.html)
 
 ## If it's not going well
 At this age, what surfaces can be substantial and long-standing: grief over a lost faith community, anger at a tradition or institution, guilt about leaving or about staying, or real estrangement from family over belief. This is not a detour from the lesson — for many adults, this work has been years in the making and deserves room. Don't rush to resolve it or reassure it away. If what surfaces is beyond what the room can hold, or someone appears to be in real distress, pause and follow the site's mentor safety guidelines (For Mentors page).
