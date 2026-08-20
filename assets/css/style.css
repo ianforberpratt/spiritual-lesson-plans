@@ -557,7 +557,16 @@ body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { backg
   border-bottom: 1px solid var(--rule);
 }
 .page-hero .wrap { max-width: 900px; }
-.page-hero .eyebrow { color: var(--gold-text); }
+/* .page-hero p below (for the hero's subtitle) has the same specificity
+   as the base .eyebrow rule and comes later, so without this override
+   it was winning and inflating the eyebrow caption to subtitle size. */
+.page-hero .eyebrow {
+  color: var(--gold-text);
+  font-size: 0.7rem;
+  line-height: 1.4;
+  margin: 0 0 18px;
+  max-width: none;
+}
 .page-hero h1 {
   font-size: clamp(2.2rem, 5vw, 3.9rem);
   font-weight: 300;
@@ -910,6 +919,12 @@ section + section { border-top: 1px solid var(--rule); }
     border-bottom: 1px solid var(--rule);
     padding-right: 0;
   }
+}
+@media (max-width: 480px) {
+  /* Two columns forces the longer age-band labels ("College Student &
+     Adult (21+)") into an awkward 2-3 line wrap next to single-line
+     siblings — one column per row reads cleaner at this width. */
+  .lesson-meta-item { flex-basis: 100%; }
 }
 
 .lesson-section {
@@ -1880,7 +1895,14 @@ body.home .site-nav.is-scrolled .age-switcher .age-switcher-value { color: var(-
 /* Band sections: JS hides the non-active ones and cross-fades the active
    one in. Without JS (or before it runs), every section stays visible and
    static — nothing here is ever gated behind opacity:0 by default. */
-.band-section { padding-top: clamp(28px, 4vw, 44px); }
+.band-section {
+  padding-top: clamp(28px, 4vw, 44px);
+  /* .site-nav is sticky at 82px tall — without this, jumping to #band-X
+     (via the chooser card's scrollIntoView, or a plain anchor click with
+     JS off) lands the section's title and tip right under the nav,
+     hidden instead of visible. */
+  scroll-margin-top: 100px;
+}
 .band-section-head {
   display: flex;
   flex-direction: column;
