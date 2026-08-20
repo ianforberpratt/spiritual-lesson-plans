@@ -1632,27 +1632,27 @@ body.home .site-nav.is-scrolled .age-switcher .age-switcher-value { color: var(-
   .age-switcher-label { display: none; }
 }
 @media (max-width: 560px) {
-  /* Too little width left for brand text + pill + hamburger on one row —
-     the pill drops to its own thin bar directly under the nav instead. */
-  .age-switcher {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    height: 40px;
-    justify-content: center;
-    border-radius: 0;
-    border: none;
-    border-top: 1px solid var(--rule);
-    padding: 0;
-    background: var(--paper);
-  }
-  .age-switcher-label { display: inline; }
-  body.home .site-nav .age-switcher {
-    border-top-color: var(--rule-dark);
-    background: rgba(26, 22, 38, 0.7);
-    backdrop-filter: blur(6px);
-  }
+  /* Too little width left for brand text + pill + hamburger on one row,
+     and a second bar under the nav sat directly on top of the home
+     hero — so below this width the switcher moves into the hamburger
+     menu instead (see .nav-age-item) rather than floating over content. */
+  .age-switcher { display: none; }
+}
+
+/* The age switcher's mobile home: a line inside the hamburger dropdown,
+   only shown below 560px (see .age-switcher's display:none above) —
+   above that width the floating pill in the nav row is used instead. */
+.nav-age-item { display: none; }
+@media (max-width: 560px) {
+  .nav-age-item { display: list-item; }
+}
+.nav-age-item a { display: flex !important; align-items: baseline; gap: 6px; }
+.nav-age-item .nav-age-label {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
 }
 
 .age-switcher-menu {
@@ -1685,13 +1685,6 @@ body.home .site-nav.is-scrolled .age-switcher .age-switcher-value { color: var(-
 .age-switcher-menu button:hover,
 .age-switcher-menu button:focus-visible { background: var(--cream); outline: none; }
 .age-switcher-menu button[aria-current="true"] { color: var(--gold-text); font-weight: 600; }
-
-@media (max-width: 560px) {
-  /* The switcher itself moved to a full-width bar below the nav row (see
-     the earlier 560px block), so its menu must clear that bar too, not
-     just the 82px row it used to sit in. */
-  .age-switcher-menu { top: calc(100% + 40px); margin-top: 0; left: var(--gutter); right: var(--gutter); min-width: 0; }
-}
 
 /* ---------- Assumptions & Caveats callout ---------- */
 

@@ -50,6 +50,7 @@
     if (!btn) return;
 
     var valueEl = btn.querySelector("[data-age-switcher-value]");
+    var mobileValueEl = document.querySelector("[data-mobile-age-value]");
     var band = getStoredBand();
 
     function render() {
@@ -58,10 +59,12 @@
         btn.hidden = false;
         if (valueEl) valueEl.textContent = BAND_SHORT[band];
         btn.setAttribute("aria-label", "Currently teaching " + BAND_LABELS[band] + ". Change age group.");
+        if (mobileValueEl) mobileValueEl.textContent = BAND_LABELS[band];
       } else {
         btn.hidden = false;
         if (valueEl) valueEl.textContent = "Choose age";
         btn.setAttribute("aria-label", "Choose the age group you're teaching");
+        if (mobileValueEl) mobileValueEl.textContent = "Choose your age group";
       }
     }
     render();

@@ -307,7 +307,8 @@ sub nav_html {
     </button>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
     <ul class="nav-links" id="primary-nav">
-$links    </ul>
+$links      <li class="nav-age-item"><a href="/lessons" data-mobile-age-link><span class="nav-age-label">Teaching</span><span data-mobile-age-value>Choose your age group</span></a></li>
+    </ul>
   </div>
 </nav>
 NAV
