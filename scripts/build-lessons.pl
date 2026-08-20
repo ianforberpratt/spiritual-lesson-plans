@@ -22,6 +22,7 @@ use utf8;
 use File::Basename qw(dirname);
 use File::Path qw(make_path);
 use Cwd qw(abs_path);
+use POSIX qw(strftime);
 
 binmode(STDOUT, ':encoding(UTF-8)');
 binmode(STDERR, ':encoding(UTF-8)');
@@ -60,6 +61,8 @@ my %BAND_ACCENT = (
   '21-plus'=> 'gold-deep',
 );
 
+my @MONTH_NAMES = qw(January February March April May June July August September October November December);
+
 my %BAND_TYPICAL_AGE = (
   '5-8'    => '5-8',
   '8-11'   => '8-11',
@@ -87,6 +90,24 @@ sub write_file {
   open(my $fh, '>:encoding(UTF-8)', $path) or die "Can't write $path: $!";
   print $fh $content;
   close $fh;
+}
+
+# (published, modified) ISO dates for a file, from its git history — real
+# freshness signal that can never go stale by hand. A brand-new file with no
+# commit yet (mid-authoring, before the first commit) falls back to today
+# for both; it picks up real history automatically on the next build after
+# it's committed.
+sub git_dates {
+  my ($path) = @_;
+  my $rel = $path;
+  $rel =~ s/^\Q$ROOT\E\///;
+  my $today = strftime('%Y-%m-%d', localtime);
+  my $log = `cd "$ROOT" && git log --follow --format=%aI -- "$rel" 2>/dev/null`;
+  my @dates = grep { length } split /\n/, $log;
+  return ($today, $today) unless @dates;
+  my $modified  = substr($dates[0], 0, 10);
+  my $published = substr($dates[-1], 0, 10);
+  return ($published, $modified);
 }
 
 # ---------------------------------------------------------------------
@@ -270,7 +291,9 @@ for my $topic (@topic_dirs) {
     next unless -f $file;
     my ($meta, $body) = parse_frontmatter(read_file($file));
     my ($sections) = split_sections($body);
-    push @bands, { band => $band, meta => $meta, sections => $sections };
+    my ($published, $modified) = git_dates($file);
+    push @bands, { band => $band, meta => $meta, sections => $sections,
+                    dates => { published => $published, modified => $modified } };
   }
 
   unless (@bands) {
@@ -284,11 +307,16 @@ for my $topic (@topic_dirs) {
   render_topic_landing($topic, \@bands);
 
   my $preferred = preferred_band_meta(\@bands);
+  my @modified_dates  = map { $_->{dates}{modified} } @bands;
+  my @published_dates = map { $_->{dates}{published} } @bands;
+  my ($topic_modified)  = sort { $b cmp $a } @modified_dates;   # max (most recent)
+  my ($topic_published) = sort { $a cmp $b } @published_dates;  # min (earliest)
   push @manifest_topics, {
     slug => $topic,
     title => $preferred->{title},
     hook => $preferred->{hook},
     topic_category => $preferred->{topic},
+    dates => { published => $topic_published, modified => $topic_modified },
     bands => [ map { {
       band => $_->{band},
       label => $BAND_LABEL{$_->{band}},
@@ -297,6 +325,7 @@ for my $topic (@topic_dirs) {
       title => $_->{meta}{title},
       hook => $_->{meta}{hook},
       url => "/lessons/$_->{band}/$topic",
+      dates => $_->{dates},
     } } @bands ],
     landing_url => "/lessons/$topic",
   };
@@ -305,6 +334,8 @@ for my $topic (@topic_dirs) {
 }
 
 write_manifest(\@manifest_topics);
+write_sitemap(\@manifest_topics);
+write_llms_txt(\@manifest_topics);
 
 print "\nDone. " . scalar(@manifest_topics) . " topic(s) built.\n";
 
@@ -486,7 +517,7 @@ STEP
     ? qq{<div class="lesson-band-switcher reveal"><span class="lesson-band-switcher-label">Also built for:</span>$switcher_items</div>}
     : '';
 
-  my $schema = build_lesson_schema($topic, $band, $m, $desc, $canonical);
+  my $schema = build_lesson_schema($topic, $band, $m, $desc, $canonical, $b->{dates});
 
   my $head = head_common(
     title => $title_tag,
@@ -519,6 +550,7 @@ $nav
       <div class="lesson-meta-item"><span class="label">Group</span><span class="value">$m->{group_display}</span></div>
       <div class="lesson-meta-item"><span class="label">Age</span><span class="value">$band_label</span></div>
       <div class="lesson-meta-item"><span class="label">Format</span><span class="value">$m->{format_display}</span></div>
+      <div class="lesson-meta-item"><span class="label">Updated</span><span class="value">@{[ format_date_human($b->{dates}{modified}) ]}</span></div>
     </div>
     $switcher_html
   </div>
@@ -691,9 +723,12 @@ HTML
 }
 
 sub build_lesson_schema {
-  my ($topic, $band, $m, $desc, $canonical) = @_;
+  my ($topic, $band, $m, $desc, $canonical, $dates) = @_;
   my $time_iso = 'PT' . ($m->{time_minutes} || 45) . 'M';
   my $typical_age = $BAND_TYPICAL_AGE{$band};
+  $dates //= {};
+  my $published = $dates->{published} || strftime('%Y-%m-%d', localtime);
+  my $modified  = $dates->{modified}  || $published;
   return <<"SCHEMA";
 <script type="application/ld+json">
 {
@@ -709,6 +744,8 @@ sub build_lesson_schema {
   "learningResourceType": "Lesson Plan",
   "audience": { "\@type": "EducationalAudience", "educationalRole": "mentor" },
   "timeRequired": "$time_iso",
+  "datePublished": "$published",
+  "dateModified": "$modified",
   "inLanguage": "en",
   "isAccessibleForFree": true,
   "license": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -794,6 +831,92 @@ sub write_manifest {
   write_file("$DATA_OUT/lessons-manifest.json", join("\n", @lines) . "\n");
 }
 
+# Static top-level pages not produced by this script — hand-authored, but
+# their lastmod is still pulled from real git history rather than typed in.
+my @STATIC_PAGES = (
+  { path => "$ROOT/index.html",           url => '/',              changefreq => 'weekly',  priority => '1.0' },
+  { path => "$ROOT/lessons.html",         url => '/lessons',       changefreq => 'weekly',  priority => '0.9' },
+  { path => "$ROOT/for-mentors.html",     url => '/for-mentors',   changefreq => 'monthly', priority => '0.6' },
+  { path => "$ROOT/what-we-believe.html",url => '/what-we-believe',changefreq => 'monthly', priority => '0.6' },
+  { path => "$ROOT/about.html",           url => '/about',         changefreq => 'monthly', priority => '0.5' },
+);
+
+sub xml_escape {
+  my ($s) = @_;
+  $s //= '';
+  $s =~ s/&/&amp;/g;
+  $s =~ s/</&lt;/g;
+  $s =~ s/>/&gt;/g;
+  return $s;
+}
+
+# sitemap.xml — regenerated on every build so <lastmod> reflects real git
+# history and new lessons never require a manual edit here again.
+sub write_sitemap {
+  my ($topics) = @_;
+  my @urls;
+
+  for my $p (@STATIC_PAGES) {
+    my (undef, $modified) = git_dates($p->{path});
+    push @urls, { loc => "$SITE_ORIGIN$p->{url}", lastmod => $modified,
+                  changefreq => $p->{changefreq}, priority => $p->{priority} };
+  }
+
+  for my $t (@$topics) {
+    push @urls, { loc => "$SITE_ORIGIN$t->{landing_url}", lastmod => $t->{dates}{modified},
+                  changefreq => 'monthly', priority => '0.8' };
+    for my $b (@{ $t->{bands} }) {
+      push @urls, { loc => "$SITE_ORIGIN$b->{url}", lastmod => $b->{dates}{modified},
+                    changefreq => 'monthly', priority => '0.7' };
+    }
+  }
+
+  my @lines = ('<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+  for my $u (@urls) {
+    push @lines, "  <url><loc>@{[ xml_escape($u->{loc}) ]}</loc><lastmod>$u->{lastmod}</lastmod><changefreq>$u->{changefreq}</changefreq><priority>$u->{priority}</priority></url>";
+  }
+  push @lines, '</urlset>';
+  write_file("$ROOT/sitemap.xml", join("\n", @lines) . "\n");
+  print "wrote sitemap.xml (" . scalar(@urls) . " urls)\n";
+}
+
+# llms.txt — a small curated map of the site for AI agents/answer engines,
+# per the llms.txt convention (https://llmstxt.org/). Regenerated every
+# build from the same manifest data as everything else, so it can never
+# drift out of date as lessons are added.
+sub write_llms_txt {
+  my ($topics) = @_;
+  my @lines;
+  push @lines, '# Spiritual Lesson Plans';
+  push @lines, '';
+  push @lines, '> Free, Creative Commons (CC BY-SA 4.0) Sunday school and youth-group lesson plans rooted in';
+  push @lines, '> Christian Science and the Bible, explicitly open to every faith background. Each lesson is';
+  push @lines, '> written independently for the age it\'s delivered to — not simplified down from one script —';
+  push @lines, '> across five age bands from early elementary through adult, plus a printable handout per lesson.';
+  push @lines, '';
+  push @lines, 'Written for Christian Science Sunday school teachers and other Christian educators looking for';
+  push @lines, 'free, spiritually grounded, developmentally appropriate discussion and activity lessons. No';
+  push @lines, 'account, no cost, no organization — nothing here teaches original sin or a scorekeeping God; the';
+  push @lines, 'premise underneath every lesson is that a young person is already whole and already loved. All';
+  push @lines, 'content is free to use, adapt, and share under CC BY-SA 4.0.';
+  push @lines, '';
+  push @lines, '## Lessons';
+  push @lines, '';
+  for my $t (sort { $a->{title} cmp $b->{title} } @$topics) {
+    my $desc = inline_strip($t->{hook} // '');
+    my @band_labels = map { $BAND_SHORT{$_->{band}} } @{ $t->{bands} };
+    push @lines, "- [@{[ $t->{title} ]}]($SITE_ORIGIN$t->{landing_url}): $desc (" . join(', ', @band_labels) . ")";
+  }
+  push @lines, '';
+  push @lines, '## Optional';
+  push @lines, '';
+  push @lines, "- [For Mentors]($SITE_ORIGIN/for-mentors): facilitator safety guidelines and how the age-band system works";
+  push @lines, "- [What We Believe]($SITE_ORIGIN/what-we-believe): plain-language explainer on Christian Science, including how it differs from the doctrine of original sin";
+  push @lines, "- [About]($SITE_ORIGIN/about): what this project is and its licensing";
+  write_file("$ROOT/llms.txt", join("\n", @lines) . "\n");
+  print "wrote llms.txt (" . scalar(@$topics) . " lessons)\n";
+}
+
 sub json_escape {
   my ($s) = @_;
   $s //= '';
@@ -812,4 +935,13 @@ sub inline_strip {
   $s = smarten($s);
   $s =~ s/"/&quot;/g;
   return $s;
+}
+
+# "2026-08-21" -> "August 21, 2026", for the human-visible "Updated" line.
+sub format_date_human {
+  my ($iso) = @_;
+  return '' unless $iso && $iso =~ /^(\d{4})-(\d{2})-(\d{2})/;
+  my ($y, $mo, $d) = ($1, $2, $3);
+  $d =~ s/^0//;
+  return "$MONTH_NAMES[$mo - 1] $d, $y";
 }
