@@ -9,6 +9,12 @@
 #                                      age versions that actually exist
 #   - assets/data/lessons-manifest.json   enumeration used by client JS
 #     (the age chooser, the Lessons grid, the nav switcher)
+#   - sitemap.xml and llms.txt, regenerated fresh every run
+#
+# Then automatically runs update-lessons-page.pl, which regenerates the
+# static /lessons browse grid and the homepage's ItemList schema from
+# that same manifest — see that script's header for why this step can't
+# be optional. This one command is the whole build; nothing else to run.
 #
 # core-model.md is reference scaffolding for lesson authors and is never
 # rendered. A topic only gets pages for the bands that have a file — see
@@ -338,6 +344,24 @@ write_sitemap(\@manifest_topics);
 write_llms_txt(\@manifest_topics);
 
 print "\nDone. " . scalar(@manifest_topics) . " topic(s) built.\n";
+
+# ---------------------------------------------------------------------
+# Chain straight into update-lessons-page.pl. This used to be a separate
+# manual step, and forgetting it is exactly how a new lesson went live —
+# directly linkable, in the manifest, in the sitemap — while staying
+# invisible on the /lessons browse grid and out of the homepage's
+# ItemList, because those are pre-rendered HTML, not client-rendered
+# from the manifest. Running it automatically here means a plain
+# `perl scripts/build-lessons.pl` can never again leave that step undone.
+# ---------------------------------------------------------------------
+
+my $update_script = "$ROOT/scripts/update-lessons-page.pl";
+print "\nRunning update-lessons-page.pl...\n";
+system($^X, $update_script);
+if ($? != 0) {
+  die "update-lessons-page.pl failed (exit code @{[ $? >> 8 ]}) — lessons.html and index.html " .
+      "may not reflect the topics just built. Fix the error above and re-run this script.\n";
+}
 
 # ---------------------------------------------------------------------
 # Rendering
@@ -896,9 +920,8 @@ sub write_llms_txt {
   push @lines, '';
   push @lines, 'Written for Christian Science Sunday school teachers and other Christian educators looking for';
   push @lines, 'free, spiritually grounded, developmentally appropriate discussion and activity lessons. No';
-  push @lines, 'account, no cost, no organization — nothing here teaches original sin or a scorekeeping God; the';
-  push @lines, 'premise underneath every lesson is that a young person is already whole and already loved. All';
-  push @lines, 'content is free to use, adapt, and share under CC BY-SA 4.0.';
+  push @lines, 'account, no cost, no organization — every lesson starts from the premise that a young person is';
+  push @lines, 'already whole and already loved. All content is free to use, adapt, and share under CC BY-SA 4.0.';
   push @lines, '';
   push @lines, '## Lessons';
   push @lines, '';

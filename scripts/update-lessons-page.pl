@@ -1,8 +1,13 @@
 #!/usr/bin/perl
 #
 # Regenerates the age-band sections and the ItemList schema on lessons.html
-# from assets/data/lessons-manifest.json. Run this after build-lessons.pl
-# any time a topic's band coverage changes.
+# and index.html, from assets/data/lessons-manifest.json. MUST run after
+# build-lessons.pl (which produces that manifest) any time a topic's band
+# coverage changes — skipping this step is exactly how a new lesson ends
+# up live and directly linkable, but silently missing from the /lessons
+# browse grid and the homepage's ItemList. Both scripts are part of one
+# build step now; run them together, always in this order:
+#   perl scripts/build-lessons.pl && perl scripts/update-lessons-page.pl
 #
 # The band sections live between the BAND_SECTIONS_START/END HTML comment
 # markers. The ItemList lives inside a <script type="application/ld+json">
@@ -192,29 +197,9 @@ die "index.html ItemList substitution matched $n3 times (expected 1)\n" unless $
 write_file($INDEX, $idx);
 print "index.html ItemList updated: $count topics.\n";
 
-# ---------------------------------------------------------------------
-# sitemap.xml — every topic landing page + every age-band page, plus
-# the site's non-lesson pages (kept as they already are in the file).
-# ---------------------------------------------------------------------
-
-my $SITEMAP = "$ROOT/sitemap.xml";
-my $sitemap = read_file($SITEMAP);
-my $today = `date +%Y-%m-%d`;
-chomp $today;
-$today ||= '2026-08-19';
-
-my @lesson_urls;
-for my $t (@topics) {
-  push @lesson_urls, qq{  <url><loc>$SITE_ORIGIN$t->{landingUrl}</loc><lastmod>$today</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>};
-  for my $b (@{ $t->{bands} }) {
-    push @lesson_urls, qq{  <url><loc>$SITE_ORIGIN$b->{url}</loc><lastmod>$today</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>};
-  }
-}
-my $lesson_urls_xml = join("\n", @lesson_urls);
-
-if ($sitemap =~ s{(<url><loc>\Q$SITE_ORIGIN\E/lessons</loc>.*?</url>).*?(\n\s*<url><loc>\Q$SITE_ORIGIN\E/for-mentors</loc>)}{$1\n$lesson_urls_xml$2}s) {
-  write_file($SITEMAP, $sitemap);
-  print "sitemap.xml updated: " . scalar(@lesson_urls) . " lesson URLs.\n";
-} else {
-  warn "sitemap.xml: anchor pattern not found, left unchanged — check it by hand.\n";
-}
+# Note: sitemap.xml is no longer touched here. build-lessons.pl now
+# regenerates it fully on every run (with real per-page lastmod dates
+# from git history), so there's only one place that owns it. This
+# script still must run *after* build-lessons.pl, same as before —
+# it reads assets/data/lessons-manifest.json, which build-lessons.pl
+# is what produces it.
