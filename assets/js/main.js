@@ -361,24 +361,82 @@
     });
   }
 
-  /* ---------- Google Translate (loaded only on request) ---------- */
+  /* ---------- Language switcher (nav) ----------
+     Mirrors the age-switcher menu pattern in age-context.js: a small
+     dropdown built once and toggled by any element carrying
+     [data-lang-switcher] — there are two per page (the desktop pill,
+     and a fallback row inside the mobile hamburger menu). Google's
+     translate widget itself only loads on first open, not eagerly, to
+     match the cookie notice's "nothing loads until you ask" promise. */
 
-  function initTranslate() {
-    var trigger = document.querySelector(".translate-trigger");
-    var container = document.getElementById("google_translate_element");
-    if (!trigger || !container) return;
+  function initLangSwitcher() {
+    var triggers = document.querySelectorAll("[data-lang-switcher]");
+    if (!triggers.length) return;
 
-    trigger.addEventListener("click", function () {
-      if (window.__translateLoaded) return;
-      window.__translateLoaded = true;
-      trigger.style.display = "none";
-      container.style.display = "inline-flex";
+    var anchor = document.querySelector("button.lang-switcher[data-lang-switcher]") || triggers[0];
+    if (anchor.parentNode) {
+      anchor.parentNode.style.position = anchor.parentNode.style.position || "relative";
+    }
+
+    var menu = document.createElement("div");
+    menu.className = "lang-switcher-menu";
+    menu.setAttribute("role", "dialog");
+    menu.setAttribute("aria-label", "Choose your language");
+    menu.innerHTML =
+      '<p class="lang-switcher-tagline">This is a global site &mdash; pick your language and dive in. All are welcome.</p>' +
+      '<div id="google_translate_element"></div>';
+    anchor.insertAdjacentElement("afterend", menu);
+
+    var mobileNavLinks = document.getElementById("primary-nav");
+
+    var loaded = false;
+    function loadWidget() {
+      if (loaded) return;
+      loaded = true;
       window.googleTranslateElementInit = function () {
         new google.translate.TranslateElement({ pageLanguage: "en" }, "google_translate_element");
       };
       var script = document.createElement("script");
       script.src = "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       document.body.appendChild(script);
+    }
+
+    function openMenu() {
+      menu.classList.add("open");
+      Array.prototype.forEach.call(triggers, function (t) { t.setAttribute("aria-expanded", "true"); });
+      loadWidget();
+    }
+    function closeMenu() {
+      menu.classList.remove("open");
+      Array.prototype.forEach.call(triggers, function (t) { t.setAttribute("aria-expanded", "false"); });
+    }
+
+    Array.prototype.forEach.call(triggers, function (trigger) {
+      trigger.setAttribute("aria-haspopup", "true");
+      trigger.setAttribute("aria-expanded", "false");
+      trigger.addEventListener("click", function (e) {
+        e.stopPropagation();
+        // The mobile trigger lives inside the hamburger dropdown — close
+        // that first so the language panel isn't hidden behind it.
+        if (mobileNavLinks && mobileNavLinks.classList.contains("open") && trigger !== anchor) {
+          mobileNavLinks.classList.remove("open");
+          var toggle = document.querySelector(".nav-toggle");
+          if (toggle) toggle.setAttribute("aria-expanded", "false");
+        }
+        if (menu.classList.contains("open")) closeMenu(); else openMenu();
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (!menu.contains(e.target) && Array.prototype.indexOf.call(triggers, e.target) === -1 &&
+          !(e.target.closest && e.target.closest("[data-lang-switcher]"))) {
+        closeMenu();
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menu.classList.contains("open")) {
+        closeMenu();
+        anchor.focus();
+      }
     });
   }
 
@@ -414,7 +472,7 @@
       initLanternField,
       initReveals,
       initFeedback,
-      initTranslate,
+      initLangSwitcher,
       initCookieNotice
     ].forEach(function (init) {
       try { init(); } catch (err) {

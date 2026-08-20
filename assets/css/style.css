@@ -386,8 +386,6 @@ body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { backg
   position: relative;
   z-index: 1;
   max-width: 860px;
-  margin: 0 auto;
-  text-align: center;
 }
 
 .hero h1 {
@@ -405,7 +403,7 @@ body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { backg
   line-height: 1.6;
   color: rgba(251, 245, 234, 0.9);
   max-width: 52ch;
-  margin: 0 auto 2.2em;
+  margin: 0 0 2.2em;
   text-shadow: 0 1px 18px rgba(20, 16, 30, 0.5);
 }
 
@@ -414,7 +412,7 @@ body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { backg
   gap: 14px;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 0 0 2.6em;
 }
 
@@ -424,7 +422,7 @@ body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { backg
 .hero-proof {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 10px 22px;
   margin: 0;
@@ -556,7 +554,10 @@ body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { backg
   padding: clamp(64px, 8vw, 116px) 0 clamp(40px, 5vw, 64px);
   border-bottom: 1px solid var(--rule);
 }
-.page-hero .wrap { max-width: 900px; }
+/* Deliberately NOT narrowed+re-centered like a typical hero wrap — this
+   should share the same left edge as every other section's .wrap on the
+   page below it. Readable line length still comes from h1's own max-width
+   (18ch) and p's (58ch), not from constraining the whole column. */
 /* .page-hero p below (for the hero's subtitle) has the same specificity
    as the base .eyebrow rule and comes later, so without this override
    it was winning and inflating the eyebrow caption to subtitle size. */
@@ -1196,35 +1197,101 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .cc-badge:hover { border-color: var(--gold); color: var(--cream); }
 
-/* ---------- Translate (lives in the footer) ---------- */
+/* ---------- Language switcher (nav) ----------
+   Same pill + dropdown pattern as .age-switcher / .age-switcher-menu
+   (see "Nav: age switcher" below) — kept as a visual twin on purpose,
+   so the header reads as one family of utility controls. */
 
-.translate-trigger {
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--rule-strong);
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.lang-switcher:hover { border-color: var(--gold-deep); }
+.lang-switcher-icon { font-size: 0.95em; line-height: 1; }
+
+body.home .site-nav .lang-switcher { color: var(--cream); border-color: var(--rule-dark); }
+body.home .site-nav.is-scrolled .lang-switcher { color: var(--ink); border-color: var(--rule-strong); }
+
+@media (max-width: 900px) {
+  .lang-switcher { padding: 7px 12px; }
+  .lang-switcher-label { display: none; }
+}
+@media (max-width: 560px) {
+  /* Same reasoning as .age-switcher at this width — moves into the
+     hamburger menu instead (see .nav-lang-item). */
+  .lang-switcher { display: none; }
+}
+
+.nav-lang-item { display: none; }
+@media (max-width: 560px) { .nav-lang-item { display: list-item; } }
+.nav-lang-trigger {
+  display: flex !important;
+  align-items: baseline;
+  gap: 6px;
+  width: 100%;
   background: none;
   border: none;
-  border-bottom: 1px solid var(--rule-dark);
-  color: var(--on-dark);
-  /* Clears the 24px minimum target size in WCAG 2.2 (2.5.8) */
-  padding: 4px 0 6px;
+  padding: 0;
   font-family: var(--font-sans);
-  font-size: 0.76rem;
-  font-weight: 500;
+  font-size: 1rem;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-lang-label {
+  font-size: 0.66rem;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  color: var(--ink-faint);
 }
-.translate-trigger:hover { border-color: var(--gold); color: var(--cream); }
 
-#google_translate_element { display: none; align-items: center; }
+.lang-switcher-menu {
+  position: absolute;
+  top: 100%;
+  margin-top: 10px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(54, 47, 75, 0.16);
+  padding: 18px;
+  width: 280px;
+  max-width: calc(100vw - 2 * var(--gutter));
+  z-index: 60;
+  display: none;
+}
+.lang-switcher-menu.open { display: block; }
+.lang-switcher-tagline {
+  margin: 0 0 14px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+#google_translate_element { display: flex; align-items: center; }
 #google_translate_element .goog-te-gadget { font-family: var(--font-sans) !important; font-size: 0; color: transparent; }
 #google_translate_element .goog-te-gadget .goog-te-combo {
+  width: 100%;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
-  padding: 5px 8px;
+  font-size: 0.86rem;
+  padding: 8px 10px;
   border-radius: var(--radius);
-  border: 1px solid var(--rule-dark);
-  background: var(--ink);
-  color: var(--cream);
+  border: 1px solid var(--rule-strong);
+  background: var(--paper);
+  color: var(--ink);
 }
 /* Suppress Google's own translated-page banner iframe — we show our own trigger instead */
 .goog-te-banner-frame { display: none !important; }
@@ -1419,7 +1486,7 @@ html.js .hero h1 .word {
   font-weight: 400;
   color: var(--on-dark-faint);
   max-width: 46ch;
-  margin: -0.4em auto 1.8em;
+  margin: -0.4em 0 1.8em;
   text-shadow: 0 1px 14px rgba(20, 16, 30, 0.6);
 }
 html.js .hero-gloss {

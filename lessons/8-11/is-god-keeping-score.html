@@ -75,6 +75,10 @@
       <span class="age-switcher-label">Teaching</span>
       <span class="age-switcher-value" data-age-switcher-value>&mdash;</span>
     </button>
+    <button class="lang-switcher" type="button" data-lang-switcher aria-haspopup="true" aria-expanded="false">
+      <span class="lang-switcher-icon" aria-hidden="true">&#127760;</span>
+      <span class="lang-switcher-label">Language</span>
+    </button>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
     <ul class="nav-links" id="primary-nav">
       <li><a href="/">Home</a></li>
@@ -83,6 +87,7 @@
       <li><a href="/what-we-believe">What We Believe</a></li>
       <li><a href="/about">About</a></li>
       <li class="nav-age-item"><a href="/lessons" data-mobile-age-link><span class="nav-age-label">Teaching</span><span data-mobile-age-value>Choose your age group</span></a></li>
+      <li class="nav-lang-item"><button type="button" class="nav-lang-trigger" data-lang-switcher><span class="nav-lang-label">Language</span><span>Pick yours &mdash; all are welcome</span></button></li>
     </ul>
   </div>
 </nav>
@@ -257,8 +262,6 @@
     <div class="footer-bottom">
       <p>This website and all lesson plans are offered in a spirit of love and growth for all. They are independently created and are not affiliated with or endorsed by any Christian Science branch church or The First Church of Christ, Scientist, in Boston, MA, and are shared under a Creative Commons CC BY-SA 4.0.</p>
       <div class="footer-utility">
-        <button class="translate-trigger" type="button">Translate this site</button>
-        <div id="google_translate_element"></div>
         <a class="cc-badge" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA 4.0</a>
       </div>
     </div>
@@ -296,7 +299,7 @@
 </div>
 
 <div class="cookie-banner" id="cookie-banner">
-  <p>This site does not track you. If you use the Translate tool in the footer, Google powers it and may set its own cookies to do so.</p>
+  <p>This site does not track you. If you use the language switcher in the header, Google powers it and may set its own cookies to do so.</p>
   <button class="btn btn-gold" id="cookie-accept" type="button">Got it</button>
 </div>
 

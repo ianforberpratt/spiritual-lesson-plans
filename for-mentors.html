@@ -74,6 +74,10 @@
       <span class="age-switcher-label">Teaching</span>
       <span class="age-switcher-value" data-age-switcher-value>&mdash;</span>
     </button>
+    <button class="lang-switcher" type="button" data-lang-switcher aria-haspopup="true" aria-expanded="false">
+      <span class="lang-switcher-icon" aria-hidden="true">&#127760;</span>
+      <span class="lang-switcher-label">Language</span>
+    </button>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
     <ul class="nav-links" id="primary-nav">
       <li><a href="/">Home</a></li>
@@ -82,6 +86,7 @@
       <li><a href="/what-we-believe">What We Believe</a></li>
       <li><a href="/about">About</a></li>
       <li class="nav-age-item"><a href="/lessons" data-mobile-age-link><span class="nav-age-label">Teaching</span><span data-mobile-age-value>Choose your age group</span></a></li>
+      <li class="nav-lang-item"><button type="button" class="nav-lang-trigger" data-lang-switcher><span class="nav-lang-label">Language</span><span>Pick yours &mdash; all are welcome</span></button></li>
     </ul>
   </div>
 </nav>
@@ -147,23 +152,6 @@
         <h3>Make it theirs</h3>
         <p>Adapt language, examples, and pacing to your group. A lesson that's been reshaped to fit the room in front of you is being used exactly as intended.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">If someone asks the hard question</p>
-      <h2>"Is this a cult?" / "Are you trying to convert us?"</h2>
-      <p>Someone will ask this eventually &mdash; a sharp teenager, a skeptical parent, a co-worker who Googled "Christian Science" for the first time. Don't be caught flat-footed. Here's the honest, short answer, and you're welcome to use it word for word:</p>
-    </div>
-    <div class="card reveal" style="margin-top: 24px;">
-      <p style="font-style: italic; margin: 0;">"No. This isn't a church, and I'm not part of one leading this. Christian Science is where the ideas in these lessons come from &mdash; mainly the idea that you're already whole and God's love doesn't depend on your behavior &mdash; but nobody here is asking you to join anything, believe anything specific, or choose this over your own faith or no faith at all. Take what's useful, leave the rest. That's genuinely the whole deal."</p>
-    </div>
-    <div class="reveal" style="max-width: 720px; margin-top: 20px;">
-      <p>If they want the fuller, unvarnished history &mdash; including the parts that are genuinely uncomfortable &mdash; point them to <a href="/what-we-believe#foundations">What We Believe &rarr; The Foundations</a>. It's all there, including why the "cult" question is a fair one to ask.</p>
-      <p>The one thing not to do: get defensive. A young person testing whether this is a trap is doing exactly the kind of healthy skepticism this whole site says it wants from them. Meet it the same way you'd meet any other pushback &mdash; with curiosity, not correction.</p>
     </div>
   </div>
 </section>
@@ -265,8 +253,6 @@
     <div class="footer-bottom">
       <p>This website and all lesson plans are offered in a spirit of love and growth for all. They are independently created and are not affiliated with or endorsed by any Christian Science branch church or The First Church of Christ, Scientist, in Boston, MA, and are shared under a Creative Commons CC BY-SA 4.0.</p>
       <div class="footer-utility">
-        <button class="translate-trigger" type="button">Translate this site</button>
-        <div id="google_translate_element"></div>
         <a class="cc-badge" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA 4.0</a>
       </div>
     </div>
@@ -304,7 +290,7 @@
 </div>
 
 <div class="cookie-banner" id="cookie-banner">
-  <p>This site does not track you. If you use the Translate tool in the footer, Google powers it and may set its own cookies to do so.</p>
+  <p>This site does not track you. If you use the language switcher in the header, Google powers it and may set its own cookies to do so.</p>
   <button class="btn btn-gold" id="cookie-accept" type="button">Got it</button>
 </div>
 
