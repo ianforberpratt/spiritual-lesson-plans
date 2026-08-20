@@ -1845,6 +1845,21 @@ body.home .site-nav.is-scrolled .age-switcher .age-switcher-value { color: var(-
   margin: 0;
 }
 
+/* A short word of encouragement for the mentor themselves, tucked under
+   each card's age description — separated by a hairline so it reads as
+   a distinct aside, not more facts about the age group. */
+.age-chooser-tip {
+  display: block;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-serif);
+  font-size: 0.86rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: var(--ink-faint);
+}
+
 .age-chooser-status {
   display: flex;
   flex-wrap: wrap;
