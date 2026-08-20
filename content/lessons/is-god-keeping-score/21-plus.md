@@ -13,7 +13,7 @@ format_display: In-person or virtual
 sensitive_topic: none
 requires_adult_facilitation_notes: false
 core_model_ref: is-god-keeping-score/core-model.md
-reclassified_note: Originally scoped "Teen–Adult (16+)" before the site had a dedicated College/Adult band. Its examples — a workplace disagreement, a marriage, a geopolitical conflict — are adult-anchored, so this content now serves College Student & Adult (21+). A distinct Teen (14–21) version doesn't exist yet.
+reclassified_note: Originally scoped "Teen–Adult (16+)" before the site split into five age groups. Its examples — a workplace disagreement, a marriage, a geopolitical conflict — are adult-anchored, so this content now serves College Student & Adult (21+). A distinct Teen (14–21) version doesn't exist yet.
 ---
 
 ## What you should know

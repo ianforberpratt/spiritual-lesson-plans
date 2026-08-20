@@ -13,7 +13,7 @@ format_display: in-person, virtual, or self-guided reading
 sensitive_topic: none
 requires_adult_facilitation_notes: false
 core_model_ref: seven-synonyms-and-three-degrees/core-model.md
-general_audience_note: This is the site's original general-audience delivery, identical in substance to the 14-21 version for now (see BUILD-BRIEF.md section 6.3 — Ian's call whether to differentiate further). Reused here rather than duplicated by accident, so both bands have a working page while a genuinely adult-scaled version (career, marriage, parenting, civic life examples) waits to be written.
+general_audience_note: This is a general-audience delivery, identical in substance to the 14-21 version for now. Reused here rather than duplicated by accident, so both ages have a working page while a genuinely adult-scaled version (career, marriage, parenting, civic life examples) waits to be written.
 ---
 
 ## What you should know

@@ -31,7 +31,7 @@ Adult loneliness often carries more shame than teen loneliness, because there's 
 4. Name, out loud or in writing, one real relationship or person they could reach out to this week.
 
 ## How to hold the room
-- This age band may carry more shame around naming loneliness than teens do — don't rush past the naming, even if the room is initially reluctant.
+- Adults may carry more shame around naming loneliness than teens do — don't rush past the naming, even if the room is initially reluctant.
 - Be ready for it to surface inside a marriage or long partnership, not just around single or newly-relocated adults. Don't assume partnered people are exempt.
 - Adults may connect this to grief, retirement, an empty nest, or caregiving fatigue. Let it surface without redirecting to something lighter.
 

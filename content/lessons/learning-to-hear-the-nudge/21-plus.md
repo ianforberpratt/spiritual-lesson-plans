@@ -17,7 +17,7 @@ core_model_ref: learning-to-hear-the-nudge/core-model.md
 
 
 ## What you should know
-Adults arrive at this lesson with more decision history than any younger band — and often more scar tissue around decisions that went badly, plus a stronger internal narrative about what "should have been known" in hindsight. The core distinction (calm/certain guidance vs. rushed/urgent pressure) doesn't change, but the example set does: career moves, whether to leave or stay in a relationship, a major purchase, whether to move, when to have a hard conversation. At this age, discussion can go to full depth — no need to simplify the framework itself, only to keep steering it away from the trap this age is most prone to: retroactively deciding a past hard outcome happened because they "didn't listen well enough," which is exactly the harmful idea this lesson exists to prevent.
+Adults arrive at this lesson with more decision history than any younger group — and often more scar tissue around decisions that went badly, plus a stronger internal narrative about what "should have been known" in hindsight. The core distinction (calm/certain guidance vs. rushed/urgent pressure) doesn't change, but the example set does: career moves, whether to leave or stay in a relationship, a major purchase, whether to move, when to have a hard conversation. At this age, discussion can go to full depth — no need to simplify the framework itself, only to keep steering it away from the trap this age is most prone to: retroactively deciding a past hard outcome happened because they "didn't listen well enough," which is exactly the harmful idea this lesson exists to prevent.
 
 ## What we're assuming
 
@@ -33,7 +33,7 @@ Adults arrive at this lesson with more decision history than any younger band �
 4. Recognizes that ignoring nudges, or misreading pressure as guidance, is part of being human; self-blame after the fact is not the same thing as honest reflection, and this lesson does not ask for the former.
 
 ## How to hold the room
-- This age can and should go to full discussion depth — don't pre-simplify the framework the way younger bands need.
+- This age can and should go to full discussion depth — don't pre-simplify the framework the way younger groups need.
 - Watch for the adult who starts narrating an old decision with heavy self-blame ("if I'd just listened, I wouldn't have..."). Gently interrupt that frame — the lesson is not "you should have known," it's "here's a practice for going forward."
 - Some in the room may be sitting with a live, current decision (a job offer, a relationship at a crossroads). Let the lesson be genuinely useful to that, not just reflective.
 - Silence is fine here too — adults process differently than teens, but rushing to fill quiet still undercuts the lesson.

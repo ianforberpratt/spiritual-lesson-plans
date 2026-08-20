@@ -21,7 +21,7 @@ Adults carry this exact same tension — a plan that fell through and the disapp
 
 ## What we're assuming
 
-This lesson addresses everyday adult-scale disappointment — a job that didn't come through, a plan for a family or a move that changed, a project or relationship that didn't land the way it was hoped. It is not the right tool for major grief, loss, or trauma, which deserve their own space, not a reframe — and that caution matters more here than at any younger band, because the disappointments adults name out loud can be genuinely high-stakes even when they're not catastrophic.
+This lesson addresses everyday adult-scale disappointment — a job that didn't come through, a plan for a family or a move that changed, a project or relationship that didn't land the way it was hoped. It is not the right tool for major grief, loss, or trauma, which deserve their own space, not a reframe — and that caution matters more here than at any younger age, because the disappointments adults name out loud can be genuinely high-stakes even when they're not catastrophic.
 
 ## Learning goals
 1. Leaves knowing disappointment when a job, a family plan, or a life plan falls through isn't proof they failed, or proof nothing good is happening.
