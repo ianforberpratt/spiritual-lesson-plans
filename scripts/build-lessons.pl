@@ -411,6 +411,7 @@ sub head_common {
 <title>$a{title}</title>
 <meta name="description" content="$a{description}">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+<meta name="msvalidate.01" content="986E29A0E95491E5807A1C79248D0406" />
 <link rel="canonical" href="$a{canonical}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Spiritual Lesson Plans">
