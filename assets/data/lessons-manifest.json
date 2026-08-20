@@ -1,0 +1,200 @@
+{
+  "bandOrder": ["5-8", "8-11", "11-14", "14-21", "21-plus"],
+  "bandLabels": {
+    "5-8": "Early Elementary (K–2)",
+    "8-11": "Upper Elementary (Grades 3–5)",
+    "11-14": "Middle School (Grades 6–8)",
+    "14-21": "Teen & Early College",
+    "21-plus": "College Student & Adult (21+)"
+  },
+  "topics": [
+    {
+      "slug": "does-god-make-my-decisions",
+      "title": "Does God Make My Decisions For Me?",
+      "hook": "A practical way to move through the toughest choices.",
+      "topicCategory": "purpose",
+      "landingUrl": "/lessons/does-god-make-my-decisions",
+      "bands": [
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "35–40 min", "title": "Does God Make My Decisions For Me?", "hook": "A tool for the everyday choices that feel bigger than they look — tryouts, friend fights, and where your time actually goes.", "url": "/lessons/11-14/does-god-make-my-decisions" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "45–60 min", "title": "Does God Make My Decisions For Me?", "hook": "A practical way to move through the toughest choices.", "url": "/lessons/14-21/does-god-make-my-decisions" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45–60 min", "title": "Does God Make My Decisions For Me?", "hook": "A practical way to move through the choices that come with real, adult-scale stakes.", "url": "/lessons/21-plus/does-god-make-my-decisions" }
+      ]
+    },
+    {
+      "slug": "finding-the-bigger-us",
+      "title": "Finding the Bigger \"Us\"",
+      "hook": "A practical way to stop picking sides.",
+      "topicCategory": "belonging",
+      "landingUrl": "/lessons/finding-the-bigger-us",
+      "bands": [
+      { "band": "5-8", "label": "Early Elementary (K–2)", "short": "5–8", "timeDisplay": "15-20 min", "title": "The Toy We Both Want", "hook": "Two kids, one toy, and the surprise of finding out they wanted the same thing all along.", "url": "/lessons/5-8/finding-the-bigger-us" },
+      { "band": "8-11", "label": "Upper Elementary (Grades 3–5)", "short": "8–11", "timeDisplay": "25-30 min", "title": "The \"We Both Want\" Game", "hook": "A simple script for the disagreements that show up over and over — who goes first, what to play, whose turn it is.", "url": "/lessons/8-11/finding-the-bigger-us" },
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "35-40 min", "title": "Finding the Bigger \"Us\"", "hook": "A practical way to stop picking sides, when picking sides feels like most of what middle school is asking you to do.", "url": "/lessons/11-14/finding-the-bigger-us" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "40-55 min", "title": "Finding the Bigger \"Us\"", "hook": "A practical way to stop picking sides.", "url": "/lessons/14-21/finding-the-bigger-us" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45-60 min", "title": "Finding the Bigger \"Us\"", "hook": "A practical way to stop picking sides — at the family table, in a meeting, or in a marriage.", "url": "/lessons/21-plus/finding-the-bigger-us" }
+      ]
+    },
+    {
+      "slug": "is-god-keeping-score",
+      "title": "Is God Keeping Score?",
+      "hook": "Why the God you were handed might not be the God who's actually there — and what changes the moment you switch pictures.",
+      "topicCategory": "prayer",
+      "landingUrl": "/lessons/is-god-keeping-score",
+      "bands": [
+      { "band": "5-8", "label": "Early Elementary (K–2)", "short": "5–8", "timeDisplay": "15–20 min", "title": "Is God Keeping Score?", "hook": "A story-and-song version of one truth taught at every age here: God's love doesn't go up or down.", "url": "/lessons/5-8/is-god-keeping-score" },
+      { "band": "8-11", "label": "Upper Elementary (Grades 3–5)", "short": "8–11", "timeDisplay": "30–35 min", "title": "Is God Keeping Score?", "hook": "The game-points version of one truth taught at every age here: God's love isn't a score that goes up or down.", "url": "/lessons/8-11/is-god-keeping-score" },
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "35–40 min", "title": "Is God Keeping Score?", "hook": "One truth taught at every age here, anchored in what actually keeps score in a middle schooler's life right now — grades, likes, and peer comparison.", "url": "/lessons/11-14/is-god-keeping-score" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45–60 min", "title": "Is God Keeping Score?", "hook": "Why the God you were handed might not be the God who's actually there — and what changes the moment you switch pictures.", "url": "/lessons/21-plus/is-god-keeping-score" }
+      ]
+    },
+    {
+      "slug": "is-regret-a-fair-teacher",
+      "title": "Is Regret a Fair and Just Teacher?",
+      "hook": "A practical path from a hard decision to moving forward — without pretending it didn't happen.",
+      "topicCategory": "forgiveness",
+      "landingUrl": "/lessons/is-regret-a-fair-teacher",
+      "bands": [
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "40-45 min", "title": "Can You Learn From a Mistake Without Reliving It Forever?", "hook": "A way to think honestly about something you wish you'd done differently — without carrying it around forever.", "url": "/lessons/11-14/is-regret-a-fair-teacher" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "45–60 min", "title": "Is Regret a Fair and Just Teacher?", "hook": "A practical path from a hard decision to moving forward — without pretending it didn't happen.", "url": "/lessons/14-21/is-regret-a-fair-teacher" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "50-60 min", "title": "Is Regret a Fair and Just Teacher?", "hook": "A practical path from a hard decision to moving forward — without pretending it didn't happen.", "url": "/lessons/21-plus/is-regret-a-fair-teacher" }
+      ]
+    },
+    {
+      "slug": "learning-to-hear-the-nudge",
+      "title": "Learning to Hear the Nudge",
+      "hook": "A lesson on inner guidance — distinguishing genuine nudges from anxious noise, with practice on small decisions.",
+      "topicCategory": "prayer",
+      "landingUrl": "/lessons/learning-to-hear-the-nudge",
+      "bands": [
+      { "band": "8-11", "label": "Upper Elementary (Grades 3–5)", "short": "8–11", "timeDisplay": "25–30 min", "title": "Learning to Hear the Nudge", "hook": "The quiet voice vs. the loud worried voice — a first practice in noticing which one is talking.", "url": "/lessons/8-11/learning-to-hear-the-nudge" },
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "40–45 min", "title": "Learning to Hear the Nudge", "hook": "The same practice of telling guidance from pressure — but now with room to think it through privately before saying anything out loud.", "url": "/lessons/11-14/learning-to-hear-the-nudge" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "40–55 min", "title": "Learning to Hear the Nudge", "hook": "A lesson on inner guidance — distinguishing genuine nudges from anxious noise, with practice on small decisions.", "url": "/lessons/14-21/learning-to-hear-the-nudge" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45–60 min", "title": "Learning to Hear the Nudge", "hook": "Same inner guidance, applied where the stakes are real — a job, a relationship, a major decision — and the noise is louder.", "url": "/lessons/21-plus/learning-to-hear-the-nudge" }
+      ]
+    },
+    {
+      "slug": "lgbtqia-youth-and-spiritual-learning",
+      "title": "LGBTQIA+ Youth and Spiritual Learning",
+      "hook": "",
+      "topicCategory": "belonging",
+      "landingUrl": "/lessons/lgbtqia-youth-and-spiritual-learning",
+      "bands": [
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "45–60 min", "title": "LGBTQIA+ Youth and Spiritual Learning", "hook": "", "url": "/lessons/14-21/lgbtqia-youth-and-spiritual-learning" }
+      ]
+    },
+    {
+      "slug": "lonely-in-a-crowded-room",
+      "title": "Lonely in a Crowded Room",
+      "hook": "What that ache is actually telling you — and what's still true underneath it.",
+      "topicCategory": "belonging",
+      "landingUrl": "/lessons/lonely-in-a-crowded-room",
+      "bands": [
+      { "band": "8-11", "label": "Upper Elementary (Grades 3–5)", "short": "8–11", "timeDisplay": "30–35 min", "title": "Alone at a Full Lunch Table", "hook": "Feeling lonely even with people all around you doesn't mean something's wrong with you.", "url": "/lessons/8-11/lonely-in-a-crowded-room" },
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "40–45 min", "title": "Lonely in a Crowded Room", "hook": "What that ache is actually telling you — and what's still true underneath it.", "url": "/lessons/11-14/lonely-in-a-crowded-room" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "40–55 min", "title": "Lonely in a Crowded Room", "hook": "What that ache is actually telling you — and what's still true underneath it.", "url": "/lessons/14-21/lonely-in-a-crowded-room" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45–55 min", "title": "Lonely in a Crowded Life", "hook": "What that ache is actually telling you — even when nothing on the outside looks wrong.", "url": "/lessons/21-plus/lonely-in-a-crowded-room" }
+      ]
+    },
+    {
+      "slug": "not-the-struggle",
+      "title": "You Are Not the Struggle",
+      "hook": "Can you be uncomfortable — and still be whole? Same paradox as every band here, anchored in the performance anxiety of trying to seem like you have it together.",
+      "topicCategory": "identity",
+      "landingUrl": "/lessons/not-the-struggle",
+      "bands": [
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "30–35 min", "title": "You Are Not the Struggle", "hook": "A permission-to-feel-things lesson for the age where big feelings start arriving fast, and the inner critic often arrives right behind them.", "url": "/lessons/11-14/not-the-struggle" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "40–45 min", "title": "You Are Not the Struggle", "hook": "Can you be uncomfortable — and still be whole? Same paradox as every band here, anchored in the performance anxiety of trying to seem like you have it together.", "url": "/lessons/14-21/not-the-struggle" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45–60 min", "title": "You Are Not the Struggle", "hook": "Can you be uncomfortable, angry, or impatient — and still be demonstrating truth? On sitting with the \"feels\" mid-healing, and why a slow journey still counts as doing much.", "url": "/lessons/21-plus/not-the-struggle" }
+      ]
+    },
+    {
+      "slug": "off-days-are-allowed",
+      "title": "Off Days Are Allowed",
+      "hook": "Feeling disconnected doesn't mean you're doing it wrong.",
+      "topicCategory": "belonging",
+      "landingUrl": "/lessons/off-days-are-allowed",
+      "bands": [
+      { "band": "5-8", "label": "Early Elementary (K–2)", "short": "5–8", "timeDisplay": "15-20 min", "title": "Even Clouds Can't Change the Sun", "hook": "Feeling grumpy or sad sometimes doesn't make you a \"bad kid\" — it just makes you a kid.", "url": "/lessons/5-8/off-days-are-allowed" },
+      { "band": "8-11", "label": "Upper Elementary (Grades 3–5)", "short": "8–11", "timeDisplay": "25-30 min", "title": "Everybody Has an Off Game", "hook": "A bad day doesn't erase the good stuff underneath — ask any athlete.", "url": "/lessons/8-11/off-days-are-allowed" },
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "35-40 min", "title": "Off Days Are Allowed", "hook": "Feeling off doesn't mean you're doing it wrong — it means you're having a day.", "url": "/lessons/11-14/off-days-are-allowed" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "40–55 min", "title": "Off Days Are Allowed", "hook": "Feeling disconnected doesn't mean you're doing it wrong.", "url": "/lessons/14-21/off-days-are-allowed" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45-60 min", "title": "Off Days Are Allowed", "hook": "You can be having a hard day and still be doing everything right.", "url": "/lessons/21-plus/off-days-are-allowed" }
+      ]
+    },
+    {
+      "slug": "seven-synonyms-and-three-degrees",
+      "title": "Seven Names, One Journey",
+      "hook": "Two of Christian Science's most foundational ideas, unpacked for anyone — no faith background, and no prior exposure to Christian Science, required.",
+      "topicCategory": "identity",
+      "landingUrl": "/lessons/seven-synonyms-and-three-degrees",
+      "bands": [
+      { "band": "5-8", "label": "Early Elementary (K–2)", "short": "5–8", "timeDisplay": "20–25 min", "title": "Seven Names, One Journey", "hook": "God has more than one true name — a simple story to help even the youngest kids feel how big and near that makes God.", "url": "/lessons/5-8/seven-synonyms-and-three-degrees" },
+      { "band": "8-11", "label": "Upper Elementary (Grades 3–5)", "short": "8–11", "timeDisplay": "35–40 min", "title": "Seven Names, One Journey", "hook": "One multi-tool, seven real uses — and the honest, ordinary journey from a hard day toward actually understanding something.", "url": "/lessons/8-11/seven-synonyms-and-three-degrees" },
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "35–45 min", "title": "Seven Names, One Journey", "hook": "Why one name isn't enough for God, and why blowing up doesn't mean you're a bad person — it means you're partway through a real journey.", "url": "/lessons/11-14/seven-synonyms-and-three-degrees" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "50–65 min", "title": "Seven Names, One Journey", "hook": "Two of Christian Science's most foundational ideas, unpacked for anyone — no faith background, and no prior exposure to Christian Science, required.", "url": "/lessons/14-21/seven-synonyms-and-three-degrees" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "50–65 min", "title": "Seven Names, One Journey", "hook": "Two of Christian Science's most foundational ideas, unpacked for anyone — no faith background, and no prior exposure to Christian Science, required.", "url": "/lessons/21-plus/seven-synonyms-and-three-degrees" }
+      ]
+    },
+    {
+      "slug": "soul-another-name-for-god",
+      "title": "Soul: Another Name for God",
+      "hook": "Reading, symbolism, a creative class definition, and real life — Soul as one of the seven synonyms for God in Christian Science.",
+      "topicCategory": "identity",
+      "landingUrl": "/lessons/soul-another-name-for-god",
+      "bands": [
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "40–45 min", "title": "Soul: Another Name for God", "hook": "Where your real identity actually comes from — and why a bad moment, a mean impulse, or a hard feeling about your body doesn't get to define you.", "url": "/lessons/11-14/soul-another-name-for-god" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "45–50 min", "title": "Soul: Another Name for God", "hook": "Reading, symbolism, a creative class definition, and real life — Soul as one of the seven synonyms for God in Christian Science.", "url": "/lessons/14-21/soul-another-name-for-god" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "50–60 min", "title": "Soul: Another Name for God", "hook": "An 1875 passage about mastering hatred, lust, revenge, and deceit — decoded for adult life: office politics, a marriage, a career, a curated feed.", "url": "/lessons/21-plus/soul-another-name-for-god" }
+      ]
+    },
+    {
+      "slug": "talking-about-pornography-use",
+      "title": "Talking About the Increase of Pornography Use in Our World",
+      "hook": "\"A steady, shame-free way in — because a habit is a cloud passing in front of the sun, not the sun itself.\"",
+      "topicCategory": "courage",
+      "landingUrl": "/lessons/talking-about-pornography-use",
+      "bands": [
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "45–60 min", "title": "Talking About the Increase of Pornography Use in Our World", "hook": "\"A steady, shame-free way in — because a habit is a cloud passing in front of the sun, not the sun itself.\"", "url": "/lessons/14-21/talking-about-pornography-use" }
+      ]
+    },
+    {
+      "slug": "trust-the-mover",
+      "title": "Trust the Mover",
+      "hook": "What to do with real disappointment when your plans fall apart.",
+      "topicCategory": "purpose",
+      "landingUrl": "/lessons/trust-the-mover",
+      "bands": [
+      { "band": "5-8", "label": "Early Elementary (K–2)", "short": "5–8", "timeDisplay": "15–20 min", "title": "When Plans Change", "hook": "A rained-out picnic, a birthday party that moves inside — plans can change, and that's a real bummer, AND good things are still happening too.", "url": "/lessons/5-8/trust-the-mover" },
+      { "band": "8-11", "label": "Upper Elementary (Grades 3–5)", "short": "8–11", "timeDisplay": "25–30 min", "title": "When Your Plan Falls Through", "hook": "Not making a team, a canceled sleepover, a game rained out — and something good that happened anyway that you didn't see coming.", "url": "/lessons/8-11/trust-the-mover" },
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "40–45 min", "title": "Trust the Mover", "hook": "What to do with real disappointment when a team, a friend group, or a plan you counted on doesn't go the way you wanted.", "url": "/lessons/11-14/trust-the-mover" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "40–55 min", "title": "Trust the Mover", "hook": "What to do with real disappointment when your plans fall apart.", "url": "/lessons/14-21/trust-the-mover" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45–60 min", "title": "Trust the Mover", "hook": "What to do with real disappointment when a job, a plan for your family, or the shape of your life changes on you.", "url": "/lessons/21-plus/trust-the-mover" }
+      ]
+    },
+    {
+      "slug": "when-someone-feels-like-the-enemy",
+      "title": "When Someone Feels Like the Enemy",
+      "hook": "Why \"love your enemies\" isn't the same as \"there are no enemies.\"",
+      "topicCategory": "forgiveness",
+      "landingUrl": "/lessons/when-someone-feels-like-the-enemy",
+      "bands": [
+      { "band": "8-11", "label": "Upper Elementary (Grades 3–5)", "short": "8–11", "timeDisplay": "30–35 min", "title": "When Someone Is Being Mean", "hook": "You can be kind to someone without having to be their friend.", "url": "/lessons/8-11/when-someone-feels-like-the-enemy" },
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "40–50 min", "title": "When Someone Feels Like the Enemy", "hook": "Why \"love your enemies\" isn't the same as \"there are no enemies.\"", "url": "/lessons/11-14/when-someone-feels-like-the-enemy" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "40–55 min", "title": "When Someone Feels Like the Enemy", "hook": "Why \"love your enemies\" isn't the same as \"there are no enemies.\"", "url": "/lessons/14-21/when-someone-feels-like-the-enemy" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45–60 min", "title": "Loving the Difficult Person in Your Life", "hook": "Love doesn't require staying close, trusting again, or pretending it didn't happen.", "url": "/lessons/21-plus/when-someone-feels-like-the-enemy" }
+      ]
+    },
+    {
+      "slug": "words-that-open-doors",
+      "title": "Words That Open Doors",
+      "hook": "Old language, old thoughts — and making the sacred make sense today.",
+      "topicCategory": "prayer",
+      "landingUrl": "/lessons/words-that-open-doors",
+      "bands": [
+      { "band": "11-14", "label": "Middle School (Grades 6–8)", "short": "11–14", "timeDisplay": "35–45 min", "title": "Doors or Walls: Finding Words That Fit", "hook": "Some words about God make you want to lean in. Some make you want to leave the room. Both are worth noticing.", "url": "/lessons/11-14/words-that-open-doors" },
+      { "band": "14-21", "label": "Teen & Early College", "short": "14–21", "timeDisplay": "40–55 min", "title": "Words That Open Doors", "hook": "Old language, old thoughts — and making the sacred make sense today.", "url": "/lessons/14-21/words-that-open-doors" },
+      { "band": "21-plus", "label": "College Student & Adult (21+)", "short": "21+", "timeDisplay": "45–60 min", "title": "Words That Still Open Doors", "hook": "The language you inherited as a child doesn't have to be the language you're stuck with as an adult.", "url": "/lessons/21-plus/words-that-open-doors" }
+      ]
+    }
+  ]
+}

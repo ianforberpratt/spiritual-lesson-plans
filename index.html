@@ -76,22 +76,24 @@
       "@type": "ItemList",
       "name": "Spiritual lesson plans for teenagers",
       "description": "Free, interactive lesson plans for Sunday School, youth groups, and one-to-one mentoring.",
-      "numberOfItems": 13,
+      "numberOfItems": 15,
       "itemListOrder": "https://schema.org/ItemListOrderDescending",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "url": "https://www.spirituallessonplans.org/lessons/seven-synonyms-and-three-degrees", "name": "Seven Names, One Journey" },
-        { "@type": "ListItem", "position": 2, "url": "https://www.spirituallessonplans.org/lessons/is-god-keeping-score", "name": "Is God Keeping Score?" },
-        { "@type": "ListItem", "position": 3, "url": "https://www.spirituallessonplans.org/lessons/lonely-in-a-crowded-room", "name": "Lonely in a Crowded Room" },
-        { "@type": "ListItem", "position": 4, "url": "https://www.spirituallessonplans.org/lessons/words-that-open-doors", "name": "Words That Open Doors" },
-        { "@type": "ListItem", "position": 5, "url": "https://www.spirituallessonplans.org/lessons/when-someone-feels-like-the-enemy", "name": "When Someone Feels Like the Enemy" },
-        { "@type": "ListItem", "position": 6, "url": "https://www.spirituallessonplans.org/lessons/is-regret-a-fair-teacher", "name": "Is Regret a Fair and Just Teacher?" },
-        { "@type": "ListItem", "position": 7, "url": "https://www.spirituallessonplans.org/lessons/does-god-make-my-decisions", "name": "Does God Make My Decisions For Me?" },
-        { "@type": "ListItem", "position": 8, "url": "https://www.spirituallessonplans.org/lessons/learning-to-hear-the-nudge", "name": "Learning to Hear the Nudge" },
+        { "@type": "ListItem", "position": 1, "url": "https://www.spirituallessonplans.org/lessons/does-god-make-my-decisions", "name": "Does God Make My Decisions For Me?" },
+        { "@type": "ListItem", "position": 2, "url": "https://www.spirituallessonplans.org/lessons/finding-the-bigger-us", "name": "Finding the Bigger \"Us\"" },
+        { "@type": "ListItem", "position": 3, "url": "https://www.spirituallessonplans.org/lessons/is-god-keeping-score", "name": "Is God Keeping Score?" },
+        { "@type": "ListItem", "position": 4, "url": "https://www.spirituallessonplans.org/lessons/is-regret-a-fair-teacher", "name": "Is Regret a Fair and Just Teacher?" },
+        { "@type": "ListItem", "position": 5, "url": "https://www.spirituallessonplans.org/lessons/learning-to-hear-the-nudge", "name": "Learning to Hear the Nudge" },
+        { "@type": "ListItem", "position": 6, "url": "https://www.spirituallessonplans.org/lessons/lgbtqia-youth-and-spiritual-learning", "name": "LGBTQIA+ Youth and Spiritual Learning" },
+        { "@type": "ListItem", "position": 7, "url": "https://www.spirituallessonplans.org/lessons/lonely-in-a-crowded-room", "name": "Lonely in a Crowded Room" },
+        { "@type": "ListItem", "position": 8, "url": "https://www.spirituallessonplans.org/lessons/not-the-struggle", "name": "You Are Not the Struggle" },
         { "@type": "ListItem", "position": 9, "url": "https://www.spirituallessonplans.org/lessons/off-days-are-allowed", "name": "Off Days Are Allowed" },
-        { "@type": "ListItem", "position": 10, "url": "https://www.spirituallessonplans.org/lessons/trust-the-mover", "name": "Trust the Mover" },
-        { "@type": "ListItem", "position": 11, "url": "https://www.spirituallessonplans.org/lessons/finding-the-bigger-us", "name": "Finding the Bigger “Us”" },
-        { "@type": "ListItem", "position": 12, "url": "https://www.spirituallessonplans.org/lessons/lgbtqia-youth-and-spiritual-learning", "name": "LGBTQIA+ Youth and Spiritual Learning" },
-        { "@type": "ListItem", "position": 13, "url": "https://www.spirituallessonplans.org/lessons/talking-about-pornography-use", "name": "Talking About the Increase of Pornography Use in Our World" }
+        { "@type": "ListItem", "position": 10, "url": "https://www.spirituallessonplans.org/lessons/seven-synonyms-and-three-degrees", "name": "Seven Names, One Journey" },
+        { "@type": "ListItem", "position": 11, "url": "https://www.spirituallessonplans.org/lessons/soul-another-name-for-god", "name": "Soul: Another Name for God" },
+        { "@type": "ListItem", "position": 12, "url": "https://www.spirituallessonplans.org/lessons/talking-about-pornography-use", "name": "Talking About the Increase of Pornography Use in Our World" },
+        { "@type": "ListItem", "position": 13, "url": "https://www.spirituallessonplans.org/lessons/trust-the-mover", "name": "Trust the Mover" },
+        { "@type": "ListItem", "position": 14, "url": "https://www.spirituallessonplans.org/lessons/when-someone-feels-like-the-enemy", "name": "When Someone Feels Like the Enemy" },
+        { "@type": "ListItem", "position": 15, "url": "https://www.spirituallessonplans.org/lessons/words-that-open-doors", "name": "Words That Open Doors" }
       ]
     }
   ]
@@ -104,6 +106,10 @@
 <nav class="site-nav" aria-label="Main">
   <div class="wrap">
     <a href="/" class="brand">Spiritual <strong>Lesson Plans</strong></a>
+    <button class="age-switcher" type="button" data-age-switcher hidden>
+      <span class="age-switcher-label">Teaching</span>
+      <span class="age-switcher-value" data-age-switcher-value>&mdash;</span>
+    </button>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
     <ul class="nav-links" id="primary-nav">
       <li><a href="/" aria-current="page">Home</a></li>
@@ -318,5 +324,6 @@
 </div>
 
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/age-context.js"></script>
 </body>
 </html>
