@@ -23,6 +23,13 @@ Used at whatever depth and reading level fits the age band — younger bands may
 - "But I say unto you, Love your enemies, bless them that curse you, do good to them that hate you, and pray for them which despitefully use you, and persecute you." — Matthew 5:44, KJV
 - "But love ye your enemies, and do good, and lend, hoping for nothing again... Be ye therefore merciful, as your Father also is merciful." — Luke 6:35, 6:36, KJV
 - "Therefore if thine enemy hunger, feed him; if he thirst, give him drink... Be not overcome of evil, but overcome evil with good." — Romans 12:20, 21, KJV (a concrete, actionable picture of what "loving" an adversary can look like in practice, useful for grounding older bands)
+- "Any human error is its own enemy, and works against itself; it does nothing in the right direction and much in the wrong. If so-called mind is cherishing evil passions and malicious purposes, it is not a healer, but it engenders disease and death." — Science and Health with Key to the Scriptures, Mary Baker Eddy, pp. 400:30–15 (added Aug 2026 — see "The self-protective thread" below; paraphrased for 8-11, quoted directly from 11-14 up)
+
+## The self-protective thread (added Aug 2026)
+
+A second thought, layered onto the picture already offered above, not replacing it: fixing someone in your thought as "the enemy" — replaying the grievance, rehearsing the story of them as villain — isn't just a description of the relationship. Science and Health teaches that human error, including the malice and evil passions of enmity, "is its own enemy, and works against itself" and that a mind cherishing "evil passions and malicious purposes... is not a healer, but it engenders disease and death." Held mentally as a fixed enemy, error doesn't stay contained to the person who did wrong — it works on whoever keeps rehearsing it. In plain terms: staying mentally at war with someone can bring the very toxicity you're trying to keep away closer to you, not farther from it.
+
+This doesn't loosen anything the lesson already teaches about boundaries — it strengthens the case for them from a second direction. Keeping distance from someone's harmful behavior protects a person practically. Refusing to let that person live in ongoing thought as a fixed "enemy" — seeing them instead as still whole and complete, their real identity distinct from the behavior being kept at a distance — protects a person mentally, and keeps that same toxicity from taking up residence in their own thought. Seeing someone as whole is not the same as trusting them, excusing them, or staying close to them. It's a way of making sure their error doesn't become anyone else's ongoing company.
 
 ## Learning objective family
 
@@ -43,6 +50,15 @@ This is the piece that's genuinely different per age, and it's the hinge the who
 | 11-14 | Real, current peer conflict — a bully, an ex-friend, social exclusion, sometimes family friction — held with enough self-consciousness that it needs a private, non-shared way in | The "two dials" and the full four-way sort: loving, liking, excusing, staying close, trusting are five different things, and love doesn't require the other four |
 | 14-21 (native band) | A bully, a family member, an ex-friend, someone online — often ongoing and unresolved | Same four-way sort, framed as "what love actually requires (and doesn't)," plus the "Two Dials" handout (love and closeness graphed as separate dials) |
 | 21+ | A difficult coworker, an estranged or strained family member, a friendship that ended badly — often with real professional, financial, or family-system consequences attached to how it's handled | Same four-way sort, re-anchored in adult relationships and adult-scale consequences (a work boundary, a limited-contact decision, declining to rebuild trust that hasn't been re-earned) |
+
+## The self-protective thread, by age band
+
+| Age band | How it's carried | What's added |
+|---|---|---|
+| 8-11 | Plain-language only, no citation | "Carrying mean thoughts around is like carrying a heavy backpack — it makes things heavier for *you*." Folded into Beat 3. |
+| 11-14 | One short, direct quote, plainly translated | "Any human error is its own enemy, and works against itself." Private-journal discussion question added to Beat 3. |
+| 14-21 | Fuller quote, full discussion | Both sentences of the citation, framed as a second reason for the same boundary — practical distance and mental distance are both self-protective. |
+| 21+ | Full quote, full discussion, native depth | Same as 14-21, with room to go deeper into the "not a healer... engenders disease and death" language for a room that can sit with it. |
 
 ## What does NOT get inherited across bands
 

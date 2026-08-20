@@ -5,8 +5,8 @@ age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Loving the Difficult Person in Your Life
 hook: Love doesn't require staying close, trusting again, or pretending it didn't happen.
-time_minutes: 60
-time_display: 45–60 min
+time_minutes: 65
+time_display: 45–65 min
 group_format: 1:1-or-group
 group_display: 1:1 or group
 format_display: in-person or virtual
@@ -43,9 +43,19 @@ Think of someone — you don't have to say who — who currently feels like an a
 Share this out loud: the teaching is "love your enemies" — not "pretend you don't have any," and not "keep them in your life exactly as they've always been." It doesn't say the friction isn't there. It says something harder: see it clearly, and respond with love anyway.
 Discuss: Where in your adult life have you confused "being the bigger person" with pretending something didn't happen? What's the actual difference between those two?
 
-### Beat 3 (~15–20 min) — What Love Actually Requires (and Doesn't)
+### Beat 3 (~18–23 min) — What Love Actually Requires (and Doesn't)
 This is the important one — take it slow. Sort through the difference, out loud: *loving* someone, *liking* them, *excusing* what they did, *staying close* to them, *trusting* them again. Love doesn't require any of the other four. In adult terms: you can love a difficult coworker without eating lunch with them or defending their behavior to others. You can love an estranged parent without resuming unsupervised contact or pretending the history didn't happen. You can wish a former friend well without reopening the friendship.
 Discuss: What would loving this person — without excusing what happened, staying close, or rebuilding trust that hasn't been earned — actually look like, concretely, in your specific situation?
+
+There's a second layer worth naming directly, especially for a room doing real healing or helping work: holding someone as "the enemy" in ongoing thought isn't only a description of the relationship — it works on the person doing the holding. Science and Health names this plainly:
+
+> "Any human error is its own enemy, and works against itself; it does nothing in the right direction and much in the wrong. If so-called mind is cherishing evil passions and malicious purposes, it is not a healer, but it engenders disease and death." — Science and Health with Key to the Scriptures, Mary Baker Eddy, pp. 400:30–15
+
+This doesn't loosen anything already covered — no one owes a difficult person renewed closeness, trust, or excuses. It adds a second, distinct reason for the same boundary: staying at a practical distance from someone's harmful behavior protects you materially; refusing to let them occupy your thought as a fixed "enemy" protects you mentally, and keeps the very toxicity you're distancing from out of your own experience rather than smuggled back in through resentment. Seeing a difficult person as whole and complete — their real identity, distinct from the behavior you're keeping distance from — is not the same as trusting them, excusing them, or reopening the relationship. It's a way of refusing to let their error become your ongoing company.
+
+Discuss:
+1. Is there a difference, for you, between staying safe or boundaried with someone and staying mentally "at war" with them? What would it take to do the first without the second?
+2. In your own healing, helping, or professional work, have you seen someone's fixation on an "enemy" cost them more than the original conflict did? What did that cost look like?
 
 ### Beat 4 (~10 min) — Practicing the Harder Thing
 Without naming the person, what's one small, realistic way you could respond to that hard relationship this week from love instead of resentment or retaliation — a boundary you hold calmly, a message you don't send, a moment you choose not to gossip about them, one kind word without over-explaining yourself? Close with this: you don't have to pretend it doesn't hurt. You don't have to like them, work to rebuild the relationship, or trust them again. You just get to choose what kind of person you are in how you respond.
