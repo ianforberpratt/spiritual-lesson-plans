@@ -847,7 +847,7 @@ sub write_manifest {
     for my $b (@{ $t->{bands} }) {
       push @band_json, "      { \"band\": \"$b->{band}\", \"label\": \"@{[ json_escape($b->{label}) ]}\", \"short\": \"@{[ json_escape($b->{short}) ]}\", \"timeDisplay\": \"@{[ json_escape($b->{time_display} // '') ]}\", \"title\": \"@{[ json_escape($b->{title}) ]}\", \"hook\": \"@{[ json_escape($b->{hook} // '') ]}\", \"url\": \"$b->{url}\" }";
     }
-    push @topic_json, "    {\n      \"slug\": \"$t->{slug}\",\n      \"title\": \"@{[ json_escape($t->{title}) ]}\",\n      \"hook\": \"@{[ json_escape($t->{hook} // '') ]}\",\n      \"topicCategory\": \"@{[ json_escape($t->{topic_category} // '') ]}\",\n      \"landingUrl\": \"$t->{landing_url}\",\n      \"bands\": [\n" . join(",\n", @band_json) . "\n      ]\n    }";
+    push @topic_json, "    {\n      \"slug\": \"$t->{slug}\",\n      \"title\": \"@{[ json_escape($t->{title}) ]}\",\n      \"hook\": \"@{[ json_escape($t->{hook} // '') ]}\",\n      \"topicCategory\": \"@{[ json_escape($t->{topic_category} // '') ]}\",\n      \"landingUrl\": \"$t->{landing_url}\",\n      \"datePublished\": \"@{[ $t->{dates}{published} // '' ]}\",\n      \"dateModified\": \"@{[ $t->{dates}{modified} // '' ]}\",\n      \"bands\": [\n" . join(",\n", @band_json) . "\n      ]\n    }";
   }
   push @lines, join(",\n", @topic_json);
   push @lines, '  ]';

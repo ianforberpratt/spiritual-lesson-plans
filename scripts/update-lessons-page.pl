@@ -194,8 +194,37 @@ my $idx_items_json = join(",\n", @idx_items);
 my $n3 = ($idx =~ s/("name":\s*"Spiritual lesson plans for teenagers",\s*"description":[^\n]*\n\s*"numberOfItems":\s*)\d+(,\s*"itemListOrder":[^\n]*\n\s*"itemListElement":\s*\[)\s*.*?\s*(\]\s*\})/$1$count$2\n$idx_items_json\n      $3/s);
 die "index.html ItemList substitution matched $n3 times (expected 1)\n" unless $n3 == 1;
 
+# "The newest lessons" preview grid (3 cards, most recently *published*
+# topic first — datePublished is the earliest git commit across a
+# topic's band files, i.e. when it was first added to the site) and the
+# "See all N lessons" count. Both used to be hand-typed and both had
+# already gone stale (a since-added topic wasn't in the 3, and the count
+# still said 13 lessons ago) — regenerated here so that can't recur.
+
+my @by_newest = sort { ($b->{datePublished} // '') cmp ($a->{datePublished} // '') } @topics;
+my @newest3 = @by_newest[0 .. (scalar(@by_newest) >= 3 ? 2 : $#by_newest)];
+my @PREF_BAND_ORDER = ('14-21', '21-plus', '11-14', '8-11', '5-8');
+
+my @newest_cards;
+for my $t (@newest3) {
+  my $band_info;
+  for my $pref (@PREF_BAND_ORDER) {
+    ($band_info) = grep { $_->{band} eq $pref } @{ $t->{bands} };
+    last if $band_info;
+  }
+  $band_info ||= $t->{bands}[0];
+  push @newest_cards, qq{      <a href="$t->{landingUrl}" class="topic-card reveal">\n        <h3>@{[ esc($t->{title}) ]}</h3>\n        <span class="tag">@{[ esc($t->{hook}) ]}</span>\n        <span class="meta">@{[ esc($band_info->{timeDisplay}) ]}</span>\n      </a>};
+}
+my $newest_html = join("\n", @newest_cards);
+
+my $n4 = ($idx =~ s/(<!-- NEWEST_LESSONS_START:.*?-->).*?(\s*<!-- NEWEST_LESSONS_END -->)/$1\n$newest_html\n      $2/s);
+die "index.html NEWEST_LESSONS substitution matched $n4 times (expected 1)\n" unless $n4 == 1;
+
+my $n5 = ($idx =~ s/(<!-- SEE_ALL_COUNT_START -->)See all \d+ lessons(<!-- SEE_ALL_COUNT_END -->)/$1See all $count lessons$2/);
+die "index.html SEE_ALL_COUNT substitution matched $n5 times (expected 1)\n" unless $n5 == 1;
+
 write_file($INDEX, $idx);
-print "index.html ItemList updated: $count topics.\n";
+print "index.html ItemList + newest-lessons grid updated: $count topics.\n";
 
 # Note: sitemap.xml is no longer touched here. build-lessons.pl now
 # regenerates it fully on every run (with real per-page lastmod dates
