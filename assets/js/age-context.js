@@ -14,19 +14,15 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var BAND_LABELS = {
-    "5-8": "Early Elementary (K–2)",
-    "8-11": "Upper Elementary (Grades 3–5)",
-    "11-14": "Middle School (Grades 6–8)",
-    "14-21": "Teen & Early College",
-    "21-plus": "College Student & Adult (21+)"
+    "5-8": "K-2",
+    "8-11": "Grade 3-5",
+    "11-14": "Grade 6-8",
+    "14-21": "Teen",
+    "21-plus": "Age 21+"
   };
-  var BAND_SHORT = {
-    "5-8": "5–8",
-    "8-11": "8–11",
-    "11-14": "11–14",
-    "14-21": "14–21",
-    "21-plus": "21+"
-  };
+  // Kept identical to BAND_LABELS on purpose — see build-lessons.pl's
+  // %BAND_SHORT comment for why there's no separate short form anymore.
+  var BAND_SHORT = BAND_LABELS;
   var BAND_ORDER = ["5-8", "8-11", "11-14", "14-21", "21-plus"];
 
   function getStoredBand() {

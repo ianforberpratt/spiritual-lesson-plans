@@ -261,6 +261,17 @@ p { margin: 0 0 1.15em; max-width: var(--measure); }
   transition: color 0.18s ease;
   position: relative;
   padding: 6px 0;
+  white-space: nowrap;
+}
+
+/* Groups the age and language pills together with a small, fixed gap of
+   their own, separate from the wider gap the rest of the nav row uses —
+   keeps them read as one "settings" cluster, and costs less horizontal
+   space than giving each pill the full row gap on both sides. */
+.nav-utility {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .nav-links a:hover,

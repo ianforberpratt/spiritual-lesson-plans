@@ -42,20 +42,17 @@ my $SITE_ORIGIN = "https://www.spirituallessonplans.org";
 my @BAND_ORDER = ('5-8', '8-11', '11-14', '14-21', '21-plus');
 
 my %BAND_LABEL = (
-  '5-8'    => "Early Elementary (K\x{2013}2)",
-  '8-11'   => "Upper Elementary (Grades 3\x{2013}5)",
-  '11-14'  => "Middle School (Grades 6\x{2013}8)",
-  '14-21'  => "Teen & Early College",
-  '21-plus'=> "College Student & Adult (21+)",
+  '5-8'    => "K-2",
+  '8-11'   => "Grade 3-5",
+  '11-14'  => "Grade 6-8",
+  '14-21'  => "Teen",
+  '21-plus'=> "Age 21+",
 );
 
-my %BAND_SHORT = (
-  '5-8'    => "5\x{2013}8",
-  '8-11'   => "8\x{2013}11",
-  '11-14'  => "11\x{2013}14",
-  '14-21'  => "14\x{2013}21",
-  '21-plus'=> "21+",
-);
+# Kept identical to BAND_LABEL on purpose — the labels above are already
+# short enough to serve both the compact nav pill and the fuller badge/
+# breadcrumb contexts, so there's no separate abbreviation needed anymore.
+my %BAND_SHORT = %BAND_LABEL;
 
 # One of the palette accents per band (all already defined as CSS custom
 # properties in assets/css/style.css) — used for the corner-ribbon badge.
@@ -381,14 +378,16 @@ sub nav_html {
 <nav class="site-nav" aria-label="Main">
   <div class="wrap">
     <a href="/" class="brand">Spiritual <strong>Lesson Plans</strong></a>
-    <button class="age-switcher" type="button" data-age-switcher hidden>
-      <span class="age-switcher-label">Teaching</span>
-      <span class="age-switcher-value" data-age-switcher-value>&mdash;</span>
-    </button>
-    <button class="lang-switcher" type="button" data-lang-switcher aria-haspopup="true" aria-expanded="false">
-      <span class="lang-switcher-icon" aria-hidden="true">&#127760;</span>
-      <span class="lang-switcher-label">Language</span>
-    </button>
+    <div class="nav-utility">
+      <button class="age-switcher" type="button" data-age-switcher hidden>
+        <span class="age-switcher-label">Teaching</span>
+        <span class="age-switcher-value" data-age-switcher-value>&mdash;</span>
+      </button>
+      <button class="lang-switcher" type="button" data-lang-switcher aria-haspopup="true" aria-expanded="false">
+        <span class="lang-switcher-icon" aria-hidden="true">&#127760;</span>
+        <span class="lang-switcher-label">Language</span>
+      </button>
+    </div>
     <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
     <ul class="nav-links" id="primary-nav">
 $links      <li class="nav-age-item"><a href="/lessons" data-mobile-age-link><span class="nav-age-label">Teaching</span><span data-mobile-age-value>Choose your age group</span></a></li>
@@ -538,7 +537,7 @@ STEP
   for my $other (@$all_bands) {
     next if $other->{band} eq $band;
     my $ob = $other->{band};
-    $switcher_items .= qq{<a href="/lessons/$ob/$topic" class="band-pill" data-band="$ob">@{[ $BAND_SHORT{$ob} ]} &middot; @{[ $BAND_LABEL{$ob} ]}</a>};
+    $switcher_items .= qq{<a href="/lessons/$ob/$topic" class="band-pill" data-band="$ob">@{[ $BAND_LABEL{$ob} ]}</a>};
   }
   my $switcher_html = length($switcher_items)
     ? qq{<div class="lesson-band-switcher reveal"><span class="lesson-band-switcher-label">Also built for:</span>$switcher_items</div>}
