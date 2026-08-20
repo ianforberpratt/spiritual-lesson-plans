@@ -34,6 +34,16 @@ my %BAND_ACCENT = (
   '21-plus'=> 'gold-deep',
 );
 
+# A quiet word for the mentor themselves, shown once under each band's
+# heading (not repeated per lesson card).
+my %BAND_TIP = (
+  '5-8'    => "You already have what this moment needs. This age learns through story and repetition, not explanation \x{2014} trust the story to do the work. You've got this, and the world needs you.",
+  '8-11'   => "You already have what this moment needs. This age is just old enough to compare two ideas side by side \x{2014} let them do the comparing, not you. You've got this, and the world needs you.",
+  '11-14'  => "You already have what this moment needs. This age can go deep, but often needs a quiet, private way in before they're ready to share. You've got this, and the world needs you.",
+  '14-21'  => "You already have what this moment needs. This age can hold real, honest depth \x{2014} meet them there instead of softening it. You've got this, and the world needs you.",
+  '21-plus'=> "You already have what this moment needs. This age brings real life experience \x{2014} invite them to apply the idea to something happening right now. You've got this, and the world needs you.",
+);
+
 sub read_file {
   my ($path) = @_;
   open(my $fh, '<:encoding(UTF-8)', $path) or die "Can't read $path: $!";
@@ -102,6 +112,7 @@ for my $band (@band_order) {
   $sections .= qq{  <div class="wrap">\n};
   $sections .= qq{    <div class="band-section-head">\n};
   $sections .= qq{      <p class="eyebrow" style="margin:0;">@{[ esc($band_labels{$band}) ]}</p>\n};
+  $sections .= qq{      <p class="band-section-tip">@{[ esc($BAND_TIP{$band}) ]}</p>\n} if $BAND_TIP{$band};
   $sections .= qq{    </div>\n};
 
   if (@cards) {

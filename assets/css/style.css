@@ -1890,11 +1890,25 @@ body.home .site-nav.is-scrolled .age-switcher .age-switcher-value { color: var(-
 .band-section { padding-top: clamp(28px, 4vw, 44px); }
 .band-section-head {
   display: flex;
-  align-items: baseline;
-  gap: 14px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
   margin-bottom: clamp(20px, 3vw, 32px);
 }
 .band-section-head h2 { margin: 0; }
+
+/* A quiet word for the mentor themselves, under the age label — smaller
+   and softer than the eyebrow above it so it reads as an aside, not a
+   second heading. */
+.band-section-tip {
+  margin: 0;
+  max-width: 62ch;
+  font-family: var(--font-serif);
+  font-size: 0.86rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--ink-faint);
+}
 
 html.js .band-section[hidden] { display: none; }
 html.js .band-section {
