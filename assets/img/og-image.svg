@@ -1,5 +1,5 @@
 <svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="ogTitle">
-  <title id="ogTitle">Spiritual Lesson Plans — built strong, free for all to use</title>
+  <title id="ogTitle">Spiritual Lesson Plans — made with love for every faith background, rooted in Christian Science</title>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#362F4B"/>
@@ -19,32 +19,20 @@
   <circle cx="980" cy="85" r="3" fill="#FBF5EA" opacity="0.4"/>
   <circle cx="220" cy="75" r="3" fill="#FBF5EA" opacity="0.4"/>
 
-  <!-- a simple, sturdy foundation mark: three grounded columns, wide and load-bearing,
-       under the headline — "built strong" made literal without being heavy-handed -->
+  <!-- a simple, sturdy foundation mark: three grounded columns, wide and load-bearing —
+       "built strong" made literal without being heavy-handed -->
   <g opacity="0.9">
-    <rect x="560" y="150" width="10" height="46" rx="3" fill="#E8A94C"/>
-    <rect x="595" y="150" width="10" height="46" rx="3" fill="#A9C9D9"/>
-    <rect x="630" y="150" width="10" height="46" rx="3" fill="#8CA37E"/>
-    <rect x="548" y="196" width="104" height="7" rx="3.5" fill="#FBF5EA" opacity="0.55"/>
+    <rect x="560" y="132" width="10" height="40" rx="3" fill="#E8A94C"/>
+    <rect x="595" y="132" width="10" height="40" rx="3" fill="#A9C9D9"/>
+    <rect x="630" y="132" width="10" height="40" rx="3" fill="#8CA37E"/>
+    <rect x="548" y="172" width="104" height="6" rx="3" fill="#FBF5EA" opacity="0.55"/>
   </g>
 
-  <text x="600" y="290" text-anchor="middle" font-family="Georgia, 'Iowan Old Style', serif" font-size="64" font-weight="600" fill="#FBF5EA">
+  <!-- Two lines only, blown up to survive a thumbnail: the name, then the promise. -->
+  <text x="600" y="360" text-anchor="middle" font-family="Georgia, 'Iowan Old Style', serif" font-size="98" font-weight="700" fill="#FBF5EA">
     Spiritual Lesson Plans
   </text>
-  <text x="600" y="346" text-anchor="middle" font-family="Georgia, serif" font-size="29" font-style="italic" fill="#E8A94C">
-    Built strong. Free for everyone to use.
+  <text x="600" y="455" text-anchor="middle" font-family="Georgia, serif" font-size="35" font-style="italic" fill="#E8A94C">
+    Made with Love for every faith background &#8212; rooted in Christian Science
   </text>
-
-  <text x="600" y="420" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" fill="#FBF5EA" opacity="0.82">
-    Age-by-age lessons rooted in Christian Science &#8212; every faith background welcome.
-  </text>
-
-  <g transform="translate(468,468)" opacity="0.9">
-    <rect x="0" y="0" width="130" height="40" rx="20" fill="none" stroke="#FBF5EA" stroke-opacity="0.35"/>
-    <text x="65" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1" fill="#FBF5EA">FREE</text>
-  </g>
-  <g transform="translate(608,468)" opacity="0.9">
-    <rect x="0" y="0" width="220" height="40" rx="20" fill="none" stroke="#FBF5EA" stroke-opacity="0.35"/>
-    <text x="110" y="26" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" letter-spacing="1" fill="#FBF5EA">CREATIVE COMMONS</text>
-  </g>
 </svg>
