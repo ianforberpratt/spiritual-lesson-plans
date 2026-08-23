@@ -35,6 +35,10 @@ sub write_file {
 
 # topic slug => [ [svg filename, title, back-link label], ... ]
 my %ENTRIES = (
+  'big-ego-little-ego' => [
+    ['flashlight-or-mirror.svg', 'Flashlight or Mirror?'],
+    ['the-ego-that-doesnt-need-to-win.svg', "The Ego That Doesn't Need to Win"],
+  ],
   'does-god-make-my-decisions' => [
     ['10-10-10-rule.svg', 'The 10-10-10 Rule'],
     ['whole-staircase.svg', "You Don't Need the Whole Staircase"],

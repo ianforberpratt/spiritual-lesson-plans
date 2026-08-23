@@ -9,6 +9,21 @@
   },
   "topics": [
     {
+      "slug": "big-ego-little-ego",
+      "title": "Big Ego, Little Ego",
+      "hook": "You live inside the most little-e-ego-saturated environment ever built. Here's the version of you it's covering up.",
+      "topicCategory": "identity",
+      "landingUrl": "/lessons/big-ego-little-ego",
+      "datePublished": "2026-08-23",
+      "dateModified": "2026-08-23",
+      "bands": [
+      { "band": "8-11", "label": "Grade 3-5", "short": "Grade 3-5", "timeDisplay": "\"30-35 min\"", "title": "Big Ego, Little Ego", "hook": "A flashlight runs out. A mirror never does — because a mirror was never making its own light in the first place.", "url": "/lessons/8-11/big-ego-little-ego" },
+      { "band": "11-14", "label": "Grade 6-8", "short": "Grade 6-8", "timeDisplay": "\"35-40 min\"", "title": "Big Ego, Little Ego", "hook": "There are two voices arguing about who you are — only one of them is actually you.", "url": "/lessons/11-14/big-ego-little-ego" },
+      { "band": "14-21", "label": "Teen", "short": "Teen", "timeDisplay": "\"40-45 min\"", "title": "Big Ego, Little Ego", "hook": "You live inside the most little-e-ego-saturated environment ever built. Here's the version of you it's covering up.", "url": "/lessons/14-21/big-ego-little-ego" },
+      { "band": "21-plus", "label": "Age 21+", "short": "Age 21+", "timeDisplay": "\"45-60 min\"", "title": "Big Ego, Little Ego", "hook": "The version of you that has to win the meeting, win the argument, or win the comparison isn't actually the one in charge.", "url": "/lessons/21-plus/big-ego-little-ego" }
+      ]
+    },
+    {
       "slug": "does-god-make-my-decisions",
       "title": "Does God Make My Decisions For Me?",
       "hook": "A practical way to move through the toughest choices.",

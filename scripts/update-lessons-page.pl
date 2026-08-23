@@ -191,7 +191,7 @@ for my $t (@topics) {
 }
 my $idx_items_json = join(",\n", @idx_items);
 
-my $n3 = ($idx =~ s/("name":\s*"Spiritual lesson plans for teenagers",\s*"description":[^\n]*\n\s*"numberOfItems":\s*)\d+(,\s*"itemListOrder":[^\n]*\n\s*"itemListElement":\s*\[)\s*.*?\s*(\]\s*\})/$1$count$2\n$idx_items_json\n      $3/s);
+my $n3 = ($idx =~ s/("name":\s*"Spiritual lesson plans for every age",\s*"description":[^\n]*\n\s*"numberOfItems":\s*)\d+(,\s*"itemListOrder":[^\n]*\n\s*"itemListElement":\s*\[)\s*.*?\s*(\]\s*\})/$1$count$2\n$idx_items_json\n      $3/s);
 die "index.html ItemList substitution matched $n3 times (expected 1)\n" unless $n3 == 1;
 
 # "The newest lessons" preview grid (3 cards, most recently *published*
