@@ -189,6 +189,62 @@
   </a>
 </header>
 
+<section class="quick-suggest-section">
+  <div class="wrap">
+    <div class="quick-suggest-intro reveal">
+      <p class="eyebrow">Not sure where to start?</p>
+      <h2>However much time you've got, there's a way in.</h2>
+      <p class="lead">Browse all the lessons yourself, or tell us what's actually going on and we'll point you toward a few that fit.</p>
+      <div class="quick-suggest-doors">
+        <a href="/lessons" class="btn btn-outline-dark">Browse all lessons</a>
+        <button type="button" class="btn btn-gold" data-qs-open hidden>Tell us what's going on &rarr;</button>
+      </div>
+    </div>
+
+    <div class="qs-panel" data-qs-panel hidden>
+      <div class="qs-step" data-qs-step="1">
+        <p class="qs-step-label">Step 1 of 2</p>
+        <h3>Who's this for?</h3>
+        <div class="qs-options" role="radiogroup" aria-label="Who's this for?">
+          <button type="button" class="qs-option" data-qs-age="5-8">Early Elementary <span>(5&ndash;8)</span></button>
+          <button type="button" class="qs-option" data-qs-age="8-11">Upper Elementary <span>(8&ndash;11)</span></button>
+          <button type="button" class="qs-option" data-qs-age="11-14">Middle School <span>(11&ndash;14)</span></button>
+          <button type="button" class="qs-option" data-qs-age="14-21">Teen &amp; Early College <span>(14&ndash;21)</span></button>
+          <button type="button" class="qs-option" data-qs-age="21-plus">Adult <span>(21+)</span></button>
+          <button type="button" class="qs-option" data-qs-age="any">Just me &mdash; no specific age</button>
+        </div>
+      </div>
+
+      <div class="qs-step" data-qs-step="2" hidden>
+        <p class="qs-step-label">Step 2 of 2</p>
+        <h3>What's actually going on?</h3>
+        <div class="qs-options" role="radiogroup" aria-label="What's actually going on?">
+          <button type="button" class="qs-option" data-qs-topic="">Just a regular week &mdash; nothing specific</button>
+          <button type="button" class="qs-option" data-qs-topic="identity-and-worth">Someone's feeling not good enough, or stuck comparing themselves to others</button>
+          <button type="button" class="qs-option" data-qs-topic="belonging-and-loneliness">Someone's lonely, or feels like they don't belong</button>
+          <button type="button" class="qs-option" data-qs-topic="conflict-and-forgiveness">There's real tension or a falling-out in the group</button>
+          <button type="button" class="qs-option" data-qs-topic="doubt-and-hard-questions-about-god">A hard question came up about who God actually is</button>
+          <button type="button" class="qs-option" data-qs-topic="decisions-and-guidance">A real decision or change is happening</button>
+          <button type="button" class="qs-option" data-qs-topic="disappointment-and-hard-days">Someone's dealing with a rough patch or a mistake they can't put down</button>
+          <button type="button" class="qs-option" data-qs-topic="grief-and-loss">Someone's grieving, or carrying a loss</button>
+          <button type="button" class="qs-option" data-qs-topic="desire-and-self-control">A pull toward something they know isn't good for them</button>
+        </div>
+        <p class="qs-sensitive-note" data-qs-sensitive-note hidden>Something more specific &mdash; pornography, questions about identity or orientation &mdash; <button type="button" data-qs-sensitive-link>see our teen/adult-only lessons on this</button>.</p>
+        <button type="button" class="qs-back" data-qs-back>&larr; Back</button>
+      </div>
+
+      <div class="qs-results" data-qs-results hidden>
+        <p class="qs-results-note" data-qs-results-note></p>
+        <div class="topic-grid qs-results-grid" data-qs-results-grid></div>
+        <div class="qs-results-links">
+          <a href="/lessons" class="link-more" data-qs-see-all>See all lessons for this age &rarr;</a>
+          <button type="button" class="qs-start-over" data-qs-start-over>Start over</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- The headline speaks personally, to whoever's reading it at whatever age; this speaks to
      whoever stumbled in without context and needs to know what the site actually is. -->
 <section class="statement" id="start">
@@ -350,5 +406,6 @@
 
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/age-context.js"></script>
+<script src="/assets/js/quick-suggest.js"></script>
 </body>
 </html>
