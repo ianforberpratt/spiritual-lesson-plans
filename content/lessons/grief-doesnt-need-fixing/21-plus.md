@@ -56,7 +56,7 @@ Sit with the doubling in Isaiah — "comfort ye, comfort ye" — spoken twice, a
 Fill out the printable privately or in pairs: the shape of a loss (anticipatory, sudden, both, or skip), one real strength/person/practice from the inventory, and one honest sentence naming a day (past or anticipated) when it wasn't enough — with the explicit reminder that naming that is not a failure of faith, of practice, or of the adjusting itself.
 
 ## What you'll need
-The printable handouts (see below), pens. Zero other prep.
+The printable [handout](/assets/materials/grief-doesnt-need-fixing/handout-21-plus-full.html), pens. Zero other prep.
 
 ## If it's not going well
 Silence is completely normal in a room like this — let it hold. Disagreement, theological or otherwise, is welcome — you're not trying to land everyone in the same place. A strong emotional reaction means pausing, grounding the room, and checking in with that person privately if needed rather than in front of the group. A disclosure of real harm — active suicidality, abuse, a loss by suicide or violence surfacing with detail beyond what the room can safely hold, or anything requiring more than facilitation — means stopping that thread, responding as a caring adult first, and moving to the site's mentor safety guidelines and your own local mandatory-reporting obligations, plus a direct referral to a grief counselor or clergy member as appropriate. This lesson's script does not extend into crisis response.
