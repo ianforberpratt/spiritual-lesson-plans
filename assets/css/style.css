@@ -2171,21 +2171,11 @@ html.js .lens-panel[hidden] { display: none; }
   scroll-margin-top: 100px;
 }
 .category-section-head {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
   margin-bottom: clamp(20px, 3vw, 32px);
 }
-.category-section-head h2 { margin: 0; }
-.category-section-tip {
-  align-self: stretch;
+.category-section-head h2 {
   margin: 0;
-  max-width: 62ch;
-  font-family: var(--font-serif);
-  font-size: 1rem;
-  line-height: 1.55;
-  color: var(--ink-faint);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
 }
 
 .category-lesson-list {

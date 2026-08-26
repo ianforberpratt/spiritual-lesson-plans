@@ -220,8 +220,7 @@ for my $cat (@CATEGORY_ORDER) {
   $category_sections .= qq{<section id="category-$cat" class="category-section" data-category="$cat">\n};
   $category_sections .= qq{  <div class="wrap">\n};
   $category_sections .= qq{    <div class="category-section-head">\n};
-  $category_sections .= qq{      <p class="eyebrow" style="margin:0;">@{[ esc($CATEGORY_LABEL{$cat}) ]}</p>\n};
-  $category_sections .= qq{      <p class="category-section-tip">@{[ esc($CATEGORY_BLURB{$cat}) ]}</p>\n};
+  $category_sections .= qq{      <h2>@{[ esc($CATEGORY_LABEL{$cat}) ]}</h2>\n};
   $category_sections .= qq{    </div>\n};
   $category_sections .= qq{    <div class="category-lesson-list">\n};
   for my $entry (@$entries) {
