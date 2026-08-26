@@ -1,6 +1,6 @@
 ---
 lesson_id: finding-the-bigger-us
-topic: belonging
+topic: conflict-and-forgiveness, belonging-and-loneliness
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Finding the Bigger "Us"

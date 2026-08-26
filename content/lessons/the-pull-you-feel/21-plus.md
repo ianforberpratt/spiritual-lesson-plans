@@ -1,6 +1,6 @@
 ---
 lesson_id: the-pull-you-feel
-topic: relationships
+topic: desire-and-self-control
 age_band: 21-plus
 age_label: College Student & Adult
 title: The Pull You Feel — In Tune or Out?

@@ -1,6 +1,6 @@
 ---
 lesson_id: when-someone-feels-like-the-enemy
-topic: forgiveness
+topic: conflict-and-forgiveness
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Loving the Difficult Person in Your Life

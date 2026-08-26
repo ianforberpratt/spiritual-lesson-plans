@@ -1,6 +1,6 @@
 ---
 lesson_id: not-the-struggle
-topic: identity
+topic: disappointment-and-hard-days
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: You Are Not the Struggle

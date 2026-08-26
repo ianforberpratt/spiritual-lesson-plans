@@ -101,7 +101,7 @@ it's real; the true Ego doesn't perform, because nothing about it is in question
 
 ```
 lesson_id: big-ego-little-ego
-topic: identity
+topic: identity-and-worth
 age_band: [8-11 | 11-14 | 14-21 | 21-plus]   (5-8 intentionally not built — see above)
 sensitive_topic: none
 core_model_ref: big-ego-little-ego/core-model.md

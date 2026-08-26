@@ -42,21 +42,22 @@ my %BAND_LABEL = (
   '21-plus'=> "College Student & Adult (21+)",
 );
 
-# Best-fit topic category per lesson (section 4.5's six categories). Not
-# yet surfaced in the UI (deferred), but worth tagging correctly now.
+# Best-fit topic category per lesson (see content/taxonomy/lesson-topics.md
+# for the current 8-category scheme and definitions). Feeds the /lessons
+# topic-browse view and homepage quick-suggest tool.
 my %TOPIC_CATEGORY = (
-  'not-the-struggle'                    => 'identity',
-  'off-days-are-allowed'                => 'belonging',
-  'trust-the-mover'                     => 'purpose',
-  'finding-the-bigger-us'               => 'belonging',
-  'when-someone-feels-like-the-enemy'   => 'forgiveness',
-  'lonely-in-a-crowded-room'            => 'belonging',
-  'learning-to-hear-the-nudge'          => 'prayer',
-  'is-regret-a-fair-teacher'            => 'forgiveness',
-  'does-god-make-my-decisions'          => 'purpose',
-  'words-that-open-doors'               => 'prayer',
-  'lgbtqia-youth-and-spiritual-learning'=> 'belonging',
-  'talking-about-pornography-use'       => 'courage',
+  'not-the-struggle'                    => 'disappointment-and-hard-days',
+  'off-days-are-allowed'                => 'disappointment-and-hard-days',
+  'trust-the-mover'                     => 'disappointment-and-hard-days',
+  'finding-the-bigger-us'               => 'conflict-and-forgiveness, belonging-and-loneliness',
+  'when-someone-feels-like-the-enemy'   => 'conflict-and-forgiveness',
+  'lonely-in-a-crowded-room'            => 'belonging-and-loneliness',
+  'learning-to-hear-the-nudge'          => 'decisions-and-guidance',
+  'is-regret-a-fair-teacher'            => 'disappointment-and-hard-days',
+  'does-god-make-my-decisions'          => 'decisions-and-guidance',
+  'words-that-open-doors'               => 'doubt-and-hard-questions-about-god',
+  'lgbtqia-youth-and-spiritual-learning'=> 'sensitive-topics',
+  'talking-about-pornography-use'       => 'sensitive-topics',
 );
 
 # Topics/bands needing the stronger safeguarding flags, beyond the

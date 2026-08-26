@@ -1,6 +1,6 @@
 ---
 lesson_id: words-that-open-doors
-topic: prayer
+topic: doubt-and-hard-questions-about-god
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Words That Still Open Doors

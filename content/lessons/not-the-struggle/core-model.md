@@ -47,7 +47,7 @@ Per the site's "fit what naturally works, don't force it" principle: this lesson
 
 ```
 lesson_id: not-the-struggle
-topic: identity, self-worth
+topic: disappointment-and-hard-days
 age_band: [11-14 | 14-21 | 21+]   (5-8 and 8-11 intentionally not built — see above)
 sensitive_topic: requires-careful-adaptation (11-14, 14-21) / none (21+, already adult-scoped)
 core_model_ref: not-the-struggle/core-model.md

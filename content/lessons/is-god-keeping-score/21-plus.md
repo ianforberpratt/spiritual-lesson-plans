@@ -1,6 +1,6 @@
 ---
 lesson_id: is-god-keeping-score
-topic: prayer
+topic: identity-and-worth, doubt-and-hard-questions-about-god
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Is God Keeping Score?

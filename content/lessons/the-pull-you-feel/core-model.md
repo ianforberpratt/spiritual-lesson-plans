@@ -160,7 +160,7 @@ implied.
 
 ```
 lesson_id: the-pull-you-feel
-topic: relationships
+topic: desire-and-self-control
 age_band: [11-14 | 14-21 | 21-plus]   (5-8 and 8-11 intentionally not built — see above)
 sensitive_topic: requires-careful-adaptation (11-14, 14-21) / none (21-plus, already adult-scoped)
 core_model_ref: the-pull-you-feel/core-model.md

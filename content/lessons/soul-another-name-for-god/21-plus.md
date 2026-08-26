@@ -1,6 +1,6 @@
 ---
 lesson_id: soul-another-name-for-god
-topic: identity
+topic: desire-and-self-control
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Soul: Another Name for God

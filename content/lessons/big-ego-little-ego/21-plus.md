@@ -1,6 +1,6 @@
 ---
 lesson_id: big-ego-little-ego
-topic: identity
+topic: identity-and-worth
 age_band: 21-plus
 age_label: "College Student & Adult"
 title: Big Ego, Little Ego

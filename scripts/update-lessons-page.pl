@@ -100,6 +100,39 @@ my @band_order = @{ $manifest->{bandOrder} };
 my %band_labels = %{ $manifest->{bandLabels} };
 my @topics = @{ $manifest->{topics} };
 
+# The "by what's going on" browsing lens (see content/taxonomy/lesson-topics.md
+# for the full definitions this is sourced from). Order here is the display
+# order on the page, not alphabetical — chosen to read as a sensible flow.
+# `sensitive-topics` is deliberately absent: that category never gets a card
+# here, by design (see claude/feature-spec-topic-browse-quick-suggest.md).
+my @CATEGORY_ORDER = qw(
+  identity-and-worth
+  belonging-and-loneliness
+  conflict-and-forgiveness
+  doubt-and-hard-questions-about-god
+  decisions-and-guidance
+  disappointment-and-hard-days
+  desire-and-self-control
+);
+my %CATEGORY_LABEL = (
+  'identity-and-worth'                 => 'Identity & worth',
+  'belonging-and-loneliness'           => 'Belonging & loneliness',
+  'conflict-and-forgiveness'           => 'Conflict & forgiveness',
+  'doubt-and-hard-questions-about-god' => 'Doubt & hard questions about God',
+  'decisions-and-guidance'             => 'Decisions & guidance',
+  'disappointment-and-hard-days'       => 'Disappointment & hard days',
+  'desire-and-self-control'            => 'Desire & self-control',
+);
+my %CATEGORY_BLURB = (
+  'identity-and-worth'                 => "Who you are when nothing you did today counts for or against it.",
+  'belonging-and-loneliness'           => "The ache of feeling alone even when nothing on the outside looks wrong.",
+  'conflict-and-forgiveness'           => "What love actually asks of you when someone feels like the enemy.",
+  'doubt-and-hard-questions-about-god' => "Wrestling honestly with who God is, or whether the words you were handed still fit.",
+  'decisions-and-guidance'             => "Facing a real choice and wanting more than a coin flip.",
+  'disappointment-and-hard-days'       => "A plan fell through, a mistake won't stop replaying, or today is just off.",
+  'desire-and-self-control'            => "A pull toward something that doesn't resolve with a simple resist-it-or-give-in.",
+);
+
 # ---------------------------------------------------------------------
 # Band sections
 # ---------------------------------------------------------------------
@@ -145,12 +178,81 @@ for my $band (@band_order) {
 }
 chomp $sections; chomp $sections;
 
+# ---------------------------------------------------------------------
+# Category sections ("by what's going on" lens)
+#
+# Grouped per (lesson, band) pair rather than per lesson, because a
+# lesson's topic tag is per band-file, not lesson-wide — most lessons use
+# the same tag on every band, but a few (see soul-another-name-for-god)
+# genuinely shift theme by band, and a lesson can carry two comma-separated
+# tags. Any band flagged sensitive (sensitiveTopic != "none") is excluded
+# here regardless of which topic it's tagged with — that's the safety rule
+# from the feature spec, applied uniformly rather than lesson-by-lesson.
+# ---------------------------------------------------------------------
+
+my %by_category; # category => [ { topic => $t, bands => [ band_info, ... ] }, ... ] keyed by topic slug
+my %seen_in_category; # "category|slug" => index into $by_category{category}
+
+for my $t (@topics) {
+  for my $b (@{ $t->{bands} }) {
+    next if ($b->{sensitiveTopic} // 'none') ne 'none';
+    my @cats = grep { length } map { s/^\s+|\s+$//gr } split /,/, ($b->{topic} // '');
+    for my $cat (@cats) {
+      next unless $CATEGORY_LABEL{$cat}; # skip sensitive-topics or anything unrecognized
+      my $key = "$cat|$t->{slug}";
+      if (!exists $seen_in_category{$key}) {
+        push @{ $by_category{$cat} }, { topic => $t, bands => [] };
+        $seen_in_category{$key} = $#{ $by_category{$cat} };
+      }
+      push @{ $by_category{$cat}[ $seen_in_category{$key} ]{bands} }, $b;
+    }
+  }
+}
+
+my $category_sections = '';
+for my $cat (@CATEGORY_ORDER) {
+  my $entries = $by_category{$cat};
+  next unless $entries && @$entries; # no empty cards
+
+  $category_sections .= qq{<section id="category-$cat" class="category-section" data-category="$cat">\n};
+  $category_sections .= qq{  <div class="wrap">\n};
+  $category_sections .= qq{    <div class="category-section-head">\n};
+  $category_sections .= qq{      <p class="eyebrow" style="margin:0;">@{[ esc($CATEGORY_LABEL{$cat}) ]}</p>\n};
+  $category_sections .= qq{      <p class="category-section-tip">@{[ esc($CATEGORY_BLURB{$cat}) ]}</p>\n};
+  $category_sections .= qq{    </div>\n};
+  $category_sections .= qq{    <div class="category-lesson-list">\n};
+  for my $entry (@$entries) {
+    my $t = $entry->{topic};
+    $category_sections .= qq{      <a href="$t->{landingUrl}" class="category-lesson-card reveal">\n};
+    $category_sections .= qq{        <h3>@{[ esc($t->{title}) ]}</h3>\n};
+    $category_sections .= qq{        <span class="tag">@{[ esc($t->{hook}) ]}</span>\n};
+    $category_sections .= qq{        <span class="category-lesson-badges">\n};
+    for my $band (@band_order) {
+      my ($bi) = grep { $_->{band} eq $band } @{ $entry->{bands} };
+      next unless $bi;
+      $category_sections .= qq{          <span class="age-badge age-badge-$BAND_ACCENT{$band}">@{[ esc($bi->{label}) ]}</span>\n};
+    }
+    $category_sections .= qq{        </span>\n};
+    $category_sections .= qq{      </a>\n};
+  }
+  $category_sections .= qq{    </div>\n};
+  $category_sections .= qq{  </div>\n};
+  $category_sections .= qq{</section>\n\n};
+}
+chomp $category_sections; chomp $category_sections;
+
 my $page = read_file($PAGE);
 my $count_before = () = $page =~ /BAND_SECTIONS_START/g;
 die "BAND_SECTIONS_START marker not found in $PAGE\n" unless $count_before;
 
 my $n = ($page =~ s/(<!-- BAND_SECTIONS_START:.*?-->).*?(<!-- BAND_SECTIONS_END -->)/$1\n$sections\n$2/s);
 die "Marker substitution matched $n times (expected 1) in $PAGE\n" unless $n == 1;
+
+my $count_before_cat = () = $page =~ /CATEGORY_SECTIONS_START/g;
+die "CATEGORY_SECTIONS_START marker not found in $PAGE\n" unless $count_before_cat;
+
+my $nc = ($page =~ s/(<!-- CATEGORY_SECTIONS_START:.*?-->).*?(<!-- CATEGORY_SECTIONS_END -->)/$1\n$category_sections\n$2/s);
+die "CATEGORY_SECTIONS marker substitution matched $nc times (expected 1) in $PAGE\n" unless $nc == 1;
 
 # ---------------------------------------------------------------------
 # ItemList schema (matched by its unique name, not a comment marker,
@@ -172,7 +274,7 @@ die "ItemList substitution matched $n2 times (expected 1) in $PAGE\n" unless $n2
 
 write_file($PAGE, $page);
 
-print "lessons.html updated: " . scalar(@topics) . " topics across " . scalar(@band_order) . " band sections.\n";
+print "lessons.html updated: " . scalar(@topics) . " topics across " . scalar(@band_order) . " band sections and " . scalar(keys %by_category) . " category sections.\n";
 
 # ---------------------------------------------------------------------
 # index.html — same ItemList pattern, different unique name, ordered

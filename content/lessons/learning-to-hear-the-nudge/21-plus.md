@@ -1,6 +1,6 @@
 ---
 lesson_id: learning-to-hear-the-nudge
-topic: prayer
+topic: decisions-and-guidance
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Learning to Hear the Nudge

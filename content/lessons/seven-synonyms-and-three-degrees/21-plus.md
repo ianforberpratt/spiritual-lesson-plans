@@ -1,6 +1,6 @@
 ---
 lesson_id: seven-synonyms-and-three-degrees
-topic: identity
+topic: doubt-and-hard-questions-about-god
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Seven Names, One Journey

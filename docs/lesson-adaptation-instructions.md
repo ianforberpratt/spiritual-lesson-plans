@@ -286,7 +286,15 @@ FILE: content/lessons/<topic-slug>/<band>.md
 ```
 ---
 lesson_id: <topic-slug>
-topic: <identity | belonging | courage | prayer | forgiveness | purpose | ...>
+topic: <see content/taxonomy/lesson-topics.md for the current category list and definitions —
+  identity-and-worth | belonging-and-loneliness | conflict-and-forgiveness |
+  doubt-and-hard-questions-about-god | decisions-and-guidance | disappointment-and-hard-days |
+  desire-and-self-control | sensitive-topics. One or two, comma-separated, picked for what a
+  teacher would actually search under. sensitive-topics only applies alongside
+  sensitive_topic: teen-adult-only or requires-careful-adaptation below — never on its own.
+  If band-level content genuinely differs in theme from the rest of the lesson (rare — see
+  soul-another-name-for-god for a real example), tag that band's file with its own topic
+  rather than forcing one value across every band>
 age_band: <5-8 | 8-11 | 11-14 | 14-21 | 21-plus>
 age_label: <e.g. "Middle School (Grades 6-8)">
 title: <lesson title for this band>

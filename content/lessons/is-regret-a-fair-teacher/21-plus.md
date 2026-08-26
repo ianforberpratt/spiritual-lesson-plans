@@ -1,6 +1,6 @@
 ---
 lesson_id: is-regret-a-fair-teacher
-topic: forgiveness
+topic: disappointment-and-hard-days
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Is Regret a Fair and Just Teacher?

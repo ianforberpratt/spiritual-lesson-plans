@@ -1,6 +1,6 @@
 ---
 lesson_id: lonely-in-a-crowded-room
-topic: belonging
+topic: belonging-and-loneliness
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Lonely in a Crowded Life

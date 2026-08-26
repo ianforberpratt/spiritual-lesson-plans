@@ -1,6 +1,6 @@
 ---
 lesson_id: trust-the-mover
-topic: purpose
+topic: disappointment-and-hard-days
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Trust the Mover

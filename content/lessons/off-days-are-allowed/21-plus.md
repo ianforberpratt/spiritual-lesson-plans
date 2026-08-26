@@ -1,6 +1,6 @@
 ---
 lesson_id: off-days-are-allowed
-topic: belonging
+topic: disappointment-and-hard-days
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Off Days Are Allowed

@@ -1,6 +1,6 @@
 ---
 lesson_id: does-god-make-my-decisions
-topic: purpose
+topic: decisions-and-guidance
 age_band: 21-plus
 age_label: College Student & Adult (21+)
 title: Does God Make My Decisions For Me?

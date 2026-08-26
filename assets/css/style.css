@@ -1475,6 +1475,8 @@ html.js .reveal.is-visible {
   html.js .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
   .topic-card::after { transition: none; }
+  .category-lesson-card::after { transition: none; }
+  .lens-tab { transition: none; }
   .hero-scroll span[aria-hidden] { animation: none; opacity: 0.7; transform: none; }
 }
 
@@ -2031,6 +2033,10 @@ body.home .site-nav.is-scrolled .age-switcher .age-switcher-value { color: var(-
   background: var(--cream);
   border-radius: var(--radius);
 }
+/* The [hidden] attribute alone can't win against the display:flex above —
+   same fix as .band-section[hidden] needed. Without this, the "Showing
+   lessons for —" bar briefly shows on first load before any age is chosen. */
+.age-chooser-status[hidden] { display: none; }
 .age-chooser-status p { margin: 0; color: var(--ink-soft); }
 .age-chooser-status strong { color: var(--ink); }
 .age-chooser-status button {
@@ -2099,3 +2105,133 @@ html.js .band-section {
 }
 .band-empty p:last-child { margin-bottom: 0; }
 .band-empty a { color: var(--gold-text); }
+
+/* ---------- /lessons: "by age" / "by what's going on" lens switcher ---------- */
+
+.lens-switcher-section {
+  padding-top: clamp(28px, 4vw, 40px);
+  padding-bottom: clamp(24px, 3.5vw, 36px);
+}
+
+.lens-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 16px;
+  background: var(--cream);
+  border-radius: 999px;
+}
+.lens-tab {
+  border: none;
+  background: transparent;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.lens-tab:hover { color: var(--ink); }
+.lens-tab[aria-selected="true"] {
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(54, 47, 75, 0.14);
+}
+.lens-tab:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+
+.lens-switcher-note {
+  max-width: 62ch;
+  margin: 0;
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ink-faint);
+}
+
+/* The two lens panels sit where a run of <section>s would otherwise be, so
+   they need to carry the same hairline seam that `section + section`
+   provides elsewhere — including panel-to-panel, for the no-JS state where
+   both panels are stacked and visible at once (see the html.js rule below). */
+.lens-switcher-section + .lens-panel,
+.lens-panel + .lens-panel,
+.lens-panel + section {
+  border-top: 1px solid var(--rule);
+}
+
+/* Progressive enhancement, same pattern as .band-section: without JS (or
+   before it runs) both panels stay statically visible and stacked — every
+   lesson is reachable both ways regardless of scripting. JS picks one lens
+   as active and hides the other only once it's confirmed running. */
+html.js .lens-panel[hidden] { display: none; }
+
+.category-section {
+  padding-top: clamp(28px, 4vw, 44px);
+  scroll-margin-top: 100px;
+}
+.category-section-head {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  margin-bottom: clamp(20px, 3vw, 32px);
+}
+.category-section-head h2 { margin: 0; }
+.category-section-tip {
+  align-self: stretch;
+  margin: 0;
+  max-width: 62ch;
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-faint);
+}
+
+.category-lesson-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-lesson-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 22px 0;
+  border-top: 1px solid var(--rule);
+  color: var(--ink);
+  text-decoration: none;
+}
+.category-lesson-list .category-lesson-card:last-child { border-bottom: 1px solid var(--rule); }
+
+.category-lesson-card::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-deep);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.category-lesson-card:hover::after,
+.category-lesson-card:focus-visible::after { width: 100%; }
+
+.category-lesson-card h3 {
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+  font-weight: 400;
+  margin: 0;
+}
+.category-lesson-card .tag {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+.category-lesson-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 2px;
+}
