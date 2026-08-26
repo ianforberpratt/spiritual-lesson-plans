@@ -39,12 +39,15 @@ of the lesson-adaptation instructions already treats this content as oldest-band
 this feature shouldn't undo that carefulness by making it one tap away from a homepage aimed at
 Sunday School teachers of all ages.
 
-Implementation note: gate on the `sensitive_topic` frontmatter field (`none` vs.
-`requires-careful-adaptation`/`teen-adult-only`), not on the `topic` value. Both filter to the
-same two lessons today, but `sensitive_topic` is the field actually designed for this and is what
-stays correct if a future lesson is ever double-tagged (sensitive content that also genuinely fits
-`belonging-and-loneliness`, say) — filtering on the category name alone would let it leak into a
-public topic card.
+Implementation note: gate on the `sensitive_topic` frontmatter field, not on the `topic` value —
+but only its `teen-adult-only` value, which is the real audience gate. Its other non-`none` value,
+`requires-careful-adaptation`, is a facilitator-guidance flag, not an audience gate (confirmed
+2026-08-27: the grief-doesnt-need-fixing lesson carries it on every band including 5-8, which only
+exists because that band was deliberately written for K-2 — excluding it from browse would've
+silently emptied its entire topic category). Filtering on the category name alone would still be
+wrong long-term — it'd let a future double-tagged lesson (sensitive content that also genuinely
+fits `belonging-and-loneliness`, say) leak into a public card if someone forgot to also gate by
+name — `sensitive_topic: teen-adult-only` is the field actually designed to prevent that.
 
 Internal linking bonus (ties into the SEO doc, section 3): this view gives every lesson a second
 path to be reached by a crawler and a human, and gives natural anchor text ("lessons about

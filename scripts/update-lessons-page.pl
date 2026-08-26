@@ -188,9 +188,13 @@ chomp $sections; chomp $sections;
 # lesson's topic tag is per band-file, not lesson-wide — most lessons use
 # the same tag on every band, but a few (see soul-another-name-for-god)
 # genuinely shift theme by band, and a lesson can carry two comma-separated
-# tags. Any band flagged sensitive (sensitiveTopic != "none") is excluded
-# here regardless of which topic it's tagged with — that's the safety rule
-# from the feature spec, applied uniformly rather than lesson-by-lesson.
+# tags. Only "teen-adult-only" bands are excluded here — that's the real
+# audience gate (used by the pornography lesson, and one lgbtqia band that
+# has no younger band at all). "requires-careful-adaptation" is a
+# facilitator-guidance flag, not an audience gate — proof: the grief lesson
+# carries it on every band including 5-8, which only exists because it was
+# deliberately written for that age. Excluding it from browse too would
+# empty out an entire topic category for a lesson built for every age.
 # ---------------------------------------------------------------------
 
 my %by_category; # category => [ { topic => $t, bands => [ band_info, ... ] }, ... ] keyed by topic slug
@@ -198,7 +202,7 @@ my %seen_in_category; # "category|slug" => index into $by_category{category}
 
 for my $t (@topics) {
   for my $b (@{ $t->{bands} }) {
-    next if ($b->{sensitiveTopic} // 'none') ne 'none';
+    next if ($b->{sensitiveTopic} // 'none') eq 'teen-adult-only';
     my @cats = grep { length } map { s/^\s+|\s+$//gr } split /,/, ($b->{topic} // '');
     for my $cat (@cats) {
       next unless $CATEGORY_LABEL{$cat}; # skip sensitive-topics or anything unrecognized

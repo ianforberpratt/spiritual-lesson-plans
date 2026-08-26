@@ -673,10 +673,26 @@ sub preferred_band_meta {
   # bands (e.g. "The Toy We Both Want" at 5-8 vs. "Finding the Bigger
   # 'Us'" at 11-14+) — prefer a band whose title reads naturally as the
   # topic's general-audience name for anything landing-page-level.
+  my $picked;
   for my $band ('14-21', '21-plus', '11-14', '8-11', '5-8') {
-    return $by_band{$band} if $by_band{$band};
+    $picked = $by_band{$band} and last if $by_band{$band};
   }
-  return $bands->[0]{meta};
+  $picked //= $bands->[0]{meta};
+
+  # Optional escape hatch: some lessons' band titles diverge too much for
+  # any single one to read as a general-audience name (e.g. grief-doesnt-
+  # need-fixing's bands are named per sub-theme — "Neither Kind Is Worse",
+  # "The Long Loop" — none of which say what the lesson is actually about
+  # out of context). If any band sets site_title, it wins for landing-page/
+  # schema/homepage purposes; each band's own page still shows its own
+  # title untouched, since this returns a copy, not the original hashref.
+  for my $band ('14-21', '21-plus', '11-14', '8-11', '5-8') {
+    my $m = $by_band{$band};
+    if ($m && $m->{site_title}) {
+      return { %$picked, title => $m->{site_title} };
+    }
+  }
+  return $picked;
 }
 
 sub render_topic_landing {

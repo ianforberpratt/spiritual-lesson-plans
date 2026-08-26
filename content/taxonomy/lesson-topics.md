@@ -82,7 +82,16 @@ Note: this last category is structurally different from the other eight — it m
 as a card in the /lessons topic-browse grid, and never as a default option in the quick-suggest
 flow's topic list (see feature spec). The rule that governs this is the `sensitive_topic`
 frontmatter field (`none | requires-careful-adaptation | teen-adult-only`), not the `topic` tag
-itself — any lesson with `sensitive_topic` set to anything other than `none` is excluded from
-both the topic-browse grid and default quick-suggest results, regardless of which `topic` value
-it also carries. It surfaces only as a secondary, explicitly-labeled option in quick-suggest, and
-only after a 14-21 or 21-plus age is selected.
+itself — but the two non-`none` values mean genuinely different things and only one of them gates
+visibility:
+
+- `teen-adult-only` is a real audience gate — the band literally doesn't exist for younger
+  ages (pornography, one lgbtqia band). Any band flagged this way is excluded from both the
+  topic-browse grid and default quick-suggest results, regardless of its `topic` value. It
+  surfaces only as the secondary, explicitly-labeled quick-suggest option, and only after a
+  14-21 or 21-plus age is selected.
+- `requires-careful-adaptation` is a facilitator-guidance flag, not an audience gate — it means
+  "handle this content with care in the room," and shows up on lessons built for every age band
+  (the whole grief-doesnt-need-fixing lesson, including its 5-8 band, carries this flag). Bands
+  flagged this way are NOT excluded from browse or quick-suggest — excluding them would silently
+  empty out an entire topic category for content that was deliberately age-adapted down to K-2.
