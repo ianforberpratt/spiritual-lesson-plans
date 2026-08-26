@@ -64,6 +64,10 @@ one or two a teacher would actually search under, not every theme that's technic
 - not-the-struggle (11-14, 14-21, 21-plus)
 - is-regret-a-fair-teacher (all bands)
 
+## grief-and-loss
+"When someone the group loves is gone, and no lesson can undo that — only walk alongside it."
+- (added 2026-08-26, no lessons tagged yet — first lesson pending)
+
 ## desire-and-self-control
 "A pull toward something that doesn't resolve with a simple resist-it-or-give-in."
 - the-pull-you-feel (11-14, 14-21, 21-plus)
@@ -74,7 +78,7 @@ one or two a teacher would actually search under, not every theme that's technic
 - talking-about-pornography-use (14-21)
 - lgbtqia-youth-and-spiritual-learning (14-21)
 
-Note: this last category is structurally different from the other seven — it must never appear
+Note: this last category is structurally different from the other eight — it must never appear
 as a card in the /lessons topic-browse grid, and never as a default option in the quick-suggest
 flow's topic list (see feature spec). The rule that governs this is the `sensitive_topic`
 frontmatter field (`none | requires-careful-adaptation | teen-adult-only`), not the `topic` tag

@@ -112,6 +112,7 @@ my @CATEGORY_ORDER = qw(
   doubt-and-hard-questions-about-god
   decisions-and-guidance
   disappointment-and-hard-days
+  grief-and-loss
   desire-and-self-control
 );
 my %CATEGORY_LABEL = (
@@ -121,6 +122,7 @@ my %CATEGORY_LABEL = (
   'doubt-and-hard-questions-about-god' => 'Doubt & hard questions about God',
   'decisions-and-guidance'             => 'Decisions & guidance',
   'disappointment-and-hard-days'       => 'Disappointment & hard days',
+  'grief-and-loss'                     => 'Grief & loss',
   'desire-and-self-control'            => 'Desire & self-control',
 );
 my %CATEGORY_BLURB = (
@@ -130,6 +132,7 @@ my %CATEGORY_BLURB = (
   'doubt-and-hard-questions-about-god' => "Wrestling honestly with who God is, or whether the words you were handed still fit.",
   'decisions-and-guidance'             => "Facing a real choice and wanting more than a coin flip.",
   'disappointment-and-hard-days'       => "A plan fell through, a mistake won't stop replaying, or today is just off.",
+  'grief-and-loss'                     => "When someone the group loves is gone, and no lesson can undo that \x{2014} only walk alongside it.",
   'desire-and-self-control'            => "A pull toward something that doesn't resolve with a simple resist-it-or-give-in.",
 );
 
