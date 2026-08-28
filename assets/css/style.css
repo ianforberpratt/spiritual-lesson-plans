@@ -147,6 +147,118 @@ p { margin: 0 0 1.15em; max-width: var(--measure); }
 }
 .section-head p:last-child { margin-bottom: 0; }
 
+/* ---------- Homepage: "How's your group doing today?" mood picker ---------- */
+
+.mood-section { background: var(--cream); }
+html.js .mood-section[hidden] { display: none; }
+
+.mood-intro { max-width: 620px; margin: 0 auto; text-align: center; }
+.mood-intro .eyebrow { text-align: center; }
+.mood-intro h2 { margin-bottom: 0.4em; }
+.mood-intro .lead { margin: 0 auto; }
+
+.mood-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(12px, 2vw, 20px);
+  max-width: 780px;
+  margin: clamp(36px, 5vw, 56px) auto 0;
+}
+
+.mood-chip {
+  display: inline-block;
+  padding: 13px 22px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.15s ease;
+}
+html.js .mood-chip {
+  animation: chip-float var(--float-dur, 4s) ease-in-out infinite;
+  animation-delay: var(--float-delay, 0s);
+}
+@keyframes chip-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(var(--float-amt, -6px)); }
+}
+.mood-chip:hover, .mood-chip:focus-visible {
+  border-color: var(--gold-deep);
+  box-shadow: 0 6px 18px rgba(232, 169, 76, 0.22);
+  background: #fff;
+  outline: none;
+}
+.mood-chip-wild {
+  border-style: dashed;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* Pressed feedback + the rest of the cloud stepping back once a choice is made. */
+.mood-chip.is-picked {
+  animation: chip-pop 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  border-color: var(--gold-deep);
+  background: var(--gold);
+}
+@keyframes chip-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.mood-cloud.is-settled .mood-chip {
+  animation-play-state: paused;
+}
+.mood-cloud.is-settled .mood-chip:not(.is-picked) {
+  opacity: 0.35;
+  transform: scale(0.94) !important;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.mood-results {
+  max-width: 900px;
+  margin: clamp(40px, 5vw, 60px) auto 0;
+}
+html.js .mood-results[hidden] { display: none; }
+.mood-picked {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 clamp(24px, 3vw, 36px);
+}
+.mood-picked strong { color: var(--gold-text); font-style: normal; }
+.mood-results-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 28px;
+  margin: clamp(28px, 3.5vw, 40px) 0 0;
+}
+.mood-results-links button {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 560px) {
+  .mood-chip { padding: 11px 18px; font-size: 0.88rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .mood-chip { animation: none; }
+  .mood-chip.is-picked { animation: none; border-color: var(--gold-deep); background: var(--gold); }
+  .mood-cloud.is-settled .mood-chip:not(.is-picked) { transition: none; }
+}
+
 /* ---------- Buttons ---------- */
 
 .btn {
@@ -672,9 +784,31 @@ section + section { border-top: 1px solid var(--rule); }
   width: 0;
   height: 1px;
   background: var(--gold-deep);
-  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 0 rgba(232, 169, 76, 0);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
 }
-.topic-card:hover::after { width: 100%; }
+.topic-card:hover::after {
+  width: 100%;
+  box-shadow: 0 0 10px rgba(232, 169, 76, 0.55);
+}
+
+/* A quiet spark, not a badge — the same warmth the hero's hidden light
+   hints at, echoed here at a much smaller volume on every card. */
+.topic-card h3::before {
+  content: "\2726";
+  display: inline-block;
+  margin-right: 0.32em;
+  font-size: 0.72em;
+  color: var(--gold-deep);
+  opacity: 0;
+  transform: scale(0.5) rotate(-15deg);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.topic-card:hover h3::before,
+.topic-card:focus-visible h3::before {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
 
 .topic-card h3 {
   font-size: clamp(1.3rem, 2vw, 1.6rem);
@@ -1476,6 +1610,8 @@ html.js .reveal.is-visible {
   html { scroll-behavior: auto; }
   .topic-card::after { transition: none; }
   .category-lesson-card::after { transition: none; }
+  .topic-card h3::before, .category-lesson-card h3::before { transition: none; }
+  .age-chooser-card { transition: none; }
   .lens-tab { transition: none; }
   .hero-scroll span[aria-hidden] { animation: none; opacity: 0.7; transform: none; }
 }
@@ -1985,7 +2121,7 @@ body.home .site-nav.is-scrolled .age-switcher .age-switcher-value { color: var(-
 .age-chooser-card:hover,
 .age-chooser-card:focus-visible {
   border-color: var(--gold-deep);
-  box-shadow: 0 10px 28px rgba(54, 47, 75, 0.1);
+  box-shadow: 0 10px 28px rgba(54, 47, 75, 0.1), 0 0 20px rgba(232, 169, 76, 0.18);
   transform: translateY(-3px);
   outline: none;
 }
@@ -2203,10 +2339,30 @@ html.js .lens-panel[hidden] { display: none; }
   width: 0;
   height: 1px;
   background: var(--gold-deep);
-  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 0 0 rgba(232, 169, 76, 0);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
 }
 .category-lesson-card:hover::after,
-.category-lesson-card:focus-visible::after { width: 100%; }
+.category-lesson-card:focus-visible::after {
+  width: 100%;
+  box-shadow: 0 0 10px rgba(232, 169, 76, 0.55);
+}
+
+.category-lesson-card h3::before {
+  content: "\2726";
+  display: inline-block;
+  margin-right: 0.32em;
+  font-size: 0.72em;
+  color: var(--gold-deep);
+  opacity: 0;
+  transform: scale(0.5) rotate(-15deg);
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.category-lesson-card:hover h3::before,
+.category-lesson-card:focus-visible h3::before {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
 
 .category-lesson-card h3 {
   font-size: clamp(1.15rem, 1.8vw, 1.35rem);

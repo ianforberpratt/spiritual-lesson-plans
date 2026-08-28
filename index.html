@@ -189,6 +189,37 @@
   </a>
 </header>
 
+<section class="mood-section" data-mood-section hidden>
+  <div class="wrap">
+    <div class="mood-intro reveal">
+      <p class="eyebrow">Not sure where to start?</p>
+      <h2>How's your group doing today?</h2>
+      <p class="lead">Tap whatever's true right now &mdash; we'll bring you straight to a lesson that fits. No form, no questions, just this.</p>
+    </div>
+
+    <div class="mood-cloud" data-mood-cloud>
+      <button type="button" class="mood-chip" data-mood-topic="belonging-and-loneliness" style="--float-dur:4.2s; --float-delay:-0.3s; --float-amt:-7px;">Lonely</button>
+      <button type="button" class="mood-chip" data-mood-topic="identity-and-worth" style="--float-dur:3.6s; --float-delay:-1.8s; --float-amt:-5px;">Not good enough</button>
+      <button type="button" class="mood-chip" data-mood-topic="grief-and-loss" style="--float-dur:4.8s; --float-delay:-2.4s; --float-amt:-8px;">Grieving</button>
+      <button type="button" class="mood-chip" data-mood-topic="conflict-and-forgiveness" style="--float-dur:3.9s; --float-delay:-0.9s; --float-amt:-6px;">Mad at someone</button>
+      <button type="button" class="mood-chip" data-mood-topic="doubt-and-hard-questions-about-god" style="--float-dur:4.4s; --float-delay:-3.1s; --float-amt:-7px;">Doubting</button>
+      <button type="button" class="mood-chip" data-mood-topic="decisions-and-guidance" style="--float-dur:3.7s; --float-delay:-1.2s; --float-amt:-5px;">A big decision</button>
+      <button type="button" class="mood-chip" data-mood-topic="disappointment-and-hard-days" style="--float-dur:4.5s; --float-delay:-2.7s; --float-amt:-8px;">A rough week</button>
+      <button type="button" class="mood-chip" data-mood-topic="desire-and-self-control" style="--float-dur:4.0s; --float-delay:-0.6s; --float-amt:-6px;">Tempted</button>
+      <button type="button" class="mood-chip mood-chip-wild" data-mood-topic="" style="--float-dur:4.6s; --float-delay:-1.5s; --float-amt:-7px;">Not sure &mdash; surprise me</button>
+    </div>
+
+    <div class="mood-results" data-mood-results hidden>
+      <p class="mood-picked" data-mood-picked></p>
+      <div class="topic-grid mood-results-grid" data-mood-results-grid></div>
+      <p class="mood-results-links">
+        <button type="button" class="link-more" data-mood-again>&larr; Try another feeling</button>
+        <a href="/lessons" class="link-more">Or browse everything &rarr;</a>
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- The headline speaks personally, to whoever's reading it at whatever age; this speaks to
      whoever stumbled in without context and needs to know what the site actually is. -->
 <section class="statement" id="start">
@@ -337,6 +368,7 @@
 
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/age-context.js"></script>
+<script src="/assets/js/mood-picker.js"></script>
 <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4349aeb535b74e7b9300410d3654e075"}'></script>
 <!-- End Cloudflare Web Analytics -->
