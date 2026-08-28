@@ -136,6 +136,33 @@ my %CATEGORY_BLURB = (
   'desire-and-self-control'            => "A pull toward something that doesn't resolve with a simple resist-it-or-give-in.",
 );
 
+# Lowercased, punctuation-flattened haystack the client-side Lessons search
+# (assets/js/lessons-search.js) matches a query against: lesson title + hook
+# + topic-tag slugs and their human-readable labels. The normalize() in that
+# JS file must stay in lockstep with the transform here so a typed query and
+# this blob tokenize identically. Topic-tag matching is the point — it's what
+# lets "grief" find a lesson tagged grief-and-loss whose title never says it.
+sub search_blob {
+  my (@parts) = @_;
+  my @cats;
+  for my $p (@parts) {
+    next unless defined $p;
+    push @cats, grep { $CATEGORY_LABEL{$_} }
+                map  { my $c = $_; $c =~ s/^\s+|\s+$//g; $c }
+                split /,/, $p;
+  }
+  my $s = join(' ', (grep { defined && length } @parts),
+                    map { $CATEGORY_LABEL{$_} } @cats);
+  $s = lc $s;
+  $s =~ s/&#?[a-z0-9]+;/ /g;   # strip HTML entities (&quot; &amp; &mdash; &#39;)
+  $s =~ s/[^a-z0-9]+/ /g;      # everything else -> space (mirrors JS normalize)
+  # De-dupe tokens (a lesson's per-band topic tags are mostly identical, so
+  # the raw join repeats each category five times) while keeping word order.
+  my %seen;
+  my @toks = grep { length && !$seen{$_}++ } split /\s+/, $s;
+  return esc(join ' ', @toks);
+}
+
 # ---------------------------------------------------------------------
 # Band sections
 # ---------------------------------------------------------------------
@@ -161,7 +188,8 @@ for my $band (@band_order) {
     for my $c (@cards) {
       my $t = $c->{topic};
       my $bi = $c->{band_info};
-      $sections .= qq{      <a href="$bi->{url}" class="topic-card reveal">\n};
+      my $blob = search_blob($bi->{title} // $t->{title}, $bi->{hook} || $t->{hook}, $bi->{topic});
+      $sections .= qq{      <a href="$bi->{url}" class="topic-card reveal" data-search="$blob">\n};
       $sections .= qq{        <span class="age-badge age-badge-$BAND_ACCENT{$band}">@{[ esc($bi->{label}) ]}</span>\n};
       $sections .= qq{        <h3>@{[ esc($bi->{title} // $t->{title}) ]}</h3>\n};
       $sections .= qq{        <span class="tag">@{[ esc($bi->{hook} || $t->{hook}) ]}</span>\n};
@@ -229,7 +257,9 @@ for my $cat (@CATEGORY_ORDER) {
   $category_sections .= qq{    <div class="category-lesson-list">\n};
   for my $entry (@$entries) {
     my $t = $entry->{topic};
-    $category_sections .= qq{      <a href="$t->{landingUrl}" class="category-lesson-card reveal">\n};
+    my $blob = search_blob($t->{title}, $t->{hook},
+                           join(',', map { $_->{topic} // '' } @{ $entry->{bands} }), $cat);
+    $category_sections .= qq{      <a href="$t->{landingUrl}" class="category-lesson-card reveal" data-search="$blob">\n};
     $category_sections .= qq{        <h3>@{[ esc($t->{title}) ]}</h3>\n};
     $category_sections .= qq{        <span class="tag">@{[ esc($t->{hook}) ]}</span>\n};
     $category_sections .= qq{        <span class="category-lesson-badges">\n};

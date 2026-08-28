@@ -2340,3 +2340,234 @@ html.js .lens-panel[hidden] { display: none; }
   gap: 8px;
   margin-top: 2px;
 }
+
+/* ---------- /lessons keyword search ---------- */
+
+/* Same progressive-enhancement gate as .reveal / .band-section / .lens-panel:
+   the field is only shown once scripting is confirmed, so a no-JS visitor
+   never meets a dead input. */
+.lessons-search { display: none; }
+html.js .lessons-search {
+  display: block;
+  margin-top: clamp(18px, 2.5vw, 24px);
+}
+
+.lessons-search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lessons-search-control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 460px;
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.lessons-search-control:focus-within {
+  border-color: var(--gold-deep);
+  box-shadow: 0 0 0 3px rgba(206, 143, 52, 0.18);
+}
+
+.lessons-search-icon {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-left: 14px;
+  color: var(--ink-faint);
+}
+
+.lessons-search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 12px 12px 12px 10px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.lessons-search-input::placeholder { color: var(--ink-faint); }
+.lessons-search-input:focus { outline: none; }
+.lessons-search-input::-webkit-search-cancel-button,
+.lessons-search-input::-webkit-search-decoration { -webkit-appearance: none; }
+
+.lessons-search-clear {
+  flex: 0 0 auto;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-right: 6px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.lessons-search.is-active .lessons-search-clear { display: inline-flex; }
+.lessons-search-clear:hover { background: var(--cream); color: var(--ink); }
+.lessons-search-clear:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+
+.lessons-search-status {
+  margin: 8px 0 0;
+  min-height: 1.2em;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+}
+
+.lessons-search-empty {
+  margin: 6px 0 0;
+  max-width: 60ch;
+  font-family: var(--font-serif);
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.lessons-search-empty[hidden] { display: none; }
+.lessons-search-empty-link {
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: var(--gold-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.lessons-search-empty-link:hover { color: var(--ink); }
+.lessons-search-empty-link:focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 2px; }
+
+/* The actual filter: applied per-card so it composes with the band-section
+   and lens-panel [hidden] states owned by the other two scripts. */
+.is-search-hidden { display: none !important; }
+
+/* ---------- Lesson "What you'll need": handout preview card ---------- */
+
+.handout-preview-grid {
+  display: grid;
+  gap: 20px;
+  max-width: 560px;
+  margin: 4px 0 26px;
+}
+@media (min-width: 640px) {
+  .handout-preview-grid--multi {
+    grid-template-columns: 1fr 1fr;
+    max-width: none;
+  }
+}
+
+.handout-preview {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.handout-preview:hover,
+.handout-preview:focus-visible {
+  border-color: var(--gold-deep);
+  box-shadow: 0 10px 30px rgba(54, 47, 75, 0.13);
+}
+.handout-preview:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 2px;
+}
+
+/* The thumbnail is the real handout page in an <iframe>, laid out at 4x the
+   card width and scaled back down to 0.25 — so it stays pixel-accurate to
+   the live handout with no separate screenshot to maintain. translateY
+   crops the handout page's own dark toolbar out of the top of the frame. */
+.handout-preview-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 208px;
+  overflow: hidden;
+  background: #eae2d2;
+  border-bottom: 1px solid var(--rule);
+}
+.handout-preview-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250%;
+  height: 320%;
+  border: 0;
+  transform: scale(0.4) translateY(-120px);
+  transform-origin: top left;
+  pointer-events: none;
+}
+
+.handout-preview-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 15px 18px 17px;
+}
+.handout-preview-badge {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+  background: rgba(232, 169, 76, 0.14);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.handout-preview-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.handout-preview-framing {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.handout-preview-cta {
+  margin-top: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-text);
+}
+.handout-preview:hover .handout-preview-cta,
+.handout-preview:focus-visible .handout-preview-cta {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .handout-preview { transition: none; }
+}

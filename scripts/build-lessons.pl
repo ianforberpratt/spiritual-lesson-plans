@@ -512,7 +512,9 @@ sub render_lesson_page {
   my $assumptions_assume = markdown_block_to_html($s->{"What we're assuming"} // '');
   my $goals_html = markdown_block_to_html($s->{'Learning goals'} // '');
   my $hold_room_html = markdown_block_to_html($s->{'How to hold the room'} // '');
-  my $needs_html = markdown_block_to_html($s->{"What you'll need"} // '');
+  my ($needs_md, @handouts) = extract_handouts($s->{"What you'll need"} // '', $band);
+  my $needs_html = markdown_block_to_html($needs_md);
+  my $handout_cards_html = render_handout_cards(\@handouts);
   my $safety_html = markdown_block_to_html($s->{"If it's not going well"} // '');
   my $beats = split_beats($s->{'The lesson flow'} // '');
 
@@ -631,7 +633,7 @@ $beats_html  </div>
   <div class="wrap">
     <p class="eyebrow">What you'll need</p>
     <h2>The materials</h2>
-    $needs_html
+    $handout_cards_html$needs_html
   </div>
 </section>
 
@@ -987,4 +989,131 @@ sub format_date_human {
   my ($y, $mo, $d) = ($1, $2, $3);
   $d =~ s/^0//;
   return "$MONTH_NAMES[$mo - 1] $d, $y";
+}
+
+# ---------------------------------------------------------------------
+# "What you'll need" handout preview cards
+#
+# Every lesson already links its printable handout with a plain inline
+# markdown link somewhere in "What you'll need" — a small target buried in
+# a materials sentence. This turns each such link into a preview card: a
+# live, CSS-scaled <iframe> thumbnail of the real handout page (so it can
+# never drift from the actual content), a format badge, the handout's own
+# title, and a clear "Open printable handout" action. The inline link is
+# then stripped from the prose so the card is the only way in — not a
+# duplicate sitting beside a buried one.
+#
+# Scope notes:
+#  - Only /assets/materials/*.html targets that exist on disk are cardified.
+#    A .pdf handout (is-god-keeping-score) or a missing file is left exactly
+#    as it was — a normal inline link, no card, no broken promise.
+#  - Nothing here needs per-lesson metadata: the title comes from the
+#    handout page's own <h1> (falling back to the link text), the optional
+#    framing line from its <p class="frame">, and the thumbnail is the page
+#    itself. Lessons whose handout content lands as structured data later
+#    (see docs/lesson-adaptation-instructions.md) get richer cards for free.
+# ---------------------------------------------------------------------
+
+# Scan a "What you'll need" markdown block for handout links, returning the
+# block with every cardified link flattened to its label text, plus a list
+# of { url, label, format, title, framing } for render_handout_cards().
+sub extract_handouts {
+  my ($md, $band) = @_;
+  return ($md) unless length $md;
+  my @found;
+
+  while ($md =~ /\[([^\]]+)\]\((\/assets\/materials\/[^)\s]+\.html)\)/g) {
+    my ($label, $url) = ($1, $2);
+    next unless -f "$ROOT$url";
+    my $before = substr($md, 0, pos($md) - length($&));
+    my $ctx = length($before) > 36 ? substr($before, -36) : $before;
+    my ($title, $framing) = handout_meta("$ROOT$url");
+    push @found, {
+      url     => $url,
+      label   => strip_inline($label),
+      format  => handout_format($url, $label, $ctx, $band),
+      title   => (length $title ? $title : strip_inline($label)),
+      framing => $framing,
+    };
+  }
+  return ($md) unless @found;
+
+  # Flatten "[label](/assets/materials/....html)" -> "label" in the prose,
+  # but only for targets we actually turned into a card (checked above).
+  my %carded = map { $_->{url} => 1 } @found;
+  $md =~ s{\[([^\]]+)\]\((\/assets\/materials\/[^)\s]+\.html)\)}
+          {$carded{$2} ? $1 : "[$1]($2)"}ge;
+
+  return ($md, @found);
+}
+
+# Best-effort format label for the badge. Structured grief-style handouts
+# encode it in the filename; everything else is inferred from the noun the
+# lesson author used right before the link ("Visual", "Pocket card", ...).
+sub handout_format {
+  my ($url, $label, $ctx, $band) = @_;
+  return 'Full handout' if $url =~ m{/handout-\Q$band\E-full\.html$};
+  return 'Wallet card'  if $url =~ m{/handout-\Q$band\E-wallet\.html$};
+  my $hay = lc "$ctx $label";
+  return 'Wallet card'     if $hay =~ /wallet/;
+  return 'Pocket card'     if $hay =~ /pocket card/;
+  return 'Keepsake'        if $hay =~ /keepsake/;
+  return 'Reflection card' if $hay =~ /reflection card/;
+  return 'Visual'          if $hay =~ /\bvisual\b/;
+  return 'Handout';
+}
+
+# Pull a display title (<h1>) and optional framing line (<p class="frame">,
+# or .lead / .dek) straight out of the rendered handout page.
+sub handout_meta {
+  my ($path) = @_;
+  my $html = eval { read_file($path) } // '';
+  my ($title)   = $html =~ m{<h1[^>]*>(.*?)</h1>}s;
+  my ($framing) = $html =~ m{<p[^>]*class="(?:frame|lead|dek)"[^>]*>(.*?)</p>}s;
+  for my $v ($title, $framing) {
+    next unless defined $v;
+    $v =~ s/<[^>]+>//g;
+    $v =~ s/\s+/ /g;
+    $v =~ s/^\s+|\s+$//g;
+  }
+  return ($title // '', $framing // '');
+}
+
+# Strip markdown/quote noise from link text used as a fallback title.
+sub strip_inline {
+  my ($s) = @_;
+  $s //= '';
+  $s =~ s/\*\*(.+?)\*\*/$1/g;
+  $s =~ s/\*(.+?)\*/$1/g;
+  $s =~ s/^["'\x{201C}\x{2018}]+//;
+  $s =~ s/["'\x{201D}\x{2019}]+$//;
+  $s =~ s/^\s+|\s+$//g;
+  return escape_html($s);
+}
+
+sub render_handout_cards {
+  my ($handouts) = @_;
+  return '' unless $handouts && @$handouts;
+
+  my $cards = '';
+  for my $h (@$handouts) {
+    my $framing = length($h->{framing})
+      ? qq{\n        <span class="handout-preview-framing">$h->{framing}</span>}
+      : '';
+    $cards .= <<"CARD";
+      <a class="handout-preview" href="$h->{url}" target="_blank" rel="noopener">
+        <span class="handout-preview-thumb" aria-hidden="true">
+          <iframe class="handout-preview-frame" src="$h->{url}" title="" tabindex="-1" loading="lazy" scrolling="no"></iframe>
+        </span>
+        <span class="handout-preview-body">
+          <span class="handout-preview-badge">@{[ escape_html($h->{format}) ]}</span>
+          <span class="handout-preview-title">$h->{title}</span>$framing
+          <span class="handout-preview-cta">Open printable handout<span aria-hidden="true"> &rarr;</span></span>
+        </span>
+      </a>
+CARD
+  }
+
+  my $multi = @$handouts > 1 ? ' handout-preview-grid--multi' : '';
+  return qq{<div class="handout-preview-grid$multi">\n$cards    </div>\n    };
 }
