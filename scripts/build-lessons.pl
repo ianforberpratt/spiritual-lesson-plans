@@ -460,6 +460,9 @@ sub footer_html {
 
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/age-context.js"></script>
+<!-- Cloudflare Web Analytics (cookieless, no personal data) -->
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4349aeb535b74e7b9300410d3654e075"}'></script>
+<!-- End Cloudflare Web Analytics -->
 FOOTER
 }
 
