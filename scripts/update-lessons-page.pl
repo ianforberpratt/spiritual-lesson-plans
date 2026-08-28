@@ -136,81 +136,6 @@ my %CATEGORY_BLURB = (
   'desire-and-self-control'            => "A pull toward something that doesn't resolve with a simple resist-it-or-give-in.",
 );
 
-# Everyday-language synonym groups. `on` = distinctive words that, when found
-# in a lesson's OWN wording (title / hook / author `search_terms:` — never its
-# broad category label), fire the group; `add` = the words then folded into
-# that lesson's search blob. Keeping `on` separate from `add` is what stops a
-# pedagogical phrase like "a comparison activity" in the grief lesson from
-# making it answer to "jealous". Widen these as real misses come up.
-my @SYNONYM_GROUPS = (
-  { on => [qw(grief grieving mourning bereavement loss died death)],
-    add => [qw(grief grieving loss mourning death died dying dead bereavement funeral heartbroken)] },
-  { on => [qw(lonely loneliness)],
-    add => [qw(lonely loneliness alone isolated excluded left friendless unseen invisible)] },
-  { on => [qw(enemy enemies conflict fighting forgive forgiveness)],
-    add => [qw(conflict fight fighting argument feud enemy grudge resentment betrayed betrayal drama tension forgive forgiveness reconcile)] },
-  { on => [qw(disconnected grumpy unmotivated)],
-    add => [qw(sad down discouraged unmotivated burnout burned exhausted numb disconnected grumpy blah)] },
-  { on => [qw(ego pride)],
-    add => [qw(ego pride jealous jealousy envy insecure worthless comparison comparing showoff arrogant)] },
-  { on => [qw(regret mistake mistakes)],
-    add => [qw(regret regrets mistake mistakes guilt guilty shame ashamed messed)] },
-  { on => [qw(doubt doubting)],
-    add => [qw(doubt doubting questioning unsure skeptical unbelief crisis)] },
-  { on => [qw(decision decisions decide)],
-    add => [qw(decision decisions deciding choosing crossroads discernment stuck)] },
-  { on => [qw(nudge intuition guidance)],
-    add => [qw(nudge intuition guidance instinct gut prompting still small voice)] },
-  { on => [qw(pornography porn)],
-    add => [qw(porn pornography nudes explicit)] },
-  { on => [qw(lgbtqia lgbtq queer)],
-    add => [qw(gay lesbian bisexual transgender trans queer lgbtq lgbtqia orientation)] },
-  { on => [qw(pull attraction desire)],
-    add => [qw(desire attraction temptation tempted craving urge impulse crush wanting)] },
-);
-
-# Flatten text to the same token list the client-side search tokenizes a
-# query into: lowercase, non-alphanumerics to spaces (mirrors normalize() in
-# assets/js/lessons-search.js), split on whitespace.
-sub _tokens {
-  my ($s) = @_;
-  $s = lc($s // '');
-  $s =~ s/&#?[a-z0-9]+;/ /g;   # strip HTML entities (&quot; &amp; &mdash; &#39;)
-  $s =~ s/[^a-z0-9]+/ /g;
-  return grep { length } split /\s+/, $s;
-}
-
-# Build a card's `data-search` blob. $trigger = the lesson's own words (title
-# + hook + author search_terms); @tags = topic-slug/category strings. Synonym
-# groups fire off $trigger tokens only; @tags still contribute their own words
-# (and category labels) to the haystack for direct matches.
-sub search_blob {
-  my ($trigger, @tags) = @_;
-
-  my @cats;
-  for my $p (@tags) {
-    next unless defined $p;
-    push @cats, grep { $CATEGORY_LABEL{$_} }
-                map  { my $c = $_; $c =~ s/^\s+|\s+$//g; $c }
-                split /,/, $p;
-  }
-
-  my @trig_toks = _tokens($trigger);
-  my %seen;
-  my @toks = grep { !$seen{$_}++ }
-             (@trig_toks, _tokens(join ' ', @tags, map { $CATEGORY_LABEL{$_} } @cats));
-
-  # Synonym expansion — fire a group only when one of its `on` trigger words
-  # is in the lesson's own wording, then fold in its `add` list.
-  my %trig = map { $_ => 1 } @trig_toks;
-  for my $group (@SYNONYM_GROUPS) {
-    next unless grep { $trig{$_} } @{ $group->{on} };
-    push @toks, grep { !$seen{$_}++ } map { _tokens($_) } @{ $group->{add} };
-  }
-
-  return esc(join ' ', @toks);
-}
-
 # ---------------------------------------------------------------------
 # Band sections
 # ---------------------------------------------------------------------
@@ -236,10 +161,7 @@ for my $band (@band_order) {
     for my $c (@cards) {
       my $t = $c->{topic};
       my $bi = $c->{band_info};
-      my $blob = search_blob(
-        join(' ', $bi->{title} // $t->{title}, $bi->{hook} || $t->{hook}, $bi->{searchTerms} // ''),
-        $bi->{topic});
-      $sections .= qq{      <a href="$bi->{url}" class="topic-card reveal" data-search="$blob">\n};
+      $sections .= qq{      <a href="$bi->{url}" class="topic-card reveal">\n};
       $sections .= qq{        <span class="age-badge age-badge-$BAND_ACCENT{$band}">@{[ esc($bi->{label}) ]}</span>\n};
       $sections .= qq{        <h3>@{[ esc($bi->{title} // $t->{title}) ]}</h3>\n};
       $sections .= qq{        <span class="tag">@{[ esc($bi->{hook} || $t->{hook}) ]}</span>\n};
@@ -307,10 +229,7 @@ for my $cat (@CATEGORY_ORDER) {
   $category_sections .= qq{    <div class="category-lesson-list">\n};
   for my $entry (@$entries) {
     my $t = $entry->{topic};
-    my $blob = search_blob(
-      join(' ', $t->{title}, $t->{hook}, map { $_->{searchTerms} // '' } @{ $entry->{bands} }),
-      join(',', map { $_->{topic} // '' } @{ $entry->{bands} }), $cat);
-    $category_sections .= qq{      <a href="$t->{landingUrl}" class="category-lesson-card reveal" data-search="$blob">\n};
+    $category_sections .= qq{      <a href="$t->{landingUrl}" class="category-lesson-card reveal">\n};
     $category_sections .= qq{        <h3>@{[ esc($t->{title}) ]}</h3>\n};
     $category_sections .= qq{        <span class="tag">@{[ esc($t->{hook}) ]}</span>\n};
     $category_sections .= qq{        <span class="category-lesson-badges">\n};
