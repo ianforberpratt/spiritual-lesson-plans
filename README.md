@@ -31,10 +31,11 @@ sets `cleanUrls: true`, so linking with the extension would 404.
 No Node/Python required. From the project root:
 
 ```
-perl scratchpad/serve.pl . 8123
+perl scripts/serve.pl . 8099
 ```
 
-Then open `http://127.0.0.1:8123/`.
+Then open `http://127.0.0.1:8099/`. (`scripts/serve.pl` is a tiny zero-dependency
+static server that mirrors Vercel's clean URLs; it only ever reads files.)
 
 ## Hero video
 
@@ -43,6 +44,25 @@ same pattern as thetiesfoundation.org's hero), but no video file has been suppli
 original SVG illustration (`assets/img/hero-sunrise.svg`) is used as the `poster` and displays
 as a static fallback until a real clip is added. Drop a licensed/owned MP4 at that path and it
 starts playing automatically; no other changes needed.
+
+## Analytics
+
+The site uses **Cloudflare Web Analytics**, not Google Analytics — on purpose.
+
+Cloudflare's beacon is cookieless: no cookies, no fingerprinting, no IP storage, no cross-site
+tracking, and therefore no consent banner needed. That keeps the promises the site makes on
+every page true — the cookie notice says *"This site does not track you"* and `about.html` says
+*"No data collected about you or the young people you mentor."* The audience skews young, which
+also makes a cookie-setting tracker (GA4 and similar) a COPPA problem.
+
+The beacon is one `<script>` per page: added by `scripts/build-lessons.pl` → `footer_html()` for
+every generated lesson/topic page, and hand-placed before `</body>` on the six static pages
+(`index`, `lessons`, `for-mentors`, `what-we-believe`, `about`, `404`). It is deliberately **not**
+on the print-only handout pages under `assets/materials/`.
+
+If Google Analytics (or any cookie-setting analytics) is ever genuinely needed, it has to ship
+together with: a real Accept/Decline consent banner, the tag firing only after consent, and the
+`about.html` "no data collected" line reworded first.
 
 ## License
 
