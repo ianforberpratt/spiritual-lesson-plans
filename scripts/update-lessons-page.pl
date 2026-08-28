@@ -136,30 +136,78 @@ my %CATEGORY_BLURB = (
   'desire-and-self-control'            => "A pull toward something that doesn't resolve with a simple resist-it-or-give-in.",
 );
 
-# Lowercased, punctuation-flattened haystack the client-side Lessons search
-# (assets/js/lessons-search.js) matches a query against: lesson title + hook
-# + topic-tag slugs and their human-readable labels. The normalize() in that
-# JS file must stay in lockstep with the transform here so a typed query and
-# this blob tokenize identically. Topic-tag matching is the point — it's what
-# lets "grief" find a lesson tagged grief-and-loss whose title never says it.
+# Everyday-language synonym groups. `on` = distinctive words that, when found
+# in a lesson's OWN wording (title / hook / author `search_terms:` — never its
+# broad category label), fire the group; `add` = the words then folded into
+# that lesson's search blob. Keeping `on` separate from `add` is what stops a
+# pedagogical phrase like "a comparison activity" in the grief lesson from
+# making it answer to "jealous". Widen these as real misses come up.
+my @SYNONYM_GROUPS = (
+  { on => [qw(grief grieving mourning bereavement loss died death)],
+    add => [qw(grief grieving loss mourning death died dying dead bereavement funeral heartbroken)] },
+  { on => [qw(lonely loneliness)],
+    add => [qw(lonely loneliness alone isolated excluded left friendless unseen invisible)] },
+  { on => [qw(enemy enemies conflict fighting forgive forgiveness)],
+    add => [qw(conflict fight fighting argument feud enemy grudge resentment betrayed betrayal drama tension forgive forgiveness reconcile)] },
+  { on => [qw(disconnected grumpy unmotivated)],
+    add => [qw(sad down discouraged unmotivated burnout burned exhausted numb disconnected grumpy blah)] },
+  { on => [qw(ego pride)],
+    add => [qw(ego pride jealous jealousy envy insecure worthless comparison comparing showoff arrogant)] },
+  { on => [qw(regret mistake mistakes)],
+    add => [qw(regret regrets mistake mistakes guilt guilty shame ashamed messed)] },
+  { on => [qw(doubt doubting)],
+    add => [qw(doubt doubting questioning unsure skeptical unbelief crisis)] },
+  { on => [qw(decision decisions decide)],
+    add => [qw(decision decisions deciding choosing crossroads discernment stuck)] },
+  { on => [qw(nudge intuition guidance)],
+    add => [qw(nudge intuition guidance instinct gut prompting still small voice)] },
+  { on => [qw(pornography porn)],
+    add => [qw(porn pornography nudes explicit)] },
+  { on => [qw(lgbtqia lgbtq queer)],
+    add => [qw(gay lesbian bisexual transgender trans queer lgbtq lgbtqia orientation)] },
+  { on => [qw(pull attraction desire)],
+    add => [qw(desire attraction temptation tempted craving urge impulse crush wanting)] },
+);
+
+# Flatten text to the same token list the client-side search tokenizes a
+# query into: lowercase, non-alphanumerics to spaces (mirrors normalize() in
+# assets/js/lessons-search.js), split on whitespace.
+sub _tokens {
+  my ($s) = @_;
+  $s = lc($s // '');
+  $s =~ s/&#?[a-z0-9]+;/ /g;   # strip HTML entities (&quot; &amp; &mdash; &#39;)
+  $s =~ s/[^a-z0-9]+/ /g;
+  return grep { length } split /\s+/, $s;
+}
+
+# Build a card's `data-search` blob. $trigger = the lesson's own words (title
+# + hook + author search_terms); @tags = topic-slug/category strings. Synonym
+# groups fire off $trigger tokens only; @tags still contribute their own words
+# (and category labels) to the haystack for direct matches.
 sub search_blob {
-  my (@parts) = @_;
+  my ($trigger, @tags) = @_;
+
   my @cats;
-  for my $p (@parts) {
+  for my $p (@tags) {
     next unless defined $p;
     push @cats, grep { $CATEGORY_LABEL{$_} }
                 map  { my $c = $_; $c =~ s/^\s+|\s+$//g; $c }
                 split /,/, $p;
   }
-  my $s = join(' ', (grep { defined && length } @parts),
-                    map { $CATEGORY_LABEL{$_} } @cats);
-  $s = lc $s;
-  $s =~ s/&#?[a-z0-9]+;/ /g;   # strip HTML entities (&quot; &amp; &mdash; &#39;)
-  $s =~ s/[^a-z0-9]+/ /g;      # everything else -> space (mirrors JS normalize)
-  # De-dupe tokens (a lesson's per-band topic tags are mostly identical, so
-  # the raw join repeats each category five times) while keeping word order.
+
+  my @trig_toks = _tokens($trigger);
   my %seen;
-  my @toks = grep { length && !$seen{$_}++ } split /\s+/, $s;
+  my @toks = grep { !$seen{$_}++ }
+             (@trig_toks, _tokens(join ' ', @tags, map { $CATEGORY_LABEL{$_} } @cats));
+
+  # Synonym expansion — fire a group only when one of its `on` trigger words
+  # is in the lesson's own wording, then fold in its `add` list.
+  my %trig = map { $_ => 1 } @trig_toks;
+  for my $group (@SYNONYM_GROUPS) {
+    next unless grep { $trig{$_} } @{ $group->{on} };
+    push @toks, grep { !$seen{$_}++ } map { _tokens($_) } @{ $group->{add} };
+  }
+
   return esc(join ' ', @toks);
 }
 
@@ -188,7 +236,9 @@ for my $band (@band_order) {
     for my $c (@cards) {
       my $t = $c->{topic};
       my $bi = $c->{band_info};
-      my $blob = search_blob($bi->{title} // $t->{title}, $bi->{hook} || $t->{hook}, $bi->{topic});
+      my $blob = search_blob(
+        join(' ', $bi->{title} // $t->{title}, $bi->{hook} || $t->{hook}, $bi->{searchTerms} // ''),
+        $bi->{topic});
       $sections .= qq{      <a href="$bi->{url}" class="topic-card reveal" data-search="$blob">\n};
       $sections .= qq{        <span class="age-badge age-badge-$BAND_ACCENT{$band}">@{[ esc($bi->{label}) ]}</span>\n};
       $sections .= qq{        <h3>@{[ esc($bi->{title} // $t->{title}) ]}</h3>\n};
@@ -257,8 +307,9 @@ for my $cat (@CATEGORY_ORDER) {
   $category_sections .= qq{    <div class="category-lesson-list">\n};
   for my $entry (@$entries) {
     my $t = $entry->{topic};
-    my $blob = search_blob($t->{title}, $t->{hook},
-                           join(',', map { $_->{topic} // '' } @{ $entry->{bands} }), $cat);
+    my $blob = search_blob(
+      join(' ', $t->{title}, $t->{hook}, map { $_->{searchTerms} // '' } @{ $entry->{bands} }),
+      join(',', map { $_->{topic} // '' } @{ $entry->{bands} }), $cat);
     $category_sections .= qq{      <a href="$t->{landingUrl}" class="category-lesson-card reveal" data-search="$blob">\n};
     $category_sections .= qq{        <h3>@{[ esc($t->{title}) ]}</h3>\n};
     $category_sections .= qq{        <span class="tag">@{[ esc($t->{hook}) ]}</span>\n};
@@ -355,7 +406,13 @@ for my $t (@newest3) {
 }
 my $newest_html = join("\n", @newest_cards);
 
-my $n4 = ($idx =~ s/(<!-- NEWEST_LESSONS_START:.*?-->).*?(\s*<!-- NEWEST_LESSONS_END -->)/$1\n$newest_html\n      $2/s);
+# Group 2 deliberately does NOT capture leading whitespace — .*? (lazy)
+# consumes everything up to the literal end marker. An earlier "(\s*<!-- ..."
+# form re-captured the "\n      " this line prepends on the previous run, so
+# every build silently grew the gap before the marker by one line. This form
+# is idempotent: rerunning the build on an unchanged tree leaves index.html
+# byte-for-byte identical.
+my $n4 = ($idx =~ s/(<!-- NEWEST_LESSONS_START:.*?-->).*?(<!-- NEWEST_LESSONS_END -->)/$1\n$newest_html\n      $2/s);
 die "index.html NEWEST_LESSONS substitution matched $n4 times (expected 1)\n" unless $n4 == 1;
 
 my $n5 = ($idx =~ s/(<!-- SEE_ALL_COUNT_START -->)See all \d+ lessons(<!-- SEE_ALL_COUNT_END -->)/$1See all $count lessons$2/);

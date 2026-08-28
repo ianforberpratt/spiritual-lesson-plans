@@ -331,6 +331,7 @@ for my $topic (@topic_dirs) {
       dates => $_->{dates},
       topic => $_->{meta}{topic},
       sensitive_topic => $_->{meta}{sensitive_topic},
+      search_terms => $_->{meta}{search_terms},
     } } @bands ],
     landing_url => "/lessons/$topic",
   };
@@ -867,7 +868,7 @@ sub write_manifest {
   for my $t (@$topics) {
     my @band_json;
     for my $b (@{ $t->{bands} }) {
-      push @band_json, "      { \"band\": \"$b->{band}\", \"label\": \"@{[ json_escape($b->{label}) ]}\", \"short\": \"@{[ json_escape($b->{short}) ]}\", \"timeDisplay\": \"@{[ json_escape($b->{time_display} // '') ]}\", \"title\": \"@{[ json_escape($b->{title}) ]}\", \"hook\": \"@{[ json_escape($b->{hook} // '') ]}\", \"url\": \"$b->{url}\", \"topic\": \"@{[ json_escape($b->{topic} // '') ]}\", \"sensitiveTopic\": \"@{[ json_escape($b->{sensitive_topic} // 'none') ]}\" }";
+      push @band_json, "      { \"band\": \"$b->{band}\", \"label\": \"@{[ json_escape($b->{label}) ]}\", \"short\": \"@{[ json_escape($b->{short}) ]}\", \"timeDisplay\": \"@{[ json_escape($b->{time_display} // '') ]}\", \"title\": \"@{[ json_escape($b->{title}) ]}\", \"hook\": \"@{[ json_escape($b->{hook} // '') ]}\", \"url\": \"$b->{url}\", \"topic\": \"@{[ json_escape($b->{topic} // '') ]}\", \"sensitiveTopic\": \"@{[ json_escape($b->{sensitive_topic} // 'none') ]}\", \"searchTerms\": \"@{[ json_escape($b->{search_terms} // '') ]}\" }";
     }
     push @topic_json, "    {\n      \"slug\": \"$t->{slug}\",\n      \"title\": \"@{[ json_escape($t->{title}) ]}\",\n      \"hook\": \"@{[ json_escape($t->{hook} // '') ]}\",\n      \"topicCategory\": \"@{[ json_escape($t->{topic_category} // '') ]}\",\n      \"landingUrl\": \"$t->{landing_url}\",\n      \"datePublished\": \"@{[ $t->{dates}{published} // '' ]}\",\n      \"dateModified\": \"@{[ $t->{dates}{modified} // '' ]}\",\n      \"bands\": [\n" . join(",\n", @band_json) . "\n      ]\n    }";
   }

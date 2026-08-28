@@ -307,6 +307,13 @@ format_display: <e.g. "in-person or virtual">
 sensitive_topic: <none | requires-careful-adaptation | teen-adult-only>
 requires_adult_facilitation_notes: <true | false>
 core_model_ref: <topic-slug>/core-model.md
+search_terms: <optional. Comma- or space-separated everyday phrasings a
+  mentor might type into the /lessons search box to look for this lesson —
+  the plain-language words its title and hook don't already contain. e.g. for
+  a lesson titled "The Shuffle, Not the Set List": "grief, loss, someone
+  died, a pet died, mourning, missing someone". Leave it out entirely if the
+  title and hook already say it plainly. Fed into the lesson's search index
+  by scripts/update-lessons-page.pl; invisible to readers.>
 ---
 
 ## What you should know
