@@ -201,6 +201,22 @@
       ]
     },
     {
+      "slug": "suffer-it-to-be-so-now",
+      "title": "Suffer It to Be So, Now",
+      "hook": "You don't need your life figured out to be allowed to rest in it, right now.",
+      "topicCategory": "identity-and-worth, disappointment-and-hard-days",
+      "landingUrl": "/lessons/suffer-it-to-be-so-now",
+      "datePublished": "2026-08-30",
+      "dateModified": "2026-08-30",
+      "bands": [
+      { "band": "5-8", "label": "K-2", "short": "K-2", "timeDisplay": "15-20 min", "title": "Not Finished Yet (And Still Loved)", "hook": "You don't have to finish your picture — or your day — to already be loved, right now.", "url": "/lessons/5-8/suffer-it-to-be-so-now", "topic": "identity-and-worth, disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "8-11", "label": "Grade 3-5", "short": "Grade 3-5", "timeDisplay": "30-35 min", "title": "The Rough Draft Counts", "hook": "You don't have to beat the level or finish the final draft to already count, right now.", "url": "/lessons/8-11/suffer-it-to-be-so-now", "topic": "identity-and-worth, disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "11-14", "label": "Grade 6-8", "short": "Grade 6-8", "timeDisplay": "35-40 min", "title": "Permission Comes First", "hook": "You don't have to fix yourself first to be worth loving — that part was never actually in question.", "url": "/lessons/11-14/suffer-it-to-be-so-now", "topic": "identity-and-worth, disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "14-21", "label": "Teen", "short": "Teen", "timeDisplay": "40-45 min", "title": "The Water, Not the Finish Line", "hook": "You don't need your life figured out to be allowed to rest in it, right now.", "url": "/lessons/14-21/suffer-it-to-be-so-now", "topic": "identity-and-worth, disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "21-plus", "label": "Age 21+", "short": "Age 21+", "timeDisplay": "45-60 min", "title": "Suffer It to Be So, Now", "hook": "The permission you're waiting to earn was already given — in the water, before anything got fixed.", "url": "/lessons/21-plus/suffer-it-to-be-so-now", "topic": "identity-and-worth, disappointment-and-hard-days", "sensitiveTopic": "none" }
+      ]
+    },
+    {
       "slug": "talking-about-pornography-use",
       "title": "Talking About the Increase of Pornography Use in Our World",
       "hook": "\"A steady, shame-free way in — because a habit is a cloud passing in front of the sun, not the sun itself.\"",
