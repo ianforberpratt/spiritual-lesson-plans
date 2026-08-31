@@ -35,7 +35,7 @@ print "serving $ROOT on http://127.0.0.1:$PORT/\n";
 while (my $c = $srv->accept) {
   my $req = <$c>;
   unless (defined $req) { close $c; next; }
-  1 while defined(my $h = <$c>) && $h !~ /^\r?\n$/;   # drain headers
+  while (defined(my $h = <$c>)) { last if $h =~ /^\r?\n$/; }   # drain headers
   my ($method, $uri) = $req =~ /^(\w+)\s+(\S+)/;
   $uri = '/' unless defined $uri;
   (my $path = $uri) =~ s/\?.*$//;

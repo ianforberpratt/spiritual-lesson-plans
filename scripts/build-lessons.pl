@@ -39,6 +39,20 @@ my $LESSONS_OUT = "$ROOT/lessons";
 my $DATA_OUT    = "$ROOT/assets/data";
 my $SITE_ORIGIN = "https://www.spirituallessonplans.org";
 
+# Static top-level pages not produced by this script — hand-authored, but
+# their lastmod is still pulled from real git history rather than typed in.
+# Declared here (not next to write_sitemap) so the initializer runs before
+# the main flow calls write_sitemap — otherwise the list is still empty at
+# write time and no static page ever lands in sitemap.xml.
+my @STATIC_PAGES = (
+  { path => "$ROOT/index.html",            url => '/',               changefreq => 'weekly',  priority => '1.0' },
+  { path => "$ROOT/lessons.html",          url => '/lessons',        changefreq => 'weekly',  priority => '0.9' },
+  { path => "$ROOT/for-mentors.html",      url => '/for-mentors',    changefreq => 'monthly', priority => '0.6' },
+  { path => "$ROOT/what-we-believe.html",  url => '/what-we-believe',changefreq => 'monthly', priority => '0.6' },
+  { path => "$ROOT/about.html",            url => '/about',          changefreq => 'monthly', priority => '0.5' },
+  { path => "$ROOT/not-broken.html",       url => '/not-broken',     changefreq => 'monthly', priority => '0.7' },
+);
+
 my @BAND_ORDER = ('5-8', '8-11', '11-14', '14-21', '21-plus');
 
 my %BAND_LABEL = (
@@ -880,16 +894,6 @@ sub write_manifest {
   write_file("$DATA_OUT/lessons-manifest.json", join("\n", @lines) . "\n");
 }
 
-# Static top-level pages not produced by this script — hand-authored, but
-# their lastmod is still pulled from real git history rather than typed in.
-my @STATIC_PAGES = (
-  { path => "$ROOT/index.html",           url => '/',              changefreq => 'weekly',  priority => '1.0' },
-  { path => "$ROOT/lessons.html",         url => '/lessons',       changefreq => 'weekly',  priority => '0.9' },
-  { path => "$ROOT/for-mentors.html",     url => '/for-mentors',   changefreq => 'monthly', priority => '0.6' },
-  { path => "$ROOT/what-we-believe.html",url => '/what-we-believe',changefreq => 'monthly', priority => '0.6' },
-  { path => "$ROOT/about.html",           url => '/about',         changefreq => 'monthly', priority => '0.5' },
-);
-
 sub xml_escape {
   my ($s) = @_;
   $s //= '';
@@ -958,6 +962,7 @@ sub write_llms_txt {
   push @lines, '';
   push @lines, '## Optional';
   push @lines, '';
+  push @lines, "- [Not Broken]($SITE_ORIGIN/not-broken): a three-minute interactive experience on wholeness as the starting point, not a repair job — open to anyone, teen through adult";
   push @lines, "- [For Mentors]($SITE_ORIGIN/for-mentors): facilitator safety guidelines and how the age-band system works";
   push @lines, "- [What We Believe]($SITE_ORIGIN/what-we-believe): plain-language explainer on Christian Science, including how it differs from the doctrine of original sin";
   push @lines, "- [About]($SITE_ORIGIN/about): what this project is and its licensing";
