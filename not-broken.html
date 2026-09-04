@@ -416,6 +416,19 @@
     color:var(--ink-soft);
     margin:0 0 2.4rem;
   }
+  .verdict-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.8rem;
+    align-items:center;
+  }
+  .verdict-actions .cta.ghost{ margin-top:0; }
+  .share-status{
+    font-size:.85rem;
+    color:var(--gold-text);
+    height:1.2rem;
+    margin:.7rem 0 0;
+  }
   footer{
     font-size:.78rem;
     color:var(--ink-soft);
@@ -486,7 +499,11 @@
   <p class="pull-line serif">It was never you. It was the lens.</p>
   <div class="practice">Next time the tint creeps back in, ask one question before you believe what you're seeing: <em>is this what's actually there — or just the lens I'm used to?</em></div>
   <p class="close-line">That's the whole thing. Three minutes, and nothing about you needed fixing to begin with.</p>
-  <button class="cta ghost" data-next="start" id="restart">Take it again</button>
+  <div class="verdict-actions">
+    <button class="cta ghost" data-next="start" id="restart">Take it again</button>
+    <button class="cta ghost" type="button" data-share>Send this to someone</button>
+  </div>
+  <p class="share-status" data-share-status aria-live="polite"></p>
   <footer>
     <p>Spiritual Lesson Plans · spirituallessonplans.org</p>
     <p>Free to use, adapt, and share · CC BY-SA 4.0</p>
@@ -598,6 +615,28 @@
   }
 
   document.addEventListener('click', function(e){
+    var shareBtn = e.target.closest('[data-share]');
+    if (shareBtn){
+      var url = location.origin + '/not-broken';
+      var status = document.querySelector('[data-share-status]');
+      var shareData = {
+        title: 'Not Broken',
+        text: 'Take three minutes — Not Broken, from Spiritual Lesson Plans.',
+        url: url
+      };
+      if (navigator.share){
+        navigator.share(shareData).catch(function(){ /* user cancelled — no error needed */ });
+      } else if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(url).then(function(){
+          if (status){ status.textContent = 'Link copied.'; }
+        }).catch(function(){
+          if (status){ status.textContent = url; }
+        });
+      } else if (status){
+        status.textContent = url;
+      }
+      return;
+    }
     var t = e.target.closest('[data-next]');
     if (!t) return;
     var next = t.dataset.next;
