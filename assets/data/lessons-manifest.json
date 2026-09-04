@@ -171,6 +171,22 @@
       ]
     },
     {
+      "slug": "scared-about-the-news",
+      "title": "Scared About the News",
+      "hook": "Readiness was never about outrunning the next disaster — it's a description of who's already got you.",
+      "topicCategory": "identity-and-worth,disappointment-and-hard-days",
+      "landingUrl": "/lessons/scared-about-the-news",
+      "datePublished": "2026-09-04",
+      "dateModified": "2026-09-04",
+      "bands": [
+      { "band": "5-8", "label": "K-2", "short": "K-2", "timeDisplay": "25-30 min", "title": "The Storm Isn't You", "hook": "A stormy five minutes doesn't make you a storm — and neither does a scary thing you heard about.", "url": "/lessons/5-8/scared-about-the-news", "topic": "identity-and-worth", "sensitiveTopic": "none" },
+      { "band": "8-11", "label": "Grade 3-5", "short": "Grade 3-5", "timeDisplay": "30-35 min", "title": "Far Away, Still Held", "hook": "Something scary happening far away doesn't change what's true about you, right where you are.", "url": "/lessons/8-11/scared-about-the-news", "topic": "identity-and-worth", "sensitiveTopic": "none" },
+      { "band": "11-14", "label": "Grade 6-8", "short": "Grade 6-8", "timeDisplay": "35-40 min", "title": "Not the Whole Story", "hook": "The scroll doesn't get the final word on who you are or what's real.", "url": "/lessons/11-14/scared-about-the-news", "topic": "identity-and-worth,disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "14-21", "label": "Teen", "short": "Teen", "timeDisplay": "40-45 min", "title": "Semper Paratus", "hook": "Readiness was never about outrunning the next disaster — it's a description of who's already got you.", "url": "/lessons/14-21/scared-about-the-news", "topic": "identity-and-worth,disappointment-and-hard-days", "sensitiveTopic": "requires-careful-adaptation" },
+      { "band": "21-plus", "label": "Age 21+", "short": "Age 21+", "timeDisplay": "45-50 min", "title": "The Whole Prep Plan", "hook": "You don't prepare for chaos by predicting it. You prepare by knowing who you already are.", "url": "/lessons/21-plus/scared-about-the-news", "topic": "identity-and-worth,disappointment-and-hard-days", "sensitiveTopic": "requires-careful-adaptation" }
+      ]
+    },
+    {
       "slug": "seven-synonyms-and-three-degrees",
       "title": "Seven Names, One Journey",
       "hook": "Two of Christian Science's most foundational ideas, unpacked for anyone — no faith background, and no prior exposure to Christian Science, required.",
