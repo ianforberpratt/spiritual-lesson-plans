@@ -48,6 +48,7 @@ my @STATIC_PAGES = (
   { path => "$ROOT/index.html",            url => '/',               changefreq => 'weekly',  priority => '1.0' },
   { path => "$ROOT/lessons.html",          url => '/lessons',        changefreq => 'weekly',  priority => '0.9' },
   { path => "$ROOT/for-mentors.html",      url => '/for-mentors',    changefreq => 'monthly', priority => '0.6' },
+  { path => "$ROOT/for-you.html",          url => '/for-you',        changefreq => 'monthly', priority => '0.7' },
   { path => "$ROOT/what-we-believe.html",  url => '/what-we-believe',changefreq => 'monthly', priority => '0.6' },
   { path => "$ROOT/about.html",            url => '/about',          changefreq => 'monthly', priority => '0.5' },
   { path => "$ROOT/not-broken.html",       url => '/not-broken',     changefreq => 'monthly', priority => '0.7' },
@@ -382,9 +383,9 @@ if ($? != 0) {
 
 sub nav_html {
   my ($current) = @_;
-  my %labels = (home => 'Home', lessons => 'Lessons', mentors => 'For Mentors', believe => 'What We Believe', about => 'About');
-  my %hrefs  = (home => '/', lessons => '/lessons', mentors => '/for-mentors', believe => '/what-we-believe', about => '/about');
-  my @order = qw(home lessons mentors believe about);
+  my %labels = (home => 'Home', lessons => 'Lessons', mentors => 'For Mentors', foryou => 'For You', believe => 'What We Believe', about => 'About');
+  my %hrefs  = (home => '/', lessons => '/lessons', mentors => '/for-mentors', foryou => '/for-you', believe => '/what-we-believe', about => '/about');
+  my @order = qw(home lessons mentors foryou believe about);
   my $links = '';
   for my $key (@order) {
     my $current_attr = ($key eq $current) ? ' aria-current="page"' : '';
@@ -423,6 +424,7 @@ sub footer_html {
       <ul class="footer-links">
         <li><a href="/lessons">Lessons</a></li>
         <li><a href="/for-mentors">For Mentors</a></li>
+        <li><a href="/for-you">For You</a></li>
         <li><a href="/what-we-believe">What We Believe</a></li>
         <li><a href="/about">About</a></li>
       </ul>
@@ -962,6 +964,7 @@ sub write_llms_txt {
   push @lines, '';
   push @lines, '## Optional';
   push @lines, '';
+  push @lines, "- [For You]($SITE_ORIGIN/for-you): a page for the young person reading a lesson themselves — how to use these lessons solo, with a friend, or handed up to a mentor, plus the Not Broken experience and the mood picker";
   push @lines, "- [Not Broken]($SITE_ORIGIN/not-broken): a three-minute interactive experience on wholeness as the starting point, not a repair job — open to anyone, teen through adult";
   push @lines, "- [For Mentors]($SITE_ORIGIN/for-mentors): facilitator safety guidelines and how the age-band system works";
   push @lines, "- [What We Believe]($SITE_ORIGIN/what-we-believe): plain-language explainer on Christian Science, including how it differs from the doctrine of original sin";

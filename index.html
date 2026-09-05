@@ -127,6 +127,7 @@
       <li><a href="/" aria-current="page">Home</a></li>
       <li><a href="/lessons">Lessons</a></li>
       <li><a href="/for-mentors">For Mentors</a></li>
+      <li><a href="/for-you">For You</a></li>
       <li><a href="/what-we-believe">What We Believe</a></li>
       <li><a href="/about">About</a></li>
       <li class="nav-age-item"><a href="/lessons" data-mobile-age-link><span class="nav-age-label">Teaching</span><span data-mobile-age-value>Choose your age group</span></a></li>
@@ -191,47 +192,17 @@
   </a>
 </header>
 
-<!-- "Not Broken" — flagship interactive experience. Its own entry band, deliberately not a
-     lesson-topic card; full treatment and copy in claude/not-broken-feature-spec.md. -->
-<section class="nb-feature" aria-labelledby="nb-feature-title">
-  <span class="nb-feature-ambient" aria-hidden="true"><span></span><span></span><span></span></span>
+<!-- "For You" doorway band. Not Broken + the mood picker used to live here directly;
+     both relocated to /for-you 2026-09-04 so the youth-facing strand has one home
+     (its own page) instead of being split across the homepage. This band is the
+     only trace of that strand on the (otherwise mentor-facing) homepage. -->
+<section>
   <div class="wrap">
-    <p class="nb-feature-badge">&#10022; New &middot; Interactive Experience</p>
-    <span class="nb-feature-orb" aria-hidden="true"></span>
-    <p class="eyebrow">A three-minute experience</p>
-    <h2 id="nb-feature-title">Not Broken</h2>
-    <p class="nb-feature-lede">Take three minutes. We&rsquo;ll show you what you&rsquo;ve been seeing yourself through &mdash; and what changes when we switch the lens.</p>
-    <a class="btn btn-gold nb-feature-cta" href="/not-broken#begin">Begin</a>
-  </div>
-</section>
-
-<section class="mood-section" data-mood-section hidden>
-  <div class="wrap">
-    <div class="mood-intro reveal">
-      <p class="eyebrow">Not sure where to start?</p>
-      <h2>How's it going right now?</h2>
-      <p class="lead">Tap whatever's true right now &mdash; we'll bring you straight to a lesson that fits. No form, no questions, just this.</p>
-    </div>
-
-    <div class="mood-cloud" data-mood-cloud>
-      <button type="button" class="mood-chip" data-mood-topic="belonging-and-loneliness" style="--float-dur:4.2s; --float-delay:-0.3s; --float-amt:-7px;">Lonely</button>
-      <button type="button" class="mood-chip" data-mood-topic="identity-and-worth" style="--float-dur:3.6s; --float-delay:-1.8s; --float-amt:-5px;">Not good enough</button>
-      <button type="button" class="mood-chip" data-mood-topic="grief-and-loss" style="--float-dur:4.8s; --float-delay:-2.4s; --float-amt:-8px;">Grieving</button>
-      <button type="button" class="mood-chip" data-mood-topic="conflict-and-forgiveness" style="--float-dur:3.9s; --float-delay:-0.9s; --float-amt:-6px;">Mad at someone</button>
-      <button type="button" class="mood-chip" data-mood-topic="doubt-and-hard-questions-about-god" style="--float-dur:4.4s; --float-delay:-3.1s; --float-amt:-7px;">Doubting</button>
-      <button type="button" class="mood-chip" data-mood-topic="decisions-and-guidance" style="--float-dur:3.7s; --float-delay:-1.2s; --float-amt:-5px;">A big decision</button>
-      <button type="button" class="mood-chip" data-mood-topic="disappointment-and-hard-days" style="--float-dur:4.5s; --float-delay:-2.7s; --float-amt:-8px;">A rough week</button>
-      <button type="button" class="mood-chip" data-mood-topic="desire-and-self-control" style="--float-dur:4.0s; --float-delay:-0.6s; --float-amt:-6px;">Tempted</button>
-      <button type="button" class="mood-chip mood-chip-wild" data-mood-topic="" style="--float-dur:4.6s; --float-delay:-1.5s; --float-amt:-7px;">Not sure &mdash; surprise me</button>
-    </div>
-
-    <div class="mood-results" data-mood-results hidden>
-      <p class="mood-picked" data-mood-picked></p>
-      <div class="topic-grid mood-results-grid" data-mood-results-grid></div>
-      <p class="mood-results-links">
-        <button type="button" class="link-more" data-mood-again>&larr; Try another feeling</button>
-        <a href="/lessons" class="link-more">Or browse everything &rarr;</a>
-      </p>
+    <div class="callout reveal">
+      <p class="eyebrow">For you</p>
+      <h2>You don't need an adult in the room for this part.</h2>
+      <p>Everything else on this page is built for whoever's leading you through something. One page here isn't &mdash; it's yours. Use it alone, send it to a friend, or bring it to whoever's already walking with you.</p>
+      <a href="/for-you" class="btn btn-gold">This part's yours &rarr;</a>
     </div>
   </div>
 </section>
@@ -334,6 +305,7 @@
       <ul class="footer-links">
         <li><a href="/lessons">Lessons</a></li>
         <li><a href="/for-mentors">For Mentors</a></li>
+      <li><a href="/for-you">For You</a></li>
         <li><a href="/what-we-believe">What We Believe</a></li>
         <li><a href="/about">About</a></li>
       </ul>
@@ -384,7 +356,6 @@
 
 <script src="/assets/js/main.js"></script>
 <script src="/assets/js/age-context.js"></script>
-<script src="/assets/js/mood-picker.js"></script>
 <!-- Cloudflare Web Analytics (cookieless, no personal data) -->
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4349aeb535b74e7b9300410d3654e075"}'></script>
 <!-- End Cloudflare Web Analytics -->
