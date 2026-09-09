@@ -3,30 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Mentors — Spiritual Lesson Plans</title>
-<meta name="description" content="How to facilitate these lessons: the adult-learning pedagogy behind them, and practical guidance for mentors leading young people through spiritual questions.">
+<title>The Bridge In — For Mentors — Spiritual Lesson Plans</title>
+<meta name="description" content="The For Mentors page, rebuilt as a bridge you cross plank by plank: six honest skills for being in the room with a young person — presence, facilitation, quiet rooms, tension, this generation, and what to do when it's bigger than you.">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 <meta name="msvalidate.01" content="986E29A0E95491E5807A1C79248D0406" />
 <link rel="canonical" href="https://www.spirituallessonplans.org/for-mentors">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Spiritual Lesson Plans">
 <meta property="og:url" content="https://www.spirituallessonplans.org/for-mentors">
-<meta property="og:title" content="For Mentors — Spiritual Lesson Plans">
-<meta property="og:description" content="How to facilitate these lessons: the adult-learning pedagogy behind them, and practical guidance for mentors leading young people through spiritual questions.">
+<meta property="og:title" content="The Bridge In — For Mentors">
+<meta property="og:description" content="Readiness to mentor isn't a credential you earn. It's presence, offered honestly, from wherever you're standing. Walk the bridge — six planks — before your first class, or after ten years.">
 <meta property="og:image" content="https://www.spirituallessonplans.org/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Spiritual Lesson Plans">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="For Mentors — Spiritual Lesson Plans">
-<meta name="twitter:description" content="How to facilitate these lessons: the adult-learning pedagogy behind them, and practical guidance for mentors leading young people through spiritual questions.">
+<meta name="twitter:title" content="The Bridge In — For Mentors">
+<meta name="twitter:description" content="Readiness to mentor isn't a credential you earn. It's presence, offered honestly, from wherever you're standing.">
 <meta name="twitter:image" content="https://www.spirituallessonplans.org/assets/img/og-image.png">
 <meta name="twitter:image:alt" content="Spiritual Lesson Plans">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
 <!-- Reveal animations only engage when scripting is available; see .reveal in style.css -->
 <script>document.documentElement.className += ' js';</script>
@@ -36,9 +36,9 @@
   "@graph": [
     {
       "@type": "Article",
-      "headline": "How to lead a spiritual lesson with a young person",
+      "headline": "The Bridge In — a rebuilt For Mentors page",
       "url": "https://www.spirituallessonplans.org/for-mentors",
-      "description": "How to facilitate these lessons: the adult-learning pedagogy behind them, and practical guidance for mentors leading young people through spiritual questions.",
+      "description": "Readiness to mentor a young person isn't a credential you accumulate — it's presence, offered honestly, from wherever you're standing. Six concrete skills, walked plank by plank.",
       "inLanguage": "en",
       "isAccessibleForFree": true,
       "license": "https://creativecommons.org/licenses/by-sa/4.0/",
@@ -63,6 +63,270 @@
   ]
 }
 </script>
+<style>
+  /* ==================================================================
+     "The Bridge In" — page-scoped styles.
+     Everything is nested under .bridge so it can't disturb the shared
+     stylesheet, and it borrows the site's brand tokens where they match.
+     A small set of local tokens (--b-*) covers the few values the
+     prototype used that the global sheet doesn't define. Light only —
+     the rest of the site chrome (nav, footer) has no dark mode, so a
+     dark bridge would split the page.
+     ================================================================== */
+  .bridge{
+    --b-paper:#F1E6D3;
+    --b-paper-line:#E3D3B8;
+    --b-ink-soft:#6E6580;
+    --b-sage-wash:#EAEFE4;
+    --b-shadow:rgba(54,47,75,.14);
+    --b-focus:#935F1A;
+  }
+
+  .bridge{ color:var(--ink); }
+  .bridge h1,.bridge h2,.bridge h3,.bridge .serif{
+    font-family:'Fraunces',Georgia,'Times New Roman',serif; text-wrap:balance; font-weight:500;
+    letter-spacing:-0.015em;
+  }
+  .bridge p{ margin:0 0 1rem; }
+  .bridge .wrap-narrow{ max-width:760px; margin:0 auto; padding:0 var(--gutter); }
+
+  .bridge .eyebrow{
+    font-family:'Inter',sans-serif; font-size:.72rem; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); margin:0 0 .9rem;
+  }
+  .bridge .eyebrow.sage{ color:var(--sage-text); }
+
+  /* ---------- floating "need safety now" pill ----------
+     Bottom-LEFT on the real site: the shared .feedback-btn already owns
+     bottom-right, and two competing pills there reads badly. */
+  .bridge-safety-tab{
+    position:fixed; left:1rem; bottom:1rem; z-index:120;
+    background:var(--ink); color:var(--cream); text-decoration:none;
+    font-size:.78rem; font-weight:600; padding:.6rem .9rem; border-radius:999px;
+    box-shadow:0 4px 16px var(--b-shadow); display:inline-flex; align-items:center; gap:.4rem;
+    border:1px solid rgba(255,255,255,.14);
+  }
+  .bridge-safety-tab:hover{ background:var(--gold-text); color:var(--cream); }
+  @media (max-width:640px){
+    .bridge-safety-tab{ font-size:.72rem; padding:.5rem .75rem; }
+  }
+
+  /* ---------- hero ---------- */
+  .bridge .bridge-hero{ padding:clamp(3rem,7vw,5rem) 0 3.5rem; text-align:center; }
+  .bridge .bridge-hero .badge{
+    display:inline-flex; align-items:center; gap:.4rem; font-size:.75rem; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--sage-text);
+    background:var(--b-sage-wash); border:1px solid var(--b-paper-line); border-radius:999px;
+    padding:.35rem .85rem; margin:0 0 1.4rem;
+  }
+  .bridge .bridge-hero h1{ font-size:clamp(2.4rem,6vw,3.6rem); margin:0 0 1.3rem; line-height:1.05; font-weight:400; }
+  .bridge .premise{
+    font-family:'Fraunces',serif; font-size:clamp(1.3rem,3.2vw,1.7rem); line-height:1.5;
+    max-width:600px; margin:0 auto 2.2rem; color:var(--ink);
+  }
+  .bridge .premise em{ color:var(--gold-text); font-style:italic; }
+  .bridge .note{
+    background:var(--b-paper); border:1px solid var(--b-paper-line); border-radius:var(--radius);
+    padding:1.8rem 2rem; text-align:left; font-size:1.08rem; line-height:1.65; margin:0 auto 2rem;
+    max-width:640px;
+  }
+  .bridge .note p{ margin:0 0 1rem; }
+  .bridge .note p:last-child{ margin-bottom:0; }
+  .bridge .cta{
+    background:var(--ink); color:var(--cream); border:none; border-radius:var(--radius);
+    padding:.9rem 1.9rem; font-size:1rem; font-weight:600; cursor:pointer;
+    transition:transform .15s ease, background .15s ease; display:inline-block; text-decoration:none;
+  }
+  .bridge .cta:hover{ transform:translateY(-1px); background:var(--gold-text); color:var(--cream); }
+  @media (prefers-reduced-motion: reduce){ .bridge .cta:hover{ transform:none; } }
+  .bridge .cta.ghost{
+    background:transparent; color:var(--b-ink-soft); border:1px solid var(--b-paper-line);
+    font-weight:500; font-size:.9rem; padding:.7rem 1.3rem;
+  }
+  .bridge .cta.ghost:hover{ background:var(--b-paper); color:var(--ink); }
+
+  /* ---------- chooser ---------- */
+  .bridge .chooser{ padding:2.5rem 0 3.5rem; border-top:1px solid var(--b-paper-line); text-align:center; }
+  .bridge .chooser h2{ font-size:clamp(1.6rem,3.6vw,2.1rem); margin:0 0 .5rem; font-weight:500; }
+  .bridge .chooser .sub{ color:var(--b-ink-soft); margin:0 0 2.2rem; font-size:1.02rem; }
+  .bridge .cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  @media (max-width:760px){ .bridge .cards{ grid-template-columns:1fr; } }
+  .bridge .card{
+    background:var(--b-paper); border:1px solid var(--b-paper-line); border-radius:var(--radius);
+    padding:1.5rem 1.3rem; cursor:pointer; text-align:left; color:var(--ink);
+    transition:border-color .15s ease, transform .15s ease, background .15s ease;
+    display:flex; flex-direction:column; gap:.9rem; font-family:inherit;
+  }
+  .bridge .card:hover{ border-color:var(--gold); transform:translateY(-2px); }
+  @media (prefers-reduced-motion: reduce){ .bridge .card:hover{ transform:none; } }
+  .bridge .card.picked{ border-color:var(--gold-text); background:var(--b-sage-wash); }
+  .bridge .card .mini-bridge{ height:20px; width:100%; }
+  .bridge .card .card-label{ font-family:'Fraunces',serif; font-size:1.15rem; font-weight:500; }
+  .bridge .card .card-desc{ font-size:.92rem; color:var(--b-ink-soft); line-height:1.5; }
+  .bridge .ack{
+    margin-top:1.6rem; font-family:'Fraunces',serif; font-style:italic; color:var(--b-ink-soft);
+    font-size:1.02rem; min-height:1.6em;
+  }
+
+  /* ---------- bridge progress rail ----------
+     Sticks BELOW the site nav (82px tall, also sticky). */
+  .bridge .rail-outer{
+    position:sticky; top:81px; z-index:20; background:var(--cream);
+    border-top:1px solid var(--b-paper-line); border-bottom:1px solid var(--b-paper-line);
+    padding:.8rem 0 .5rem;
+  }
+  .bridge .rail-inner{ max-width:1080px; margin:0 auto; padding:0 1.2rem; position:relative; }
+  .bridge .rail-svg{ width:100%; height:34px; display:block; }
+  .bridge .traveler{
+    position:absolute; top:1px; width:16px; height:16px; border-radius:50%;
+    background:var(--gold); border:3px solid var(--cream); box-shadow:0 2px 6px var(--b-shadow);
+    transition:left .5s cubic-bezier(.4,0,.2,1); transform:translateX(-50%);
+  }
+  @media (prefers-reduced-motion: reduce){ .bridge .traveler{ transition:none; } }
+  .bridge .rail-labels{
+    display:flex; gap:.3rem; overflow-x:auto; padding-top:.5rem; scrollbar-width:thin;
+  }
+  .bridge .rail-labels button{
+    flex:1 0 auto; background:none; border:none; color:var(--b-ink-soft); font-size:.68rem;
+    font-weight:600; letter-spacing:.03em; text-transform:uppercase; cursor:pointer;
+    padding:.35rem .3rem; border-radius:4px; white-space:nowrap; text-align:center; font-family:inherit;
+  }
+  .bridge .rail-labels button:hover{ color:var(--ink); }
+  .bridge .rail-labels button[aria-current="true"]{ color:var(--gold-text); background:var(--b-sage-wash); }
+  @media (max-width:640px){ .bridge .rail-labels button{ font-size:.62rem; } }
+
+  /* ---------- planks ---------- */
+  .bridge .planks{ max-width:760px; margin:0 auto; padding:0 var(--gutter); }
+  .bridge .plank{ padding:4.5rem 0; border-bottom:1px solid var(--b-paper-line); scroll-margin-top:180px; }
+  .bridge .plank:last-of-type{ border-bottom:none; }
+  .bridge .plank h2{ font-size:clamp(1.7rem,4vw,2.3rem); margin:0 0 1.3rem; font-weight:500; }
+  .bridge .tone-line{
+    font-family:'Fraunces',serif; font-style:italic; color:var(--b-ink-soft); font-size:1.02rem;
+    margin:0 0 1.4rem; padding-left:1rem; border-left:2px solid var(--sky);
+  }
+  .bridge .plank p{ font-size:1.06rem; line-height:1.68; }
+  .bridge .pull-line{
+    font-family:'Fraunces',serif; font-weight:600; font-size:1.35rem; color:var(--gold-text);
+    margin:1.6rem 0 0; line-height:1.35;
+  }
+
+  .bridge .contrast{ display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin:1.6rem 0; }
+  @media (max-width:560px){ .bridge .contrast{ grid-template-columns:1fr; } }
+  .bridge .contrast .box{ background:var(--b-paper); border:1px solid var(--b-paper-line); border-radius:var(--radius); padding:1rem 1.2rem; }
+  .bridge .contrast .box .k{ font-size:.7rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--b-ink-soft); margin-bottom:.4rem; }
+  .bridge .contrast .box.yes{ border-color:var(--sage); }
+  .bridge .contrast .box.yes .k{ color:var(--sage-text); }
+  .bridge .contrast .box p{ font-size:.98rem; margin:0; font-style:italic; font-family:'Fraunces',serif; }
+
+  /* ---------- scenario ---------- */
+  .bridge .scenario{ margin-top:1.6rem; }
+  .bridge .scenario .prompt{ font-family:'Fraunces',serif; font-size:1.25rem; margin:0 0 1.1rem; }
+  .bridge .options{ display:flex; flex-direction:column; gap:.7rem; }
+  .bridge .option{
+    background:var(--b-paper); border:1px solid var(--b-paper-line); border-radius:5px;
+    padding:.9rem 1.1rem; text-align:left; cursor:pointer; font-size:.98rem; color:var(--ink);
+    transition:border-color .15s ease, background .15s ease; font-family:inherit;
+  }
+  .bridge .option:hover{ border-color:var(--gold); }
+  .bridge .option[aria-pressed="true"]{ border-color:var(--gold-text); background:var(--b-sage-wash); font-weight:600; }
+  .bridge .reframe{
+    margin-top:1.1rem; padding:1.1rem 1.3rem; border-left:2px solid var(--sage);
+    background:var(--b-sage-wash); border-radius:0 5px 5px 0; font-size:1rem; line-height:1.65;
+    display:none;
+  }
+  .bridge .reframe.show{ display:block; }
+
+  /* ---------- gen z cards ---------- */
+  .bridge .genz-grid{ display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin-top:1.6rem; }
+  @media (max-width:560px){ .bridge .genz-grid{ grid-template-columns:1fr; } }
+  .bridge .genz-card{
+    background:var(--b-paper); border:1px solid var(--b-paper-line); border-radius:var(--radius); padding:1.1rem 1.2rem;
+  }
+  .bridge .genz-card .g-label{ font-family:'Fraunces',serif; font-weight:600; font-size:1.02rem; color:var(--gold-text); margin:0 0 .4rem; }
+  .bridge .genz-card p{ font-size:.94rem; margin:0; color:var(--ink); }
+
+  /* ---------- safety plank (deliberately distinct) ---------- */
+  .bridge .plank.safety-plank{
+    background:var(--b-sage-wash); border:1px solid var(--sage); border-radius:8px;
+    padding:2.6rem 2rem; margin:3rem 0; border-bottom:1px solid var(--sage);
+  }
+  .bridge .safety-plank h3{ font-size:1.15rem; margin:1.6rem 0 .6rem; font-family:'Fraunces',serif; font-weight:600; }
+  .bridge .safety-plank h3:first-of-type{ margin-top:1.8rem; }
+  .bridge .safety-note{
+    font-size:.85rem; color:var(--sage-text); font-weight:600; margin-top:1.8rem;
+    padding-top:1.2rem; border-top:1px dashed var(--sage);
+  }
+
+  /* ---------- Q&A ---------- */
+  .bridge .qa-section{ padding:4.5rem 0; border-top:1px solid var(--b-paper-line); }
+  .bridge .qa-item{ border-bottom:1px solid var(--b-paper-line); }
+  .bridge .qa-q{
+    width:100%; background:none; border:none; text-align:left; padding:1.1rem 0;
+    font-family:'Fraunces',serif; font-size:1.06rem; color:var(--ink); cursor:pointer;
+    display:flex; justify-content:space-between; align-items:center; gap:1rem;
+  }
+  .bridge .qa-q .plus{ font-size:1.3rem; color:var(--gold-text); flex:0 0 auto; transition:transform .2s ease; }
+  @media (prefers-reduced-motion: reduce){ .bridge .qa-q .plus{ transition:none; } }
+  .bridge .qa-q[aria-expanded="true"] .plus{ transform:rotate(45deg); }
+  .bridge .qa-a{ display:none; padding:0 0 1.3rem; font-size:.98rem; line-height:1.65; color:var(--b-ink-soft); max-width:620px; }
+  .bridge .qa-a.show{ display:block; }
+
+  /* ---------- arrival ---------- */
+  .bridge .arrival{ padding:4.5rem 0 3rem; text-align:center; border-top:1px solid var(--b-paper-line); }
+  .bridge .arrival h2{ font-size:clamp(1.9rem,4.4vw,2.5rem); margin:0 0 1.2rem; font-weight:500; }
+  .bridge .arrival .practice{
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.15rem; color:var(--b-ink-soft);
+    max-width:520px; margin:0 auto 1.8rem; padding:1.1rem 1.4rem; border-left:2px solid var(--sage);
+    text-align:left; display:inline-block;
+  }
+  .bridge .arrival .close-note{ max-width:480px; margin:2rem auto 0; text-align:left; font-size:1.02rem; }
+  .bridge .arrival-actions{ margin-top:2rem; display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; align-items:center; }
+
+  /* ---------- folded-back reference material (below the journey) ---------- */
+  .bridge .appendix{ border-top:1px solid var(--b-paper-line); }
+  .bridge .appendix-lead{ padding:3rem 0 0; text-align:center; }
+  .bridge .appendix-lead .eyebrow{ margin-bottom:.6rem; }
+  .bridge .appendix-lead p{ color:var(--b-ink-soft); max-width:540px; margin:0 auto; font-size:1rem; line-height:1.6; }
+
+  .bridge .ref-section{ padding:3.5rem 0; border-top:1px solid var(--b-paper-line); }
+  .bridge .ref-section h2{ font-size:clamp(1.5rem,3.4vw,2rem); margin:0 0 .5rem; font-weight:500; }
+  .bridge .ref-section > p{ font-size:1.04rem; line-height:1.68; }
+  .bridge .ref-lead{ color:var(--b-ink-soft); margin-bottom:1.4rem; }
+
+  /* glossary reuses the .qa-* accordion; the alternate phrasing on a term is muted */
+  .bridge .qa-q .term-alt{ font-family:'Fraunces',serif; font-style:italic; font-weight:400; color:var(--b-ink-soft); font-size:.94em; }
+  .bridge .gloss-note{ margin-top:1.4rem; font-size:.98rem; color:var(--b-ink-soft); font-style:italic; font-family:'Fraunces',serif; }
+
+  /* self-care card + mood check-in */
+  .bridge .carry-card{
+    background:var(--b-paper); border:1px solid var(--b-paper-line); border-radius:var(--radius);
+    padding:1.5rem 1.7rem; margin:1.4rem 0;
+  }
+  .bridge .carry-card ul{ margin:0; padding-left:1.15rem; }
+  .bridge .carry-card li{ font-size:1rem; line-height:1.62; margin:0 0 .9rem; }
+  .bridge .carry-card li:last-child{ margin-bottom:0; }
+  .bridge .carry-card strong{ color:var(--gold-text); font-weight:600; }
+  .bridge .carry-coda{ font-size:1.02rem; }
+
+  .bridge .checkin{ margin-top:2rem; padding-top:1.6rem; border-top:1px dashed var(--b-paper-line); }
+  .bridge .checkin-prompt{ font-family:'Fraunces',serif; font-style:italic; font-size:1.12rem; margin:0 0 1rem; }
+  .bridge .checkin-cloud{ display:flex; flex-wrap:wrap; gap:.6rem; }
+  .bridge .checkin-chip{
+    background:var(--b-paper); border:1px solid var(--b-paper-line); border-radius:999px;
+    padding:.5rem 1rem; font-size:.92rem; color:var(--ink); cursor:pointer; font-family:inherit;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .bridge .checkin-chip:hover{ border-color:var(--gold); }
+  .bridge .checkin-chip.is-picked{ border-color:var(--gold-text); background:var(--b-sage-wash); font-weight:600; }
+  .bridge .checkin-response{
+    margin-top:1.2rem; padding:1.1rem 1.3rem; border-left:2px solid var(--sage);
+    background:var(--b-sage-wash); border-radius:0 5px 5px 0; font-size:1rem; line-height:1.65;
+  }
+
+  /* parents / guardians share blurb */
+  .bridge .for-parents .note{ margin-top:1.2rem; }
+  .bridge .for-parents .note p{ font-style:italic; margin:0; font-size:1.02rem; line-height:1.7; }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to main content</a>
@@ -94,309 +358,245 @@
   </div>
 </nav>
 
+<a class="bridge-safety-tab" href="#safety">&#9888; Need this right now?</a>
+
 <main id="main" tabindex="-1">
+<div class="bridge">
 
-<header class="page-hero">
-  <div class="wrap">
-    <p class="eyebrow">For Mentors</p>
-    <h1>You don't need training. You need a way in.</h1>
-    <p>These lessons are built so a first-time mentor and an experienced one can both lead them well. Here's how they work, and how to hold the room.</p>
+  <header class="bridge-hero wrap-narrow">
+    <p class="badge">&#10022; Rebuilt &middot; Walk it, don't just read it</p>
+    <p class="eyebrow">Spiritual Lesson Plans &middot; For Mentors</p>
+    <h1 class="serif">The Bridge In</h1>
+    <p class="premise">We see every young person as whole and complete, perfect and able. Not broken, then fixed. <em>Whole</em> &mdash; and then we begin.</p>
+    <div class="note">
+      <p>We've had nearly every teaching and mentoring experience we can think of. We've had the best lesson prepared and the kids haven't even looked up or engaged. We've had a lesson we thought was horrible and heard later from a parent that the young person loved it. We've also had years where we thought we had this figured out &mdash; and then a kid asked us something that undid all of it in about four seconds.</p>
+      <p>Here's what I've landed on: none of that disqualifies you. You don't have to have arrived to be ready to walk in that door. You just have to be willing to actually be there.</p>
+      <p>This page used to be a page. Now it's a bridge &mdash; six planks, from wherever you're standing to that room. Walk it once before your first class, or walk it again after ten years. Either way, it's yours to cross.</p>
+    </div>
+    <a class="cta" href="#chooser">Start crossing &rarr;</a>
+  </header>
+
+  <section class="chooser wrap-narrow" id="chooser">
+    <h2 class="serif">Where are you crossing from?</h2>
+    <p class="sub">Doesn't change what's true below. Just changes where we start.</p>
+    <div class="cards" id="cards">
+      <button class="card" type="button" data-level="new" aria-pressed="false">
+        <svg class="mini-bridge" viewBox="0 0 100 20" aria-hidden="true"><line x1="5" y1="10" x2="95" y2="10" stroke="var(--b-paper-line)" stroke-width="3"/><circle cx="10" cy="10" r="5" fill="var(--gold)"/><circle cx="50" cy="10" r="4" fill="var(--b-paper-line)"/><circle cx="90" cy="10" r="4" fill="var(--b-paper-line)"/></svg>
+        <span class="card-label serif">New to this</span>
+        <span class="card-desc">About to teach my first class &mdash; or my first in a long while.</span>
+      </button>
+      <button class="card" type="button" data-level="some" aria-pressed="false">
+        <svg class="mini-bridge" viewBox="0 0 100 20" aria-hidden="true"><line x1="5" y1="10" x2="95" y2="10" stroke="var(--b-paper-line)" stroke-width="3"/><circle cx="10" cy="10" r="4" fill="var(--b-paper-line)"/><circle cx="50" cy="10" r="5" fill="var(--gold)"/><circle cx="90" cy="10" r="4" fill="var(--b-paper-line)"/></svg>
+        <span class="card-label serif">Some experience</span>
+        <span class="card-desc">I've done this a few times. Still finding my footing.</span>
+      </button>
+      <button class="card" type="button" data-level="years" aria-pressed="false">
+        <svg class="mini-bridge" viewBox="0 0 100 20" aria-hidden="true"><line x1="5" y1="10" x2="95" y2="10" stroke="var(--b-paper-line)" stroke-width="3"/><circle cx="10" cy="10" r="4" fill="var(--b-paper-line)"/><circle cx="50" cy="10" r="4" fill="var(--b-paper-line)"/><circle cx="90" cy="10" r="5" fill="var(--gold)"/></svg>
+        <span class="card-label serif">Years in</span>
+        <span class="card-desc">I've been doing this a long time.</span>
+      </button>
+    </div>
+    <p class="ack" id="ack" role="status" aria-live="polite"></p>
+  </section>
+
+  <nav class="rail-outer" aria-label="Your progress across the bridge">
+    <div class="rail-inner">
+      <svg class="rail-svg" viewBox="0 0 1200 40" aria-hidden="true">
+        <rect x="20" y="14" width="1160" height="12" rx="6" fill="var(--b-paper-line)"/>
+        <rect class="seg" data-idx="0" x="20" y="14" width="193.3" height="12" fill="transparent"/>
+        <rect class="seg" data-idx="1" x="213.3" y="14" width="193.3" height="12" fill="transparent"/>
+        <rect class="seg" data-idx="2" x="406.6" y="14" width="193.3" height="12" fill="transparent"/>
+        <rect class="seg" data-idx="3" x="599.9" y="14" width="193.3" height="12" fill="transparent"/>
+        <rect class="seg" data-idx="4" x="793.2" y="14" width="193.3" height="12" fill="transparent"/>
+        <rect class="seg" data-idx="5" x="986.5" y="14" width="193.5" height="12" fill="transparent"/>
+        <circle cx="1160" cy="20" r="16" fill="var(--gold)" opacity=".16"/>
+      </svg>
+      <div class="traveler" id="traveler" style="left:8%"></div>
+      <div class="rail-labels" id="railLabels">
+        <button type="button" data-target="plank-presence" aria-current="true">1 &middot; Presence</button>
+        <button type="button" data-target="plank-facilitation">2 &middot; Facilitation</button>
+        <button type="button" data-target="plank-quiet">3 &middot; Quiet Rooms</button>
+        <button type="button" data-target="plank-conflict">4 &middot; Tension</button>
+        <button type="button" data-target="plank-genz">5 &middot; This Generation</button>
+        <button type="button" data-target="safety">6 &middot; If It's Bigger</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="planks">
+
+    <section class="plank" id="plank-presence" data-plank="0">
+      <p class="eyebrow">Plank 1 of 6</p>
+      <p class="tone-line" data-tone="presence"></p>
+      <h2 class="serif">Presence Is the Whole Job</h2>
+      <p>Every kid who walks into that room is already whole and complete, perfect and able. Not a project to fix. Not a problem to manage. That's the ground you're standing on before you say a single word.</p>
+      <p>Presence is the whole job &mdash; more than the lesson.</p>
+      <p>Put the phone away. Get on their eye level. Let a kid's tangent matter as much as your outline.</p>
+      <p>Kids can tell the difference between an adult who's managing them and an adult who's actually with them. It's that second kind of presence &mdash; more than any curriculum &mdash; that they'll remember as what love felt like.</p>
+      <div class="contrast">
+        <div class="box no"><div class="k">Managing</div><p>&ldquo;Let's stay on track, okay?&rdquo;</p></div>
+        <div class="box yes"><div class="k">With them</div><p>&ldquo;Wait &mdash; tell me more about that.&rdquo;</p></div>
+      </div>
+      <p class="pull-line serif">Not weakness management. That's just love, put to work.</p>
+    </section>
+
+    <section class="plank" id="plank-facilitation" data-plank="1">
+      <p class="eyebrow">Plank 2 of 6</p>
+      <p class="tone-line" data-tone="facilitation"></p>
+      <h2 class="serif">Asking, Not Answering</h2>
+      <p>Great facilitation is less about having the right answer and more about asking the right question &mdash; and then having the patience to let silence do its work.</p>
+      <p>Open with something they can actually answer from their own life, not a trivia question with one right response. Use &ldquo;I wonder...&rdquo; instead of &ldquo;the answer is...&rdquo; &mdash; it invites rather than tests.</p>
+      <p>Watch the room, not the lesson plan. If something you said just landed hard for one kid, follow that thread &mdash; even if the craft doesn't get finished.</p>
+      <div class="contrast">
+        <div class="box no"><div class="k">Tests</div><p>&ldquo;The answer is: God loves you no matter what.&rdquo;</p></div>
+        <div class="box yes"><div class="k">Invites</div><p>&ldquo;I wonder what it would feel like if love never ran out.&rdquo;</p></div>
+      </div>
+    </section>
+
+    <section class="plank" id="plank-quiet" data-plank="2">
+      <p class="eyebrow">Plank 3 of 6</p>
+      <p class="tone-line" data-tone="quiet"></p>
+      <h2 class="serif">When the Room Goes Quiet</h2>
+      <p>This will happen to you. Probably soon. Here's the version of it worth practicing before it does.</p>
+      <div class="scenario">
+        <p class="prompt serif">You just asked a question. Ten seconds of nothing comes back. What's your first instinct?</p>
+        <div class="options" data-scenario="quiet">
+          <button class="option" type="button" data-key="fill">Jump in and answer it myself so it's not awkward.</button>
+          <button class="option" type="button" data-key="call">Call on a specific kid to answer.</button>
+          <button class="option" type="button" data-key="wait">Wait it out and let the silence sit.</button>
+        </div>
+        <div class="reframe" data-scenario-reframe="quiet" role="status" aria-live="polite"></div>
+      </div>
+      <p class="pull-line serif">Disengagement is almost never about you.</p>
+    </section>
+
+    <section class="plank" id="plank-conflict" data-plank="3">
+      <p class="eyebrow">Plank 4 of 6</p>
+      <p class="tone-line" data-tone="conflict"></p>
+      <h2 class="serif">When It Gets Tense</h2>
+      <p>Two kids are going back and forth, voices rising &mdash; or one just pushed back hard on you directly. What's your first move?</p>
+      <div class="scenario">
+        <div class="options" data-scenario="conflict">
+          <button class="option" type="button" data-key="explain">Calmly explain why the rule or the right answer is what it is.</button>
+          <button class="option" type="button" data-key="separate">Separate them, or tell them both to stop.</button>
+          <button class="option" type="button" data-key="ask">Get low, get calm, and ask what happened &mdash; from each side.</button>
+        </div>
+        <div class="reframe" data-scenario-reframe="conflict" role="status" aria-live="polite"></div>
+      </div>
+      <p class="pull-line serif">Repair matters more than rules.</p>
+    </section>
+
+    <section class="plank" id="plank-genz" data-plank="4">
+      <p class="eyebrow">Plank 5 of 6</p>
+      <p class="tone-line" data-tone="genz"></p>
+      <h2 class="serif">Who's Actually in the Room</h2>
+      <p>Whatever generation raised you, this isn't quite it. Here's what's actually reaching them right now.</p>
+      <div class="genz-grid">
+        <div class="genz-card"><p class="g-label">Honesty over polish</p><p>This generation isn't looking for certainty. They're looking for adults who'll admit doubt out loud.</p></div>
+        <div class="genz-card"><p class="g-label">Real questions, not dangerous ones</p><p>They want their questions treated as real &mdash; never as a threat to manage.</p></div>
+        <div class="genz-card"><p class="g-label">Consistency over performance</p><p>Showing up the same way, week after week, teaches more than performed confidence ever will.</p></div>
+        <div class="genz-card"><p class="g-label">Belonging before belief</p><p>They want to feel like they matter in the room before they're asked to sign onto anything.</p></div>
+        <div class="genz-card"><p class="g-label">They can smell a script</p><p>What reaches them is a real person, still figuring it out, willing to sit in the question with them instead of rushing to close it.</p></div>
+      </div>
+      <p class="pull-line serif">Belonging before belief.</p>
+    </section>
+
+    <section class="plank safety-plank" id="safety" data-plank="5">
+      <p class="eyebrow sage">Plank 6 of 6</p>
+      <p class="tone-line" style="border-left-color:var(--sage)">However many years you've done this, this plank doesn't change. Read it the same way every time.</p>
+      <h2 class="serif">If It's Bigger Than You</h2>
+
+      <h3 class="serif">Trust the moment</h3>
+      <p>Trust the moment you think &ldquo;this is bigger than me&rdquo; &mdash; that instinct is almost always right, and it's not a failure to act on it. Bring in another adult when a behavior is safety-related, when a child discloses something serious, when a conflict isn't resolving with your usual tools, or when your own emotions are running too hot to respond well.</p>
+      <p>Asking for backup models exactly what you're trying to teach: that none of us are meant to carry things alone.</p>
+
+      <h3 class="serif">If a child discloses</h3>
+      <p>If you're a Sunday school teacher, you may be a mandated reporter under your state's law &mdash; which generally means that if a child discloses or you suspect abuse or neglect, you're legally required to report it. Not investigate it. Not confront a parent. Just report it, promptly, to the appropriate authority or hotline.</p>
+      <p>Reporting laws and processes vary by state, so know your organization's exact policy and reporting number before you're ever in the room alone with kids. This isn't about suspicion of families &mdash; it's about being the safe adult a child can tell.</p>
+
+      <h3 class="serif">The quiet, structural stuff</h3>
+      <p>Good safety practice is quiet and structural, not dramatic: two adults in a room whenever possible, doors with windows or left open, a clear check-in/check-out process so no child leaves with someone unauthorized, and a known plan for allergies, injuries, and emergencies before you need it. Know where the first aid kit is and who to call.</p>
+      <p>Safety isn't in tension with warmth &mdash; it's what makes real warmth possible, because kids and parents relax when they can feel that someone thought it through.</p>
+
+      <p class="safety-note">Bookmark this plank. That's what the &#9888; button in the corner is for &mdash; it jumps straight here, no walking required.</p>
+    </section>
+
   </div>
-</header>
 
-<section>
-  <div class="wrap grid-2">
-    <div class="reveal">
-      <p class="eyebrow">The approach</p>
-      <h2>Built on adult-learning pedagogy &mdash; for young people</h2>
-      <p>That sounds backwards, but it isn't. Andragogy (adult learning theory) treats the learner as someone who already has experience worth drawing on, who learns by doing rather than being told, and who needs to see relevance before they'll engage. Gen Z and Gen Alpha research says the same thing about younger learners: they disengage from lecture, and they lean in when a topic feels personally real and they have some control over how they explore it.</p>
-      <p>So every lesson here follows the same shape:</p>
-      <ul class="list-clean">
-        <li><strong>Start from experience.</strong> Open with a question about something the young person has already lived, not a definition.</li>
-        <li><strong>Make it active.</strong> A short activity, discussion prompt, or reflection &mdash; never just reading at them.</li>
-        <li><strong>Leave room for their own answer.</strong> The goal is never to arrive at the "right" response. It's to help them trust their own thinking.</li>
-        <li><strong>Close with the premise.</strong> Every lesson returns to the same anchor: you are already whole.</li>
-      </ul>
-      <button type="button" class="worked-example-toggle" data-example-toggle aria-expanded="false">See it in a real lesson &darr;</button>
-      <div class="worked-example" data-example hidden>
-        <p class="worked-example-source">From <a href="/lessons/11-14/off-days-are-allowed">Off Days Are Allowed</a> &middot; Grade 6&ndash;8</p>
-        <div class="worked-example-row">
-          <span class="worked-example-tag">Start from experience</span>
-          <p>&ldquo;Think of a recent day you felt &lsquo;off&rsquo; &mdash; disconnected, low, more human than usual. No shame in it. Just notice it happened.&rdquo;</p>
-        </div>
-        <div class="worked-example-row">
-          <span class="worked-example-tag">Make it active</span>
-          <p>Small-group discussion: &ldquo;Have you ever felt guilty about feeling bad &mdash; like the feeling itself was proof you were failing at something?&rdquo;</p>
-        </div>
-        <div class="worked-example-row">
-          <span class="worked-example-tag">Leave room for their own answer</span>
-          <p>A private written reflection, never shared aloud unless they choose to: &ldquo;What would change if a hard day stopped counting as evidence against you?&rdquo;</p>
-        </div>
-        <div class="worked-example-row">
-          <span class="worked-example-tag">Close with the premise</span>
-          <p>&ldquo;You don't lose your wholeness on a bad day. It was never something you had to keep earning.&rdquo;</p>
-        </div>
-      </div>
-    </div>
-    <div class="card reveal mentor-checklist" data-checklist>
-      <p class="eyebrow">Before you start</p>
-      <h3 class="mt-0">A few things worth knowing</h3>
-      <p class="checklist-intro">Check them off as you go &mdash; purely for you, nothing's sent anywhere.</p>
-      <ul class="checklist-list">
-        <li class="checklist-item">
-          <label>
-            <input type="checkbox" data-checklist-box value="no-training">
-            <span class="checklist-mark" aria-hidden="true"></span>
-            <span class="checklist-text">You don't need a religious background or formal training to lead one of these. Read it once beforehand, and you're ready.</span>
-          </label>
-        </li>
-        <li class="checklist-item">
-          <label>
-            <input type="checkbox" data-checklist-box value="beats">
-            <span class="checklist-mark" aria-hidden="true"></span>
-            <span class="checklist-text">Each lesson is split into four &ldquo;beats&rdquo; &mdash; short segments, a few minutes apiece, that build on one another. Think chapters, not a strict timer; if one needs more room, take it.</span>
-          </label>
-        </li>
-        <li class="checklist-item">
-          <label>
-            <input type="checkbox" data-checklist-box value="faith">
-            <span class="checklist-mark" aria-hidden="true"></span>
-            <span class="checklist-text">These lessons are rooted in Christian Science, but written to welcome any faith background in the room. You're not asked to convert anyone &mdash; just to hold space.</span>
-          </label>
-        </li>
-        <li class="checklist-item">
-          <label>
-            <input type="checkbox" data-checklist-box value="citations">
-            <span class="checklist-mark" aria-hidden="true"></span>
-            <span class="checklist-text">These lessons cite the Bible and Science and Health because that's the lens the author knows well enough to write from honestly &mdash; not a ranking of sacred texts. If a verse, story, or teacher from your own tradition (or none) says it better, swap it in. That's not going off-script &mdash; that's the script working.</span>
-          </label>
-        </li>
-        <li class="checklist-item">
-          <label>
-            <input type="checkbox" data-checklist-box value="adapt">
-            <span class="checklist-mark" aria-hidden="true"></span>
-            <span class="checklist-text">There's no wrong way to adapt a lesson to your group. Skip a section, slow down, or sit with silence &mdash; the structure is a guide, not a script.</span>
-          </label>
-        </li>
-        <li class="checklist-item">
-          <label>
-            <input type="checkbox" data-checklist-box value="pushback">
-            <span class="checklist-mark" aria-hidden="true"></span>
-            <span class="checklist-text">If a young person pushes back on an idea, that's the lesson working, not failing. Curiosity and doubt are welcome here.</span>
-          </label>
-        </li>
-      </ul>
-      <div class="checklist-progress">
-        <div class="checklist-progress-track"><div class="checklist-progress-fill" data-checklist-fill></div></div>
-        <p class="checklist-progress-text" data-checklist-count>0 of 6</p>
-      </div>
-      <div class="checklist-done" data-checklist-done hidden>
-        <p class="checklist-done-text">&#10022; You're ready.</p>
-        <a href="/lessons" class="btn btn-gold">Pick your first lesson &rarr;</a>
-      </div>
-    </div>
-  </div>
-</section>
+  <section class="qa-section wrap-narrow" id="qa">
+    <p class="eyebrow">Finite, on purpose</p>
+    <h2 class="serif">Questions Mentors Actually Ask</h2>
+    <p style="color:var(--b-ink-soft); margin-bottom:1.8rem;">Not a chatbot &mdash; just the questions that come up most, answered straight. Tap one.</p>
+    <div id="qaList"></div>
+  </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">Facilitation basics</p>
-      <h2>Holding the room well</h2>
+  <section class="arrival wrap-narrow" id="arrival">
+    <p class="eyebrow">You've crossed</p>
+    <h2 class="serif">That's the Bridge.</h2>
+    <p>Six planks. You didn't need to master all of them before you were allowed to teach &mdash; you needed to know they were there.</p>
+    <p>Every kid you taught today was already whole and complete, perfect and able, before you ever walked in. You didn't fix anything. You just got to notice it with them &mdash; same as this bridge was never about fixing you either.</p>
+    <div class="practice">One thing to carry in: before class, ask yourself just one question &mdash; am I trying to manage this room, or actually be with it?</div>
+    <div class="close-note">
+      <p>You're not walking in there alone. Go find your class.</p>
     </div>
-    <div class="pillars-grid">
-      <div class="pillar reveal">
-        <div class="pillar-num">01</div>
-        <h3>Ask more than you tell</h3>
-        <p>Every lesson includes discussion prompts. Resist the urge to fill silence &mdash; a pause is often the young person doing real thinking, not being stuck.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="pillar-num">02</div>
-        <h3>Meet them without judgment</h3>
-        <p>Whatever a young person brings &mdash; doubt, a different faith, a hard question &mdash; the response is curiosity, not correction. That's the whole premise of this resource.</p>
-      </div>
-      <div class="pillar reveal">
-        <div class="pillar-num">03</div>
-        <h3>Make it theirs</h3>
-        <p>Adapt language, examples, and pacing to your group. A lesson that's been reshaped to fit the room in front of you is being used exactly as intended.</p>
-      </div>
+    <div class="arrival-actions">
+      <a class="cta" href="/lessons">Find your lesson &rarr;</a>
+      <a class="cta ghost" href="#chooser" data-walk-again>Walk it again</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
+  <div class="appendix" id="reference">
+    <div class="appendix-lead wrap-narrow">
+      <p class="eyebrow">Keep this part for later</p>
+      <p>Three things that didn't need to be on the bridge itself, but are worth a bookmark: words a kid might ask you about, something to hand a parent, and a note for after you teach.</p>
+    </div>
+
+    <section class="ref-section wrap-narrow" id="glossary">
       <p class="eyebrow">A short glossary</p>
-      <h2>Words you might get asked about</h2>
-      <p>You don't need to memorize any of this. It's here so you're not caught off guard if a young person asks what a word means.</p>
-    </div>
-    <div class="glossary-grid reveal" data-glossary>
-      <div class="glossary-item">
-        <button type="button" class="glossary-term" data-glossary-toggle aria-expanded="false">
-          <span>God <em>/ &ldquo;a power greater than yourself&rdquo; / &ldquo;the Mover&rdquo;</em></span>
-          <span class="glossary-icon" aria-hidden="true"></span>
-        </button>
-        <div class="glossary-def" hidden>
-          <p>This site avoids assuming a young person already has a fixed idea of God, so lessons often use more open language. In Christian Science, God is understood as Love itself, and as Mind, Spirit, and Life &mdash; not a distant figure but something more like the truest reality underneath everything, always present.</p>
-        </div>
-      </div>
-      <div class="glossary-item">
-        <button type="button" class="glossary-term" data-glossary-toggle aria-expanded="false">
-          <span>The Christ</span>
-          <span class="glossary-icon" aria-hidden="true"></span>
-        </button>
-        <div class="glossary-def" hidden>
-          <p>In Christian Science, not only the historical man Jesus, but the eternal idea he demonstrated: that everyone has an unbreakable connection to God. Jesus is the man; &ldquo;the Christ&rdquo; is the truth he showed.</p>
-        </div>
-      </div>
-      <div class="glossary-item">
-        <button type="button" class="glossary-term" data-glossary-toggle aria-expanded="false">
-          <span>Prayer</span>
-          <span class="glossary-icon" aria-hidden="true"></span>
-        </button>
-        <div class="glossary-def" hidden>
-          <p>Not asking for something to happen, but the practice of aligning your own thinking with what's already true. Less &ldquo;please,&rdquo; more &ldquo;remembering.&rdquo;</p>
-        </div>
-      </div>
-      <div class="glossary-item">
-        <button type="button" class="glossary-term" data-glossary-toggle aria-expanded="false">
-          <span>Demonstration</span>
-          <span class="glossary-icon" aria-hidden="true"></span>
-        </button>
-        <div class="glossary-def" hidden>
-          <p>Christian Science's word for proving a spiritual idea true through lived experience, not just believing it intellectually. If a lesson ever talks about &ldquo;living out&rdquo; an idea rather than just agreeing with it, that's this concept, unnamed.</p>
-        </div>
-      </div>
-      <div class="glossary-item">
-        <button type="button" class="glossary-term" data-glossary-toggle aria-expanded="false">
-          <span>Science and Health</span>
-          <span class="glossary-icon" aria-hidden="true"></span>
-        </button>
-        <div class="glossary-def" hidden>
-          <p>Mary Baker Eddy's 1875 book, the foundational text of Christian Science. Not required reading for anyone using this site.</p>
-        </div>
-      </div>
-      <div class="glossary-item">
-        <button type="button" class="glossary-term" data-glossary-toggle aria-expanded="false">
-          <span>Practitioner</span>
-          <span class="glossary-icon" aria-hidden="true"></span>
-        </button>
-        <div class="glossary-def" hidden>
-          <p>Someone within the Christian Science church trained to support others through prayer, roughly analogous to a chaplain. Not a role that exists on this site or is required to lead a lesson.</p>
-        </div>
-      </div>
-    </div>
-    <p class="reveal text-muted" style="max-width: 720px; margin-top: 20px;">If a term comes up in a session that isn't here, it's fine to say "I don't know &mdash; let's find out together." That's a fine answer at any age.</p>
-  </div>
-</section>
+      <h2 class="serif">Words you might get asked about</h2>
+      <p class="ref-lead">You don't need to memorize any of this. It's here so you're not caught off guard if a young person asks what a word means.</p>
+      <div id="glossList"></div>
+      <p class="gloss-note">If a term comes up that isn't here, &ldquo;I don't know &mdash; let's find out together&rdquo; is a fine answer at any age.</p>
+    </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="eyebrow">When it doesn't go as planned</p>
-      <h2>If things get heavy (they will, sometimes)</h2>
-      <p>You don't need to be a therapist to lead these lessons. You do need to know what to do when the room gets quiet, tense, or real. Here's the honest version, worst case last.</p>
-    </div>
-    <div class="escalation-ladder reveal" data-escalation style="margin-top: 28px;">
-      <div class="escalation-step" data-tone="calm">
-        <button type="button" class="escalation-trigger" data-escalation-toggle aria-expanded="false">
-          <span class="escalation-num">1</span>
-          <span class="escalation-label">Nobody's talking</span>
-          <span class="escalation-chevron" aria-hidden="true"></span>
-        </button>
-        <div class="escalation-body" hidden>
-          <p>That's not you failing &mdash; that's often someone actually thinking. Let it breathe. Ask the question once more, gently, then wait again.</p>
-        </div>
-      </div>
-      <div class="escalation-step" data-tone="curious">
-        <button type="button" class="escalation-trigger" data-escalation-toggle aria-expanded="false">
-          <span class="escalation-num">2</span>
-          <span class="escalation-label">Someone pushes back or disagrees</span>
-          <span class="escalation-chevron" aria-hidden="true"></span>
-        </button>
-        <div class="escalation-body" hidden>
-          <p>Good. That's curiosity showing up, not a problem to fix. Meet it with more questions, not a correction.</p>
-        </div>
-      </div>
-      <div class="escalation-step" data-tone="concerned">
-        <button type="button" class="escalation-trigger" data-escalation-toggle aria-expanded="false">
-          <span class="escalation-num">3</span>
-          <span class="escalation-label">Someone gets really upset &mdash; tears, shutting down, anger</span>
-          <span class="escalation-chevron" aria-hidden="true"></span>
-        </button>
-        <div class="escalation-body" hidden>
-          <p>Pause the activity. Take a breath together, or just slow down. Check in with them quietly, one-on-one, without making them the center of everyone's attention.</p>
-        </div>
-      </div>
-      <div class="escalation-step" data-tone="serious">
-        <button type="button" class="escalation-trigger" data-escalation-toggle aria-expanded="false">
-          <span class="escalation-num">4</span>
-          <span class="escalation-label">Someone tells you something serious &mdash; abuse, self-harm, anything urgent</span>
-          <span class="escalation-chevron" aria-hidden="true"></span>
-        </button>
-        <div class="escalation-body" hidden>
-          <p>Stop being a "lesson leader" in that moment and just be a caring adult. Stay calm, thank them for trusting you, don't promise to keep it secret. Then follow your own country's and organization's reporting obligations and loop in a trained professional or the right authority &mdash; you are not meant to carry this alone, and neither are they. This isn't legal advice, so please know your own local requirements before you're ever in this seat.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="section-head reveal">
+    <section class="ref-section wrap-narrow" id="carrying-it">
       <p class="eyebrow">After the room empties</p>
-      <h2>You carry this too</h2>
-      <p>The guidance above is about the young person in front of you. This part is about you.</p>
+      <h2 class="serif">You carry this too</h2>
+      <p class="ref-lead">The planks above are about the young person in front of you. This part is about you.</p>
       <p>Leading a lesson on regret, disappointment, or identity &mdash; or being the person someone chooses to disclose something serious to &mdash; doesn't end when the session does. It's normal to feel unsettled, wrung out, or like you're still turning the conversation over hours later. That's not a sign you handled it wrong.</p>
       <p>A few honest suggestions, not rules:</p>
-    </div>
-    <div class="card reveal" style="margin-top: 24px;">
-      <ul class="list-clean">
-        <li><strong>Tell someone.</strong> Not the details if they're not yours to share &mdash; just "today was heavy." A co-mentor, a friend, a supervisor. Carrying it alone is the part that actually wears people down.</li>
-        <li><strong>Don't skip your own reset.</strong> Whatever settles you &mdash; a walk, quiet, prayer, calling someone &mdash; do it on purpose after a hard session, not just whenever you happen to get to it.</li>
-        <li><strong>If something a young person shared is sitting with you for days, that's worth talking through with a professional yourself</strong> &mdash; not because you did anything wrong, but because that's what the weight of real trust deserves.</li>
-        <li><strong>You don't have to have the answer by the next session.</strong> It's okay to walk back in and say "I've been thinking about what you shared, and I'm still here" &mdash; you don't need to have resolved it for them.</li>
-      </ul>
-    </div>
-    <p class="reveal" style="max-width: 720px; margin-top: 20px;">You're allowed to need care too. That's not separate from doing this well &mdash; it's part of doing this well.</p>
-
-    <div class="mentor-checkin reveal" data-checkin>
-      <p class="mentor-checkin-prompt">Actually &mdash; how are you, after that?</p>
-      <div class="mood-cloud mentor-checkin-cloud">
-        <button type="button" class="mood-chip" data-checkin-chip="wrung-out" style="--float-dur:4.1s; --float-delay:-0.4s; --float-amt:-6px;">Wrung out</button>
-        <button type="button" class="mood-chip" data-checkin-chip="heavy" style="--float-dur:3.8s; --float-delay:-1.6s; --float-amt:-5px;">Still heavy</button>
-        <button type="button" class="mood-chip" data-checkin-chip="okay" style="--float-dur:4.4s; --float-delay:-2.2s; --float-amt:-7px;">Okay, actually</button>
-        <button type="button" class="mood-chip" data-checkin-chip="proud" style="--float-dur:4.0s; --float-delay:-0.9s; --float-amt:-6px;">Proud of that one</button>
-        <button type="button" class="mood-chip" data-checkin-chip="replaying" style="--float-dur:4.6s; --float-delay:-3s; --float-amt:-7px;">Still turning it over</button>
+      <div class="carry-card">
+        <ul>
+          <li><strong>Tell someone.</strong> Not the details if they're not yours to share &mdash; just &ldquo;today was heavy.&rdquo; A co-mentor, a friend, a supervisor. Carrying it alone is the part that actually wears people down.</li>
+          <li><strong>Don't skip your own reset.</strong> Whatever settles you &mdash; a walk, quiet, prayer, calling someone &mdash; do it on purpose after a hard session, not just whenever you happen to get to it.</li>
+          <li><strong>If something a young person shared is sitting with you for days, that's worth talking through with a professional yourself</strong> &mdash; not because you did anything wrong, but because that's what the weight of real trust deserves.</li>
+          <li><strong>You don't have to have the answer by the next session.</strong> It's okay to walk back in and say &ldquo;I've been thinking about what you shared, and I'm still here&rdquo; &mdash; you don't need to have resolved it for them.</li>
+        </ul>
       </div>
-      <p class="mentor-checkin-response" data-checkin-response hidden></p>
-    </div>
-  </div>
-</section>
+      <p class="carry-coda">You're allowed to need care too. That's not separate from doing this well &mdash; it's part of doing this well.</p>
+      <div class="checkin" data-checkin>
+        <p class="checkin-prompt">Actually &mdash; how are you, after that?</p>
+        <div class="checkin-cloud">
+          <button type="button" class="checkin-chip" data-checkin-chip="wrung-out">Wrung out</button>
+          <button type="button" class="checkin-chip" data-checkin-chip="heavy">Still heavy</button>
+          <button type="button" class="checkin-chip" data-checkin-chip="okay">Okay, actually</button>
+          <button type="button" class="checkin-chip" data-checkin-chip="proud">Proud of that one</button>
+          <button type="button" class="checkin-chip" data-checkin-chip="replaying">Still turning it over</button>
+        </div>
+        <p class="checkin-response" data-checkin-response role="status" aria-live="polite" hidden></p>
+      </div>
+    </section>
 
-<section>
-  <div class="wrap">
-    <div class="callout reveal">
+    <section class="ref-section wrap-narrow for-parents" id="for-parents">
       <p class="eyebrow">For parents and guardians</p>
-      <h2>If you need something to share</h2>
-      <p style="font-style: italic;">Spiritual Lesson Plans is a free, open resource for mentoring conversations about identity, belonging, and courage. It isn't a church, a curriculum sold by any organization, or an attempt to convert anyone to anything. The ideas draw on Christian Science &mdash; mainly the premise that a young person is already whole and worthy, not something to fix &mdash; but every lesson is written to welcome any faith background, or none, and no young person is ever asked to believe anything specific. There's no cost, no account, and we don't collect any data ourselves &mdash; the only exception is the optional Translate tool, which is powered by Google and follows Google's own terms if you choose to use it. You're welcome to read every lesson yourself first at spirituallessonplans.org.</p>
-    </div>
+      <h2 class="serif">If you need something to share</h2>
+      <div class="note">
+        <p>Spiritual Lesson Plans is a free, open resource for mentoring conversations about identity, belonging, and courage. It isn't a church, a curriculum sold by any organization, or an attempt to convert anyone to anything. The ideas draw on Christian Science &mdash; mainly the premise that a young person is already whole and worthy, not something to fix &mdash; but every lesson is written to welcome any faith background, or none, and no young person is ever asked to believe anything specific. There's no cost, no account, and we don't collect any data ourselves &mdash; the only exception is the optional Translate tool, which is powered by Google and follows Google's own terms if you choose to use it. You're welcome to read every lesson yourself first at spirituallessonplans.org.</p>
+      </div>
+    </section>
   </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <div class="callout reveal">
-      <p class="eyebrow">Ready to lead one</p>
-      <h2>Pick a topic and get started</h2>
-      <p>Browse our ever increasing list of topics and choose whichever fits where your group is right now.</p>
-      <a href="/lessons" class="btn btn-outline">Browse lessons</a>
-    </div>
-  </div>
-</section>
-
+</div>
 </main>
 
 <footer class="site-footer">
