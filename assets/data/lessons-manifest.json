@@ -275,6 +275,22 @@
       ]
     },
     {
+      "slug": "what-lasts",
+      "title": "What Actually Lasts",
+      "hook": "Followers, grades, being right, a relationship — where you're actually building your identity right now might not be where you think.",
+      "topicCategory": "identity-and-worth, decisions-and-guidance",
+      "landingUrl": "/lessons/what-lasts",
+      "datePublished": "2026-09-13",
+      "dateModified": "2026-09-13",
+      "bands": [
+      { "band": "5-8", "label": "K-2", "short": "K-2", "timeDisplay": "15-20 min", "title": "The Tower That Doesn't Fall", "hook": "Two towers go up — one fast and tall, one slow and small — and only one of them is still standing when the table shakes.", "url": "/lessons/5-8/what-lasts", "topic": "identity-and-worth, decisions-and-guidance", "sensitiveTopic": "none" },
+      { "band": "8-11", "label": "Grade 3-5", "short": "Grade 3-5", "timeDisplay": "30-35 min", "title": "Feels Solid or Actually Lasts?", "hook": "A phone, a grade, a friendship, honesty — sort them into \"feels solid\" and \"actually lasts,\" and watch how often those turn out to be two different lists.", "url": "/lessons/8-11/what-lasts", "topic": "identity-and-worth, decisions-and-guidance", "sensitiveTopic": "none" },
+      { "band": "11-14", "label": "Grade 6-8", "short": "Grade 6-8", "timeDisplay": "35-40 min", "title": "What's Already There", "hook": "A scared servant sees an army surrounding the city. His teacher sees the same mountain and asks God for one thing: open his eyes.", "url": "/lessons/11-14/what-lasts", "topic": "identity-and-worth, decisions-and-guidance", "sensitiveTopic": "none" },
+      { "band": "14-21", "label": "Teen", "short": "Teen", "timeDisplay": "40-50 min", "title": "Where You're Building", "hook": "Followers, grades, being right, a relationship — where you're actually building your identity right now might not be where you think.", "url": "/lessons/14-21/what-lasts", "topic": "identity-and-worth, decisions-and-guidance", "sensitiveTopic": "none" },
+      { "band": "21-plus", "label": "Age 21+", "short": "Age 21+", "timeDisplay": "45-60 min", "title": "What Actually Lasts", "hook": "The things that look the most solid — a career, a reputation, a bank account, being right — are not always the ones still standing in twenty years.", "url": "/lessons/21-plus/what-lasts", "topic": "identity-and-worth, decisions-and-guidance", "sensitiveTopic": "none" }
+      ]
+    },
+    {
       "slug": "when-someone-feels-like-the-enemy",
       "title": "When Someone Feels Like the Enemy",
       "hook": "Why \"love your enemies\" isn't the same as \"there are no enemies.\"",

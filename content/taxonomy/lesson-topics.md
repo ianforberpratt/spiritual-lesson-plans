@@ -34,6 +34,7 @@ one or two a teacher would actually search under, not every theme that's technic
 - is-god-keeping-score (all bands, primary tag)
 - big-ego-little-ego (all bands)
 - soul-another-name-for-god (11-14)
+- what-lasts (all bands, secondary tag)
 
 ## belonging-and-loneliness
 "The ache of feeling alone even when nothing on the outside looks wrong."
@@ -56,6 +57,7 @@ one or two a teacher would actually search under, not every theme that's technic
 "Facing a real choice and wanting more than a coin flip."
 - does-god-make-my-decisions (all bands)
 - learning-to-hear-the-nudge (all bands)
+- what-lasts (all bands, primary tag — where you're actually placing your trust and attention)
 
 ## disappointment-and-hard-days
 "A plan fell through, a mistake won't stop replaying, or today is just off."
