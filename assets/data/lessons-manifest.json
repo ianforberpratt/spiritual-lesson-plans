@@ -318,6 +318,22 @@
       { "band": "14-21", "label": "Teen", "short": "Teen", "timeDisplay": "40–55 min", "title": "Words That Open Doors", "hook": "Old language, old thoughts — and making the sacred make sense today.", "url": "/lessons/14-21/words-that-open-doors", "topic": "doubt-and-hard-questions-about-god", "sensitiveTopic": "none" },
       { "band": "21-plus", "label": "Age 21+", "short": "Age 21+", "timeDisplay": "45–60 min", "title": "Words That Still Open Doors", "hook": "The language you inherited as a child doesn't have to be the language you're stuck with as an adult.", "url": "/lessons/21-plus/words-that-open-doors", "topic": "doubt-and-hard-questions-about-god", "sensitiveTopic": "none" }
       ]
+    },
+    {
+      "slug": "worlds-worst-dragon-slayer",
+      "title": "The Dragon Interview",
+      "hook": "The most disarming thing you can say to someone's dragon isn't an argument. It's a question, and you're going to practice it on each other.",
+      "topicCategory": "conflict-and-forgiveness, disappointment-and-hard-days",
+      "landingUrl": "/lessons/worlds-worst-dragon-slayer",
+      "datePublished": "2026-09-21",
+      "dateModified": "2026-09-21",
+      "bands": [
+      { "band": "5-8", "label": "K-2", "short": "K-2", "timeDisplay": "15-20 min", "title": "The Dragon on the Wall", "hook": "A flashlight, two little hands, and a very big shadow — and a surprise about what a dragon is actually made of.", "url": "/lessons/5-8/worlds-worst-dragon-slayer", "topic": "conflict-and-forgiveness, disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "8-11", "label": "Grade 3-5", "short": "Grade 3-5", "timeDisplay": "30-35 min", "title": "The Worst Dragon Slayers' Club", "hook": "No sword, no sling, maybe a garden hose. Membership requires being a terrible dragon-fighter, and the club's secret is what a dragon is really made of.", "url": "/lessons/8-11/worlds-worst-dragon-slayer", "topic": "conflict-and-forgiveness, disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "11-14", "label": "Grade 6-8", "short": "Grade 6-8", "timeDisplay": "35-45 min", "title": "Terms & Conditions: Dragon Edition", "hook": "Every dragon comes with fine print (be louder, be right, pick a side, panic now). What if you just didn't click \"I agree\"?", "url": "/lessons/11-14/worlds-worst-dragon-slayer", "topic": "conflict-and-forgiveness, disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "14-21", "label": "Teen", "short": "Teen", "timeDisplay": "45-50 min", "title": "The Dragon Interview", "hook": "The most disarming thing you can say to someone's dragon isn't an argument. It's a question, and you're going to practice it on each other.", "url": "/lessons/14-21/worlds-worst-dragon-slayer", "topic": "conflict-and-forgiveness, disappointment-and-hard-days", "sensitiveTopic": "none" },
+      { "band": "21-plus", "label": "Age 21+", "short": "Age 21+", "timeDisplay": "50-60 min", "title": "Pick Your Dragon", "hook": "AI, war, politics, the environment, the argument that never ends. Seven heads, ten horns, and a surprisingly small thing underneath. You don't have to slay it, but you do have to show up.", "url": "/lessons/21-plus/worlds-worst-dragon-slayer", "topic": "conflict-and-forgiveness, disappointment-and-hard-days", "sensitiveTopic": "none" }
+      ]
     }
   ]
 }
