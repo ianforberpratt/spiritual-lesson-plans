@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.spirituallessonplans.org/</loc><lastmod>2026-09-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://www.spirituallessonplans.org/lessons</loc><lastmod>2026-09-04</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons</loc><lastmod>2026-09-13</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.spirituallessonplans.org/for-mentors</loc><lastmod>2026-09-09</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.spirituallessonplans.org/for-you</loc><lastmod>2026-09-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.spirituallessonplans.org/what-we-believe</loc><lastmod>2026-09-04</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -108,4 +108,10 @@
   <url><loc>https://www.spirituallessonplans.org/lessons/11-14/words-that-open-doors</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.spirituallessonplans.org/lessons/14-21/words-that-open-doors</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.spirituallessonplans.org/lessons/21-plus/words-that-open-doors</loc><lastmod>2026-08-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/worlds-worst-dragon-slayer</loc><lastmod>2026-09-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/5-8/worlds-worst-dragon-slayer</loc><lastmod>2026-09-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/8-11/worlds-worst-dragon-slayer</loc><lastmod>2026-09-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/11-14/worlds-worst-dragon-slayer</loc><lastmod>2026-09-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/14-21/worlds-worst-dragon-slayer</loc><lastmod>2026-09-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.spirituallessonplans.org/lessons/21-plus/worlds-worst-dragon-slayer</loc><lastmod>2026-09-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
