@@ -105,9 +105,13 @@ body{
 }
 .toolbar a{ color:var(--cream); text-decoration:none; font-size:14px; opacity:.85; }
 .toolbar a:hover{ opacity:1; text-decoration:underline; }
+.toolbar-actions{ display:flex; gap:10px; flex-wrap:wrap; }
 .toolbar button{
   background:var(--gold); color:#3B2A0E; border:none; border-radius:4px;
   padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer;
+}
+.toolbar .copy-btn{
+  background:transparent; color:var(--cream); border:1.5px solid rgba(251,245,234,.55);
 }
 .sheet-wrap{ padding:36px 16px 48px; width:100%; display:flex; justify-content:center; }
 .eyebrow{
@@ -149,6 +153,39 @@ sub questions_html {
   }
   $html .= "      </ol>\n";
   return $html;
+}
+
+# Plain-text rendering of the same structured fields card_inner() renders as
+# HTML — for the "Copy text" button, so a mentor can paste this into a group
+# text or chat instead of printing it. No markup, no smart-quote entities.
+sub plain_text_handout {
+  my ($h, $is_full) = @_;
+  my @lines;
+  push @lines, $h->{title} if $h->{title};
+  push @lines, '';
+  push @lines, $h->{framing} if $h->{framing};
+  if ($h->{quote}) {
+    push @lines, '';
+    push @lines, qq{"$h->{quote}"};
+    push @lines, "\x{2014} $h->{citation}" if $h->{citation};
+  }
+  push @lines, '', $h->{pull_line} if $h->{pull_line};
+  my $q = $h->{reflection_prompts} || $h->{three_questions};
+  if ($q && @$q) {
+    push @lines, '', ($is_full ? 'Reflection' : 'Three Questions');
+    for my $i (0 .. $#$q) { push @lines, ($i+1) . ". $q->[$i]"; }
+  }
+  push @lines, '', 'spirituallessonplans.org' . "\x{b7}" . ' a free, open resource';
+  return join("\n", @lines);
+}
+
+# HTML-attribute escaping (for the copy button's data-copy-text) — unlike
+# esc() above, this also escapes quotes, since this text sits inside a
+# double-quoted attribute rather than element content.
+sub attr_esc {
+  my ($s) = @_; $s //= '';
+  $s =~ s/&/&amp;/g; $s =~ s/</&lt;/g; $s =~ s/>/&gt;/g; $s =~ s/"/&quot;/g;
+  return $s;
 }
 
 sub card_inner {
@@ -209,6 +246,7 @@ for my $job (@jobs) {
     my $lesson_url = $job->{lesson_url};
     my $out_path = $job->{out_path};
     my $title_suffix = defined($band_label) ? "$band_label \x{2014} $format" : $format;
+    my $copy_text = attr_esc(plain_text_handout($h, $is_full));
 
     my $sheet_body;
     if ($is_full) {
@@ -266,10 +304,43 @@ $CSS
 <body>
 <div class="toolbar">
   <a href="$lesson_url">&larr; Back to the lesson</a>
-  <button type="button" onclick="window.print()">Print this handout</button>
+  <div class="toolbar-actions">
+    <button type="button" class="copy-btn" data-copy-text="$copy_text">Copy text</button>
+    <button type="button" onclick="window.print()">Print this handout</button>
+  </div>
 </div>
 <div class="sheet-wrap">
 $sheet_body</div>
+<script>
+(function () {
+  var btn = document.querySelector(".copy-btn");
+  if (!btn) return;
+  var original = btn.textContent;
+  function done(ok) {
+    btn.textContent = ok ? "Copied\x{2713}" : "Couldn't copy";
+    window.setTimeout(function () { btn.textContent = original; }, 1800);
+  }
+  btn.addEventListener("click", function () {
+    var text = btn.getAttribute("data-copy-text");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      return;
+    }
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      done(true);
+    } catch (err) { done(false); }
+  });
+})();
+</script>
 </body>
 </html>
 HTML

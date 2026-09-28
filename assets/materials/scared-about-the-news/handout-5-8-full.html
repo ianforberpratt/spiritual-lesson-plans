@@ -30,9 +30,13 @@ body{
 }
 .toolbar a{ color:var(--cream); text-decoration:none; font-size:14px; opacity:.85; }
 .toolbar a:hover{ opacity:1; text-decoration:underline; }
+.toolbar-actions{ display:flex; gap:10px; flex-wrap:wrap; }
 .toolbar button{
   background:var(--gold); color:#3B2A0E; border:none; border-radius:4px;
   padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer;
+}
+.toolbar .copy-btn{
+  background:transparent; color:var(--cream); border:1.5px solid rgba(251,245,234,.55);
 }
 .sheet-wrap{ padding:36px 16px 48px; width:100%; display:flex; justify-content:center; }
 .eyebrow{
@@ -89,7 +93,23 @@ ol li:nth-child(3) .num{ color:var(--sky); }
 <body>
 <div class="toolbar">
   <a href="/lessons/5-8/scared-about-the-news">&larr; Back to the lesson</a>
-  <button type="button" onclick="window.print()">Print this handout</button>
+  <div class="toolbar-actions">
+    <button type="button" class="copy-btn" data-copy-text="The Storm Isn't You
+
+A scary feeling passes through like weather. It was never the whole sky — and it was never you.
+
+&quot;God created mankind in his own image, in the image of God he created them.&quot;
+— Genesis 1:27, NIV
+
+The cloud moves. The sky underneath never stops being sky.
+
+Reflection
+1. One scary thing I heard about this week:
+2. One true thing about me that didn't change because of it:
+
+spirituallessonplans.org· a free, open resource">Copy text</button>
+    <button type="button" onclick="window.print()">Print this handout</button>
+  </div>
 </div>
 <div class="sheet-wrap">
   <div class="sheet" style="background:#fff; box-shadow:0 12px 40px rgba(0,0,0,.18); width:816px; max-width:100%; padding:80px 90px;">
@@ -109,5 +129,35 @@ ol li:nth-child(3) .num{ color:var(--sky); }
       <p class="foot">spirituallessonplans.org &middot; a free, open resource</p>
   </div>
 </div>
+<script>
+(function () {
+  var btn = document.querySelector(".copy-btn");
+  if (!btn) return;
+  var original = btn.textContent;
+  function done(ok) {
+    btn.textContent = ok ? "Copied✓" : "Couldn't copy";
+    window.setTimeout(function () { btn.textContent = original; }, 1800);
+  }
+  btn.addEventListener("click", function () {
+    var text = btn.getAttribute("data-copy-text");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      return;
+    }
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      done(true);
+    } catch (err) { done(false); }
+  });
+})();
+</script>
 </body>
 </html>
