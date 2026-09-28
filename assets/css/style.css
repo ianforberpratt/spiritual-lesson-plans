@@ -2936,3 +2936,33 @@ html.js .lens-panel[hidden] { display: none; }
   .nb-feature-orb { box-shadow: 0 0 18px 3px rgba(232, 169, 76, 0.4); }
   .nb-feature-cta { box-shadow: 0 0 14px 3px rgba(232, 169, 76, 0.35); }
 }
+
+/* ---------- Print (lesson pages) ----------
+   Lets a mentor print (or "Save as PDF") straight from a lesson page — no
+   separate print view to build. Strips every bit of site chrome and the
+   editorial furniture, and prints the handout-preview cards as a plain
+   link line instead of a broken/blank iframe. */
+@media print {
+  .site-nav, .site-footer, .skip-link,
+  .feedback-btn, .feedback-overlay,
+  .cookie-banner, .lang-switcher-menu, .age-switcher-menu,
+  .lesson-band-switcher, .hero-video-toggle, .hero-easter-egg,
+  .hero-scroll { display: none !important; }
+
+  body { background: #fff; }
+  main { max-width: 46rem; margin: 0 auto; }
+
+  .handout-preview-grid { display: block; }
+  .handout-preview {
+    display: block; border: 1px solid var(--rule, #ccc); box-shadow: none;
+    padding: 0.6rem 0.9rem; margin-bottom: 0.5rem;
+  }
+  .handout-preview::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #555; }
+  .handout-preview-thumb { display: none; }
+
+  .lesson-section { page-break-inside: avoid; }
+  h2, h3 { page-break-after: avoid; }
+  a { color: inherit; text-decoration: none; }
+
+  @page { margin: 0.6in; }
+}

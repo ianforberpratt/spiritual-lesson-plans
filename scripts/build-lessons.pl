@@ -427,6 +427,7 @@ sub footer_html {
         <li><a href="/for-you">For You</a></li>
         <li><a href="/what-we-believe">What We Believe</a></li>
         <li><a href="/about">About</a></li>
+        <li><a href="/lessons" data-random-lesson>Surprise me</a></li>
       </ul>
     </div>
     <div class="footer-bottom">

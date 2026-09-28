@@ -440,6 +440,58 @@
     });
   }
 
+  /* ---------- Random lesson ("Surprise me") ---------- */
+  // Every footer carries one [data-random-lesson] link, defaulting to
+  // /lessons so it's a real destination with JS off. With JS on, it fetches
+  // the manifest once, skips the one teen/adult-gated lesson (nobody should
+  // land there by chance), prefers whatever age band the visitor already
+  // chose (see age-context.js), and jumps straight to a real lesson.
+
+  function initRandomLesson() {
+    var triggers = document.querySelectorAll("[data-random-lesson]");
+    if (!triggers.length) return;
+
+    var AGE_STORAGE_KEY = "slp_age_band";
+    var lessons = null;
+    function loadLessons() {
+      if (lessons) return Promise.resolve(lessons);
+      return fetch("/assets/data/lessons-manifest.json")
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          var flat = [];
+          data.topics.forEach(function (t) {
+            t.bands.forEach(function (b) {
+              if (b.sensitiveTopic === "teen-adult-only") return;
+              flat.push({ band: b.band, url: b.url });
+            });
+          });
+          lessons = flat;
+          return flat;
+        });
+    }
+
+    function storedBand() {
+      try { return localStorage.getItem(AGE_STORAGE_KEY); } catch (err) { return null; }
+    }
+
+    function goRandom(fallbackHref) {
+      loadLessons().then(function (flat) {
+        if (!flat.length) { window.location.href = fallbackHref; return; }
+        var band = storedBand();
+        var pool = band ? flat.filter(function (l) { return l.band === band; }) : flat;
+        if (!pool.length) pool = flat;
+        window.location.href = pool[Math.floor(Math.random() * pool.length)].url;
+      }).catch(function () { window.location.href = fallbackHref; });
+    }
+
+    Array.prototype.forEach.call(triggers, function (trigger) {
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        goRandom(trigger.getAttribute("href") || "/lessons");
+      });
+    });
+  }
+
   /* ---------- Cookie notice ---------- */
 
   function initCookieNotice() {
@@ -473,6 +525,7 @@
       initReveals,
       initFeedback,
       initLangSwitcher,
+      initRandomLesson,
       initCookieNotice
     ].forEach(function (init) {
       try { init(); } catch (err) {
