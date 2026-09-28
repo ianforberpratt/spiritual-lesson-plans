@@ -171,17 +171,44 @@ sub card_inner {
   return $out;
 }
 
+# (band_label, lesson_url, out_path) triples to render, built either from
+# one shared handout-{full,wallet}.md (same_across_bands: true — one file,
+# one output, linked from every band) or from per-band handout-<band>-
+# {full,wallet}.md files (the existing precedent).
+my @jobs;
+for my $format (qw(full wallet)) {
+  my $shared_src = "$CONTENT_DIR/handout-$format.md";
+  if (-f $shared_src) {
+    push @jobs, {
+      format => $format, src => $shared_src,
+      band_label => undef, lesson_url => "/lessons/$slug",
+      out_path => "$OUT_DIR/handout-$format.html",
+    };
+  } else {
+    for my $band (@BANDS) {
+      my $src = "$CONTENT_DIR/handout-$band-$format.md";
+      next unless -f $src;
+      push @jobs, {
+        format => $format, src => $src,
+        band_label => $BAND_LABEL{$band}, lesson_url => "/lessons/$band/$slug",
+        out_path => "$OUT_DIR/handout-$band-$format.html",
+      };
+    }
+  }
+}
+
 my $count = 0;
-for my $band (@BANDS) {
-  for my $format (qw(full wallet)) {
-    my $src = "$CONTENT_DIR/handout-$band-$format.md";
-    next unless -f $src;
+for my $job (@jobs) {
+  {
+    my $format = $job->{format};
+    my $src = $job->{src};
     my $h = parse_handout($src);
     my $is_full = $format eq 'full';
     my $title_txt = $h->{title} // $slug;
-    my $band_label = $BAND_LABEL{$band};
-    my $lesson_url = "/lessons/$band/$slug";
-    my $out_path = "$OUT_DIR/handout-$band-$format.html";
+    my $band_label = $job->{band_label};
+    my $lesson_url = $job->{lesson_url};
+    my $out_path = $job->{out_path};
+    my $title_suffix = defined($band_label) ? "$band_label \x{2014} $format" : $format;
 
     my $sheet_body;
     if ($is_full) {
@@ -206,7 +233,7 @@ for my $band (@BANDS) {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@{[ esc($title_txt) ]} ($band_label \x{2014} $format) \x{2014} Spiritual Lesson Plans</title>
+<title>@{[ esc($title_txt) ]} ($title_suffix) \x{2014} Spiritual Lesson Plans</title>
 <meta name="robots" content="noindex, follow">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
