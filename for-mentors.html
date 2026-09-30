@@ -145,6 +145,18 @@
   }
   .bridge .cta.ghost:hover{ background:var(--b-paper); color:var(--ink); }
 
+  /* ---------- welcome video ---------- */
+  .bridge .welcome-video{ margin:0 auto 3.5rem; }
+  .bridge .welcome-video figure{ margin:0; }
+  .bridge .welcome-video video{
+    width:100%; height:auto; aspect-ratio:16/9; display:block; background:var(--ink);
+    border-radius:var(--radius); box-shadow:0 10px 30px rgba(54,47,75,.16);
+  }
+  .bridge .welcome-video figcaption{ margin-top:.8rem; text-align:center; font-size:.92rem; color:var(--ink-faint); }
+  .bridge .welcome-video details{ margin-top:.6rem; text-align:center; font-size:.92rem; color:var(--ink-faint); }
+  .bridge .welcome-video summary{ cursor:pointer; }
+  .bridge .welcome-video details p{ margin:.5rem 0 0; line-height:1.6; }
+
   /* ---------- chooser ---------- */
   .bridge .chooser{ padding:2.5rem 0 3.5rem; border-top:1px solid var(--b-paper-line); text-align:center; }
   .bridge .chooser h2{ font-size:clamp(1.6rem,3.6vw,2.1rem); margin:0 0 .5rem; font-weight:500; }
@@ -375,6 +387,21 @@
     </div>
     <a class="cta" href="#chooser">Start crossing &rarr;</a>
   </header>
+
+  <section class="welcome-video wrap-narrow" aria-label="A word from us to Sunday School teachers">
+    <figure>
+      <video controls playsinline preload="metadata" poster="/assets/video/mentors-out-of-water-poster.jpg" aria-describedby="welcome-video-transcript">
+        <source src="/assets/video/mentors-out-of-water.webm" type="video/webm">
+        <source src="/assets/video/mentors-out-of-water.mp4" type="video/mp4">
+        Your browser can't play this video. The words are in the transcript below.
+      </video>
+      <figcaption>29 seconds, with music. Press play &mdash; sound on if you can.</figcaption>
+    </figure>
+    <details>
+      <summary>Read the words</summary>
+      <p id="welcome-video-transcript">You have the faith. You have the energy. You have the content. And yet, some Sundays you feel out of water. The what is already yours. Let&rsquo;s build the how. Pedagogy is learnable. Faith is what you already bring. You&rsquo;re not behind. You&rsquo;re ready.</p>
+    </details>
+  </section>
 
   <section class="chooser wrap-narrow" id="chooser">
     <h2 class="serif">Where are you crossing from?</h2>
