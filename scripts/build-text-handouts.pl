@@ -67,6 +67,12 @@ sub parse_handout {
     if ($line =~ /^([a-z_]+):\s*(.*)$/) {
       my ($key, $val) = ($1, $2);
       $val =~ s/\s+$//;
+      # Frontmatter-style values: drop the wrapping YAML quotes and the
+      # *italic* / **bold** markers (the card CSS already styles those
+      # fields), so neither prints literally on the handout.
+      if ($val =~ /^"(.*)"$/s) { $val = $1; $val =~ s/\\"/"/g; }
+      $val =~ s/\*\*(.+?)\*\*/$1/g;
+      $val =~ s/(?<!\w)\*(.+?)\*(?!\w)/$1/g;
       if ($val eq '') {
         $list_key = $key;
         $h{$key} = [];
@@ -75,7 +81,9 @@ sub parse_handout {
         $h{$key} = $val;
       }
     } elsif ($list_key && $line =~ /^\s*(?:-|\d+\.)\s+(.*)$/) {
-      push @{ $h{$list_key} }, $1;
+      my $item = $1;
+      if ($item =~ /^"(.*)"$/s) { $item = $1; $item =~ s/\\"/"/g; }
+      push @{ $h{$list_key} }, $item;
     }
   }
   return \%h;

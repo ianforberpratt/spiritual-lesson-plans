@@ -54,6 +54,21 @@
       ]
     },
     {
+      "slug": "god-lights-every-candle",
+      "title": "Sharing Without Steering",
+      "hook": "You can love what you believe, live it out loud, and still let the people closest to you have their own relationship with God, or none.",
+      "topicCategory": "belonging-and-loneliness, conflict-and-forgiveness",
+      "landingUrl": "/lessons/god-lights-every-candle",
+      "datePublished": "2026-10-08",
+      "dateModified": "2026-10-08",
+      "bands": [
+      { "band": "8-11", "label": "Grade 3-5", "short": "Grade 3-5", "timeDisplay": "30-35 min", "title": "Two Lanterns", "hook": "Your friend's family does things differently on Sundays, and you can be curious instead of correcting, because God lights every lantern.", "url": "/lessons/8-11/god-lights-every-candle", "topic": "belonging-and-loneliness, conflict-and-forgiveness", "sensitiveTopic": "none" },
+      { "band": "11-14", "label": "Grade 6-8", "short": "Grade 6-8", "timeDisplay": "35-40 min", "title": "Their Candle, Your Candle", "hook": "When a friend believes differently, the pull to fix it can feel like love, but your relationship with God and theirs are each their own.", "url": "/lessons/11-14/god-lights-every-candle", "topic": "belonging-and-loneliness, conflict-and-forgiveness", "sensitiveTopic": "none" },
+      { "band": "14-21", "label": "Teen", "short": "Teen", "timeDisplay": "40-45 min", "title": "Sharing Without Steering", "hook": "You can love what you believe, live it out loud, and still let the people closest to you have their own relationship with God, or none.", "url": "/lessons/14-21/god-lights-every-candle", "topic": "belonging-and-loneliness, conflict-and-forgiveness", "sensitiveTopic": "none" },
+      { "band": "21-plus", "label": "Age 21+", "short": "Age 21+", "timeDisplay": "40-50 min", "title": "Love Without Needing Agreement", "hook": "You can live what you believe, share it freely, and love the people closest to you without needing them to arrive where you did.", "url": "/lessons/21-plus/god-lights-every-candle", "topic": "belonging-and-loneliness, conflict-and-forgiveness", "sensitiveTopic": "none" }
+      ]
+    },
+    {
       "slug": "grief-doesnt-need-fixing",
       "title": "Grief Doesn't Need Fixing",
       "hook": "The real difference between grief you saw coming and grief that blindsided you, a strengths-based way to hold both, and why adjusting to a changed life is work — hard, honest, ongoing — that comfort accompanies rather than replaces.",
