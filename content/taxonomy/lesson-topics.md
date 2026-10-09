@@ -40,6 +40,7 @@ one or two a teacher would actually search under, not every theme that's technic
 "The ache of feeling alone even when nothing on the outside looks wrong."
 - lonely-in-a-crowded-room (all bands)
 - finding-the-bigger-us (all bands, secondary tag)
+- god-lights-every-candle (8-11, 11-14, 14-21, 21-plus, secondary tag)
 
 ## conflict-and-forgiveness
 "What love actually asks of you when someone feels like the enemy."
