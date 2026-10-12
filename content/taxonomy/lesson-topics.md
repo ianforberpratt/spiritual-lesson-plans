@@ -41,11 +41,13 @@ one or two a teacher would actually search under, not every theme that's technic
 - lonely-in-a-crowded-room (all bands)
 - finding-the-bigger-us (all bands, secondary tag)
 - god-lights-every-candle (8-11, 11-14, 14-21, 21-plus, secondary tag)
+- rescue-or-faith (5-8, 8-11, 11-14, 14-21, secondary tag)
 
 ## conflict-and-forgiveness
 "What love actually asks of you when someone feels like the enemy."
 - when-someone-feels-like-the-enemy (all bands)
 - finding-the-bigger-us (all bands, primary tag)
+- rescue-or-faith (21-plus, secondary tag)
 
 ## doubt-and-hard-questions-about-god
 "Wrestling honestly with who God is, or whether the words you were handed still fit."
@@ -57,6 +59,7 @@ one or two a teacher would actually search under, not every theme that's technic
 ## decisions-and-guidance
 "Facing a real choice and wanting more than a coin flip."
 - does-god-make-my-decisions (all bands)
+- rescue-or-faith (all bands, primary tag — acting from calm, grounded thought rather than panic)
 - learning-to-hear-the-nudge (all bands)
 - what-lasts (all bands, primary tag — where you're actually placing your trust and attention)
 

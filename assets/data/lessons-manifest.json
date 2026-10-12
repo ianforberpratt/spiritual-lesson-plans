@@ -202,6 +202,22 @@
       ]
     },
     {
+      "slug": "rescue-or-faith",
+      "title": "Rescue or Faith?",
+      "hook": "The help can look identical, but the thought behind it never does, and when you're not steady yourself, your help may not be as wise as you want it to be.",
+      "topicCategory": "decisions-and-guidance, belonging-and-loneliness",
+      "landingUrl": "/lessons/rescue-or-faith",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "bands": [
+      { "band": "5-8", "label": "K-2", "short": "K-2", "timeDisplay": "25-30 min", "title": "Hands That Ask First", "hook": "A wobbly block tower, a friend who wants to help, and one easy habit: if someone is hurt, get a grown-up right now; otherwise, ask first.", "url": "/lessons/5-8/rescue-or-faith", "topic": "decisions-and-guidance, belonging-and-loneliness", "sensitiveTopic": "none" },
+      { "band": "8-11", "label": "Grade 3-5", "short": "Grade 3-5", "timeDisplay": "35-40 min", "title": "Controller Hand, Coach Hand", "hook": "When a friend is stuck on a hard level or a hard project, you can be a coach instead of grabbing the controller, because the power to do it is already in them.", "url": "/lessons/8-11/rescue-or-faith", "topic": "decisions-and-guidance, belonging-and-loneliness", "sensitiveTopic": "none" },
+      { "band": "11-14", "label": "Grade 6-8", "short": "Grade 6-8", "timeDisplay": "35-45 min", "title": "It's Not All on You", "hook": "When a friend is struggling and your phone is lighting up, the pull to fix it can feel like love, but help from a calm, steady place is wiser than help from panic.", "url": "/lessons/11-14/rescue-or-faith", "topic": "decisions-and-guidance, belonging-and-loneliness", "sensitiveTopic": "none" },
+      { "band": "14-21", "label": "Teen", "short": "Teen", "timeDisplay": "40-50 min", "title": "Rescue or Faith?", "hook": "The help can look identical, but the thought behind it never does, and when you're not steady yourself, your help may not be as wise as you want it to be.", "url": "/lessons/14-21/rescue-or-faith", "topic": "decisions-and-guidance, belonging-and-loneliness", "sensitiveTopic": "none" },
+      { "band": "21-plus", "label": "Age 21+", "short": "Age 21+", "timeDisplay": "50-60 min", "title": "Rescue or Faith?", "hook": "You can love someone through a long, hard stretch without crowning yourself their savior, and without stepping back and calling it faith.", "url": "/lessons/21-plus/rescue-or-faith", "topic": "decisions-and-guidance, conflict-and-forgiveness", "sensitiveTopic": "none" }
+      ]
+    },
+    {
       "slug": "scared-about-the-news",
       "title": "Scared About the News",
       "hook": "Readiness was never about outrunning the next disaster — it's a description of who's already got you.",

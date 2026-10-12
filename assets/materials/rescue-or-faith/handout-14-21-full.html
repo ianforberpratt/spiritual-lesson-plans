@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Yes/No Flow (Teen — full) — Spiritual Lesson Plans</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF5EA; --gold:#E8A94C; --gold-text:#935F1A;
+  --sage:#8CA37E; --sage-text:#3F5236; --sky:#A9C9D9; --sky-text:#4E7A93;
+  --ink:#362F4B; --ink-soft:rgba(54,47,75,.72); --rule:rgba(54,47,75,.18);
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; }
+body{
+  background:#EAE2D2;
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh; display:flex; flex-direction:column; align-items:center;
+}
+.toolbar{
+  width:100%; background:var(--ink); color:var(--cream);
+  padding:14px 20px; display:flex; justify-content:space-between; align-items:center;
+  gap:16px; flex-wrap:wrap;
+}
+.toolbar a{ color:var(--cream); text-decoration:none; font-size:14px; opacity:.85; }
+.toolbar a:hover{ opacity:1; text-decoration:underline; }
+.toolbar-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.toolbar button{
+  background:var(--gold); color:#3B2A0E; border:none; border-radius:4px;
+  padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer;
+}
+.toolbar .copy-btn{ background:transparent; color:var(--cream); border:1.5px solid rgba(251,245,234,.55); }
+.sheet-wrap{ padding:36px 16px 48px; width:100%; display:flex; justify-content:center; }
+.sheet{ background:#fff; box-shadow:0 12px 40px rgba(0,0,0,.18); width:816px; max-width:100%; padding:44px 52px 36px; }
+.eyebrow{
+  font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--gold-text); text-align:center; margin:0 0 10px;
+}
+.sheet > h1{ font-family:"Fraunces",Georgia,serif; font-weight:600; color:var(--ink); margin:0 0 8px; text-align:center; font-size:30px; }
+.rule{ width:56px; height:3px; background:var(--gold); margin:0 auto 14px; border-radius:2px; }
+.frame{ font-family:"Fraunces",Georgia,serif; font-style:italic; line-height:1.5; color:var(--ink-soft); text-align:center; font-size:15px; margin:0 0 16px; }
+.start{ background:var(--cream); border:1.5px solid var(--gold); border-radius:10px; padding:10px 16px; text-align:center; font-family:"Fraunces",Georgia,serif; font-size:15px; color:var(--ink); margin:0 0 10px; }
+.start b{ font-family:"Inter",sans-serif; font-size:10px; letter-spacing:.14em; color:var(--gold-text); display:block; margin-bottom:2px; }
+.arrow{ text-align:center; color:var(--ink-soft); font-size:14px; line-height:1; margin:2px 0; }
+.row{ border:1.5px solid var(--rule); border-radius:10px; overflow:hidden; margin:0; }
+.q{ display:flex; gap:10px; align-items:baseline; padding:8px 14px; background:var(--ink); color:var(--cream); }
+.q .n{ font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:18px; color:var(--gold); flex:0 0 auto; }
+.q .tag{ font-size:9.5px; font-weight:600; letter-spacing:.14em; opacity:.8; flex:0 0 auto; }
+.q .text{ font-family:"Fraunces",Georgia,serif; font-size:14.5px; line-height:1.35; }
+.q .note{ display:block; font-family:"Inter",sans-serif; font-size:10.5px; opacity:.75; margin-top:2px; }
+.branches{ display:grid; grid-template-columns:1fr 1fr; }
+.br{ padding:8px 14px 9px; font-size:12px; line-height:1.4; color:var(--ink); }
+.br + .br{ border-left:1.5px solid var(--rule); }
+.br .lab{ font-size:9.5px; font-weight:700; letter-spacing:.14em; color:var(--ink-soft); display:block; margin-bottom:3px; }
+.br .head{ font-weight:700; letter-spacing:.04em; font-size:12px; display:block; }
+.br.go{ color:var(--ink-soft); }
+.br.go .head{ font-weight:500; font-style:italic; letter-spacing:0; }
+.br.stop{ background:rgba(140,163,126,.18); }
+.br.stop .head{ color:var(--sage-text); }
+.br.loop{ background:rgba(232,169,76,.16); }
+.br.loop .head{ color:var(--gold-text); }
+.br .ret{ display:block; font-size:10.5px; color:var(--ink-soft); font-style:italic; margin-top:2px; }
+.either{ margin:10px 0 0; border-radius:10px; background:rgba(169,201,217,.35); padding:9px 16px; text-align:center; font-family:"Fraunces",Georgia,serif; font-size:14px; color:var(--ink); }
+.either b{ font-family:"Inter",sans-serif; font-size:10px; letter-spacing:.14em; color:var(--sky-text); display:block; margin-bottom:2px; }
+.pull{ font-family:"Fraunces",Georgia,serif; font-weight:600; color:var(--gold-text); text-align:center; line-height:1.4; font-size:14.5px; margin:14px 0 0; }
+.foot{ font-family:"Fraunces",Georgia,serif; font-style:italic; color:var(--ink-soft); text-align:center; font-size:10.5px; margin:12px 0 0; }
+@media (max-width:640px){ .sheet{ padding:28px 18px; } .branches{ grid-template-columns:1fr; } .br + .br{ border-left:none; border-top:1.5px solid var(--rule); } }
+@media print {
+  .toolbar{ display:none; }
+  body{ background:#fff; min-height:0; }
+  .sheet-wrap{ padding:0; }
+  .sheet{ box-shadow:none; width:auto; max-width:none; padding:0; }
+  .row, .start, .either{ break-inside:avoid; }
+  .sheet > h1{ font-size:26px; margin-bottom:4px; }
+  .rule{ margin-bottom:8px; }
+  .frame{ margin-bottom:8px; font-size:13.5px; }
+  .start{ padding:6px 14px; margin-bottom:4px; font-size:14px; }
+  .arrow{ font-size:11px; margin:0; }
+  .q{ padding:5px 12px; }
+  .q .text{ font-size:13.5px; }
+  .br{ padding:5px 12px 6px; font-size:11px; line-height:1.35; }
+  .either{ margin-top:6px; padding:6px 14px; font-size:13px; }
+  .pull{ margin-top:8px; font-size:13.5px; }
+  .foot{ margin-top:6px; }
+  @page{ size:letter; margin:0.45in; }
+}
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <a href="/lessons/14-21/rescue-or-faith">&larr; Back to the lesson</a>
+  <div class="toolbar-actions">
+    <button type="button" class="copy-btn" data-copy-text="The Yes/No Flow
+
+Five questions. Quality of thought comes first.
+
+START: Someone I love is struggling — and I feel the pull to step in.
+
+1. SAFETY — Is anyone in danger right now?
+   Yes → TELL A TRUSTED ADULT: Tell a trusted adult right away. Their need is real — you don’t have to hold it alone.
+   No → Go to question 2
+
+2. MY GROUND — Am I grounded: God the only power, me able to listen?
+   Yes → Go to question 3
+   No → PAUSE · GET GROUNDED: Breathe. Pray, or just listen. A hurried decision isn’t wise yet. Come back when calm. (then back to question 2)
+
+3. THEIR ABILITY — Do I see them as able — not needing me to survive?
+   Yes → Go to question 4
+   No → LOOK AGAIN: God is their power, not me. Name one real strength in them. Then ask again. (then back to question 3)
+
+4. THEIR CHOICE — Did they ask, or did I decide for them? (Yes = they asked. No = I decided.)
+   Yes → Go to question 5
+   No → OFFER, DON’T IMPOSE: “I’m here. What would help?” Then listen, and let them decide.
+
+5. THEIR WORK — Would I be doing what they can do themselves?
+   Yes → WALK BESIDE: Ask questions. Name their strengths. Stay close without taking over.
+   No → GIVE FREELY: They may truly need a ride, a meal, an ear. Give it — no strings, no scorekeeping.
+
+EITHER WAY: Stay close. God is the only power, already at work in them — I’m a friend, not the source.
+
+They may truly, humanly need your help. That was never the question — the question is the thought it comes from.
+
+spirituallessonplans.org · a free, open resource">Copy text</button>
+    <button type="button" onclick="window.print()">Print this handout</button>
+  </div>
+</div>
+<div class="sheet-wrap">
+  <div class="sheet">
+      <p class="eyebrow">A VISUAL &middot; THE YES/NO FLOW</p>
+      <h1>The Yes/No Flow</h1>
+      <div class="rule"></div>
+      <p class="frame">Five questions. Quality of thought comes first.</p>
+      <div class="start"><b>START</b>Someone I love is struggling — and I feel the pull to step in.</div>
+      <div class="arrow" aria-hidden="true">&darr;</div>
+      <div class="row">
+        <div class="q"><span class="n">1</span><span class="tag">SAFETY</span><span class="text">Is anyone in danger right now?</span></div>
+        <div class="branches"><div class="br stop"><span class="lab">YES &rarr;</span><span class="head">TELL A TRUSTED ADULT</span> Tell a trusted adult right away. Their need is real — you don’t have to hold it alone.</div><div class="br go"><span class="lab">NO &rarr;</span><span class="head">Go to question 2</span></div></div>
+      </div>
+      <div class="arrow" aria-hidden="true">&darr;</div>
+      <div class="row">
+        <div class="q"><span class="n">2</span><span class="tag">MY GROUND</span><span class="text">Am I grounded: God the only power, me able to listen?</span></div>
+        <div class="branches"><div class="br go"><span class="lab">YES &rarr;</span><span class="head">Go to question 3</span></div><div class="br loop"><span class="lab">NO &rarr;</span><span class="head">PAUSE · GET GROUNDED</span> Breathe. Pray, or just listen. A hurried decision isn’t wise yet. Come back when calm.<span class="ret">Then back to question 2.</span></div></div>
+      </div>
+      <div class="arrow" aria-hidden="true">&darr;</div>
+      <div class="row">
+        <div class="q"><span class="n">3</span><span class="tag">THEIR ABILITY</span><span class="text">Do I see them as able — not needing me to survive?</span></div>
+        <div class="branches"><div class="br go"><span class="lab">YES &rarr;</span><span class="head">Go to question 4</span></div><div class="br loop"><span class="lab">NO &rarr;</span><span class="head">LOOK AGAIN</span> God is their power, not me. Name one real strength in them. Then ask again.<span class="ret">Then back to question 3.</span></div></div>
+      </div>
+      <div class="arrow" aria-hidden="true">&darr;</div>
+      <div class="row">
+        <div class="q"><span class="n">4</span><span class="tag">THEIR CHOICE</span><span class="text">Did they ask, or did I decide for them?<span class="note">Yes = they asked. No = I decided.</span></span></div>
+        <div class="branches"><div class="br go"><span class="lab">YES &rarr;</span><span class="head">Go to question 5</span></div><div class="br stop"><span class="lab">NO &rarr;</span><span class="head">OFFER, DON’T IMPOSE</span> “I’m here. What would help?” Then listen, and let them decide.</div></div>
+      </div>
+      <div class="arrow" aria-hidden="true">&darr;</div>
+      <div class="row">
+        <div class="q"><span class="n">5</span><span class="tag">THEIR WORK</span><span class="text">Would I be doing what they can do themselves?</span></div>
+        <div class="branches"><div class="br stop"><span class="lab">YES &rarr;</span><span class="head">WALK BESIDE</span> Ask questions. Name their strengths. Stay close without taking over.</div><div class="br stop"><span class="lab">NO &rarr;</span><span class="head">GIVE FREELY</span> They may truly need a ride, a meal, an ear. Give it — no strings, no scorekeeping.</div></div>
+      </div>
+      <div class="either"><b>EITHER WAY</b>Stay close. God is the only power, already at work in them — I’m a friend, not the source.</div>
+      <p class="pull">They may truly, humanly need your help. That was never the question — the question is the thought it comes from.</p>
+      <p class="foot">spirituallessonplans.org &middot; Free to use, adapt, and share &middot; CC BY-SA 4.0</p>
+  </div>
+</div>
+<script>
+(function () {
+  var btn = document.querySelector(".copy-btn");
+  if (!btn) return;
+  var original = btn.textContent;
+  function done(ok) {
+    btn.textContent = ok ? "Copied✓" : "Couldn't copy";
+    window.setTimeout(function () { btn.textContent = original; }, 1800);
+  }
+  btn.addEventListener("click", function () {
+    var text = btn.getAttribute("data-copy-text");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+      return;
+    }
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      done(true);
+    } catch (err) { done(false); }
+  });
+})();
+</script>
+</body>
+</html>
