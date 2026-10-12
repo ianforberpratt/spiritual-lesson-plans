@@ -115,7 +115,7 @@ Walk through **the flow** (post it, or use the handout). Five questions, in orde
 1. **Is anyone in danger right now?** If yes: **ACT NOW.** Call, drive, get help, now. Their need is real, so act, and stay as calm as you can.
 2. **Am I grounded: God the only power, me able to listen?** If no: **PAUSE · GET GROUNDED.** Breathe. Pray. Listen. A hurried decision isn't wise yet. Come back when calm. (In a mixed room, "pray" and "get quiet and listen" are equal alternatives.)
 3. **Do I see them as able, not needing me to survive?** If no: **LOOK AGAIN.** God is their power, not me. Name one real strength in them. Then ask again.
-4. **Did they ask, or did I decide for them?** (Yes = they asked. No = I decided.) If I decided: **OFFER, DON'T IMPOSE.** "I'm here. What would help?" Then listen, and let them decide.
+4. **Did they ask for my help?** If not (I decided for them): **OFFER, DON'T IMPOSE.** "I'm here. What would help?" Then listen, and let them decide.
 5. **Would I be doing what they can do themselves?** If yes: **WALK BESIDE.** Ask questions. Name their strengths. Stay close without taking over. If no: **GIVE FREELY.** They may truly need a ride, a meal, an ear. Give it, no strings, no scorekeeping.
 
 **Either way:** Stay close. God is the only power, already at work in them. I'm a friend, not the source.

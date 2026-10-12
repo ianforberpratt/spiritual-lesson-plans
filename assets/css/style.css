@@ -1464,9 +1464,12 @@ section + section { border-top: 1px solid var(--rule); }
 }
 .lesson-meta-item {
   flex: 1 1 160px;
-  padding: 20px 24px 20px 0;
+  padding: 20px 24px;
   border-right: 1px solid var(--rule);
 }
+/* Flush with the page column on the left edge; every later cell gets its own
+   left padding so text never touches the divider rule beside it. */
+.lesson-meta-item:first-child { padding-left: 0; }
 .lesson-meta-item:last-child { border-right: none; }
 .lesson-meta-item .label {
   display: block;
@@ -1481,14 +1484,17 @@ section + section { border-top: 1px solid var(--rule); }
   font-family: var(--font-sans);
   font-size: 0.98rem;
   font-weight: 500;
+  line-height: 1.45;
   color: var(--ink);
 }
 
 @media (max-width: 700px) {
-  .lesson-meta-item {
+  .lesson-meta-item,
+  .lesson-meta-item:first-child {
     flex: 1 1 44%;
     border-right: none;
     border-bottom: 1px solid var(--rule);
+    padding-left: 0;
     padding-right: 0;
   }
 }

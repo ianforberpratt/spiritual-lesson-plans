@@ -114,7 +114,7 @@ Title: "The yes/no flow." Subtitle: "Five questions. Quality of thought comes fi
 - **Question 3 · THEIR ABILITY:** "Do I see them as able — not needing me to survive?"
   - **NO →** LOOK AGAIN: "God is their power, not me. Name one real strength in them. Then ask again." (Return to Question 3.)
   - **YES →** go to Question 4.
-- **Question 4 · THEIR CHOICE:** "Did they ask, or did I decide for them?" **(YES = they asked; NO = I decided.)**
+- **Question 4 · THEIR CHOICE:** "Did they ask for my help?" **(YES = they asked; NO = I decided.)**
   - **NO →** OFFER, DON'T IMPOSE: "'I'm here. What would help?' Then listen, and let them decide."
   - **YES →** go to Question 5.
 - **Question 5 · THEIR WORK:** "Would I be doing what they can do themselves?"
@@ -122,7 +122,7 @@ Title: "The yes/no flow." Subtitle: "Five questions. Quality of thought comes fi
   - **NO →** GIVE FREELY: "They may truly need a ride, a meal, an ear. Give it — no strings, no scorekeeping."
 - **EITHER WAY (both Question 5 outcomes arrive here):** "Stay close. God is the only power, already at work in them — I'm a friend, not the source."
 
-**Open item for Ian:** Question 4 reads as an either/or ("Did they ask, or did I decide?") but is answered yes/no. Mapping above is the one the graphic implies. Suggested clearer wording: "Did they ask for my help?" — not applied; the graphic is unchanged.
+**Resolved by Ian (2026-10-12):** Question 4 was an either/or ("Did they ask, or did I decide?") answered yes/no. It now reads "Did they ask for my help?" in the master record and the verbatim charts. The Design-canvas graphic still carries the old wording and needs the same one-line change.
 
 **Age adaptations of the flow (the logic is identical; the wording shifts):**
 - Under 18 (11-14, 14-21 minors): ACT NOW becomes "Tell a trusted adult right away. Their need is real — you don't have to hold it alone."
@@ -171,5 +171,5 @@ The three boards live in the Claude Design canvas "Rescue or Faith Flow" (privat
 - All five bands are built; the core model's bridge metaphors fit each age band directly.
 - Handouts differ by band, because the flow's wording differs by band: a wallet card for every band, plus a one-page flow chart ("full handout") for 8-11 (kid language), 11-14 (softened), 14-21 (under-18 ACT NOW wording), and 21-plus (verbatim master record). 5-8 gets only its one-rule card.
 - Quote lines in the band files that the site parser needs for citation splitting use the site's `— Science and Health, Mary Baker Eddy, p. 000:00` format.
-- The Question 4 open item above is unchanged in every verbatim chart; the kid-language and softened versions phrase it as "Did they ask me?" without altering the logic.
+- Question 4 reads "Did they ask for my help?" in the 21-plus, 14-21, and 11-14 charts; the 8-11 kid-language version says "Did they ask me?" with the same logic.
 - **Flagged for Ian before publishing:** (1) spot-check the S&H line numbers against the printed book, as noted above; (2) the 21-plus and 14-21 charts carry "Pray" in Question 2's pause step verbatim — in mixed rooms the facilitator notes offer "pause and listen" as an equal alternative.
