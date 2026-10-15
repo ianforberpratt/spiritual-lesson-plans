@@ -326,8 +326,10 @@ core_model_ref: <topic-slug>/core-model.md
 ...
 ```
 
-FILE: content/lessons/<topic-slug>/handout.md
+FILE: content/lessons/<topic-slug>/handout-wallet.md   (or handout-full.md for a full handout)
 ```
+---
+lesson_id: <topic-slug>
 format: wallet-card | full-handout
 same_across_bands: true | false   (if false, provide one handout block per band instead)
 eyebrow: <only for full-handout>
@@ -343,8 +345,15 @@ three_questions:   <only for wallet-card>
   3. ...
 reflection_prompts:   <only for full-handout>
   - ...
+---
 ```
 ````
+
+**Handout links.** In each band's "What you'll need", link the printable at
+`/assets/materials/<topic-slug>/handout-wallet.html` (or `handout-full.html`) — root-absolute,
+with the `.html` extension, since that is the generated file. Do not invent a `/handouts/...` path;
+it does not exist on this site. Handout field values may be wrapped in quotes, and `framing` /
+`pull_line` may carry `*italic*` / `**bold**` markers; the handout builder strips both.
 
 One `FILE:` block per age band actually being built — never a placeholder file for a band you
 decided not to build. End every export with a one-paragraph plain-English summary: which bands
