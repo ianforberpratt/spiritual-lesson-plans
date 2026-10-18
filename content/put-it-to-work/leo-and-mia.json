@@ -1,0 +1,274 @@
+{
+  "id": "leo-and-mia",
+  "title": "Leo and Mia",
+  "caseLabel": "Leo and Mia (names and details changed)",
+  "characters": [
+    {
+      "name": "Leo",
+      "role": "father-in-law"
+    },
+    {
+      "name": "Mia",
+      "role": "his daughter-in-law, a social worker"
+    }
+  ],
+  "intro": {
+    "story": [
+      "Leo and his wife have just arrived, and he needs medical care he is uncomfortable asking for. His daughter-in-law, Mia, is a social worker. Over several months the family moves through a hard medical story: a test, a diagnosis, a clinic in another city, and a long road ahead. The story is based on a real family. Names and details have been changed."
+    ]
+  },
+  "groundRules": [
+    "Everyone in this story is held in love: Leo, his family, the medical team, and the other families. There are no villains here.",
+    "No blame. Nobody did anything wrong to cause this.",
+    "Your family may handle health differently than Leo’s family did. Every path is welcome here.",
+    "A spiritual lens is not a prediction or a promise about an outcome. It is what we choose to hold as true while we act.",
+    "This is a practice exercise, not medical or personal advice. If the story touches something real in your life, go gently and skip anything you need to."
+  ],
+  "steps": [
+    {
+      "id": "s1",
+      "short": "Care team",
+      "quick": true,
+      "title": "Building a care team",
+      "practice": "Practice: meeting a person where he is",
+      "story": [
+        "Leo and his wife have just arrived, and the family’s first goal is to set up care for him: a primary care doctor, then a nephrologist, which is a kidney specialist.",
+        "Leo is uncomfortable in the medical world, and English is a second language for him and his wife. Mia, his daughter-in-law, is a social worker, so she knows the forms, the questions to ask, and how to take notes that make sense later.",
+        "Leo and Mia pray in different traditions. They have come to treasure that."
+      ],
+      "foot": [
+        "Choose a primary care doctor first, then see the specialist that doctor recommends.",
+        "Ask for an interpreter at every visit.",
+        "Gather records and write questions down before each appointment.",
+        "Take notes that someone else could read later.",
+        "Go with Leo, and let him make the decisions."
+      ],
+      "lens": [
+        "Leo is already held by love and does not enter any room alone.",
+        "Compassion comes before strategy.",
+        "Love meets a person where he is, in the clinic and in the prayer tradition he loves.",
+        "Showing up can be a form of prayer."
+      ],
+      "passages": [
+        {
+          "ref": "Matthew 14:14",
+          "text": "“And Jesus went forth, and saw a great multitude, and was moved with compassion toward them, and he healed their sick.”"
+        },
+        {
+          "ref": "Science and Health, 15:26–27",
+          "text": "“Self-forgetfulness, purity, and affection are constant prayers.”"
+        }
+      ],
+      "talk": "Leo is uncomfortable in the medical world, and the doctors do not speak his language. What would help you feel safe in that room?",
+      "leader": "Families and traditions differ on medical care. Mia understands the stand of not going to the doctor, and she chose to show up where Leo was. Invite students to hold every path with respect, and do not steer them toward any one of them."
+    },
+    {
+      "id": "s2",
+      "short": "A name",
+      "quick": false,
+      "title": "A name arrives",
+      "practice": "Practice: separating a label from a person",
+      "story": [
+        "The nephrologist asks for genetic testing, and the testing is done. The result comes back as a rare genetic condition.",
+        "The family now has a name for what they are facing."
+      ],
+      "foot": [
+        "Ask what the test is for and what the results could mean.",
+        "Make sure Leo and his wife understand and agree, in their own language.",
+        "Ask for the results in writing and keep them in one folder.",
+        "Give the family time to absorb the news before the next decision."
+      ],
+      "lens": [
+        "A name is a label. It is not an identity.",
+        "Leo is loved with an everlasting love.",
+        "No diagnosis can separate a person from the love that holds him."
+      ],
+      "passages": [
+        {
+          "ref": "Jeremiah 31:3",
+          "text": "“Yea, I have loved thee with an everlasting love: therefore with lovingkindness have I drawn thee.”"
+        },
+        {
+          "ref": "Science and Health, 333:26–27",
+          "text": "“The divine image, idea, or Christ was, is, and ever will be inseparable from the divine Principle, God.”"
+        },
+        {
+          "ref": "Science and Health, 340:12",
+          "text": "“Divine Love is infinite. Therefore all that really exists is in and of God, and manifests His love.”"
+        }
+      ],
+      "talk": "A diagnosis gives a condition a name. Does the name tell you who Leo is? What does?",
+      "leader": "Keep the focus on who Leo is. Avoid any suggestion that the diagnosis points to something he or his family did wrong or failed to understand."
+    },
+    {
+      "id": "s3",
+      "short": "Origins",
+      "quick": false,
+      "title": "Where it came from",
+      "practice": "Practice: answering “why?” without blame",
+      "story": [
+        "The family meets with a geneticist, who traces the condition back through the family’s history and explains how it was most likely passed down."
+      ],
+      "foot": [
+        "Ask the geneticist to explain the family history in plain language.",
+        "Ask what it means for other relatives.",
+        "Share the findings with Leo kindly, in his own language.",
+        "Keep every conversation free of blame toward earlier generations."
+      ],
+      "lens": [
+        "Every person’s origin is good, whatever a family tree shows.",
+        "Love blames no one.",
+        "Leo’s story is not defined by where the diagnosis came from."
+      ],
+      "passages": [
+        {
+          "ref": "John 3:17",
+          "text": "“God sent not his Son into the world to condemn the world; but that the world through him might be saved.”"
+        },
+        {
+          "ref": "Science and Health, 31:10",
+          "text": "“He recognized Spirit, God, as the only creator, and therefore as the Father of all.”"
+        }
+      ],
+      "talk": "When something is hard, people look for someone to blame. What changes when we choose not to condemn anyone, including ourselves? How would you want a family to be treated when its history comes up in a doctor’s office?",
+      "leader": "Be careful that a spiritual idea of origin is not heard as dismissing Leo’s parents or his community. Keep the conversation respectful of every culture’s family traditions and free of judgment."
+    },
+    {
+      "id": "s4",
+      "short": "Research",
+      "quick": false,
+      "title": "Research across a language gap",
+      "practice": "Practice: serving without taking over",
+      "story": [
+        "Mia reads as much of the medical research as she can find. Leo and his wife cannot take part in this work because of the language barrier.",
+        "Mia then finds a nonprofit patient organization for the condition and learns that it is holding a clinic in another city."
+      ],
+      "foot": [
+        "Use reliable sources, such as clinics and patient organizations.",
+        "Summarize what you learn in plain language.",
+        "Explain key points to Leo and his wife, using translation where it helps.",
+        "Ask them what they want to know, not only what you think they need.",
+        "Find the patient organization, as Mia did."
+      ],
+      "lens": [
+        "Research done out of love is a kind of prayer.",
+        "Love moves people toward good work together.",
+        "Serving someone means showing the way without taking over."
+      ],
+      "passages": [
+        {
+          "ref": "Hebrews 10:24",
+          "text": "“And let us consider one another to provoke unto love and to good works.”"
+        },
+        {
+          "ref": "Science and Health, 202:3",
+          "text": "“The scientific unity which exists between God and man must be wrought out in life-practice, and God’s will must be universally done.”"
+        },
+        {
+          "ref": "Science and Health, 18",
+          "text": "“He did life’s work aright not only in justice to himself, but in mercy to mortals, — to show them how to do theirs, but not to do it for them nor to relieve them of a single responsibility.”"
+        }
+      ],
+      "talk": "Mia did the reading because Leo and his wife could not. Where is the line between serving someone and doing it for them? How would you keep Leo in charge of his own story?",
+      "leader": "This is the place for honest challenge. Mia carried the research because Leo and his wife could not. Ask how Leo’s voice stays at the center, and connect it to client self-determination in social work."
+    },
+    {
+      "id": "s5",
+      "short": "Clinic",
+      "quick": true,
+      "title": "The clinic",
+      "practice": "Practice: staying steady inside not knowing",
+      "quickLead": "Since the last step, a test has named a rare genetic condition, and Mia has read all the research she could find. Now Leo and his family are at a specialty clinic.",
+      "story": [
+        "Mia takes Leo to the clinic, and the family learns a great deal about the genes involved. The genetic counselor trusts the test, but this exact variation in Leo’s gene is new to her. It has not appeared in clinical studies, so no one can say what it will mean or when.",
+        "She describes a fully working protein as a six-foot wall and says Leo’s is built most of the way up, much further than most people with this condition. She is clear that “milder” is a working hypothesis, not a finding.",
+        "The family also meets some very sick children. The doctor’s advice is to be grateful, to thank God, and to let the clinic test the family. The family wants to help toward a cure."
+      ],
+      "foot": [
+        "Travel with Leo and take careful notes.",
+        "Ask what is known and what is not yet known.",
+        "Ask what “milder” means, and whether it is a finding or a hypothesis.",
+        "Consider agreeing to testing and to research that helps others.",
+        "Meet other families and listen to them."
+      ],
+      "lens": [
+        "Not knowing is not the same as nothing being known.",
+        "A hypothesis is only a hypothesis, and no human theory gets to write Leo’s story.",
+        "People from many places gather in one room, and comfort is real.",
+        "Gratitude is a way to meet the unknown."
+      ],
+      "passages": [
+        {
+          "ref": "Psalm 18:28",
+          "text": "“For thou wilt light my candle: the LORD my God will enlighten my darkness.”"
+        },
+        {
+          "ref": "Job 32:8",
+          "text": "“But there is a spirit in man: and the inspiration of the Almighty giveth them understanding.”"
+        },
+        {
+          "ref": "Revelation 7:9, 17",
+          "text": "“I beheld, and, lo, a great multitude, which no man could number, of all nations, and kindreds, and people, and tongues … and God shall wipe away all tears from their eyes.”"
+        }
+      ],
+      "talk": "What is the difference between a hypothesis and a verdict? How can “not knowing” still be held in care? What does compassion ask of us when we meet children who are very sick?",
+      "leader": "Handle the sick children with care. Present them with compassion and hope, never as a lesson or a test of faith. Some students may have their own experience with illness, so leave room for privacy and offer a quiet follow-up."
+    },
+    {
+      "id": "s6",
+      "short": "Road ahead",
+      "quick": true,
+      "title": "The road ahead",
+      "practice": "Practice: watching with love instead of fear",
+      "story": [
+        "The guidance is for Leo to be vigilant about several areas of his health, with a specialist for each, starting with one.",
+        "His children may carry the same gene change, and the clinic recommends that they be tested. The family hopes to help the search for a cure."
+      ],
+      "foot": [
+        "Schedule the first specialist visit.",
+        "Keep one calendar and one notebook for every check.",
+        "Share information with the whole family in a language each person can read.",
+        "Give each child good information so they can decide about testing for themselves.",
+        "Support the search for a cure, as the family wants to."
+      ],
+      "lens": [
+        "Watching can come from love or from fear, and we choose which one drives.",
+        "Hold fast, and encourage one another.",
+        "Each person works out their own path, and each child’s choice is respected.",
+        "No exam room, lab, or waiting room is outside love’s reach."
+      ],
+      "passages": [
+        {
+          "ref": "Science and Health, 170:14–15",
+          "text": "“The demands of Truth are spiritual, and reach the body through Mind.”"
+        },
+        {
+          "ref": "Hebrews 10:23",
+          "text": "“Let us hold fast the profession of our faith without wavering; (for he is faithful that promised;)”"
+        },
+        {
+          "ref": "Science and Health, 22:11–12",
+          "text": "“‘Work out your own salvation,’ is the demand of Life and Love, for to this end God worketh with you.”"
+        },
+        {
+          "ref": "Psalm 139:7",
+          "text": "“Whither shall I go from thy spirit? or whither shall I flee from thy presence?”"
+        }
+      ],
+      "talk": "The doctors used the word “vigilance.” Watching can come from love or from fear. How does each one feel, for the person being watched and for the family doing the watching?",
+      "leader": "Some language about thought and the body can be misheard as “if I think correctly, the body must follow, so I had better get it right.” Make clear that holding love is not a performance test. Medical attentiveness and prayer can sit side by side."
+    }
+  ],
+  "closingQuestions": [
+    "Look back over your steps. Where did love show up as action?",
+    "Two people from different traditions sat in one room, held by one love. What does unity look like when two people pray differently?",
+    "Some people would say “just don’t go to the doctor,” and that is a strong stand. Mia chose to show up where Leo was. How can we hold both choices with equal respect?",
+    "Write one sentence you could carry into any hospital or waiting room."
+  ],
+  "worksheet": {
+    "title": "A printable worksheet",
+    "description": "The same six steps on paper, with a table to fill in for each one.",
+    "linkText": "Download the worksheet (PDF)",
+    "file": "/assets/materials/put-it-to-work/case-consult-leos-story-worksheet.pdf"
+  }
+}

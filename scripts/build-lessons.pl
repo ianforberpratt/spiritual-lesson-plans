@@ -52,6 +52,7 @@ my @STATIC_PAGES = (
   { path => "$ROOT/what-we-believe.html",  url => '/what-we-believe',changefreq => 'monthly', priority => '0.6' },
   { path => "$ROOT/about.html",            url => '/about',          changefreq => 'monthly', priority => '0.5' },
   { path => "$ROOT/not-broken.html",       url => '/not-broken',     changefreq => 'monthly', priority => '0.7' },
+  { path => "$ROOT/put-it-to-work.html",   url => '/put-it-to-work', changefreq => 'monthly', priority => '0.7' },
 );
 
 my @BAND_ORDER = ('5-8', '8-11', '11-14', '14-21', '21-plus');
@@ -967,6 +968,7 @@ sub write_llms_txt {
   push @lines, '';
   push @lines, "- [For You]($SITE_ORIGIN/for-you): a page for the young person reading a lesson themselves — how to use these lessons solo, with a friend, or handed up to a mentor, plus the Not Broken experience and the mood picker";
   push @lines, "- [Not Broken]($SITE_ORIGIN/not-broken): a three-minute interactive experience on wholeness as the starting point, not a repair job — open to anyone, teen through adult";
+  push @lines, "- [Put It to Work]($SITE_ORIGIN/put-it-to-work): a ten or twenty minute interactive case-consult exercise — follow one composite family's story a step at a time and write what love could actually do; works alone or with a group, and nothing typed is saved";
   push @lines, "- [For Mentors]($SITE_ORIGIN/for-mentors): facilitator safety guidelines and how the age-band system works";
   push @lines, "- [What We Believe]($SITE_ORIGIN/what-we-believe): plain-language explainer on Christian Science, including how it differs from the doctrine of original sin";
   push @lines, "- [About]($SITE_ORIGIN/about): what this project is and its licensing";
