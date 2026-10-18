@@ -25,7 +25,6 @@ assets/js/main.js      Nav toggle + scroll-reveal
 assets/js/put-it-to-work.js   Engine for /put-it-to-work (loads a case file; stores nothing)
 assets/css/put-it-to-work.css Page styles for /put-it-to-work (loaded after style.css; all classes are piw-*)
 content/put-it-to-work/       Case files (JSON). Add a case = add a file, no rebuild
-assets/materials/put-it-to-work/  Printable worksheet(s) linked from a case's "worksheet" field
 assets/img/            Original SVG illustrations
 ```
 

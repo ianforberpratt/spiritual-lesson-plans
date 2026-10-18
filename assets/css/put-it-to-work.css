@@ -162,7 +162,6 @@
 .piw-card.piw-private { background: var(--sage-bg); border-color: rgba(63, 82, 54, 0.28); border-left: 4px solid var(--sage); }
 .piw-private strong { color: var(--sage-text); }
 .piw-card.piw-reveal { border-top: 4px solid var(--sage); }
-.piw-card.piw-worksheet { background: var(--sky-bg); border-color: rgba(54, 47, 75, 0.14); border-left: 4px solid var(--sky); }
 
 .piw-label {
   display: block;

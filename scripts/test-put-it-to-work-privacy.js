@@ -67,20 +67,6 @@ const fail = m => { failures.push(m); console.log('FAIL: ' + m); };
       if (!clip || !clip.includes(CANARY)) fail(tag + 'Copy did not put typed text on the clipboard');
       await page.click('[data-action=back]'); await page.click('[data-action=next]');
 
-      // The worksheet link is the only other thing on the closing screen that touches the network.
-      // It is a plain <a href download> (always a GET). Chromium does not report download navigations
-      // as page requests, so assert on the download's URL: same-origin static PDF, no query string.
-      const link = await page.$('a[download]');
-      if (!link) fail(tag + 'no worksheet download link on the closing screen');
-      else {
-        const [dl] = await Promise.all([page.waitForEvent('download'), link.click()]);
-        const u = dl.url();
-        if (!u.startsWith(BASE + '/assets/materials/put-it-to-work/') || !/\.pdf$/.test(u) || u.includes('?') || u.includes(CANARY)) {
-          fail(tag + 'worksheet link is not a plain static PDF URL: ' + u);
-        }
-        if (!/\.pdf$/.test(dl.suggestedFilename())) fail(tag + 'worksheet link did not download a PDF');
-      }
-
       await page.click('[data-action=reset]'); await page.click('[data-action=resetYes]');
 
       // 1. Network: nothing at all after typing began, and nothing anywhere containing the canary.
@@ -108,7 +94,7 @@ const fail = m => { failures.push(m); console.log('FAIL: ' + m); };
       const leftover = await page.$$eval('textarea', ts => ts.map(t => t.value).join(''));
       if (leftover) fail(tag + 'text survived a reload');
 
-      log.push(`${tag}typed ${typed} fields; load requests: ${loadReqs.map(r => r.url.replace(BASE, '')).join(' ')}; requests after typing: ${after.length}; worksheet link: static PDF download`);
+      log.push(`${tag}typed ${typed} fields; load requests: ${loadReqs.map(r => r.url.replace(BASE, '')).join(' ')}; requests after typing: ${after.length}`);
       await ctx.close();
     }
   }

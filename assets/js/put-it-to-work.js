@@ -156,10 +156,6 @@
     b += '<p class="piw-note" role="status" aria-live="polite">'+esc(state.copyMsg)+'</p>';
     if(state.showFallback){ b += '<textarea id="fallback" class="piw-short" readonly aria-label="Your thoughts, ready to copy"></textarea>'; }
     b += '</div>';
-    var w = CASE.worksheet;
-    if(w && typeof w.file === 'string' && /^\/[^\/]/.test(w.file)){
-      b += '<div class="piw-card piw-worksheet piw-stack-sm"><h3>'+esc(w.title)+'</h3><p>'+esc(w.description)+'</p><div class="piw-row"><a class="btn btn-outline-dark" href="'+esc(w.file)+'" download>'+esc(w.linkText)+'</a></div></div>';
-    }
     b += '<div class="piw-row piw-between"><button type="button" class="btn btn-outline-dark" data-action="back">Previous step</button>';
     if(state.confirmReset){
       b += '<span class="piw-row"><span class="piw-note">This clears everything you typed.</span><button type="button" class="btn btn-gold piw-small" data-action="resetYes">Yes, clear it</button><button type="button" class="btn btn-outline-dark piw-small" data-action="resetNo">Keep it</button></span>';
