@@ -47,7 +47,8 @@ if grep -n -E 'writeText' assets/js/put-it-to-work.js | wc -l | grep -q -v '^1$'
 fi
 
 # 6. Story content: no faith names, condition names or place names in the story text.
-#    (Passages and their references are excluded; they quote scripture on purpose.)
+#    (Passages and their references are excluded; they quote scripture on purpose. The opening
+#    "why" screen is excluded too: it names the audience on purpose, in the owner's own words.)
 for f in $CASES; do
   if node -e '
     const c = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"));

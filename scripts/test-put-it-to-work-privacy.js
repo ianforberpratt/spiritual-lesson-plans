@@ -47,6 +47,7 @@ const fail = m => { failures.push(m); console.log('FAIL: ' + m); };
       await page.goto(BASE + '/put-it-to-work');
       await page.waitForSelector('#main');
       const loadCount = requests.length;
+      await page.click('[data-action=whyNext]'); // the opening "why" screen
       typing = true;
 
       await page.click(`[data-action=setMode][data-value=${mode}]`);
@@ -90,6 +91,7 @@ const fail = m => { failures.push(m); console.log('FAIL: ' + m); };
 
       // 3. Reload: typed text must be gone.
       await page.click('[data-action=begin]'); await page.reload(); await page.waitForSelector('#main');
+      await page.click('[data-action=whyNext]');
       await page.click('[data-action=begin]');
       const leftover = await page.$$eval('textarea', ts => ts.map(t => t.value).join(''));
       if (leftover) fail(tag + 'text survived a reload');

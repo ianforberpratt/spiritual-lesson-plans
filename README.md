@@ -65,7 +65,8 @@ NODE_PATH=$(npm root -g) node scripts/test-put-it-to-work-privacy.js   # real br
 ```
 
 A new case is a JSON file in `content/put-it-to-work/` (see `leo-and-mia.json` for the shape); the page
-loads `?case=<id>`, defaulting to `leo-and-mia`. The page makes one plain GET for that file at load.
+loads `?case=<id>`, defaulting to `leo-and-mia`. A case's optional `why` block is the opening screen
+(why the exercise exists, and its learning goals); a case without one starts at the intro. The page makes one plain GET for that file at load.
 
 ## Analytics
 

@@ -55,6 +55,21 @@
     return '<div class="piw-body"><div class="wrap piw-narrow"><div class="piw-stack">'+inner+'</div></div></div>';
   }
 
+  // Opening screen: why the exercise exists and what it is for. Optional; a case without "why" starts at the intro.
+  function whyHTML(){
+    var w = CASE.why;
+    var h = band('<p class="piw-eyebrow">'+esc(w.eyebrow)+'</p><h2 id="main" tabindex="-1">'+esc(w.title)+'</h2><p class="piw-lede">'+esc(w.lede)+'</p>');
+    var b = w.sections.map(function(sec){
+      var inner = '<h3>'+esc(sec.title)+'</h3>';
+      if(sec.paragraphs){ inner += sec.paragraphs.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join(''); }
+      if(sec.items){ inner += '<ol>'+li(sec.items)+'</ol>'; }
+      var kind = /^[a-z]+$/.test(sec.kind || '') ? sec.kind : 'story';
+      return '<div class="piw-card piw-why-'+kind+'">'+inner+'</div>';
+    }).join('');
+    b += '<div><button type="button" class="btn btn-gold" data-action="whyNext">'+esc(w.continueLabel)+'</button></div>';
+    return h + body(b);
+  }
+
   function introHTML(){
     var group = isGroup();
     var full = state.path === 'full';
@@ -87,7 +102,7 @@
       b += '<p>The passages here are one set of choices from the Bible and from Science and Health. Match your own texts to these thoughts: use passages from your own tradition or from your class’s study, and ask students to bring one of their own to each step.</p>';
       b += '<p>Open the “one way to see it” panel after the group has shared, not before.</p></div>';
     }
-    b += '<div><button class="btn btn-gold" data-action="begin">Begin</button></div>';
+    b += '<div class="piw-row"><button class="btn btn-gold" data-action="begin">Begin</button>'+(CASE.why ? '<button type="button" class="btn btn-outline-dark" data-action="whyBack">Back</button>' : '')+'</div>';
     return h + body(b);
   }
 
@@ -193,7 +208,7 @@
   }
 
   function render(focusId, keepScroll){
-    app.innerHTML = state.screen === 'intro' ? introHTML() : (state.screen === 'step' ? stepHTML() : endHTML());
+    app.innerHTML = state.screen === 'why' ? whyHTML() : (state.screen === 'intro' ? introHTML() : (state.screen === 'step' ? stepHTML() : endHTML()));
     var tas = app.querySelectorAll('textarea[data-bind]');
     for(var i = 0; i < tas.length; i++){ tas[i].value = getBound(tas[i]); }
     var fb = document.getElementById('fallback');
@@ -241,6 +256,8 @@
     var v = b.getAttribute('data-value');
     if(a === 'setMode'){ state.mode = v; render(null, true); }
     else if(a === 'setPath'){ state.path = v; render(null, true); }
+    else if(a === 'whyNext'){ go('intro'); }
+    else if(a === 'whyBack'){ go('why'); }
     else if(a === 'begin'){ go('step', 0); }
     else if(a === 'next'){
       if(state.idx < list().length - 1){ go('step', state.idx + 1); } else { go('end'); }
@@ -276,6 +293,7 @@
     STEPS = c.steps;
     GROUP_CLOSING = c.closingQuestions;
     state.data = blankData();
+    state.screen = c.why ? 'why' : 'intro';
     render();
   }
 
