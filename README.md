@@ -17,9 +17,14 @@ lessons.html           /lessons
 for-mentors.html        /for-mentors
 what-we-believe.html    /what-we-believe
 about.html              /about
+not-broken.html         /not-broken (standalone interactive, linked from /for-you)
+put-it-to-work.html     /put-it-to-work (standalone interactive, linked from /for-you)
 404.html
 assets/css/style.css   Shared styles (palette + components)
 assets/js/main.js      Nav toggle + scroll-reveal
+assets/js/put-it-to-work.js   Engine for /put-it-to-work (loads a case file; stores nothing)
+content/put-it-to-work/       Case files (JSON). Add a case = add a file, no rebuild
+assets/materials/put-it-to-work/  Printable worksheet(s) linked from a case's "worksheet" field
 assets/img/            Original SVG illustrations
 ```
 
@@ -44,6 +49,21 @@ same pattern as thetiesfoundation.org's hero), but no video file has been suppli
 original SVG illustration (`assets/img/hero-sunrise.svg`) is used as the `poster` and displays
 as a static fallback until a real clip is added. Drop a licensed/owned MP4 at that path and it
 starts playing automatically; no other changes needed.
+
+## Put It to Work (privacy-critical)
+
+`/put-it-to-work` promises visitors that nothing they type is saved or sent. It loads no site-wide
+script (no `main.js`, no feedback widget) and no analytics beacon, on purpose. Keep it that way, and
+run both checks after any change to `put-it-to-work.html`, `assets/js/put-it-to-work.js`, or a case file:
+
+```
+sh scripts/check-put-it-to-work-privacy.sh                       # code search
+perl scripts/serve.pl . 8099 &                                    # then, with Playwright installed:
+NODE_PATH=$(npm root -g) node scripts/test-put-it-to-work-privacy.js   # real browser: network, storage, cookies
+```
+
+A new case is a JSON file in `content/put-it-to-work/` (see `leo-and-mia.json` for the shape); the page
+loads `?case=<id>`, defaulting to `leo-and-mia`. The page makes one plain GET for that file at load.
 
 ## Analytics
 

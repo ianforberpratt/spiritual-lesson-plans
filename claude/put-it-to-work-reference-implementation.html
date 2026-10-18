@@ -1,0 +1,510 @@
+<title>Put It to Work</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout concept: a case file that walks one step at a time. A dotted trail marks progress,
+   and each step splits into two color-coded columns: human footsteps (teal) and spiritual lens (amber). */
+:root{
+  --font-display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
+  --font-body:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
+  --bg:#EEF2F5;
+  --surface:#FFFFFF;
+  --surface-2:#F5F8FA;
+  --ink:#17232F;
+  --muted:#53646F;
+  --line:#D3DCE3;
+  --foot:#17695C;
+  --foot-bg:#E1F1EE;
+  --lens:#865208;
+  --lens-bg:#FAEFD8;
+  --btn-bg:#17232F;
+  --btn-fg:#FFFFFF;
+  --focus:#2B6CB0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#101820;
+    --surface:#17212B;
+    --surface-2:#1D2935;
+    --ink:#E7EDF2;
+    --muted:#9FB0BD;
+    --line:#2D3B48;
+    --foot:#5FC9B5;
+    --foot-bg:#16312F;
+    --lens:#E6B864;
+    --lens-bg:#33281A;
+    --btn-bg:#E7EDF2;
+    --btn-fg:#101820;
+    --focus:#7AB3F0;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#101820;
+  --surface:#17212B;
+  --surface-2:#1D2935;
+  --ink:#E7EDF2;
+  --muted:#9FB0BD;
+  --line:#2D3B48;
+  --foot:#5FC9B5;
+  --foot-bg:#16312F;
+  --lens:#E6B864;
+  --lens-bg:#33281A;
+  --btn-bg:#E7EDF2;
+  --btn-fg:#101820;
+  --focus:#7AB3F0;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-0.01em}
+h1{font-size:clamp(2.1rem,6vw,3rem);font-weight:700;letter-spacing:-0.025em}
+h2{font-size:clamp(1.55rem,4.2vw,2rem);font-weight:700}
+h3{font-size:1.15rem;font-weight:700}
+h4{font-size:1rem;font-weight:700}
+h1:focus,h2:focus{outline:none}
+p{margin:0}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.lede{font-size:1.15rem;max-width:60ch}
+.stack{display:flex;flex-direction:column;gap:20px}
+.stack-sm{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
+.card.tint{background:var(--surface-2)}
+.card h3{margin-bottom:10px}
+.card ul,.card ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:8px}
+.private{border-color:var(--foot);background:var(--foot-bg)}
+.private strong{color:var(--foot)}
+.label{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.tag.foot{background:var(--foot-bg);color:var(--foot)}
+.tag.lens{background:var(--lens-bg);color:var(--lens)}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{font:inherit;color:var(--ink);text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
+.choice strong{font-family:var(--font-display);font-size:1.05rem}
+.choice span{color:var(--muted);font-size:.95rem}
+.choice[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn{font-family:var(--font-display);font-weight:700;font-size:1rem;border-radius:10px;padding:12px 20px;cursor:pointer;border:1.5px solid var(--btn-bg);background:var(--btn-bg);color:var(--btn-fg)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.small{padding:8px 14px;font-size:.95rem}
+.btn:hover{opacity:.9}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.row.between{justify-content:space-between}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.trail{list-style:none;margin:0;padding:0;display:flex}
+.trail li{flex:1;position:relative;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--muted);padding-top:24px;min-width:0}
+.trail li::before{content:"";position:absolute;top:6px;left:-50%;width:100%;border-top:2px dotted var(--line)}
+.trail li:first-child::before{display:none}
+.trail li .dot{position:absolute;top:0;left:50%;margin-left:-7px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--line)}
+.trail li.done .dot{background:var(--ink);border-color:var(--ink)}
+.trail li.done::before,.trail li.current::before{border-top:2px solid var(--ink)}
+.trail li.current .dot{border-color:var(--ink);background:var(--surface);box-shadow:0 0 0 4px var(--surface-2)}
+.trail li.current{color:var(--ink)}
+.practice{font-family:var(--font-mono);font-size:13px;color:var(--muted)}
+.story p+p{margin-top:12px}
+.story .earlier{color:var(--muted);font-style:italic}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.col{display:flex;flex-direction:column;gap:10px;min-width:0}
+.col .help{font-size:.95rem;color:var(--muted)}
+textarea{width:100%;min-height:150px;resize:vertical;font:inherit;line-height:1.5;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px}
+textarea.short{min-height:90px}
+.col-foot textarea:focus-visible{outline-color:var(--foot)}
+.col-lens textarea:focus-visible{outline-color:var(--lens)}
+.note{font-size:.95rem;color:var(--muted)}
+blockquote{margin:0;padding:0}
+.passage{padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.passage p{font-size:1rem}
+.passage cite{display:block;margin-top:6px;font-family:var(--font-mono);font-size:12px;font-style:normal;color:var(--muted)}
+.models ul{font-size:.98rem}
+.leader{border:1.5px dashed var(--line);border-radius:12px;padding:14px 16px;background:transparent}
+.leader p+p{margin-top:8px}
+.sum p{white-space:pre-wrap;overflow-wrap:anywhere}
+.sum .blank{color:var(--muted);font-style:italic}
+.sum+.sum{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.sum h4{margin-bottom:8px}
+.sum .line{margin-top:6px}
+.foot-credit{font-size:.85rem;color:var(--muted);margin-top:36px;max-width:64ch}
+@media (max-width:640px){
+  .cols{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .choices{grid-template-columns:1fr}
+  .trail li{font-size:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+  <div id="app"></div>
+  <p class="foot-credit">Bible quotations are from the King James Version. Other passages are from Science and Health with Key to the Scriptures by Mary Baker Eddy. The family in this story is real, and every name and identifying detail has been changed.</p>
+</div>
+
+<script>
+(function(){
+  var STEPS = [
+    {
+      id:'s1', short:'Care team', quick:true,
+      title:'Building a care team',
+      practice:'Practice: meeting a person where he is',
+      story:[
+        'Leo and his wife have just arrived, and the family’s first goal is to set up care for him: a primary care doctor, then a nephrologist, which is a kidney specialist.',
+        'Leo is uncomfortable in the medical world, and English is a second language for him and his wife. Mia, his daughter-in-law, is a social worker, so she knows the forms, the questions to ask, and how to take notes that make sense later.',
+        'Leo and Mia pray in different traditions. They have come to treasure that.'
+      ],
+      foot:['Choose a primary care doctor first, then see the specialist that doctor recommends.','Ask for an interpreter at every visit.','Gather records and write questions down before each appointment.','Take notes that someone else could read later.','Go with Leo, and let him make the decisions.'],
+      lens:['Leo is already held by love and does not enter any room alone.','Compassion comes before strategy.','Love meets a person where he is, in the clinic and in the prayer tradition he loves.','Showing up can be a form of prayer.'],
+      passages:[
+        {ref:'Matthew 14:14', text:'“And Jesus went forth, and saw a great multitude, and was moved with compassion toward them, and he healed their sick.”'},
+        {ref:'Science and Health, 15:26–27', text:'“Self-forgetfulness, purity, and affection are constant prayers.”'}
+      ],
+      talk:'Leo is uncomfortable in the medical world, and the doctors do not speak his language. What would help you feel safe in that room?',
+      leader:'Families and traditions differ on medical care. Mia understands the stand of not going to the doctor, and she chose to show up where Leo was. Invite students to hold every path with respect, and do not steer them toward any one of them.'
+    },
+    {
+      id:'s2', short:'A name', quick:false,
+      title:'A name arrives',
+      practice:'Practice: separating a label from a person',
+      story:[
+        'The nephrologist asks for genetic testing, and the testing is done. The result comes back as a rare genetic condition.',
+        'The family now has a name for what they are facing.'
+      ],
+      foot:['Ask what the test is for and what the results could mean.','Make sure Leo and his wife understand and agree, in their own language.','Ask for the results in writing and keep them in one folder.','Give the family time to absorb the news before the next decision.'],
+      lens:['A name is a label. It is not an identity.','Leo is loved with an everlasting love.','No diagnosis can separate a person from the love that holds him.'],
+      passages:[
+        {ref:'Jeremiah 31:3', text:'“Yea, I have loved thee with an everlasting love: therefore with lovingkindness have I drawn thee.”'},
+        {ref:'Science and Health, 333:26–27', text:'“The divine image, idea, or Christ was, is, and ever will be inseparable from the divine Principle, God.”'},
+        {ref:'Science and Health, 340:12', text:'“Divine Love is infinite. Therefore all that really exists is in and of God, and manifests His love.”'}
+      ],
+      talk:'A diagnosis gives a condition a name. Does the name tell you who Leo is? What does?',
+      leader:'Keep the focus on who Leo is. Avoid any suggestion that the diagnosis points to something he or his family did wrong or failed to understand.'
+    },
+    {
+      id:'s3', short:'Origins', quick:false,
+      title:'Where it came from',
+      practice:'Practice: answering “why?” without blame',
+      story:[
+        'The family meets with a geneticist, who traces the condition back through the family’s history and explains how it was most likely passed down.'
+      ],
+      foot:['Ask the geneticist to explain the family history in plain language.','Ask what it means for other relatives.','Share the findings with Leo kindly, in his own language.','Keep every conversation free of blame toward earlier generations.'],
+      lens:['Every person’s origin is good, whatever a family tree shows.','Love blames no one.','Leo’s story is not defined by where the diagnosis came from.'],
+      passages:[
+        {ref:'John 3:17', text:'“God sent not his Son into the world to condemn the world; but that the world through him might be saved.”'},
+        {ref:'Science and Health, 31:10', text:'“He recognized Spirit, God, as the only creator, and therefore as the Father of all.”'}
+      ],
+      talk:'When something is hard, people look for someone to blame. What changes when we choose not to condemn anyone, including ourselves? How would you want a family to be treated when its history comes up in a doctor’s office?',
+      leader:'Be careful that a spiritual idea of origin is not heard as dismissing Leo’s parents or his community. Keep the conversation respectful of every culture’s family traditions and free of judgment.'
+    },
+    {
+      id:'s4', short:'Research', quick:false,
+      title:'Research across a language gap',
+      practice:'Practice: serving without taking over',
+      story:[
+        'Mia reads as much of the medical research as she can find. Leo and his wife cannot take part in this work because of the language barrier.',
+        'Mia then finds a nonprofit patient organization for the condition and learns that it is holding a clinic in another city.'
+      ],
+      foot:['Use reliable sources, such as clinics and patient organizations.','Summarize what you learn in plain language.','Explain key points to Leo and his wife, using translation where it helps.','Ask them what they want to know, not only what you think they need.','Find the patient organization, as Mia did.'],
+      lens:['Research done out of love is a kind of prayer.','Love moves people toward good work together.','Serving someone means showing the way without taking over.'],
+      passages:[
+        {ref:'Hebrews 10:24', text:'“And let us consider one another to provoke unto love and to good works.”'},
+        {ref:'Science and Health, 202:3', text:'“The scientific unity which exists between God and man must be wrought out in life-practice, and God’s will must be universally done.”'},
+        {ref:'Science and Health, 18', text:'“He did life’s work aright not only in justice to himself, but in mercy to mortals, — to show them how to do theirs, but not to do it for them nor to relieve them of a single responsibility.”'}
+      ],
+      talk:'Mia did the reading because Leo and his wife could not. Where is the line between serving someone and doing it for them? How would you keep Leo in charge of his own story?',
+      leader:'This is the place for honest challenge. Mia carried the research because Leo and his wife could not. Ask how Leo’s voice stays at the center, and connect it to client self-determination in social work.'
+    },
+    {
+      id:'s5', short:'Clinic', quick:true,
+      title:'The clinic',
+      practice:'Practice: staying steady inside not knowing',
+      quickLead:'Since the last step, a test has named a rare genetic condition, and Mia has read all the research she could find. Now Leo and his family are at a specialty clinic.',
+      story:[
+        'Mia takes Leo to the clinic, and the family learns a great deal about the genes involved. The genetic counselor trusts the test, but this exact variation in Leo’s gene is new to her. It has not appeared in clinical studies, so no one can say what it will mean or when.',
+        'She describes a fully working protein as a six-foot wall and says Leo’s is built most of the way up, much further than most people with this condition. She is clear that “milder” is a working hypothesis, not a finding.',
+        'The family also meets some very sick children. The doctor’s advice is to be grateful, to thank God, and to let the clinic test the family. The family wants to help toward a cure.'
+      ],
+      foot:['Travel with Leo and take careful notes.','Ask what is known and what is not yet known.','Ask what “milder” means, and whether it is a finding or a hypothesis.','Consider agreeing to testing and to research that helps others.','Meet other families and listen to them.'],
+      lens:['Not knowing is not the same as nothing being known.','A hypothesis is only a hypothesis, and no human theory gets to write Leo’s story.','People from many places gather in one room, and comfort is real.','Gratitude is a way to meet the unknown.'],
+      passages:[
+        {ref:'Psalm 18:28', text:'“For thou wilt light my candle: the LORD my God will enlighten my darkness.”'},
+        {ref:'Job 32:8', text:'“But there is a spirit in man: and the inspiration of the Almighty giveth them understanding.”'},
+        {ref:'Revelation 7:9, 17', text:'“I beheld, and, lo, a great multitude, which no man could number, of all nations, and kindreds, and people, and tongues … and God shall wipe away all tears from their eyes.”'}
+      ],
+      talk:'What is the difference between a hypothesis and a verdict? How can “not knowing” still be held in care? What does compassion ask of us when we meet children who are very sick?',
+      leader:'Handle the sick children with care. Present them with compassion and hope, never as a lesson or a test of faith. Some students may have their own experience with illness, so leave room for privacy and offer a quiet follow-up.'
+    },
+    {
+      id:'s6', short:'Road ahead', quick:true,
+      title:'The road ahead',
+      practice:'Practice: watching with love instead of fear',
+      story:[
+        'The guidance is for Leo to be vigilant about several areas of his health, with a specialist for each, starting with one.',
+        'His children may carry the same gene change, and the clinic recommends that they be tested. The family hopes to help the search for a cure.'
+      ],
+      foot:['Schedule the first specialist visit.','Keep one calendar and one notebook for every check.','Share information with the whole family in a language each person can read.','Give each child good information so they can decide about testing for themselves.','Support the search for a cure, as the family wants to.'],
+      lens:['Watching can come from love or from fear, and we choose which one drives.','Hold fast, and encourage one another.','Each person works out their own path, and each child’s choice is respected.','No exam room, lab, or waiting room is outside love’s reach.'],
+      passages:[
+        {ref:'Science and Health, 170:14–15', text:'“The demands of Truth are spiritual, and reach the body through Mind.”'},
+        {ref:'Hebrews 10:23', text:'“Let us hold fast the profession of our faith without wavering; (for he is faithful that promised;)”'},
+        {ref:'Science and Health, 22:11–12', text:'“‘Work out your own salvation,’ is the demand of Life and Love, for to this end God worketh with you.”'},
+        {ref:'Psalm 139:7', text:'“Whither shall I go from thy spirit? or whither shall I flee from thy presence?”'}
+      ],
+      talk:'The doctors used the word “vigilance.” Watching can come from love or from fear. How does each one feel, for the person being watched and for the family doing the watching?',
+      leader:'Some language about thought and the body can be misheard as “if I think correctly, the body must follow, so I had better get it right.” Make clear that holding love is not a performance test. Medical attentiveness and prayer can sit side by side.'
+    }
+  ];
+
+  var GROUP_CLOSING = [
+    'Look back over your steps. Where did love show up as action?',
+    'Two people from different traditions sat in one room, held by one love. What does unity look like when two people pray differently?',
+    'Some people would say “just don’t go to the doctor,” and that is a strong stand. Mia chose to show up where Leo was. How can we hold both choices with equal respect?',
+    'Write one sentence you could carry into any hospital or waiting room.'
+  ];
+
+  var state = {
+    screen:'intro', idx:0, mode:'solo', path:'full',
+    data:{}, end:{love:'', sentence:''},
+    confirmReset:false, copyMsg:'', showFallback:false
+  };
+  function blankData(){
+    var d = {};
+    STEPS.forEach(function(s){ d[s.id] = {foot:'', lens:'', own:'', revealed:false}; });
+    return d;
+  }
+  state.data = blankData();
+
+  var app = document.getElementById('app');
+
+  function esc(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function list(){
+    return state.path === 'quick' ? STEPS.filter(function(s){ return s.quick; }) : STEPS;
+  }
+  function isGroup(){ return state.mode === 'group'; }
+  function li(arr){ return arr.map(function(t){ return '<li>'+esc(t)+'</li>'; }).join(''); }
+
+  function trailHTML(steps, idx){
+    return '<ol class="trail" aria-label="Progress">' + steps.map(function(s,i){
+      var cls = (i < idx ? 'done ' : '') + (i === idx ? 'current' : '');
+      return '<li class="'+cls+'"'+(i===idx?' aria-current="step"':'')+'><span class="dot"></span>'+esc(s.short)+'</li>';
+    }).join('') + '</ol>';
+  }
+
+  function introHTML(){
+    var group = isGroup();
+    var full = state.path === 'full';
+    var h = '';
+    h += '<div class="stack">';
+    h += '<div class="stack-sm"><p class="eyebrow">Case consult exercise · about '+(full?'20':'10')+' minutes</p>';
+    h += '<h1 id="main" tabindex="-1">Put It to Work</h1>';
+    h += '<p class="lede">Follow one family’s story a step at a time. At each step, write what people could actually do, and what is true of the person beyond the situation.</p></div>';
+    h += '<div class="card private"><p><strong>Private by design.</strong> What you type stays on this page. Nothing is saved or sent anywhere, and it disappears when you close the page. If you want to keep your thoughts, use Copy at the end.</p></div>';
+    h += '<div class="card"><h3>The story</h3><p>Leo and his wife have just arrived, and he needs medical care he is uncomfortable asking for. His daughter-in-law, Mia, is a social worker. Over several months the family moves through a hard medical story: a test, a diagnosis, a clinic in another city, and a long road ahead. The story is based on a real family. Names and details have been changed.</p></div>';
+    h += '<div class="card"><h3>How it works</h3><ol>';
+    h += '<li>Read one step of the story.</li>';
+    h += '<li>Write two things. <strong>Human footsteps</strong> are the practical steps people could take. A <strong>spiritual lens</strong> is what is true of the person, and the idea that helps you hold it.</li>';
+    h += '<li>Open one way to see it. It includes passages from the Bible and from Science and Health, and a space to add a text from your own tradition.</li>';
+    h += '</ol></div>';
+    h += '<div class="card"><h3>Ground rules</h3><ul>';
+    h += '<li>Everyone in this story is held in love: Leo, his family, the medical team, and the other families. There are no villains here.</li>';
+    h += '<li>No blame. Nobody did anything wrong to cause this.</li>';
+    h += '<li>Your family may handle health differently than Leo’s family did. Every path is welcome here.</li>';
+    h += '<li>A spiritual lens is not a prediction or a promise about an outcome. It is what we choose to hold as true while we act.</li>';
+    h += '<li>This is a practice exercise, not medical or personal advice. If the story touches something real in your life, go gently and skip anything you need to.</li>';
+    h += '</ul></div>';
+    h += '<div class="stack-sm"><h3>How are you using this?</h3><div class="choices" role="group" aria-label="How you are using this">';
+    h += choice('setMode','solo','Just me','Work through it on your own.', state.mode==='solo');
+    h += choice('setMode','group','I’m leading a group','Adds leader notes and discussion questions.', state.mode==='group');
+    h += '</div></div>';
+    h += '<div class="stack-sm"><h3>How much time do you have?</h3><div class="choices" role="group" aria-label="How much time you have">';
+    h += choice('setPath','quick','About 10 minutes','Three steps: the care team, the clinic, the road ahead.', state.path==='quick');
+    h += choice('setPath','full','About 20 minutes','All six steps of the story.', state.path==='full');
+    h += '</div></div>';
+    if(group){
+      h += '<div class="leader"><span class="label">For the leader</span>';
+      h += '<p>Pairs or small groups work well. One person reads the step aloud, everyone writes, and then each pair shares one footstep and one lens. Each step takes about three minutes.</p>';
+      h += '<p>The passages here are one set of choices from the Bible and from Science and Health. Match your own texts to these thoughts: use passages from your own tradition or from your class’s study, and ask students to bring one of their own to each step.</p>';
+      h += '<p>Open the “one way to see it” panel after the group has shared, not before.</p></div>';
+    }
+    h += '<div><button class="btn" data-action="begin">Begin</button></div>';
+    h += '</div>';
+    return h;
+  }
+
+  function choice(action, value, title, sub, pressed){
+    return '<button type="button" class="choice" data-action="'+action+'" data-value="'+value+'" aria-pressed="'+(pressed?'true':'false')+'"><strong>'+esc(title)+'</strong><span>'+esc(sub)+'</span></button>';
+  }
+
+  function stepHTML(){
+    var steps = list();
+    var s = steps[state.idx];
+    var d = state.data[s.id];
+    var group = isGroup();
+    var h = '<div class="stack">';
+    h += '<div class="stack-sm"><p class="eyebrow">Step '+(state.idx+1)+' of '+steps.length+'</p>'+trailHTML(steps, state.idx)+'</div>';
+    h += '<div class="stack-sm"><h2 id="main" tabindex="-1">'+esc(s.title)+'</h2><p class="practice">'+esc(s.practice)+'</p></div>';
+    h += '<div class="card story"><span class="label">The situation</span>';
+    if(state.path === 'quick' && s.quickLead){ h += '<p class="earlier">'+esc(s.quickLead)+'</p>'; }
+    h += s.story.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
+    h += '</div>';
+    h += '<div class="cols">';
+    h += '<div class="col col-foot"><label for="foot-'+s.id+'"><span class="tag foot">Human footsteps</span></label><p class="help">What practical steps could people take? Think calls, forms, questions, notes, rides, translation, and listening.</p><textarea id="foot-'+s.id+'" data-bind="step:'+s.id+':foot" autocomplete="off"></textarea></div>';
+    h += '<div class="col col-lens"><label for="lens-'+s.id+'"><span class="tag lens">Spiritual lens</span></label><p class="help">What is true of this person beyond the situation, and what idea helps you hold it?</p><textarea id="lens-'+s.id+'" data-bind="step:'+s.id+':lens" autocomplete="off"></textarea></div>';
+    h += '</div>';
+    h += '<div class="row"><button type="button" id="reveal-btn" class="btn ghost" data-action="reveal" aria-expanded="'+(d.revealed?'true':'false')+'">'+(d.revealed?'Hide one way to see it':'Show one way to see it')+'</button><span class="note">Write yours first, then open this. It works better that way.</span></div>';
+    if(d.revealed){
+      h += '<div class="card tint stack" role="region" aria-label="One way to see it">';
+      h += '<h3>One way to see it</h3>';
+      h += '<div class="cols models"><div class="col"><span class="tag foot">Human footsteps</span><ul>'+li(s.foot)+'</ul></div><div class="col"><span class="tag lens">Spiritual lens</span><ul>'+li(s.lens)+'</ul></div></div>';
+      h += '<div class="stack-sm"><h3>Passages one teacher might choose</h3>';
+      h += s.passages.map(function(p){ return '<blockquote class="passage"><p>'+esc(p.text)+'</p><cite>'+esc(p.ref)+'</cite></blockquote>'; }).join('');
+      h += '</div>';
+      h += '<div class="stack-sm"><label for="own-'+s.id+'"><h3>'+(group?'A text you or a student would bring to this step':'Add a text of your own')+'</h3></label><p class="note">Optional. A passage, poem, or teaching from your own tradition that speaks to this step.</p><textarea id="own-'+s.id+'" class="short" data-bind="step:'+s.id+':own" autocomplete="off"></textarea></div>';
+      h += '<div class="stack-sm"><h3>Talk it over</h3><p>'+esc(s.talk)+'</p></div>';
+      if(group){ h += '<div class="leader"><span class="label">For the leader</span><p>'+esc(s.leader)+'</p></div>'; }
+      h += '</div>';
+    }
+    var last = state.idx === steps.length - 1;
+    h += '<div class="row between"><button type="button" class="btn ghost" data-action="back">'+(state.idx===0?'Back to start':'Previous step')+'</button><button type="button" class="btn" data-action="next">'+(last?'Finish':'Next step')+'</button></div>';
+    h += '</div>';
+    return h;
+  }
+
+  function summaryHTML(){
+    return list().map(function(s){
+      var d = state.data[s.id];
+      function line(tagCls, tagTxt, val){
+        return '<div class="line"><span class="tag '+tagCls+'">'+tagTxt+'</span><p>'+(val.trim() ? esc(val) : '<span class="blank">Left blank</span>')+'</p></div>';
+      }
+      var out = '<div class="sum"><h4>'+esc(s.title)+'</h4>';
+      out += line('foot','Human footsteps', d.foot);
+      out += line('lens','Spiritual lens', d.lens);
+      if(d.own.trim()){ out += line('lens','My own text', d.own); }
+      return out + '</div>';
+    }).join('');
+  }
+
+  function endHTML(){
+    var group = isGroup();
+    var h = '<div class="stack">';
+    h += '<div class="stack-sm"><p class="eyebrow">Last step</p><h2 id="main" tabindex="-1">Put it together</h2></div>';
+    h += '<div class="card stack"><div class="stack-sm"><label for="love"><h3>Where did love show up as action in this story?</h3></label><textarea id="love" class="short" data-bind="end:love" autocomplete="off"></textarea></div>';
+    h += '<div class="stack-sm"><label for="sentence"><h3>Write one sentence you could carry into any hospital, classroom, or hard conversation.</h3></label><textarea id="sentence" class="short" data-bind="end:sentence" autocomplete="off"></textarea></div></div>';
+    if(group){
+      h += '<div class="leader"><span class="label">For the leader</span><p>Talk it over as a group:</p><ol>'+li(GROUP_CLOSING)+'</ol><p>Close by asking each student to read their sentence aloud, or to keep it private if they prefer.</p></div>';
+    }
+    h += '<div class="card"><h3>Your thoughts</h3>'+summaryHTML()+'</div>';
+    h += '<div class="card private stack-sm"><p><strong>Nothing was saved.</strong> If you want these words later, copy them now.</p>';
+    h += '<div class="row"><button type="button" class="btn" data-action="copy">Copy my thoughts</button></div>';
+    h += '<p class="note" role="status" aria-live="polite">'+esc(state.copyMsg)+'</p>';
+    if(state.showFallback){ h += '<textarea id="fallback" class="short" readonly aria-label="Your thoughts, ready to copy"></textarea>'; }
+    h += '</div>';
+    h += '<div class="row between"><button type="button" class="btn ghost" data-action="back">Previous step</button>';
+    if(state.confirmReset){
+      h += '<span class="row"><span class="note">This clears everything you typed.</span><button type="button" class="btn small" data-action="resetYes">Yes, clear it</button><button type="button" class="btn ghost small" data-action="resetNo">Keep it</button></span>';
+    } else {
+      h += '<button type="button" class="btn ghost" data-action="reset">Start over</button>';
+    }
+    h += '</div></div>';
+    return h;
+  }
+
+  function getBound(t){
+    var p = t.getAttribute('data-bind').split(':');
+    if(p[0] === 'step'){ return state.data[p[1]][p[2]]; }
+    return state.end[p[1]];
+  }
+  function setBound(t){
+    var p = t.getAttribute('data-bind').split(':');
+    if(p[0] === 'step'){ state.data[p[1]][p[2]] = t.value; }
+    else { state.end[p[1]] = t.value; }
+  }
+
+  function buildText(){
+    var out = ['PUT IT TO WORK', 'Case: Leo and Mia (names and details changed)', ''];
+    list().forEach(function(s, i){
+      var d = state.data[s.id];
+      out.push('Step '+(i+1)+': '+s.title);
+      out.push('Human footsteps: '+(d.foot.trim() || '(left blank)'));
+      out.push('Spiritual lens: '+(d.lens.trim() || '(left blank)'));
+      if(d.own.trim()){ out.push('My own text: '+d.own.trim()); }
+      out.push('');
+    });
+    out.push('Where love showed up as action: '+(state.end.love.trim() || '(left blank)'));
+    out.push('My sentence to carry: '+(state.end.sentence.trim() || '(left blank)'));
+    return out.join('\n');
+  }
+
+  function render(focusId, keepScroll){
+    app.innerHTML = state.screen === 'intro' ? introHTML() : (state.screen === 'step' ? stepHTML() : endHTML());
+    var tas = app.querySelectorAll('textarea[data-bind]');
+    for(var i = 0; i < tas.length; i++){ tas[i].value = getBound(tas[i]); }
+    var fb = document.getElementById('fallback');
+    if(fb){ fb.value = buildText(); fb.focus(); fb.select(); }
+    if(!keepScroll){ window.scrollTo(0, 0); }
+    var target = focusId ? document.getElementById(focusId) : document.getElementById('main');
+    if(target && !fb){ try{ target.focus({preventScroll:true}); }catch(e){} }
+  }
+
+  function go(screen, idx){
+    state.screen = screen;
+    if(typeof idx === 'number'){ state.idx = idx; }
+    state.confirmReset = false;
+    state.copyMsg = '';
+    state.showFallback = false;
+    render();
+  }
+
+  function copyThoughts(){
+    var text = buildText();
+    var done = function(ok){
+      state.copyMsg = ok ? 'Copied. Paste it somewhere you keep.' : 'Your browser blocked copying. Select the text below and copy it.';
+      state.showFallback = !ok;
+      render(ok ? 'copy-anchor' : null, true);
+    };
+    try{
+      navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+    }catch(e){ done(false); }
+  }
+
+  app.addEventListener('click', function(e){
+    var b = e.target.closest('[data-action]');
+    if(!b){ return; }
+    var a = b.getAttribute('data-action');
+    var v = b.getAttribute('data-value');
+    if(a === 'setMode'){ state.mode = v; render(null, true); }
+    else if(a === 'setPath'){ state.path = v; render(null, true); }
+    else if(a === 'begin'){ go('step', 0); }
+    else if(a === 'next'){
+      if(state.idx < list().length - 1){ go('step', state.idx + 1); } else { go('end'); }
+    }
+    else if(a === 'back'){
+      if(state.screen === 'end'){ go('step', list().length - 1); }
+      else if(state.idx === 0){ go('intro'); }
+      else { go('step', state.idx - 1); }
+    }
+    else if(a === 'reveal'){
+      var d = state.data[list()[state.idx].id];
+      d.revealed = !d.revealed;
+      render('reveal-btn', true);
+    }
+    else if(a === 'copy'){ copyThoughts(); }
+    else if(a === 'reset'){ state.confirmReset = true; render(null, true); }
+    else if(a === 'resetNo'){ state.confirmReset = false; render(null, true); }
+    else if(a === 'resetYes'){
+      state.data = blankData();
+      state.end = {love:'', sentence:''};
+      state.mode = 'solo'; state.path = 'full';
+      go('intro');
+    }
+  });
+
+  app.addEventListener('input', function(e){
+    var t = e.target;
+    if(t && t.getAttribute && t.getAttribute('data-bind')){ setBound(t); }
+  });
+
+  render();
+})();
+</script>
