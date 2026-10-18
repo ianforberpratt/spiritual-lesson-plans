@@ -384,9 +384,9 @@ if ($? != 0) {
 
 sub nav_html {
   my ($current) = @_;
-  my %labels = (home => 'Home', lessons => 'Lessons', mentors => 'For Mentors', foryou => 'For You', believe => 'What We Believe', about => 'About');
-  my %hrefs  = (home => '/', lessons => '/lessons', mentors => '/for-mentors', foryou => '/for-you', believe => '/what-we-believe', about => '/about');
-  my @order = qw(home lessons mentors foryou believe about);
+  my %labels = (home => 'Home', lessons => 'Lessons', mentors => 'For Mentors', foryou => 'For You', piw => 'Put It to Work', believe => 'What We Believe', about => 'About');
+  my %hrefs  = (home => '/', lessons => '/lessons', mentors => '/for-mentors', foryou => '/for-you', piw => '/put-it-to-work', believe => '/what-we-believe', about => '/about');
+  my @order = qw(home lessons mentors foryou piw believe about);
   my $links = '';
   for my $key (@order) {
     my $current_attr = ($key eq $current) ? ' aria-current="page"' : '';

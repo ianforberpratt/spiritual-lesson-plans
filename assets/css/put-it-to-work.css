@@ -1,0 +1,319 @@
+/* Put It to Work: page styles.
+   Loaded after style.css, so the nav, footer, buttons, type and palette are the site's own.
+   Everything here is namespaced piw- so nothing leaks into (or out of) other pages.
+
+   Frame: each screen is a deep-dusk header band (like the site's callouts) over a cream body of
+   white cards. The two writing columns keep their meaning-bearing colors from the original
+   prototype: teal for human footsteps, amber for spiritual lens. */
+
+.piw-main {
+  --foot: #17695C;
+  --foot-bg: #E1F1EE;
+  --foot-edge: rgba(23, 105, 92, 0.38);
+  --lens: #865208;
+  --lens-bg: #FAEFD8;
+  --lens-edge: rgba(134, 82, 8, 0.38);
+  --sage-bg: #EDF2E8;
+  --sky-bg: #EAF2F7;
+  background: var(--cream);
+  color: var(--ink);
+}
+
+/* ---------- Header band ---------- */
+
+.piw-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--cream);
+  padding: clamp(28px, 4vw, 44px) 0 clamp(40px, 6vw, 72px);
+}
+/* Soft, still color fields in the site's gold / sage / sky (no animation, so nothing to reduce) */
+.piw-hero::before,
+.piw-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.piw-hero::before { width: 320px; height: 320px; background: var(--gold); top: -140px; right: 6%; }
+.piw-hero::after { width: 260px; height: 260px; background: var(--sage); bottom: -150px; left: 4%; opacity: 0.32; }
+.piw-hero-in { position: relative; z-index: 1; max-width: 880px; }
+
+.piw-back {
+  display: inline-block;
+  margin-bottom: clamp(22px, 3vw, 36px);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--on-dark-faint);
+  text-decoration: none;
+}
+.piw-back strong { font-weight: 600; color: var(--cream); }
+.piw-back:hover { color: var(--cream); text-decoration: underline; }
+.piw-hero :focus-visible { outline-color: var(--cream); }
+
+.piw-eyebrow {
+  margin: 0 0 16px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.piw-hero h1 {
+  margin: 0 0 0.3em;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--cream);
+}
+.piw-hero h2 {
+  margin: 22px 0 0.2em;
+  font-size: clamp(1.9rem, 4.6vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--cream);
+}
+.piw-hero h1:focus, .piw-hero h2:focus { outline: none; }
+.piw-lede {
+  margin: 0;
+  max-width: 54ch;
+  font-size: clamp(1.08rem, 1.7vw, 1.26rem);
+  line-height: 1.6;
+  color: var(--on-dark);
+}
+.piw-practice {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+  color: var(--gold);
+}
+
+/* Progress trail: dots on the dark band */
+.piw-trail { list-style: none; margin: 0; padding: 0; display: flex; max-width: 640px; }
+.piw-trail li {
+  flex: 1;
+  position: relative;
+  text-align: center;
+  padding-top: 26px;
+  min-width: 0;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--on-dark-faint);
+}
+.piw-trail li::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: -50%;
+  width: 100%;
+  border-top: 2px dotted rgba(251, 245, 234, 0.4);
+}
+.piw-trail li:first-child::before { display: none; }
+.piw-trail .piw-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ink);
+  border: 2px solid rgba(251, 245, 234, 0.55);
+}
+.piw-trail .piw-done .piw-dot { background: var(--gold); border-color: var(--gold); }
+.piw-trail .piw-done::before,
+.piw-trail .piw-current::before { border-top: 2px solid var(--gold); }
+.piw-trail .piw-current { color: var(--cream); }
+.piw-trail .piw-current .piw-dot { background: var(--cream); border-color: var(--gold); box-shadow: 0 0 0 4px rgba(232, 169, 76, 0.4); }
+
+/* ---------- Body ---------- */
+
+.piw-body { padding: clamp(32px, 4.5vw, 56px) 0 clamp(20px, 3vw, 36px); }
+.piw-narrow { max-width: 880px; }
+.piw-stack { display: flex; flex-direction: column; gap: clamp(20px, 2.6vw, 28px); }
+.piw-stack-sm { display: flex; flex-direction: column; gap: 12px; }
+.piw-body h3 { margin: 0; font-size: 1.3rem; }
+.piw-body h4 { margin: 0 0 10px; font-size: 1.1rem; }
+.piw-body p { margin: 0; }
+.piw-body p + p { margin-top: 12px; }
+
+.piw-card {
+  min-width: 0;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: clamp(22px, 3vw, 32px);
+}
+.piw-card h3 { margin-bottom: 12px; }
+.piw-card ul, .piw-card ol { margin: 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 9px; }
+.piw-card.piw-story { border-left: 4px solid var(--gold); }
+.piw-story .piw-earlier { color: var(--ink-faint); font-style: italic; margin-bottom: 12px; }
+.piw-card.piw-private { background: var(--sage-bg); border-color: rgba(63, 82, 54, 0.28); border-left: 4px solid var(--sage); }
+.piw-private strong { color: var(--sage-text); }
+.piw-card.piw-reveal { border-top: 4px solid var(--sage); }
+.piw-card.piw-worksheet { background: var(--sky-bg); border-color: rgba(54, 47, 75, 0.14); border-left: 4px solid var(--sky); }
+
+.piw-label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+.piw-note { font-size: 0.95rem; color: var(--ink-faint); }
+
+.piw-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: var(--radius);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.piw-tag-foot { background: var(--foot); color: #fff; }
+.piw-tag-lens { background: var(--lens); color: #fff; }
+
+/* ---------- Choices ---------- */
+
+.piw-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.piw-choice {
+  font: inherit;
+  color: var(--ink);
+  text-align: left;
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.piw-choice strong { font-family: var(--font-serif); font-weight: 500; font-size: 1.2rem; letter-spacing: -0.01em; }
+.piw-choice span { color: var(--ink-faint); font-size: 0.95rem; line-height: 1.5; }
+.piw-choice:hover { border-color: var(--gold-deep); }
+.piw-choice[aria-pressed="true"] {
+  border-color: var(--gold-deep);
+  background: #FFF5E0;
+  box-shadow: inset 0 0 0 1px var(--gold-deep);
+}
+
+/* ---------- Writing columns ---------- */
+
+.piw-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.piw-col { display: flex; flex-direction: column; gap: 12px; min-width: 0; border-radius: var(--radius); padding: 18px 18px 20px; }
+.piw-col-foot { background: var(--foot-bg); border-top: 4px solid var(--foot); }
+.piw-col-lens { background: var(--lens-bg); border-top: 4px solid var(--lens); }
+.piw-col .piw-help { font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
+.piw-col ul { margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 8px; font-size: 0.98rem; line-height: 1.55; }
+.piw-col .piw-tag { align-self: flex-start; }
+
+/* The two input columns share one set of rows, so each tag, help line and textarea lines up
+   with its neighbor even when one help line wraps to more lines than the other. */
+.piw-cols:not(.piw-models) > .piw-col {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  row-gap: 12px;
+}
+.piw-cols:not(.piw-models) > .piw-col > label { align-self: start; }
+
+.piw-body textarea {
+  width: 100%;
+  min-height: 150px;
+  resize: vertical;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.piw-body textarea.piw-short { min-height: 96px; }
+.piw-col-foot textarea { border-color: var(--foot-edge); }
+.piw-col-lens textarea { border-color: var(--lens-edge); }
+.piw-col-foot textarea:focus-visible { outline: 3px solid var(--foot); outline-offset: 1px; }
+.piw-col-lens textarea:focus-visible { outline: 3px solid var(--lens); outline-offset: 1px; }
+.piw-body textarea[readonly] { background: var(--cream); }
+
+/* ---------- Rows, passages, leader notes, summary ---------- */
+
+.piw-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.piw-row.piw-between { justify-content: space-between; }
+.piw-small { padding: 12px 20px; }
+
+.piw-passage {
+  margin: 0;
+  padding: 16px 20px;
+  background: var(--cream);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.piw-passage p { font-family: var(--font-serif); font-size: 1.1rem; line-height: 1.6; }
+.piw-passage cite {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-style: normal;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+
+.piw-leader {
+  background: var(--sky-bg);
+  border: 1px solid rgba(54, 47, 75, 0.14);
+  border-left: 4px solid var(--sky);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+.piw-leader ol { margin: 8px 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 8px; }
+
+.piw-sum + .piw-sum { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.piw-sum p { white-space: pre-wrap; overflow-wrap: anywhere; }
+.piw-line { margin-top: 10px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.piw-blank { color: var(--ink-faint); font-style: italic; }
+
+.piw-credit {
+  margin: 0;
+  padding: 24px 0 clamp(40px, 5vw, 64px);
+  max-width: 64ch;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ink-faint);
+}
+.piw-credit-wrap { border-top: 1px solid var(--rule); }
+
+.piw-loading { padding: clamp(60px, 10vw, 120px) 0; }
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 640px) {
+  .piw-cols { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 520px) {
+  .piw-choices { grid-template-columns: 1fr; }
+  .piw-trail li { font-size: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .piw-choice { transition: none; }
+}

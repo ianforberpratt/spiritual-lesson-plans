@@ -9,7 +9,7 @@
 #   sh scripts/check-put-it-to-work-privacy.sh        (run from anywhere)
 
 cd "$(dirname "$0")/.." || exit 2
-FILES="put-it-to-work.html assets/js/put-it-to-work.js"
+FILES="put-it-to-work.html assets/js/put-it-to-work.js assets/css/put-it-to-work.css"
 CASES=$(ls content/put-it-to-work/*.json 2>/dev/null)
 fail=0
 
@@ -37,7 +37,7 @@ fi
 if grep -n -E '<script[^>]*src=' put-it-to-work.html | grep -v -E 'src="/assets/js/put-it-to-work\.js"'; then
   bad "put-it-to-work.html loads a script other than put-it-to-work.js"
 fi
-hosts=$(grep -o -h -E 'https?://[A-Za-z0-9.-]+' put-it-to-work.html assets/js/put-it-to-work.js | sort -u \
+hosts=$(grep -o -h -E 'https?://[A-Za-z0-9.-]+' put-it-to-work.html assets/js/put-it-to-work.js assets/css/put-it-to-work.css | sort -u \
   | grep -v -E '^https?://(fonts\.googleapis\.com|fonts\.gstatic\.com|www\.spirituallessonplans\.org|www\.w3\.org|schema\.org|creativecommons\.org)$')
 [ -z "$hosts" ] || bad "unexpected external hosts: $hosts"
 

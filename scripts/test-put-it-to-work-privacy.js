@@ -21,7 +21,7 @@ const fail = m => { failures.push(m); console.log('FAIL: ' + m); };
   const browser = await chromium.launch();
   for (const mode of ['solo', 'group']) {
     for (const path of ['quick', 'full']) {
-      const ctx = await browser.newContext({ viewport: { width: 900, height: 900 } });
+      const ctx = await browser.newContext({ viewport: { width: 900, height: 900 }, reducedMotion: 'reduce' });
       const page = await ctx.newPage();
       const requests = [];
       let typing = false;
