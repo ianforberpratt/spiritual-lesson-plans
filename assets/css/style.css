@@ -787,7 +787,18 @@ body.home .site-nav.is-scrolled .nav-links a:hover,
 body.home .site-nav.is-scrolled .nav-links a[aria-current="page"] { color: var(--ink); }
 body.home .site-nav.is-scrolled .nav-links a[aria-current="page"]::after { background: var(--gold-deep); }
 
-@media (max-width: 900px) {
+/* Seven menu items, the brand and the age/language pills need roughly
+   1240px to sit on one row, so the hamburger now takes over at 1240px
+   (it used to be 900px, which already overflowed the screen at laptop
+   widths). Between 1241px and 1560px spacing and type are tightened;
+   wider screens keep the roomy default. */
+@media (min-width: 1241px) and (max-width: 1560px) {
+  .site-nav .wrap { gap: clamp(14px, 2vw, 32px); }
+  .nav-links { gap: clamp(12px, 1.5vw, 22px); }
+  .nav-links a { font-size: 0.8rem; letter-spacing: 0.05em; }
+}
+
+@media (max-width: 1240px) {
   .nav-toggle { display: block; }
   .nav-links {
     position: absolute;

@@ -23,8 +23,8 @@ put-it-to-work.html     /put-it-to-work (standalone interactive, linked from /fo
 assets/css/style.css   Shared styles (palette + components)
 assets/js/main.js      Nav toggle + scroll-reveal
 assets/js/put-it-to-work.js   Engine for /put-it-to-work (loads a case file; stores nothing)
+assets/css/put-it-to-work.css Page styles for /put-it-to-work (loaded after style.css; all classes are piw-*)
 content/put-it-to-work/       Case files (JSON). Add a case = add a file, no rebuild
-assets/materials/put-it-to-work/  Printable worksheet(s) linked from a case's "worksheet" field
 assets/img/            Original SVG illustrations
 ```
 
@@ -53,7 +53,9 @@ starts playing automatically; no other changes needed.
 ## Put It to Work (privacy-critical)
 
 `/put-it-to-work` promises visitors that nothing they type is saved or sent. It loads no site-wide
-script (no `main.js`, no feedback widget) and no analytics beacon, on purpose. Keep it that way, and
+script (no `main.js`, no feedback widget, no language switcher) and no analytics beacon, on purpose. It does
+use the site's look (nav, footer, `style.css`, fonts); only the behavior scripts are left out, and the page
+carries its own tiny menu toggle. Keep it that way, and
 run both checks after any change to `put-it-to-work.html`, `assets/js/put-it-to-work.js`, or a case file:
 
 ```

@@ -21,11 +21,13 @@
 <meta name="twitter:description" content="A ten or twenty minute case-consult exercise. Nothing you type is saved.">
 <meta name="twitter:image" content="https://www.spirituallessonplans.org/assets/img/og-image.png">
 <meta name="twitter:image:alt" content="Spiritual Lesson Plans">
-<meta name="theme-color" content="#EEF2F5">
+<meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/put-it-to-work.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -39,156 +41,57 @@
   "isPartOf": { "@type": "WebSite", "name": "Spiritual Lesson Plans", "url": "https://www.spirituallessonplans.org" }
 }
 </script>
-<style>
-/* Layout concept: a case file that walks one step at a time. A dotted trail marks progress,
-   and each step splits into two color-coded columns: human footsteps (teal) and spiritual lens (amber). */
-:root{
-  --font-display:'Bricolage Grotesque','Trebuchet MS',system-ui,sans-serif;
-  --font-body:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --font-mono:'IBM Plex Mono',ui-monospace,Menlo,Consolas,monospace;
-  --bg:#EEF2F5;
-  --surface:#FFFFFF;
-  --surface-2:#F5F8FA;
-  --ink:#17232F;
-  --muted:#53646F;
-  --line:#D3DCE3;
-  --foot:#17695C;
-  --foot-bg:#E1F1EE;
-  --lens:#865208;
-  --lens-bg:#FAEFD8;
-  --btn-bg:#17232F;
-  --btn-fg:#FFFFFF;
-  --focus:#2B6CB0;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#101820;
-    --surface:#17212B;
-    --surface-2:#1D2935;
-    --ink:#E7EDF2;
-    --muted:#9FB0BD;
-    --line:#2D3B48;
-    --foot:#5FC9B5;
-    --foot-bg:#16312F;
-    --lens:#E6B864;
-    --lens-bg:#33281A;
-    --btn-bg:#E7EDF2;
-    --btn-fg:#101820;
-    --focus:#7AB3F0;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --bg:#101820;
-  --surface:#17212B;
-  --surface-2:#1D2935;
-  --ink:#E7EDF2;
-  --muted:#9FB0BD;
-  --line:#2D3B48;
-  --foot:#5FC9B5;
-  --foot-bg:#16312F;
-  --lens:#E6B864;
-  --lens-bg:#33281A;
-  --btn-bg:#E7EDF2;
-  --btn-fg:#101820;
-  --focus:#7AB3F0;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.55}
-.wrap{max-width:760px;margin:0 auto;padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3,h4{font-family:var(--font-display);text-wrap:balance;margin:0;line-height:1.15;letter-spacing:-0.01em}
-h1{font-size:clamp(2.1rem,6vw,3rem);font-weight:700;letter-spacing:-0.025em}
-h2{font-size:clamp(1.55rem,4.2vw,2rem);font-weight:700}
-h3{font-size:1.15rem;font-weight:700}
-h4{font-size:1rem;font-weight:700}
-h1:focus,h2:focus{outline:none}
-p{margin:0}
-.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.lede{font-size:1.15rem;max-width:60ch}
-.stack{display:flex;flex-direction:column;gap:20px}
-.stack-sm{display:flex;flex-direction:column;gap:10px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;min-width:0}
-.card.tint{background:var(--surface-2)}
-.card h3{margin-bottom:10px}
-.card ul,.card ol{margin:0;padding-left:1.25rem;display:flex;flex-direction:column;gap:8px}
-.private{border-color:var(--foot);background:var(--foot-bg)}
-.private strong{color:var(--foot)}
-.label{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;display:block}
-.tag{display:inline-block;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
-.tag.foot{background:var(--foot-bg);color:var(--foot)}
-.tag.lens{background:var(--lens-bg);color:var(--lens)}
-.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.choice{font:inherit;color:var(--ink);text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;display:flex;flex-direction:column;gap:2px}
-.choice strong{font-family:var(--font-display);font-size:1.05rem}
-.choice span{color:var(--muted);font-size:.95rem}
-.choice[aria-pressed="true"]{border-color:var(--ink);background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--ink)}
-.btn{font-family:var(--font-display);font-weight:700;font-size:1rem;border-radius:10px;padding:12px 20px;cursor:pointer;border:1.5px solid var(--btn-bg);background:var(--btn-bg);color:var(--btn-fg)}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.small{padding:8px 14px;font-size:.95rem}
-.btn:hover{opacity:.9}
-.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.row.between{justify-content:space-between}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.trail{list-style:none;margin:0;padding:0;display:flex}
-.trail li{flex:1;position:relative;text-align:center;font-family:var(--font-mono);font-size:11px;letter-spacing:.04em;color:var(--muted);padding-top:24px;min-width:0}
-.trail li::before{content:"";position:absolute;top:6px;left:-50%;width:100%;border-top:2px dotted var(--line)}
-.trail li:first-child::before{display:none}
-.trail li .dot{position:absolute;top:0;left:50%;margin-left:-7px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--line)}
-.trail li.done .dot{background:var(--ink);border-color:var(--ink)}
-.trail li.done::before,.trail li.current::before{border-top:2px solid var(--ink)}
-.trail li.current .dot{border-color:var(--ink);background:var(--surface);box-shadow:0 0 0 4px var(--surface-2)}
-.trail li.current{color:var(--ink)}
-.practice{font-family:var(--font-mono);font-size:13px;color:var(--muted)}
-.story p+p{margin-top:12px}
-.story .earlier{color:var(--muted);font-style:italic}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.col{display:flex;flex-direction:column;gap:10px;min-width:0}
-.col .help{font-size:.95rem;color:var(--muted)}
-textarea{width:100%;min-height:150px;resize:vertical;font:inherit;line-height:1.5;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:12px}
-textarea.short{min-height:90px}
-.col-foot textarea:focus-visible{outline-color:var(--foot)}
-.col-lens textarea:focus-visible{outline-color:var(--lens)}
-.note{font-size:.95rem;color:var(--muted)}
-blockquote{margin:0;padding:0}
-.passage{padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
-.passage p{font-size:1rem}
-.passage cite{display:block;margin-top:6px;font-family:var(--font-mono);font-size:12px;font-style:normal;color:var(--muted)}
-.models ul{font-size:.98rem}
-.leader{border:1.5px dashed var(--line);border-radius:12px;padding:14px 16px;background:transparent}
-.leader p+p{margin-top:8px}
-.sum p{white-space:pre-wrap;overflow-wrap:anywhere}
-.sum .blank{color:var(--muted);font-style:italic}
-.sum+.sum{margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
-.sum h4{margin-bottom:8px}
-.sum .line{margin-top:6px}
-.foot-credit{font-size:.85rem;color:var(--muted);margin-top:36px;max-width:64ch}
-@media (max-width:640px){
-  .cols{grid-template-columns:1fr}
-}
-@media (max-width:520px){
-  .choices{grid-template-columns:1fr}
-  .trail li{font-size:0}
-}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-/* ---------- way back to the site (same idea as the link on Not Broken) ---------- */
-.site-return{display:inline-block;margin-bottom:20px;font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none}
-.site-return:hover{color:var(--ink);text-decoration:underline}
-.site-return strong{font-weight:500;color:var(--ink)}
-a.btn{display:inline-block;text-decoration:none}
-</style>
 </head>
 <body>
 
-<!-- PRIVACY: this page deliberately loads no site-wide script (no main.js, no feedback widget)
-     and no tracking script. Nothing typed here is saved or sent. See
-     scripts/check-put-it-to-work-privacy.sh. -->
-<main class="wrap">
-  <a class="site-return" href="/for-you">&larr; Back to <strong>For You</strong></a>
-  <div id="app"><p class="note">Loading the exercise&hellip;</p></div>
-  <noscript><div class="card"><p>This exercise needs JavaScript to run. Nothing is saved or sent either way.</p></div></noscript>
-  <p class="foot-credit">Bible quotations are from the King James Version. Other passages are from Science and Health with Key to the Scriptures by Mary Baker Eddy. The family in this story is real, and every name and identifying detail has been changed.</p>
+<!-- PRIVACY: this page uses the site's look (nav, footer, style.css) but deliberately loads none of the
+     site's behavior scripts: no main.js, no feedback widget, no language switcher, no tracking script.
+     Nothing typed here is saved or sent. See scripts/check-put-it-to-work-privacy.sh. -->
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="brand">Spiritual <strong>Lesson Plans</strong></a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/lessons">Lessons</a></li>
+      <li><a href="/for-mentors">For Mentors</a></li>
+      <li><a href="/for-you">For You</a></li>
+      <li><a href="/put-it-to-work" aria-current="page">Put It to Work</a></li>
+      <li><a href="/what-we-believe">What We Believe</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="piw-main">
+  <div id="app"><div class="wrap piw-loading"><p>Loading the exercise&hellip;</p></div></div>
+  <noscript><div class="wrap piw-narrow piw-loading"><p>This exercise needs JavaScript to run. Nothing is saved or sent either way.</p></div></noscript>
+  <div class="piw-credit-wrap"><div class="wrap piw-narrow"><p class="piw-credit">Bible quotations are from the King James Version. Other passages are from Science and Health with Key to the Scriptures by Mary Baker Eddy. The family in this story is real, and every name and identifying detail has been changed.</p></div></div>
 </main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <p class="footer-note"><strong>A free, open resource.</strong>No account, no cost, no organization behind it.</p>
+      <ul class="footer-links">
+        <li><a href="/lessons">Lessons</a></li>
+        <li><a href="/for-mentors">For Mentors</a></li>
+        <li><a href="/for-you">For You</a></li>
+        <li><a href="/what-we-believe">What We Believe</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/lessons">Surprise me</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>This website and all lesson plans are offered in a spirit of love and growth for all. They are independently created and are not affiliated with or endorsed by any Christian Science branch church or The First Church of Christ, Scientist, in Boston, MA, and are shared under a Creative Commons CC BY-SA 4.0.</p>
+      <div class="footer-utility">
+        <a class="cc-badge" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noopener">CC BY-SA 4.0</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script src="/assets/js/put-it-to-work.js"></script>
 </body>

@@ -38,51 +38,61 @@
   function li(arr){ return arr.map(function(t){ return '<li>'+esc(t)+'</li>'; }).join(''); }
 
   function trailHTML(steps, idx){
-    return '<ol class="trail" aria-label="Progress">' + steps.map(function(s,i){
-      var cls = (i < idx ? 'done ' : '') + (i === idx ? 'current' : '');
-      return '<li class="'+cls+'"'+(i===idx?' aria-current="step"':'')+'><span class="dot"></span>'+esc(s.short)+'</li>';
+    return '<ol class="piw-trail" aria-label="Progress">' + steps.map(function(s,i){
+      var cls = (i < idx ? 'piw-done ' : '') + (i === idx ? 'piw-current' : '');
+      return '<li class="'+cls+'"'+(i===idx?' aria-current="step"':'')+'><span class="piw-dot"></span>'+esc(s.short)+'</li>';
     }).join('') + '</ol>';
+  }
+
+  // Each screen is a colored header band (hero) over a framed body, like the other pages on the site.
+  function backLink(){
+    return '<a class="piw-back" href="/for-you">&larr; Back to <strong>For You</strong></a>';
+  }
+  function band(inner){
+    return '<header class="piw-hero"><div class="wrap piw-hero-in">'+backLink()+inner+'</div></header>';
+  }
+  function body(inner){
+    return '<div class="piw-body"><div class="wrap piw-narrow"><div class="piw-stack">'+inner+'</div></div></div>';
   }
 
   function introHTML(){
     var group = isGroup();
     var full = state.path === 'full';
     var h = '';
-    h += '<div class="stack">';
-    h += '<div class="stack-sm"><p class="eyebrow">Case consult exercise · about '+(full?'20':'10')+' minutes</p>';
-    h += '<h1 id="main" tabindex="-1">Put It to Work</h1>';
-    h += '<p class="lede">Follow one family’s story a step at a time. At each step, write what people could actually do, and what is true of the person beyond the situation.</p></div>';
-    h += '<div class="card private"><p><strong>Private by design.</strong> What you type stays on this page. Nothing is saved or sent anywhere, and it disappears when you close the page. If you want to keep your thoughts, use Copy at the end.</p></div>';
-    h += '<div class="card"><h3>The story</h3>'+CASE.intro.story.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('')+'</div>';
-    h += '<div class="card"><h3>How it works</h3><ol>';
-    h += '<li>Read one step of the story.</li>';
-    h += '<li>Write two things. <strong>Human footsteps</strong> are the practical steps people could take. A <strong>spiritual lens</strong> is what is true of the person, and the idea that helps you hold it.</li>';
-    h += '<li>Open one way to see it. It includes passages from the Bible and from Science and Health, and a space to add a text from your own tradition.</li>';
-    h += '</ol></div>';
-    h += '<div class="card"><h3>Ground rules</h3><ul>';
-    h += li(CASE.groundRules);
-    h += '</ul></div>';
-    h += '<div class="stack-sm"><h3>How are you using this?</h3><div class="choices" role="group" aria-label="How you are using this">';
-    h += choice('setMode','solo','Just me','Work through it on your own.', state.mode==='solo');
-    h += choice('setMode','group','I’m leading a group','Adds leader notes and discussion questions.', state.mode==='group');
-    h += '</div></div>';
-    h += '<div class="stack-sm"><h3>How much time do you have?</h3><div class="choices" role="group" aria-label="How much time you have">';
-    h += choice('setPath','quick','About 10 minutes','Three steps: the care team, the clinic, the road ahead.', state.path==='quick');
-    h += choice('setPath','full','About 20 minutes','All six steps of the story.', state.path==='full');
-    h += '</div></div>';
+    h += band('<p class="piw-eyebrow">Case consult exercise · about '+(full?'20':'10')+' minutes</p>'
+      + '<h1 id="main" tabindex="-1">Put It to Work</h1>'
+      + '<p class="piw-lede">Follow one family’s story a step at a time. At each step, write what people could actually do, and what is true of the person beyond the situation.</p>');
+    var b = '';
+    b += '<div class="piw-card piw-private"><p><strong>Private by design.</strong> What you type stays on this page. Nothing is saved or sent anywhere, and it disappears when you close the page. If you want to keep your thoughts, use Copy at the end.</p></div>';
+    b += '<div class="piw-card piw-story"><h3>The story</h3>'+CASE.intro.story.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('')+'</div>';
+    b += '<div class="piw-card"><h3>How it works</h3><ol>';
+    b += '<li>Read one step of the story.</li>';
+    b += '<li>Write two things. <strong>Human footsteps</strong> are the practical steps people could take. A <strong>spiritual lens</strong> is what is true of the person, and the idea that helps you hold it.</li>';
+    b += '<li>Open one way to see it. It includes passages from the Bible and from Science and Health, and a space to add a text from your own tradition.</li>';
+    b += '</ol></div>';
+    b += '<div class="piw-card"><h3>Ground rules</h3><ul>';
+    b += li(CASE.groundRules);
+    b += '</ul></div>';
+    b += '<div class="piw-stack-sm"><h3>How are you using this?</h3><div class="piw-choices" role="group" aria-label="How you are using this">';
+    b += choice('setMode','solo','Just me','Work through it on your own.', state.mode==='solo');
+    b += choice('setMode','group','I’m leading a group','Adds leader notes and discussion questions.', state.mode==='group');
+    b += '</div></div>';
+    b += '<div class="piw-stack-sm"><h3>How much time do you have?</h3><div class="piw-choices" role="group" aria-label="How much time you have">';
+    b += choice('setPath','quick','About 10 minutes','Three steps: the care team, the clinic, the road ahead.', state.path==='quick');
+    b += choice('setPath','full','About 20 minutes','All six steps of the story.', state.path==='full');
+    b += '</div></div>';
     if(group){
-      h += '<div class="leader"><span class="label">For the leader</span>';
-      h += '<p>Pairs or small groups work well. One person reads the step aloud, everyone writes, and then each pair shares one footstep and one lens. Each step takes about three minutes.</p>';
-      h += '<p>The passages here are one set of choices from the Bible and from Science and Health. Match your own texts to these thoughts: use passages from your own tradition or from your class’s study, and ask students to bring one of their own to each step.</p>';
-      h += '<p>Open the “one way to see it” panel after the group has shared, not before.</p></div>';
+      b += '<div class="piw-leader"><span class="piw-label">For the leader</span>';
+      b += '<p>Pairs or small groups work well. One person reads the step aloud, everyone writes, and then each pair shares one footstep and one lens. Each step takes about three minutes.</p>';
+      b += '<p>The passages here are one set of choices from the Bible and from Science and Health. Match your own texts to these thoughts: use passages from your own tradition or from your class’s study, and ask students to bring one of their own to each step.</p>';
+      b += '<p>Open the “one way to see it” panel after the group has shared, not before.</p></div>';
     }
-    h += '<div><button class="btn" data-action="begin">Begin</button></div>';
-    h += '</div>';
-    return h;
+    b += '<div><button class="btn btn-gold" data-action="begin">Begin</button></div>';
+    return h + body(b);
   }
 
   function choice(action, value, title, sub, pressed){
-    return '<button type="button" class="choice" data-action="'+action+'" data-value="'+value+'" aria-pressed="'+(pressed?'true':'false')+'"><strong>'+esc(title)+'</strong><span>'+esc(sub)+'</span></button>';
+    return '<button type="button" class="piw-choice" data-action="'+action+'" data-value="'+value+'" aria-pressed="'+(pressed?'true':'false')+'"><strong>'+esc(title)+'</strong><span>'+esc(sub)+'</span></button>';
   }
 
   function stepHTML(){
@@ -90,43 +100,41 @@
     var s = steps[state.idx];
     var d = state.data[s.id];
     var group = isGroup();
-    var h = '<div class="stack">';
-    h += '<div class="stack-sm"><p class="eyebrow">Step '+(state.idx+1)+' of '+steps.length+'</p>'+trailHTML(steps, state.idx)+'</div>';
-    h += '<div class="stack-sm"><h2 id="main" tabindex="-1">'+esc(s.title)+'</h2><p class="practice">'+esc(s.practice)+'</p></div>';
-    h += '<div class="card story"><span class="label">The situation</span>';
-    if(state.path === 'quick' && s.quickLead){ h += '<p class="earlier">'+esc(s.quickLead)+'</p>'; }
-    h += s.story.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
-    h += '</div>';
-    h += '<div class="cols">';
-    h += '<div class="col col-foot"><label for="foot-'+s.id+'"><span class="tag foot">Human footsteps</span></label><p class="help">What practical steps could people take? Think calls, forms, questions, notes, rides, translation, and listening.</p><textarea id="foot-'+s.id+'" data-bind="step:'+s.id+':foot" autocomplete="off"></textarea></div>';
-    h += '<div class="col col-lens"><label for="lens-'+s.id+'"><span class="tag lens">Spiritual lens</span></label><p class="help">What is true of this person beyond the situation, and what idea helps you hold it?</p><textarea id="lens-'+s.id+'" data-bind="step:'+s.id+':lens" autocomplete="off"></textarea></div>';
-    h += '</div>';
-    h += '<div class="row"><button type="button" id="reveal-btn" class="btn ghost" data-action="reveal" aria-expanded="'+(d.revealed?'true':'false')+'">'+(d.revealed?'Hide one way to see it':'Show one way to see it')+'</button><span class="note">Write yours first, then open this. It works better that way.</span></div>';
+    var h = band('<p class="piw-eyebrow">Step '+(state.idx+1)+' of '+steps.length+'</p>'+trailHTML(steps, state.idx)
+      + '<h2 id="main" tabindex="-1">'+esc(s.title)+'</h2><p class="piw-practice">'+esc(s.practice)+'</p>');
+    var b = '<div class="piw-card piw-story"><span class="piw-label">The situation</span>';
+    if(state.path === 'quick' && s.quickLead){ b += '<p class="piw-earlier">'+esc(s.quickLead)+'</p>'; }
+    b += s.story.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('');
+    b += '</div>';
+    b += '<div class="piw-cols">';
+    b += '<div class="piw-col piw-col-foot"><label for="foot-'+s.id+'"><span class="piw-tag piw-tag-foot">Human footsteps</span></label><p class="piw-help">What practical steps could people take? Think calls, forms, questions, notes, rides, translation, and listening.</p><textarea id="foot-'+s.id+'" data-bind="step:'+s.id+':foot" autocomplete="off"></textarea></div>';
+    b += '<div class="piw-col piw-col-lens"><label for="lens-'+s.id+'"><span class="piw-tag piw-tag-lens">Spiritual lens</span></label><p class="piw-help">What is true of this person beyond the situation, and what idea helps you hold it?</p><textarea id="lens-'+s.id+'" data-bind="step:'+s.id+':lens" autocomplete="off"></textarea></div>';
+    b += '</div>';
+    b += '<div class="piw-row"><button type="button" id="reveal-btn" class="btn btn-outline-dark" data-action="reveal" aria-expanded="'+(d.revealed?'true':'false')+'">'+(d.revealed?'Hide one way to see it':'Show one way to see it')+'</button><span class="piw-note">Write yours first, then open this. It works better that way.</span></div>';
     if(d.revealed){
-      h += '<div class="card tint stack" role="region" aria-label="One way to see it">';
-      h += '<h3>One way to see it</h3>';
-      h += '<div class="cols models"><div class="col"><span class="tag foot">Human footsteps</span><ul>'+li(s.foot)+'</ul></div><div class="col"><span class="tag lens">Spiritual lens</span><ul>'+li(s.lens)+'</ul></div></div>';
-      h += '<div class="stack-sm"><h3>Passages one teacher might choose</h3>';
-      h += s.passages.map(function(p){ return '<blockquote class="passage"><p>'+esc(p.text)+'</p><cite>'+esc(p.ref)+'</cite></blockquote>'; }).join('');
-      h += '</div>';
-      h += '<div class="stack-sm"><label for="own-'+s.id+'"><h3>'+(group?'A text you or a student would bring to this step':'Add a text of your own')+'</h3></label><p class="note">Optional. A passage, poem, or teaching from your own tradition that speaks to this step.</p><textarea id="own-'+s.id+'" class="short" data-bind="step:'+s.id+':own" autocomplete="off"></textarea></div>';
-      h += '<div class="stack-sm"><h3>Talk it over</h3><p>'+esc(s.talk)+'</p></div>';
-      if(group){ h += '<div class="leader"><span class="label">For the leader</span><p>'+esc(s.leader)+'</p></div>'; }
-      h += '</div>';
+      b += '<div class="piw-card piw-reveal piw-stack" role="region" aria-label="One way to see it">';
+      b += '<h3>One way to see it</h3>';
+      b += '<div class="piw-cols piw-models"><div class="piw-col piw-col-foot"><span class="piw-tag piw-tag-foot">Human footsteps</span><ul>'+li(s.foot)+'</ul></div><div class="piw-col piw-col-lens"><span class="piw-tag piw-tag-lens">Spiritual lens</span><ul>'+li(s.lens)+'</ul></div></div>';
+      b += '<div class="piw-stack-sm"><h3>Passages one teacher might choose</h3>';
+      b += s.passages.map(function(p){ return '<blockquote class="piw-passage"><p>'+esc(p.text)+'</p><cite>'+esc(p.ref)+'</cite></blockquote>'; }).join('');
+      b += '</div>';
+      b += '<div class="piw-stack-sm"><label for="own-'+s.id+'"><h3>'+(group?'A text you or a student would bring to this step':'Add a text of your own')+'</h3></label><p class="piw-note">Optional. A passage, poem, or teaching from your own tradition that speaks to this step.</p><textarea id="own-'+s.id+'" class="piw-short" data-bind="step:'+s.id+':own" autocomplete="off"></textarea></div>';
+      b += '<div class="piw-stack-sm"><h3>Talk it over</h3><p>'+esc(s.talk)+'</p></div>';
+      if(group){ b += '<div class="piw-leader"><span class="piw-label">For the leader</span><p>'+esc(s.leader)+'</p></div>'; }
+      b += '</div>';
     }
     var last = state.idx === steps.length - 1;
-    h += '<div class="row between"><button type="button" class="btn ghost" data-action="back">'+(state.idx===0?'Back to start':'Previous step')+'</button><button type="button" class="btn" data-action="next">'+(last?'Finish':'Next step')+'</button></div>';
-    h += '</div>';
-    return h;
+    b += '<div class="piw-row piw-between"><button type="button" class="btn btn-outline-dark" data-action="back">'+(state.idx===0?'Back to start':'Previous step')+'</button><button type="button" class="btn btn-gold" data-action="next">'+(last?'Finish':'Next step')+'</button></div>';
+    return h + body(b);
   }
 
   function summaryHTML(){
     return list().map(function(s){
       var d = state.data[s.id];
       function line(tagCls, tagTxt, val){
-        return '<div class="line"><span class="tag '+tagCls+'">'+tagTxt+'</span><p>'+(val.trim() ? esc(val) : '<span class="blank">Left blank</span>')+'</p></div>';
+        return '<div class="piw-line"><span class="piw-tag piw-tag-'+tagCls+'">'+tagTxt+'</span><p>'+(val.trim() ? esc(val) : '<span class="piw-blank">Left blank</span>')+'</p></div>';
       }
-      var out = '<div class="sum"><h4>'+esc(s.title)+'</h4>';
+      var out = '<div class="piw-sum"><h4>'+esc(s.title)+'</h4>';
       out += line('foot','Human footsteps', d.foot);
       out += line('lens','Spiritual lens', d.lens);
       if(d.own.trim()){ out += line('lens','My own text', d.own); }
@@ -136,31 +144,26 @@
 
   function endHTML(){
     var group = isGroup();
-    var h = '<div class="stack">';
-    h += '<div class="stack-sm"><p class="eyebrow">Last step</p><h2 id="main" tabindex="-1">Put it together</h2></div>';
-    h += '<div class="card stack"><div class="stack-sm"><label for="love"><h3>Where did love show up as action in this story?</h3></label><textarea id="love" class="short" data-bind="end:love" autocomplete="off"></textarea></div>';
-    h += '<div class="stack-sm"><label for="sentence"><h3>Write one sentence you could carry into any hospital, classroom, or hard conversation.</h3></label><textarea id="sentence" class="short" data-bind="end:sentence" autocomplete="off"></textarea></div></div>';
+    var h = band('<p class="piw-eyebrow">Last step</p><h2 id="main" tabindex="-1">Put it together</h2>');
+    var b = '<div class="piw-card piw-stack"><div class="piw-stack-sm"><label for="love"><h3>Where did love show up as action in this story?</h3></label><textarea id="love" class="piw-short" data-bind="end:love" autocomplete="off"></textarea></div>';
+    b += '<div class="piw-stack-sm"><label for="sentence"><h3>Write one sentence you could carry into any hospital, classroom, or hard conversation.</h3></label><textarea id="sentence" class="piw-short" data-bind="end:sentence" autocomplete="off"></textarea></div></div>';
     if(group){
-      h += '<div class="leader"><span class="label">For the leader</span><p>Talk it over as a group:</p><ol>'+li(GROUP_CLOSING)+'</ol><p>Close by asking each student to read their sentence aloud, or to keep it private if they prefer.</p></div>';
+      b += '<div class="piw-leader"><span class="piw-label">For the leader</span><p>Talk it over as a group:</p><ol>'+li(GROUP_CLOSING)+'</ol><p>Close by asking each student to read their sentence aloud, or to keep it private if they prefer.</p></div>';
     }
-    h += '<div class="card"><h3>Your thoughts</h3>'+summaryHTML()+'</div>';
-    h += '<div class="card private stack-sm"><p><strong>Nothing was saved.</strong> If you want these words later, copy them now.</p>';
-    h += '<div class="row"><button type="button" id="copy-btn" class="btn" data-action="copy">Copy my thoughts</button></div>';
-    h += '<p class="note" role="status" aria-live="polite">'+esc(state.copyMsg)+'</p>';
-    if(state.showFallback){ h += '<textarea id="fallback" class="short" readonly aria-label="Your thoughts, ready to copy"></textarea>'; }
-    h += '</div>';
-    var w = CASE.worksheet;
-    if(w && typeof w.file === 'string' && /^\/[^\/]/.test(w.file)){
-      h += '<div class="card stack-sm"><h3>'+esc(w.title)+'</h3><p>'+esc(w.description)+'</p><div class="row"><a class="btn ghost" href="'+esc(w.file)+'" download>'+esc(w.linkText)+'</a></div></div>';
-    }
-    h += '<div class="row between"><button type="button" class="btn ghost" data-action="back">Previous step</button>';
+    b += '<div class="piw-card"><h3>Your thoughts</h3>'+summaryHTML()+'</div>';
+    b += '<div class="piw-card piw-private piw-stack-sm"><p><strong>Nothing was saved.</strong> If you want these words later, copy them now.</p>';
+    b += '<div class="piw-row"><button type="button" id="copy-btn" class="btn btn-gold" data-action="copy">Copy my thoughts</button></div>';
+    b += '<p class="piw-note" role="status" aria-live="polite">'+esc(state.copyMsg)+'</p>';
+    if(state.showFallback){ b += '<textarea id="fallback" class="piw-short" readonly aria-label="Your thoughts, ready to copy"></textarea>'; }
+    b += '</div>';
+    b += '<div class="piw-row piw-between"><button type="button" class="btn btn-outline-dark" data-action="back">Previous step</button>';
     if(state.confirmReset){
-      h += '<span class="row"><span class="note">This clears everything you typed.</span><button type="button" class="btn small" data-action="resetYes">Yes, clear it</button><button type="button" class="btn ghost small" data-action="resetNo">Keep it</button></span>';
+      b += '<span class="piw-row"><span class="piw-note">This clears everything you typed.</span><button type="button" class="btn btn-gold piw-small" data-action="resetYes">Yes, clear it</button><button type="button" class="btn btn-outline-dark piw-small" data-action="resetNo">Keep it</button></span>';
     } else {
-      h += '<button type="button" class="btn ghost" data-action="reset">Start over</button>';
+      b += '<button type="button" class="btn btn-outline-dark" data-action="reset">Start over</button>';
     }
-    h += '</div></div>';
-    return h;
+    b += '</div>';
+    return h + body(b);
   }
 
   function getBound(t){
@@ -219,6 +222,16 @@
     try{
       navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
     }catch(e){ done(false); }
+  }
+
+  // The site's main.js is deliberately not loaded here, so the page carries its own tiny menu toggle.
+  var navBtn = document.querySelector('.nav-toggle');
+  var navList = document.getElementById('primary-nav');
+  if(navBtn && navList){
+    navBtn.addEventListener('click', function(){
+      var open = navList.classList.toggle('open');
+      navBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
   }
 
   app.addEventListener('click', function(e){
