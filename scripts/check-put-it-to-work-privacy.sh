@@ -47,12 +47,12 @@ if grep -n -E 'writeText' assets/js/put-it-to-work.js | wc -l | grep -q -v '^1$'
 fi
 
 # 6. Story content: no faith names, condition names or place names in the story text.
-#    (Passages and their references are excluded; they quote scripture on purpose. The opening
-#    "why" screen is excluded too: it names the audience on purpose, in the owner's own words.)
+#    (Passages and their references are excluded; they quote scripture on purpose.)
 for f in $CASES; do
   if node -e '
     const c = JSON.parse(require("fs").readFileSync(process.argv[1], "utf8"));
-    const text = [c.title, c.caseLabel, ...c.intro.story, ...c.groundRules, ...c.closingQuestions,
+    const why = c.why ? [c.why.eyebrow, c.why.title, c.why.lede, c.why.continueLabel, ...c.why.sections.flatMap(x => [x.title, ...(x.paragraphs || []), ...(x.items || [])])] : [];
+    const text = [c.title, c.caseLabel, ...why, ...c.intro.story, ...c.groundRules, ...c.closingQuestions,
       ...c.steps.flatMap(s => [s.title, s.practice, s.quickLead || "", ...s.story, ...s.foot, ...s.lens, s.talk, s.leader])].join("\n");
     const re = /christian|muslim|islam|jewish|judaism|catholic|protestant|hindu|buddhis|sikh|mormon|church|mosque|synagogue|temple|allah|bible|scripture|cystic|sickle|marfan|huntington|fabry|alport|polycystic|tay-sachs|new york|london|boston|chicago|houston|toronto/i;
     const m = text.match(re); if (m) { console.log("matched: " + m[0]); process.exit(1); }
