@@ -304,6 +304,17 @@
 
 .piw-loading { padding: clamp(60px, 10vw, 120px) 0; }
 
+/* ---------- Opening "why" screen ---------- */
+
+.piw-card.piw-why-story { border-left: 4px solid var(--gold); }
+/* The one idea the exercise turns on gets the site's deep-dusk callout treatment */
+.piw-card.piw-why-feature { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+.piw-why-feature h3 { color: var(--gold); font-size: 0.72rem; font-family: var(--font-sans); font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+.piw-why-feature p { font-family: var(--font-serif); font-weight: 300; font-size: clamp(1.25rem, 2.4vw, 1.6rem); line-height: 1.45; color: var(--cream); }
+.piw-card.piw-why-goals { border-top: 4px solid var(--sage); }
+.piw-why-goals ol { gap: 14px; }
+.piw-why-goals li::marker { font-family: var(--font-serif); font-weight: 500; color: var(--sage-text); }
+
 /* ---------- Small screens ---------- */
 
 @media (max-width: 640px) {

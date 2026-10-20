@@ -12,6 +12,39 @@
       "role": "his daughter-in-law, a social worker"
     }
   ],
+  "why": {
+    "eyebrow": "Before you begin",
+    "title": "Why we are doing this",
+    "lede": "Walking alongside someone through something hard takes more than good intentions. This exercise is a safe place to practice.",
+    "sections": [
+      {
+        "kind": "story",
+        "title": "Why this matters",
+        "paragraphs": [
+          "Many people, for many different reasons, have little or no experience in the medical world. They often don’t feel that faith belongs there. Some have tried to bring faith into a medical setting and felt it didn’t go well. A hard diagnosis, a clinic, a long road ahead: these moments come to families of every faith, so this exercise is for everyone.",
+          "And walking alongside someone through them is difficult, whatever you believe."
+        ]
+      },
+      {
+        "kind": "feature",
+        "title": "The heart of it",
+        "paragraphs": [
+          "Knowing how to spiritualize your thought is the heart of this work, especially when something looks chronic or unsolvable. It is one thing to know a true idea and another to keep holding it steadily while someone you love is struggling."
+        ]
+      },
+      {
+        "kind": "goals",
+        "title": "What you will practice",
+        "items": [
+          "Working through something really difficult, one step at a time.",
+          "Walking alongside someone with practical love: showing up, asking, listening, and helping.",
+          "Spiritualizing your thought, which is the work of the spiritual lens: holding what is true of a person beyond a diagnosis, even when it looks chronic or unsolvable.",
+          "Doing all of this without trying to be anyone’s salvation. You can be fully present and still leave the person in charge of their own story, held by more than you."
+        ]
+      }
+    ],
+    "continueLabel": "Continue"
+  },
   "intro": {
     "story": [
       "Leo and his wife have just arrived, and he needs medical care he is uncomfortable asking for. His daughter-in-law, Mia, is a social worker. Over several months the family moves through a hard medical story: a test, a diagnosis, a clinic in another city, and a long road ahead. The story is based on a real family. Names and details have been changed."
