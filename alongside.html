@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Alongside Lab</title>
+<meta name="description" content="A phone-based Sunday school lab on mental health: four ways to show up for a friend, and for yourself. Works alone or as a crew. Nothing you type is saved.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.spirituallessonplans.org/alongside">
+<meta name="theme-color" content="#333E63">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Literata:opsz,wght@7..72,400;7..72,600&family=Source+Sans+3:wght@500;600&display=swap">
+<style>
+/* Layout: a phone-first, one-task-per-screen guide under a slim dusk bar. Every station follows the same rhythm (Read this, Think about this, Try this, Turn it toward you) so the process is the design. Palette: cream, dusk, gold, sage, sky. */
+:root{
+  --bg:#F6F0E0;--surface:#FCF9F0;--fg:#2A3150;--muted:#5C6483;--line:#DDD3BA;
+  --band:#333E63;--band-fg:#F6F0E0;--gold:#B88A2E;--accent-text:#8A6620;
+  --sage:#6F8F6C;--sage-soft:#E3EADD;--sky:#8DB4D2;--sky-soft:#E1EDF5;--gold-soft:#F3E7C8;
+  --btn-bg:#333E63;--btn-fg:#F6F0E0;--danger-soft:#F6E3DA;
+  --font-display:'Fraunces',Georgia,serif;--font-body:'Literata',Georgia,serif;--font-ui:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#1D2340;--surface:#262D4D;--fg:#F0E9D6;--muted:#B5BAD0;--line:#3A4268;--band:#161B33;
+  --gold:#D9B25A;--accent-text:#E2BE6E;--sage:#9DB899;--sage-soft:#2C3A38;--sky:#8FB3D1;--sky-soft:#28384F;--gold-soft:#3A3524;
+  --btn-bg:#D9B25A;--btn-fg:#1D2340;--danger-soft:#4A3030;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1D2340;--surface:#262D4D;--fg:#F0E9D6;--muted:#B5BAD0;--line:#3A4268;--band:#161B33;
+  --gold:#D9B25A;--accent-text:#E2BE6E;--sage:#9DB899;--sage-soft:#2C3A38;--sky:#8FB3D1;--sky-soft:#28384F;--gold-soft:#3A3524;
+  --btn-bg:#D9B25A;--btn-fg:#1D2340;--danger-soft:#4A3030;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size:1.06rem;line-height:1.6;margin:0}
+.wrap{max-width:36rem;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.4rem,11vw,3.4rem);margin-bottom:.6rem}
+h2{font-size:1.6rem;margin-bottom:.7rem}
+h3{font-size:1.15rem;margin-bottom:.3rem}
+h1:focus,h2:focus{outline:none}
+p{margin:0 0 1rem}
+button{font-family:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.label{font-family:var(--font-ui);font-weight:600;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text);display:block;margin-bottom:.4rem}
+.muted{color:var(--muted)}
+
+.top{background:var(--band);color:var(--band-fg)}
+.top .bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
+.brand{font-family:var(--font-ui);font-weight:600;letter-spacing:.05em;font-size:.88rem;color:#A9C8E0;white-space:nowrap}
+.prog{display:flex;gap:5px;flex:1;max-width:12rem}
+.prog i{flex:1;height:6px;border-radius:3px;background:rgba(246,240,224,.28)}
+.prog i.on{background:#D9B25A}
+.pts{font-family:var(--font-ui);font-weight:600;font-size:.9rem;color:#D9B25A;white-space:nowrap}
+@media (max-width:420px){.brand{display:none}}
+.ref{font-family:var(--font-ui);font-weight:600;font-size:.85rem;letter-spacing:.06em;color:var(--accent-text);margin:0 0 .25rem}
+.scripture{font-size:1.06rem;line-height:1.75;border-left:3px solid var(--sky);padding-left:1rem;margin:0 0 1rem}
+.scripture sup{font-family:var(--font-ui);font-weight:600;color:var(--accent-text);font-size:.7rem;margin-right:.15rem}
+.pulse{width:64px;height:64px;border-radius:50%;border:4px solid var(--gold);margin:.8rem auto;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(.85);opacity:.6}50%{transform:scale(1.05);opacity:1}}
+
+main{padding-block:1.6rem 6rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;margin-bottom:1rem}
+.card.sky{background:var(--sky-soft);border-color:transparent}
+.card.gold{background:var(--gold-soft);border-color:transparent}
+.card.sage{background:var(--sage-soft);border-color:transparent}
+.card.alert{background:var(--danger-soft);border-color:transparent}
+.card p:last-child{margin-bottom:0}
+.card .label{margin-bottom:.25rem}
+blockquote{margin:0 0 .8rem;padding:.1rem 0 .1rem 1rem;border-left:3px solid var(--sky)}
+blockquote cite{display:block;font-family:var(--font-ui);font-style:normal;font-size:.85rem;color:var(--muted)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-weight:600;font-size:1.05rem;min-height:3.1rem;padding:.6rem 1.4rem;border-radius:12px;border:2px solid var(--btn-bg);background:var(--btn-bg);color:var(--btn-fg);cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.row{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
+
+.opt{display:block;width:100%;text-align:left;font-family:var(--font-body);font-size:1.02rem;line-height:1.5;background:var(--surface);color:var(--fg);border:2px solid var(--line);border-radius:12px;padding:.85rem 1rem;margin-bottom:.6rem;cursor:pointer;min-height:3.2rem}
+.opt:hover:not([disabled]){border-color:var(--gold)}
+.opt[disabled]{cursor:default;color:var(--fg)}
+.opt.best{border-color:var(--sage);background:var(--sage-soft)}
+.opt.close{border-color:var(--gold);background:var(--gold-soft)}
+.opt .tl{display:block;font-family:var(--font-ui);font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;color:var(--muted)}
+.fb{border-radius:12px;padding:.9rem 1.1rem;margin:.6rem 0 0;background:var(--sky-soft)}
+.fb p{margin:0}
+
+.scen{display:block;width:100%;text-align:left;font-family:var(--font-body);background:var(--surface);color:var(--fg);border:2px solid var(--line);border-radius:14px;padding:.9rem 1.1rem;margin-bottom:.7rem;cursor:pointer}
+.scen:hover{border-color:var(--gold)}
+.scen b{font-family:var(--font-display);font-size:1.2rem;display:block}
+.scen span{font-size:.97rem;color:var(--muted)}
+
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.chip{font-family:var(--font-ui);font-weight:600;font-size:1rem;background:var(--surface);color:var(--fg);border:2px solid var(--line);border-radius:999px;padding:.5rem 1rem;cursor:pointer;min-height:2.8rem}
+.chip[aria-pressed="true"]{border-color:var(--sage);background:var(--sage-soft)}
+.chip[aria-pressed="true"]::before{content:"\2713\00a0"}
+.chip:hover{border-color:var(--gold)}
+
+label.field{display:block;font-family:var(--font-ui);font-weight:600;margin-bottom:.35rem}
+input[type=text],textarea{width:100%;font-family:var(--font-body);font-size:1.05rem;color:var(--fg);background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:.7rem .9rem;margin-bottom:1rem}
+textarea{min-height:6rem;resize:vertical}
+
+.still{font-family:var(--font-display);font-size:3rem;text-align:center;margin:.6rem 0}
+.four{list-style:none;padding:0;margin:0 0 1rem}
+.four li{display:flex;gap:.8rem;padding:.55rem 0;border-bottom:1px solid var(--line)}
+.four li:last-child{border-bottom:none}
+.four b{font-family:var(--font-display);min-width:5.2rem}
+.big{font-family:var(--font-display);font-size:1.4rem;line-height:1.3;margin:0 0 .6rem}
+.steps3{list-style:none;padding:0;margin:0 0 1rem}
+.steps3 li{margin-bottom:.5rem}
+.steps3 b{font-family:var(--font-ui);letter-spacing:.04em}
+
+.help-btn{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:20;font-family:var(--font-ui);font-weight:600;font-size:.95rem;background:var(--surface);color:var(--fg);border:2px solid var(--gold);border-radius:999px;padding:.55rem 1.1rem;cursor:pointer;min-height:2.8rem;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.help-panel{position:fixed;left:max(14px,env(safe-area-inset-left,0px));right:max(14px,env(safe-area-inset-right,0px));bottom:calc(70px + env(safe-area-inset-bottom,0px));z-index:21;max-width:30rem;margin-inline:auto;background:var(--surface);border:2px solid var(--gold);border-radius:14px;padding:1rem 1.2rem;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.help-panel p{margin:0 0 .6rem}
+.help-panel p:last-child{margin:0}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="wrap bar">
+    <span class="brand">spirituallessonplans.org</span>
+    <div class="prog" id="prog" aria-hidden="true"></div>
+    <span class="pts" id="pts" hidden></span>
+  </div>
+</header>
+<main class="wrap"><div id="app"></div></main>
+
+<button id="helpBtn" class="help-btn" type="button" aria-expanded="false" aria-controls="helpPanel">Need help now?</button>
+<div id="helpPanel" class="help-panel" hidden>
+  <p><b>You don't have to carry this alone.</b></p>
+  <p>Tell a parent, Ian, or another adult you trust, today.</p>
+  <p><b>988</b> · call or text, any hour.</p>
+  <p><b>911</b> · if someone is in danger right now.</p>
+</div>
+
+<script>
+(function(){
+var app=document.getElementById('app');
+var prog=document.getElementById('prog');
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+var ST=[
+ {n:'Notice',
+  what:"Notice means seeing that something has changed in a friend, and saying what you see, kindly. You describe it. You don't label it, and you don't diagnose.",
+  why:"People often hide how they feel because they don't want to be a problem. A warm, specific \"I noticed\" says \"you're seen\" without turning them into a case.",
+  verse:"<p class=\"ref\">John 11:32–33</p><p class=\"scripture\"><sup>32</sup> Then when Mary was come where Jesus was, and saw him, she fell down at his feet, saying unto him, Lord, if thou hadst been here, my brother had not died. <sup>33</sup> When Jesus therefore saw her weeping, and the Jews also weeping which came with her, he groaned in the spirit, and was troubled,</p><p class=\"muted\" style=\"margin:0\">Even Jesus felt it. Noticing someone's pain is love, not weakness.</p>",
+  think:"When did someone last really notice you? What did it feel like?"},
+ {n:'Listen',
+  what:"Listening means asking, then waiting. You aren't there to fix anything, and you don't need to have answers.",
+  why:"Advice can sound like \"you're doing it wrong.\" A question says \"I want to understand.\" People often find their own next step once they feel heard.",
+  verse:"<p class=\"ref\">John 11:34</p><p class=\"scripture\"><sup>34</sup> And said, Where have ye laid him? They said unto him, Lord, come and see.</p><p class=\"ref\">Psalm 116:1–2</p><p class=\"scripture\"><sup>1</sup> I love the Lord, because he hath heard my voice and my supplications. <sup>2</sup> Because he hath inclined his ear unto me, therefore will I call upon him as long as I live.</p><p class=\"muted\" style=\"margin:0\">Listening is how we come and see. And God listens to us, too.</p>",
+  think:"When someone listened to you without trying to fix it, what did they do?"},
+ {n:'Loosen',
+  what:"Loosen means one small, real step that makes the load a little lighter: sitting with them, walking with them, sharing a meal, helping with one small task.",
+  why:"Big gestures can overwhelm, and \"think positive\" can feel like being brushed off. A small step shows love in action, and it's one they can say yes to.",
+  verse:"<p class=\"ref\">John 11:39, 41</p><p class=\"scripture\"><sup>39</sup> Jesus said, Take ye away the stone. <sup>41</sup> Then they took away the stone from the place where the dead was laid.</p><p class=\"ref\">Science and Health 225:21</p><p class=\"scripture\">Love is the liberator.</p><p class=\"muted\" style=\"margin:0\">Notice who does the moving: the people standing there.</p>",
+  think:"What is one small thing someone did for you that mattered more than they knew?"},
+ {n:'Loop in',
+  what:"Loop in means bringing in a trusted adult or a professional, and staying with your friend while you do. It is never a betrayal.",
+  why:"Some things are too big for friends to carry alone, and you don't have to. Lazarus came out \"bound hand and foot,\" and other hands untied him. Asking for help is how help arrives.",
+  verse:"<p class=\"ref\">John 11:44</p><p class=\"scripture\"><sup>44</sup> And he that was dead came forth, bound hand and foot with graveclothes: and his face was bound about with a napkin. Jesus saith unto them, Loose him, and let him go.</p><p class=\"ref\">Psalm 116:6, 10</p><p class=\"scripture\"><sup>6</sup> The Lord preserveth the simple: I was brought low, and he helped me. <sup>10</sup> I believed, therefore have I spoken: I was greatly afflicted.</p><p class=\"muted\" style=\"margin:0\">Lazarus came out still bound, and other hands untied him.</p>",
+  think:"Which adults in your life could you tell anything? Name them in your head."}
+];
+
+var SC=[
+ {id:'maya',name:'Maya',story:"Since her family moved over the summer, Maya eats lunch alone and hasn't answered the group chat in weeks.",steps:[
+  {q:"Where do you start?",o:["Tell the group chat Maya is being weird.","Say to Maya, 'Hey, I've missed you at lunch. How are you doing?'","Decide she needs space and say nothing."],b:1,w:"Noticing means saying what you see with warmth, not talking about her or ignoring it. 'I've missed you' tells her she matters."},
+  {q:"Maya says, 'It's just hard here.' You say:",o:["That sounds really hard. What's been the hardest part?","At least you go to a nice school.","You should just join a club."],b:0,w:"Curiosity replaces correction. A question invites her to say more. Silver linings and quick fixes close the door."},
+  {q:"Which small step helps most?",o:["Plan a big party to cheer her up.","Save her a seat at lunch tomorrow and text her where it is.","Tell her to think positive thoughts."],b:1,w:"One small, real step beats a big gesture. A saved seat is an invitation she can say yes to."},
+  {q:"Weeks pass, and Maya still seems low and keeps falling asleep in class. What now?",o:["Tell her you care, and ask if she'd talk with a counselor or trusted adult, with you beside her.","Keep waiting. She'll come around.","Tell everyone so they can all help."],b:0,w:"You offer a bridge and you stay. Telling everyone takes away her say in her own story."}
+ ]},
+ {id:'jordan',name:'Jordan',story:"Jordan's mind races before every test. He says 'I'm fine, just tired,' but he hasn't slept well in weeks.",steps:[
+  {q:"He says it again. You:",o:["Say, 'I believe you're tired. I've also noticed you seem on edge before tests. I'm here either way.'","Believe him and move on.","Say, 'You're obviously anxious. You need a doctor.'"],b:0,w:"You can accept his words and still say what you see, without putting a label on him."},
+  {q:"He admits his mind races. You:",o:["Tell him to just relax.","Tell him about your own worst test.","Ask, 'What does it feel like? What helps, even a little?'"],b:2,w:"Asking what it's like and what helps lets him lead. 'Just relax' and your own story move the focus off him."},
+  {q:"A small step to do together:",o:["Study for twenty minutes, then take a short walk outside.","Quiz him over and over until he feels sure.","Tell him to skip the test and avoid it."],b:0,w:"A steady little routine with a break and fresh air beats more pressure or avoiding."},
+  {q:"His sleep still hasn't improved. You:",o:["Tell him to pray harder.","Handle it for him by telling his teachers yourself.","Suggest he talk with a parent or counselor, and offer to be there when he does."],b:2,w:"Prayer is part of this, and so is practical help. He shouldn't have to choose between them. And he stays in charge of his own story."}
+ ]},
+ {id:'sam',name:'Sam',story:"Sam's grandfather died over the summer. Everyone else seems to have moved on, and Sam jokes about it when it comes up.",steps:[
+  {q:"Sam jokes about it again. You:",o:["Laugh along. It's easier.","Say softly, 'I'm still sad about your grandfather too. How are you doing?'","Tell her it might be time to move on."],b:1,w:"Grief has no deadline. You show her it's still okay to talk about him."},
+  {q:"She starts telling you about him. You:",o:["Say, 'He's in a better place now.'","Change the subject so she doesn't cry.","Listen, and ask, 'What was he like?'"],b:2,w:"Stories honor people, and tears are okay. You're not there to take the sadness away, just to stay."},
+  {q:"A small step:",o:["Send her a long list of tips for feeling better.","Make her promise she'll be fine.","Offer to sit with her at lunch this week, and ask if she'd like to show you photos of him."],b:2,w:"Presence beats performance. A seat beside her and a photo say, 'He mattered, and so do you.'"},
+  {q:"Months later, Sam still isn't sleeping or eating much. You:",o:["Tell her it's been long enough.","Stop bringing it up.","Tell her what you've noticed, and suggest she talk with a trusted adult or counselor."],b:2,w:"Some grief needs more help. Naming what you see and offering a bridge is care, not pushing."}
+ ]},
+ {id:'priya',name:'Priya',story:"After a rough performance, Priya keeps writing 'I'm such a failure lol' in the team chat.",steps:[
+  {q:"She posts it again. You:",o:["React with a laughing emoji.","Post, 'Stop saying that!' in the chat.","Message her privately: 'That sounded rough. You're not a failure to me. Want to talk?'"],b:2,w:"A private, warm message names it without putting her on the spot."},
+  {q:"She says, 'I mess everything up.' You:",o:["Say, 'That's not true.'","Ask, 'What happened that made it feel that way?'","List everything she's good at."],b:1,w:"Listening first lets her feel heard. Then the true things you say can land."},
+  {q:"A small step:",o:["Tell her to try harder next time.","Tell her to stop thinking about it.","Name one true thing about her in your own words, then offer to grab food after practice."],b:2,w:"A specific, true thing plus time together helps more than orders to stop or try harder."},
+  {q:"It keeps happening, and she stops enjoying the team. You:",o:["Wait until the season ends.","Encourage her to talk with a coach, counselor, or trusted adult, and offer to go with her.","Tell her the coach won't care."],b:1,w:"You're a bridge. A caring adult can help with what a friend can't carry alone."}
+ ]},
+ {id:'eli',name:'Eli',heavy:true,story:"Eli quit the band he loved, skips hanging out, and says, 'Nothing really matters anymore.'",steps:[
+  {q:"He says it again. You:",o:["Laugh it off.","Say, 'Everything matters. You're being dramatic.'","Say, 'It matters to me that you're here. I'm worried about you.'"],b:2,w:"Take it seriously and say you care. When someone says nothing matters, don't brush it off."},
+  {q:"You decide to ask directly. Which is best?",o:["'You're not thinking something stupid, are you?'","'Are you having thoughts of hurting yourself?'","'Do you want to do something crazy?'"],b:1,w:"Asking directly and kindly doesn't plant the idea. It opens the door. The other two sound like judgment."},
+  {q:"He says he's just numb and tired. A small step:",o:["Give him a deadline to cheer up.","Leave him alone until he feels better.","Stay with him, send a short text every day, and invite him to one easy thing."],b:2,w:"Steady, small presence tells him he isn't alone, without pressure."},
+  {q:"He says yes, sometimes he does think about it, and asks you to keep it secret. You:",o:["Keep the secret. He trusts you.","Post in the group chat so people can check on him.","Tell a trusted adult today, stay with him, and call or text 988 together."],b:2,w:"This is the one secret you don't keep. Telling an adult is loyalty, not betrayal. 988 is call or text, any hour. If he is in danger right now, call 911."}
+ ]}
+];
+
+var MOODS=[
+ {l:'Good',m:"Wonderful. Notice what's helping, so you can pass it on."},
+ {l:'Okay',m:"Okay is a real place to be. Thank you for being honest."},
+ {l:'A bit heavy',m:"Thank you for saying so. Feeling it isn't failing. Jesus himself was troubled."},
+ {l:'Really heavy',heavy:true,m:"Thank you for being honest. You are not a problem to be fixed, and you don't have to carry this alone."},
+ {l:'Rather not say',m:"That's completely fine. You don't owe anyone an answer. The rest is here for you anyway."}
+];
+var SMALL=['Rest or a nap','Water and a meal','A walk outside','Music','Pray or sit quietly','Text a friend','One easy task'];
+var LOOK=[
+ "What does Jesus do when he sees Mary and the others crying? Does he stay calm and distant, or does he feel it with them?",
+ "Who asks the question, and who answers? Notice that the answer is an invitation: come and see. Then notice who is listening in the Psalm.",
+ "Who actually moves the stone, Jesus or the people standing there? Notice what the stone was blocking.",
+ "What is still on Lazarus when he walks out? Who is told to help, and what does the psalmist say about speaking up?"
+];
+var CREWS=['The Untied Kingdom','The Knot Ninjas','The Stone Rollers','The Bracelet Bandits','The Open Door Crew','The Sidekick Society'];
+var GATES=[
+ {word:'banana',badge:null,silly:"Sky-write it! With your whole arm, write \"Loose him\" in the air in the biggest, fanciest letters you can. Then tell the person next to you what \"loose\" means in three words or fewer."},
+ {word:'pickle',badge:'Sherlock of Kindness',silly:"Detective eyebrows! Look at the person next to you and say one kind thing you notice: a good laugh, great effort, a cool vibe."},
+ {word:'llama',badge:'Big Ears',silly:"Big Ears! Cup your hands behind your ears. With a partner, one person tells the world's worst joke in 20 seconds. The other listens with their whole face and says nothing."},
+ {word:'waffle',badge:'Knot Wizard',silly:"Knot Race! Tie three knots in a cloth strip or a shoelace, swap with a neighbor, and untie theirs. No pulling, only kindness."},
+ {word:'hiccup',badge:'Bridge Builder',silly:"The Squeeze! Stand in a circle and pass a hand squeeze, or a shoulder tap, all the way around. Time it, then beat your record."}
+];
+
+function fresh(){return {screen:'welcome',mode:'group',crew:'',points:0,stnDone:{},gate:0,silly:{},wordMsg:'',q1:null,sc:null,stn:0,sub:0,picked:null,scored:{},first:0,total:0,know:null,mood:null,small:{},stillLeft:30,stillState:'idle',kind:'',who:'',pledge:''};}
+var S=fresh();
+var timer=null;
+function clearTimer(){if(timer){clearInterval(timer);timer=null;}}
+
+function setProg(n){
+  var h='';for(var i=0;i<6;i++){h+='<i'+(i<n?' class="on"':'')+'></i>';}prog.innerHTML=h;
+  var p=document.getElementById('pts');
+  if(p){if(S.mode==='group'&&S.screen!=='welcome'){p.hidden=false;p.textContent=S.points+' pts';}else{p.hidden=true;}}
+}
+function progN(){
+  if(S.screen==='gate')return S.gate;
+  if(S.screen==='stn')return S.stn+1;
+  if(S.screen==='finish'||S.screen==='card')return 6;
+  return 0;
+}
+function maxSub(){return S.stn===3?3:2;}
+
+function focusHead(){
+  window.scrollTo(0,0);
+  var h=app.querySelector('h1,h2');if(h){h.setAttribute('tabindex','-1');try{h.focus({preventScroll:true});}catch(e){}}
+}
+function go(name){clearTimer();S.screen=name;render();focusHead();}
+function render(){
+  setProg(progN());
+  var f={welcome:vWelcome,crew:vCrew,gate:vGate,lazarus:vLazarus,pick:vPick,stn:vStation,finish:vFinish,card:vCard}[S.screen];
+  app.innerHTML=f();
+  var a=document.getElementById('who');if(a)a.value=S.who;
+  var b=document.getElementById('kind');if(b)b.value=S.kind;
+  var c=document.getElementById('pledge');if(c)c.value=S.pledge;
+}
+function bestMark(S1){return S1;}
+
+/* ---------- views ---------- */
+function vWelcome(){return ''+
+ '<h1>Alongside</h1>'+
+ '<p class="big">You are loved. Full stop. That is not conditional.</p>'+
+ '<p>You asked how to look after mental health in human and divine ways. This is a guided walk-through on your own phone, best done with your crew. It takes about 30 minutes.</p>'+
+ '<div class="card sky"><span class="label">How it works</span><ul class="steps3">'+
+ '<li><b>Read this.</b> A short idea, and why it works.</li>'+
+ '<li><b>Think about this.</b> A pause to remember, in your head.</li>'+
+ '<li><b>Try this.</b> Practice with a made-up friend.</li>'+
+ '<li><b>Turn it toward you.</b> The same step, for yourself.</li></ul>'+
+ '<p class="muted" style="margin:0">We learn to help by understanding first, then trying, then looking inward. That is the order here.</p></div>'+
+ '<div class="card"><ul style="margin:0;padding-left:1.2rem">'+
+ '<li><b>With your crew:</b> you move together. When you finish a station, freeze like a statue until Ian says the Crew Word. Expect silly challenges, badges, and Crew Points that you earn as a team.</li>'+
+ '<li><b>On your own:</b> skip the waiting and go at your own pace.</li>'+
+ '<li>Nothing you type here is saved or sent.</li>'+
+ '<li>There are no grades. A different answer teaches you something too.</li>'+
+ '<li>You can skip anything.</li></ul></div>'+
+ '<div class="row"><button class="btn" data-a="modegroup" type="button">With my crew</button><button class="btn ghost" data-a="modesolo" type="button">On my own</button></div>';}
+
+function vCrew(){
+  var h='<span class="label">Crew setup</span><h2>Pick your crew name, together.</h2><p>Decide as a group, then everyone taps the same one. The silliest name wins.</p><div class="chips" role="group" aria-label="Crew names">';
+  CREWS.forEach(function(c,i){h+='<button type="button" class="chip" data-a="crewpick" data-i="'+i+'" aria-pressed="'+(S.crew===c?'true':'false')+'">'+esc(c)+'</button>';});
+  h+='</div><div class="row"><button class="btn ghost" data-a="restart" type="button">Back</button><button class="btn" data-a="crewgo" type="button"'+(S.crew?'':' disabled')+'>Next</button></div>';
+  return h;
+}
+
+function vGate(){
+  var g=S.gate,G=GATES[g];
+  var h='<span class="label">'+(g===0?'Crew warm-up':'Station '+g+' of 4 · done')+'</span>';
+  if(g===0){h+='<h2>Ready, crew?</h2><p>Before the practice, everybody gets on the same page.</p>';}
+  else{h+='<h2>You finished '+esc(ST[g-1].n)+'.</h2><p><b>+10 Crew Points.</b></p><div class="card sage"><span class="label">Badge earned</span><h3>'+esc(G.badge)+'</h3></div>';}
+  h+='<div class="card gold"><span class="label">Silly challenge</span><p>'+esc(G.silly)+'</p><button class="btn ghost" data-a="sillydone" data-i="'+g+'" type="button"'+(S.silly[g]?' disabled':'')+'>'+(S.silly[g]?'Done · +5':'We did it! +5')+'</button></div>'+
+  '<div class="card sky"><span class="label">Now wait for the crew</span><div class="pulse" aria-hidden="true"></div><p style="text-align:center;margin:0">Freeze like a statue until everyone is done. When Ian says the <b>Crew Word</b>, type it below.</p></div>'+
+  '<form id="wordForm" autocomplete="off"><label class="field" for="word">Crew Word</label><input type="text" id="word" autocapitalize="none" autocomplete="off" placeholder="Wait for it...">';
+  if(S.wordMsg)h+='<p class="muted" role="status">'+esc(S.wordMsg)+'</p>';
+  h+='<button class="btn" type="submit">Unlock the next part</button></form>';
+  return h;
+}
+
+function crewFinale(){
+  var h='<div class="card gold"><span class="label">Crew finale</span><h3>'+esc(S.crew||'Your crew')+'</h3>'+
+  '<p class="big">'+S.points+' Crew Points</p>'+
+  '<p>Add up the crew: everyone says their points out loud while Ian writes the total.</p><p><b>Badges you earned:</b> Sherlock of Kindness, Big Ears, Knot Wizard, Bridge Builder.</p>'+
+  '<p style="margin:0">Then, together, on three: <b>"We are not alone, and neither are you!"</b></p></div>';
+  return h;
+}
+
+function vLazarus(){
+  var opts=['Lazarus','The people standing around','God'];
+  var h='<span class="label">Start here · Read this</span><h2>Lazarus is in the tomb.</h2>'+
+  '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Take turns, one verse each.':'Read it slowly, out loud or in your head.')+'</p>'+
+  '<p class="ref">John 11:38–44</p><p class="scripture">'+
+  '<sup>38</sup> It was a cave, and a stone lay upon it. <sup>39</sup> Jesus said, Take ye away the stone. Martha, the sister of him that was dead, saith unto him, Lord, by this time he stinketh: for he hath been dead four days. <sup>40</sup> Jesus saith unto her, Said I not unto thee, that, if thou wouldest believe, thou shouldest see the glory of God? <sup>41</sup> Then they took away the stone from the place where the dead was laid. And Jesus lifted up his eyes, and said, Father, I thank thee that thou hast heard me. <sup>42</sup> And I knew that thou hearest me always: but because of the people which stand by I said it, that they may believe that thou hast sent me. <sup>43</sup> And when he thus had spoken, he cried with a loud voice, Lazarus, come forth. <sup>44</sup> And he that was dead came forth, bound hand and foot with graveclothes: and his face was bound about with a napkin. Jesus saith unto them, Loose him, and let him go.</p>'+
+  '<p class="ref">Science and Health 75:13</p><p class="scripture">Jesus restored Lazarus by the understanding that Lazarus had never died, not by an admission that his body had died and then lived again.</p>'+
+  '<p class="muted" style="margin:0">Here, "loose" means untie and set free.</p></div>'+
+  '<div class="card"><span class="label">Look for</span><p>The three things Jesus says (verses 39, 43, and 44), and who each one is for. Who moves the stone? Who untied Lazarus?</p></div>'+
+  '<div class="card gold"><span class="label">Think about this</span><p>Who is Jesus talking to in that last line? Pick the one you think.</p></div>';
+  opts.forEach(function(t,i){
+    var cls='opt',tl='';
+    if(S.q1!==null){ if(i===1){cls+=' best';tl='<span class="tl">That\'s it</span>';} else if(i===S.q1){cls+=' close';tl='<span class="tl">Close</span>';} }
+    h+='<button type="button" class="'+cls+'" data-a="q1" data-i="'+i+'"'+(S.q1!==null?' disabled':'')+'>'+esc(t)+tl+'</button>';
+  });
+  if(S.q1!==null){
+    h+='<div class="fb" role="status"><p>'+(S.q1===1?'Yes. ':'Good thought, and many people say that. ')+'"Come forth" was Jesus\' part. "Loose him" was handed to the crowd. Lazarus came out still wrapped, "bound hand and foot," and other people had to untie him.</p></div>'+
+    '<div class="card sage" style="margin-top:1rem"><span class="label">Why this matters</span><p>Help from God and help from people are in the same verse. You don\'t have to choose between them, and you are never the whole answer. That is what the next four steps practice.</p></div>'+
+    '<div class="row"><button class="btn" data-a="topick" type="button">Next</button></div>';
+  }
+  return h;
+}
+
+function vPick(){
+  var h='<span class="label">Before the practice</span><h2>Pick a friend to practice with.</h2>'+
+  '<p>Each friend is made up. You will walk with the same friend through all four steps. If you finish early, you can try another.</p>';
+  SC.forEach(function(s,i){
+    h+='<button type="button" class="scen" data-a="pick" data-i="'+i+'"><b>'+esc(s.name)+(s.heavy?' · a heavier one':'')+'</b><span>'+esc(s.story)+'</span></button>';
+  });
+  h+='<p class="muted">Eli\'s story is heavier. It\'s okay to skip it.</p>';
+  h+='<div class="row"><button class="btn ghost" data-a="backlaz" type="button">Back</button></div>';
+  return h;
+}
+
+function backBtn(){return '<button class="btn ghost" data-a="back" type="button">Back</button>';}
+
+function vStation(){
+  var t=ST[S.stn],fr=SC[S.sc],lab='<span class="label">Station '+(S.stn+1)+' of 4 · '+t.n+' · ';
+  var h='';
+  if(S.sub===0){
+    h=lab+'Read this</span><h2>'+t.n+'</h2>'+
+    '<div class="card"><span class="label">What it is</span><p>'+esc(t.what)+'</p></div>'+
+    '<div class="card sage"><span class="label">Why it works</span><p>'+esc(t.why)+'</p></div>'+
+    '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Take turns, one verse each.':'Read it slowly, out loud or in your head.')+'</p>'+t.verse+'</div>'+
+    '<div class="card"><span class="label">Look for</span><p>'+esc(LOOK[S.stn])+'</p></div>'+
+    '<div class="card gold"><span class="label">Think about this</span><p>'+esc(t.think)+'</p><p class="muted">Take a moment. You don\'t need to write anything.</p></div>'+
+    '<div class="row">'+backBtn()+'<button class="btn" data-a="sub" type="button">I\'ve thought about it</button></div>';
+  } else if(S.sub===1){
+    var p=fr.steps[S.stn];
+    h=lab+'Try this</span>'+
+    '<div class="card gold"><p style="margin:0"><b>'+esc(fr.name)+':</b> '+esc(fr.story)+'</p></div>'+
+    '<h2>'+esc(p.q)+'</h2>';
+    p.o.forEach(function(tx,i){
+      var cls='opt',tl='';
+      if(S.picked!==null){
+        if(i===p.b){cls+=' best';tl='<span class="tl">'+(S.picked===p.b?'That\'s it':'The stronger move')+'</span>';}
+        else if(i===S.picked){cls+=' close';tl='<span class="tl">Close</span>';}
+      }
+      h+='<button type="button" class="'+cls+'" data-a="opt" data-i="'+i+'"'+(S.picked!==null?' disabled':'')+'>'+esc(tx)+tl+'</button>';
+    });
+    if(S.picked!==null){
+      h+='<div class="fb" role="status"><p>'+(S.picked===p.b?'Yes. ':'Many people pick that one, and it comes from a kind place. Here is why another works better: ')+esc(p.w)+'</p></div>';
+    }
+    h+='<div class="row">'+backBtn()+(S.picked!==null?'<button class="btn" data-a="sub" type="button">Next</button>':'')+'</div>';
+    if(S.stn===0&&S.picked===null&&fr.heavy)h+='<p class="muted" style="margin-top:.8rem">This one is heavier. Take a breath. You can go back and pick someone else.</p>';
+  } else if(S.sub===2){
+    h=lab+'Turn it toward you</span>'+vYou();
+  } else {
+    h=vKnow();
+  }
+  return h;
+}
+
+function vYou(){
+  var h='',s=S.stn;
+  if(s===0){
+    h='<h2>Notice yourself the way you would notice a friend.</h2><p>Warmly, and without judging. How are you doing right now?</p>'+
+    '<div class="chips" role="group" aria-label="How you are doing">';
+    MOODS.forEach(function(m,i){h+='<button type="button" class="chip" data-a="mood" data-i="'+i+'" aria-pressed="'+(S.mood===i?'true':'false')+'">'+esc(m.l)+'</button>';});
+    h+='</div>';
+    if(S.mood!==null){
+      var m=MOODS[S.mood];
+      h+='<div class="fb" role="status"><p>'+esc(m.m)+'</p></div>';
+      if(m.heavy)h+='<div class="card alert" style="margin-top:1rem"><p><b>Tell a trusted adult today.</b> Call or text <b>988</b> any hour. If you are in danger right now, call <b>911</b>.</p></div>';
+    }
+    h+='<div class="row">'+backBtn()+'<button class="btn" data-a="sub" type="button"'+(S.mood===null?' disabled':'')+'>Next</button></div>';
+  } else if(s===1){
+    h='<h2>Listen to yourself. Be still for 30 seconds.</h2><blockquote>Return unto thy rest, O my soul.<cite>Psalm 116:7</cite></blockquote><p>Listen to Love, and to your body: sleep, food, and movement count. Nothing to fix and nothing to say.</p>';
+    if(S.stillState==='idle')h+='<div class="row"><button class="btn" data-a="still" type="button">Start</button></div>';
+    else if(S.stillState==='run')h+='<div class="still" id="stillN" role="timer" aria-live="off">'+S.stillLeft+'</div><p class="muted" style="text-align:center">Just breathe.</p>';
+    else h+='<div class="fb" role="status"><p>Well done. You listened. That counts, too.</p></div>';
+    h+='<div class="row">'+backBtn()+'<button class="btn" data-a="sub" type="button">'+(S.stillState==='done'?'Next':'Skip')+'</button></div>';
+  } else if(s===2){
+    h='<h2>Pick one small, kind step for yourself today.</h2><p class="muted">Tap one or more.</p><div class="chips" role="group" aria-label="Small steps">';
+    SMALL.forEach(function(tx,i){h+='<button type="button" class="chip" data-a="small" data-i="'+i+'" aria-pressed="'+(S.small[i]?'true':'false')+'">'+esc(tx)+'</button>';});
+    h+='</div><div class="card sage"><p>Small steps count. Choose one and do it today.</p></div>'+
+    '<div class="row">'+backBtn()+'<button class="btn" data-a="sub" type="button">Next</button></div>';
+  } else {
+    h='<h2>Nobody unwraps alone.</h2><p>Lazarus came out "bound hand and foot," and other hands untied him. Asking for help is not weakness. It is how the story works.</p>'+
+    '<label class="field" for="who">Who could you tell?</label><input type="text" id="who" autocomplete="off" placeholder="A parent, a counselor, a teacher, a friend">'+
+    '<p class="muted">Tell them today. It can be one sentence.</p>'+
+    '<div class="row">'+backBtn()+'<button class="btn" data-a="sub" type="button">Next</button></div>';
+  }
+  return h;
+}
+
+function vKnow(){
+  var best=1;
+  var o=["Keep it secret. A promise is a promise.","Tell a trusted adult the same day, stay with them, and help them call or text 988.","Wait a few days to see if they feel better."];
+  var h='<span class="label">Station 4 of 4 · Loop in · One to know by heart</span><h2>A friend says they have thought about hurting themselves, and asks you to keep it secret.</h2><p>What do you do?</p>';
+  o.forEach(function(t,i){
+    var cls='opt',tl='';
+    if(S.know!==null){
+      if(i===best){cls+=' best';tl='<span class="tl">'+(S.know===best?'That\'s it':'The stronger move')+'</span>';}
+      else if(i===S.know){cls+=' close';tl='<span class="tl">Close</span>';}
+    }
+    h+='<button type="button" class="'+cls+'" data-a="know" data-i="'+i+'"'+(S.know!==null?' disabled':'')+'>'+esc(t)+tl+'</button>';
+  });
+  if(S.know!==null){
+    h+='<div class="fb" role="status"><p>'+(S.know===best?'Yes. ':'That comes from loyalty, and it makes sense. But safety comes first. ')+'This is the one secret you do not keep. Telling an adult is not a betrayal. It is love, put to work.</p></div>'+
+    '<div class="card alert" style="margin-top:1rem"><h3>Know this by heart</h3><ul class="four">'+
+    '<li><b>Ask</b><span>Directly and kindly: "Are you thinking about hurting yourself?"</span></li>'+
+    '<li><b>Stay</b><span>Don\'t leave them alone with it.</span></li>'+
+    '<li><b>Tell</b><span>A trusted adult, the same day. Never keep this secret.</span></li>'+
+    '<li><b>Call</b><span>Call or text 988, any hour. In danger right now: 911.</span></li></ul></div>';
+  }
+  h+='<div class="row">'+backBtn()+(S.know!==null?'<button class="btn" data-a="tofinish" type="button">Next</button>':'')+'</div>';
+  return h;
+}
+
+function vFinish(){
+  return '<span class="label">Finish · Put it together</span><h2>Before you go.</h2>'+
+  '<div class="card"><span class="label">Read this</span><p>You just practiced four things for a friend, and each time you turned the same step toward yourself. The kindness you give a friend is the kindness you deserve.</p></div>'+
+  '<div class="card gold"><span class="label">Think about this</span><p>What would you say to a friend who felt the way you sometimes do?</p></div>'+
+  '<label class="field" for="kind">Write one kind, true sentence to yourself.</label><textarea id="kind" placeholder="Say it the way you would to a friend."></textarea>'+
+  '<label class="field" for="pledge">This week I will hand a strip, a note, or a kind word to:</label><input type="text" id="pledge" autocomplete="off" placeholder="Someone who could use it">'+
+  '<p class="muted">Nothing here is saved. You can leave either box empty.</p>'+
+  '<div class="row">'+backBtn()+'<button class="btn" data-a="tocard" type="button">Make my card</button></div>';
+}
+
+function vCard(){
+  var step=[];SMALL.forEach(function(t,i){if(S.small[i])step.push(t);});
+  var h='<span class="label">Your Come Forth Card</span><h2>You did something real today.</h2>';
+  if(S.total)h+='<p>You practiced all four steps, for a friend and for yourself. You chose the stronger move first on '+S.first+' of '+S.total+' steps. The ones that gave you pause are the ones that give everyone pause.</p>';
+  h+='<div class="card gold"><h3>For a friend</h3><ul class="four">'+
+   '<li><b>Notice</b><span>Say what you see, with warmth.</span></li>'+
+   '<li><b>Listen</b><span>Ask, then wait. Curiosity replaces correction.</span></li>'+
+   '<li><b>Loosen</b><span>One small, real step.</span></li>'+
+   '<li><b>Loop in</b><span>A trusted adult. Never keep safety a secret.</span></li></ul></div>'+
+  '<div class="card sky"><h3>For you</h3>';
+  if(S.kind.trim()){h+='<p class="big" id="kindOut"></p>';} else {h+='<p class="muted">You didn\'t write a sentence, and that\'s fine. Here is one you can borrow: <b>You are loved. Full stop.</b></p>';}
+  if(step.length)h+='<p><b>One small step today:</b> '+esc(step.join(', '))+'</p>';
+  if(S.who.trim())h+='<p><b>I could tell:</b> <span id="whoOut"></span></p>';
+  if(S.pledge.trim())h+='<p><b>This week I will give something kind to:</b> <span id="pledgeOut"></span></p>';
+  h+='</div>';
+  if(S.mode==='group')h+=crewFinale();
+  h+='<div class="card alert"><p><b>Need help?</b> Tell a trusted adult. 988 is call or text, any hour. In danger now: 911.</p></div>'+
+  '<p class="muted">Take a screenshot if you want to keep this card. Nothing here was saved.</p>'+
+  '<div class="row"><button class="btn" data-a="another" type="button">Try another friend</button><button class="btn ghost" data-a="restart" type="button">Start over</button></div>';
+  setTimeout(function(){
+    var k=document.getElementById('kindOut');if(k)k.textContent='“'+S.kind.trim()+'”';
+    var w=document.getElementById('whoOut');if(w)w.textContent=S.who.trim();
+    var p=document.getElementById('pledgeOut');if(p)p.textContent=S.pledge.trim();
+  },0);
+  return h;
+}
+
+/* ---------- actions ---------- */
+function resetStillIfRunning(){clearTimer();if(S.stillState==='run')S.stillState='idle';}
+function afterGate(g){
+  S.picked=null;
+  if(g>=4){S.screen='finish';}
+  else{S.stn=g;S.sub=0;S.screen='stn';}
+}
+function finishStation(){
+  var k='st'+S.stn;
+  if(!S.stnDone[k]){S.stnDone[k]=true;S.points+=10;}
+  if(S.mode==='group'){S.gate=S.stn+1;S.picked=null;S.wordMsg='';S.screen='gate';}
+  else{afterGate(S.stn+1);}
+}
+function nextSub(){
+  resetStillIfRunning();
+  if(S.sub<maxSub()){S.sub++;S.picked=null;}
+  else{finishStation();}
+  render();focusHead();
+}
+function prevSub(){
+  resetStillIfRunning();
+  if(S.sub>0){S.sub--;S.picked=null;}
+  else if(S.stn>0){S.stn--;S.sub=(S.stn===3?3:2);S.picked=null;}
+  else{S.screen='pick';}
+  render();focusHead();
+}
+function keepVisible(){var f=app.querySelector('.fb');if(f)f.scrollIntoView({block:'nearest'});}
+
+app.addEventListener('click',function(e){
+  var t=e.target.closest('[data-a]');if(!t||t.disabled)return;
+  var a=t.getAttribute('data-a'),i=parseInt(t.getAttribute('data-i'),10);
+  if(a==='modegroup'){S.mode='group';go('crew');}
+  else if(a==='modesolo'){S.mode='solo';go('lazarus');}
+  else if(a==='crewpick'){S.crew=CREWS[i];render();}
+  else if(a==='crewgo'){go('lazarus');}
+  else if(a==='sillydone'){if(!S.silly[i]){S.silly[i]=true;S.points+=5;}render();}
+  else if(a==='q1'){S.q1=i;render();keepVisible();}
+  else if(a==='topick'){if(S.mode==='group'){S.gate=0;S.wordMsg='';go('gate');}else{go('pick');}}
+  else if(a==='backlaz'){go('lazarus');}
+  else if(a==='pick'){S.sc=i;S.stn=0;S.sub=0;S.picked=null;go('stn');}
+  else if(a==='sub'){nextSub();}
+  else if(a==='back'){if(S.screen==='finish'){S.screen='stn';S.stn=3;S.sub=3;render();focusHead();}else{prevSub();}}
+  else if(a==='opt'){
+    var key=SC[S.sc].id+':'+S.stn;
+    S.picked=i;
+    if(!S.scored[key]){S.scored[key]=true;S.total++;if(i===SC[S.sc].steps[S.stn].b){S.first++;S.points+=5;}}
+    render();keepVisible();
+  }
+  else if(a==='know'){S.know=i;render();keepVisible();}
+  else if(a==='mood'){S.mood=i;render();}
+  else if(a==='small'){S.small[i]=!S.small[i];render();}
+  else if(a==='still'){
+    S.stillState='run';S.stillLeft=30;render();
+    timer=setInterval(function(){
+      S.stillLeft--;
+      var n=document.getElementById('stillN');
+      if(S.stillLeft<=0){clearTimer();S.stillState='done';render();}
+      else if(n){n.textContent=S.stillLeft;}
+    },1000);
+  }
+  else if(a==='tofinish'){resetStillIfRunning();finishStation();render();focusHead();}
+  else if(a==='tocard'){go('card');}
+  else if(a==='another'){S.stn=0;S.sub=0;S.picked=null;go('pick');}
+  else if(a==='restart'){S=fresh();go('welcome');}
+});
+app.addEventListener('input',function(e){
+  var id=e.target.id;
+  if(id==='who')S.who=e.target.value;
+  else if(id==='kind')S.kind=e.target.value;
+  else if(id==='pledge')S.pledge=e.target.value;
+});
+
+app.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(e.target.id!=='wordForm')return;
+  var v=(document.getElementById('word').value||'').toLowerCase().replace(/[^a-z]/g,'');
+  if(v===GATES[S.gate].word||v==='ianopen'){
+    S.wordMsg='';S.tries=0;
+    if(S.gate===0){go('pick');}else{afterGate(S.gate);render();focusHead();}
+  } else {
+    S.tries=(S.tries||0)+1;
+    S.wordMsg='Not yet! Wait for Ian to say the Crew Word.'+(S.tries>=3?' Still stuck? Raise your hand and Ian will help.':'');render();
+    var w=document.getElementById('word');if(w)w.focus();
+  }
+});
+
+var hb=document.getElementById('helpBtn'),hp=document.getElementById('helpPanel');
+hb.addEventListener('click',function(){
+  var open=hp.hidden;hp.hidden=!open;hb.setAttribute('aria-expanded',open?'true':'false');
+  hb.textContent=open?'Close':'Need help now?';
+});
+
+render();
+})();
+</script>
+</body>
+</html>
