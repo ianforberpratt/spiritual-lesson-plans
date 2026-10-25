@@ -210,6 +210,8 @@ var MOODS=[
  {l:'Really heavy',heavy:true,m:"Thank you for being honest. You are not a problem to be fixed, and you don't have to carry this alone."},
  {l:'Rather not say',m:"That's completely fine. You don't owe anyone an answer. The rest is here for you anyway."}
 ];
+var GOAL=100;
+function rank(n){return n>=90?'Master Unwrappers':n>=70?'Knot Wizards':n>=40?'Loosening Up':'Just Getting Started';}
 var SMALL=['Rest or a nap','Water and a meal','A walk outside','Music','Pray or sit quietly','Text a friend','One easy task'];
 var LOOSED=[
  "Naming what weighs on you is the first untying. A knot you can see is a knot you can work on.",
@@ -223,7 +225,7 @@ var LOOK=[
  "Who actually moves the stone, Jesus or the people standing there? Notice what the stone was blocking.",
  "What is still on Lazarus when he walks out? Who is told to help, and what does the psalmist say about speaking up?"
 ];
-var CREWS=['The Untied Kingdom','The Knot Ninjas','The Stone Rollers','The Bracelet Bandits','The Open Door Crew','The Sidekick Society'];
+var CREWS=['Aura Farmers','Team Delulu','The Chill Guys','Locked-In Llamas','The Soft Launch','Gentle Menace','Main Character Energy','No Cap Collective','The Unbothered Unicorns','Pocket Pals'];
 var GATES=[
  {word:'banana',badge:null,silly:"Sky-write it! With your whole arm, write \"Loose him\" in the air in the biggest, fanciest letters you can. Then tell the person next to you what \"loose\" means in three words or fewer."},
  {word:'pickle',badge:'Sherlock of Kindness',silly:"Detective eyebrows! Look at the person next to you and say one kind thing you notice: a good laugh, great effort, a cool vibe."},
@@ -232,7 +234,7 @@ var GATES=[
  {word:'hiccup',badge:'Bridge Builder',silly:"The Squeeze! Stand in a circle and pass a hand squeeze, or a shoulder tap, all the way around. Time it, then beat your record."}
 ];
 
-function fresh(){return {screen:'welcome',mode:'group',crew:'',points:0,stnDone:{},gate:0,silly:{},wordMsg:'',q1:null,whole:null,weight:null,sc:null,stn:0,sub:0,picked:null,scored:{},first:0,total:0,know:null,mood:null,small:{},stillLeft:30,stillState:'idle',kind:'',who:'',pledge:''};}
+function fresh(){return {screen:'welcome',mode:'group',crew:'',crewOwn:'',points:0,stnDone:{},gate:0,silly:{},wordMsg:'',q1:null,whole:null,weight:null,sc:null,stn:0,sub:0,picked:null,scored:{},first:0,total:0,know:null,mood:null,small:{},stillLeft:30,stillState:'idle',kind:'',who:'',pledge:''};}
 var S=fresh();
 var timer=null;
 function clearTimer(){if(timer){clearInterval(timer);timer=null;}}
@@ -240,7 +242,7 @@ function clearTimer(){if(timer){clearInterval(timer);timer=null;}}
 function setProg(n){
   var h='';for(var i=0;i<6;i++){h+='<i'+(i<n?' class="on"':'')+'></i>';}prog.innerHTML=h;
   var p=document.getElementById('pts');
-  if(p){if(S.mode==='group'&&S.screen!=='welcome'){p.hidden=false;p.textContent=S.points+' pts';}else{p.hidden=true;}}
+  if(p){if(S.mode==='group'&&S.screen!=='welcome'){p.hidden=false;p.textContent=S.points+' / '+GOAL+' pts';}else{p.hidden=true;}}
 }
 function progN(){
   if(S.screen==='gate')return S.gate;
@@ -262,6 +264,7 @@ function render(){
   var a=document.getElementById('who');if(a)a.value=S.who;
   var b=document.getElementById('kind');if(b)b.value=S.kind;
   var c=document.getElementById('pledge');if(c)c.value=S.pledge;
+  var d=document.getElementById('crewown');if(d)d.value=S.crewOwn;
 }
 function bestMark(S1){return S1;}
 
@@ -278,7 +281,7 @@ function vWelcome(){return ''+
  '<li><b>Turn it toward you.</b> The same step, for yourself.</li></ul>'+
  '<p class="muted" style="margin:0">We learn to help by understanding first, then trying, then looking inward. That is the order here.</p></div>'+
  '<div class="card"><ul style="margin:0;padding-left:1.2rem">'+
- '<li><b>With your crew:</b> you move together. When you finish a station, freeze like a statue until Ian says the Crew Word. Expect silly challenges, badges, and Crew Points that you earn as a team.</li>'+
+ '<li><b>With your crew:</b> you move together. When you finish a station, pause and reflect on your worth and value until Ian says the Crew Word. Expect silly challenges, badges, and points. Work toward 100.</li>'+
  '<li><b>On your own:</b> skip the waiting and go at your own pace.</li>'+
  '<li>Nothing you type here is saved or sent.</li>'+
  '<li>There are no grades. A different answer teaches you something too.</li>'+
@@ -286,9 +289,10 @@ function vWelcome(){return ''+
  '<div class="row"><button class="btn" data-a="modegroup" type="button">With my crew</button><button class="btn ghost" data-a="modesolo" type="button">On my own</button></div>';}
 
 function vCrew(){
-  var h='<span class="label">Crew setup</span><h2>Pick your crew name, together.</h2><p>Decide as a group, then everyone taps the same one. The silliest name wins.</p><div class="chips" role="group" aria-label="Crew names">';
-  CREWS.forEach(function(c,i){h+='<button type="button" class="chip" data-a="crewpick" data-i="'+i+'" aria-pressed="'+(S.crew===c?'true':'false')+'">'+esc(c)+'</button>';});
-  h+='</div><div class="row"><button class="btn ghost" data-a="restart" type="button">Back</button><button class="btn" data-a="crewgo" type="button"'+(S.crew?'':' disabled')+'>Next</button></div>';
+  var h='<span class="label">Crew setup</span><h2>Pick your crew name, together.</h2><p>Decide as a group, then everyone taps the same one. Or make up your own. The silliest name wins.</p><div class="chips" role="group" aria-label="Crew names">';
+  CREWS.forEach(function(c,i){h+='<button type="button" class="chip" data-a="crewpick" data-i="'+i+'" aria-pressed="'+(S.crew===c&&!S.crewOwn?'true':'false')+'">'+esc(c)+'</button>';});
+  h+='</div><label class="field" for="crewown">Or write your own crew name</label><input type="text" id="crewown" maxlength="30" autocomplete="off" placeholder="Your own name">'+
+  '<div class="row"><button class="btn ghost" data-a="restart" type="button">Back</button><button class="btn" id="crewgo" data-a="crewgo" type="button"'+(S.crew?'':' disabled')+'>Next</button></div>';
   return h;
 }
 
@@ -298,7 +302,7 @@ function vGate(){
   if(g===0){h+='<h2>Ready, crew?</h2><p>Before the practice, everybody gets on the same page.</p>';}
   else{h+='<h2>You finished '+esc(ST[g-1].n)+'.</h2><p><b>+10 Crew Points.</b></p><div class="card sage"><span class="label">Badge earned</span><h3>'+esc(G.badge)+'</h3></div>';}
   h+='<div class="card gold"><span class="label">Silly challenge</span><p>'+esc(G.silly)+'</p><button class="btn ghost" data-a="sillydone" data-i="'+g+'" type="button"'+(S.silly[g]?' disabled':'')+'>'+(S.silly[g]?'Done · +5':'We did it! +5')+'</button></div>'+
-  '<div class="card sky"><span class="label">Now wait for the crew</span><div class="pulse" aria-hidden="true"></div><p style="text-align:center;margin:0">Freeze like a statue until everyone is done. When Ian says the <b>Crew Word</b>, type it below.</p></div>'+
+  '<div class="card sky"><span class="label">Pause and reflect</span><div class="pulse" aria-hidden="true"></div><p style="text-align:center">While the crew finishes, just think about your worth and value.</p><p style="text-align:center"><b>Write down one thing you like about yourself.</b> Paper or your notes app is fine. It is just for you.</p><p style="text-align:center;margin:0">When Ian says the <b>Crew Word</b>, type it below.</p></div>'+
   '<form id="wordForm" autocomplete="off"><label class="field" for="word">Crew Word</label><input type="text" id="word" autocapitalize="none" autocomplete="off" placeholder="Wait for it...">';
   if(S.wordMsg)h+='<p class="muted" role="status">'+esc(S.wordMsg)+'</p>';
   h+='<button class="btn" type="submit">Unlock the next part</button></form>';
@@ -307,8 +311,8 @@ function vGate(){
 
 function crewFinale(){
   var h='<div class="card gold"><span class="label">Crew finale</span><h3>'+esc(S.crew||'Your crew')+'</h3>'+
-  '<p class="big">'+S.points+' Crew Points</p>'+
-  '<p>Add up the crew: everyone says their points out loud while Ian writes the total.</p><p><b>Badges you earned:</b> Sherlock of Kindness, Big Ears, Knot Wizard, Bridge Builder.</p>'+
+  '<p class="big">'+S.points+' of '+GOAL+' points</p><p><b>Your rank:</b> '+rank(S.points)+(S.points<GOAL?'. Try another friend to earn more.':'. You hit the goal!')+'</p>'+
+  '<p>Add up the crew: everyone says their points out loud while Ian writes the total. Can you beat 100 each?</p><p><b>Badges you earned:</b> Sherlock of Kindness, Big Ears, Knot Wizard, Bridge Builder.</p>'+
   '<p style="margin:0">Then, together, on three: <b>"We are not alone, and neither are you!"</b></p></div>';
   return h;
 }
@@ -316,7 +320,7 @@ function crewFinale(){
 function vLazarus(){
   var opts=['Lazarus','The people standing around','God'];
   var h='<span class="label">Start here · Read this</span><h2>Lazarus is in the tomb.</h2>'+
-  '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Take turns, one verse each.':'Read it slowly, out loud or in your head.')+'</p>'+
+  '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Read it quietly to your crew, one verse each.':'Read it slowly, out loud or in your head.')+'</p>'+
   '<p class="ref">John 11:38–44</p><p class="scripture">'+
   '<sup>38</sup> It was a cave, and a stone lay upon it. <sup>39</sup> Jesus said, Take ye away the stone. Martha, the sister of him that was dead, saith unto him, Lord, by this time he stinketh: for he hath been dead four days. <sup>40</sup> Jesus saith unto her, Said I not unto thee, that, if thou wouldest believe, thou shouldest see the glory of God? <sup>41</sup> Then they took away the stone from the place where the dead was laid. And Jesus lifted up his eyes, and said, Father, I thank thee that thou hast heard me. <sup>42</sup> And I knew that thou hearest me always: but because of the people which stand by I said it, that they may believe that thou hast sent me. <sup>43</sup> And when he thus had spoken, he cried with a loud voice, Lazarus, come forth. <sup>44</sup> And he that was dead came forth, bound hand and foot with graveclothes: and his face was bound about with a napkin. Jesus saith unto them, Loose him, and let him go.</p>'+
   '<p class="ref">Science and Health 75:13</p><p class="scripture">Jesus restored Lazarus by the understanding that Lazarus had never died, not by an admission that his body had died and then lived again.</p>'+
@@ -340,7 +344,7 @@ function vWhole(){
   var o=["They keep failing, so I should expect the same thing again.","They are still whole and complete, God's own reflection, and they are allowed to ask for help.","They just need to try harder."];
   var h='<span class="label">Seeing whole · Read this</span><h2>See yourself, and others, whole.</h2>'+
   '<div class="card"><span class="label">What it is</span><p>Seeing whole means holding in thought what is true of a person underneath whatever is going on: loved, whole, and complete. It is not pretending that nothing hurts, and it is not skipping real help. It is refusing to let the struggle be the whole story. Whatever is tying someone up or weighing them down is not who they are.</p></div>'+
-  '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Take turns, one line each.':'Read it slowly, out loud or in your head.')+'</p>'+
+  '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Read it quietly to your crew, one line each.':'Read it slowly, out loud or in your head.')+'</p>'+
   '<p class="ref">Genesis 1:27, 31</p><p class="scripture"><sup>27</sup> So God created man in his own image, in the image of God created he him. <sup>31</sup> And God saw every thing that he had made, and, behold, it was very good.</p>'+
   '<p class="ref">Colossians 2:10</p><p class="scripture">And ye are complete in him.</p>'+
   '<p class="ref">Science and Health 471</p><p class="scripture">Man is, and forever has been, God\'s reflection.</p>'+
@@ -364,7 +368,7 @@ function vWhole(){
 
 function vPick(){
   var h='<span class="label">Before the practice</span><h2>Pick someone to practice with.</h2>'+
-  '<p>Each friend is made up. The last one is about you. You will walk with the same person through all four steps. If you finish early, you can try another.</p>';
+  '<p>Each friend is made up. The last one is about you. You will walk with the same person through all four steps. If you finish early, you can try another.</p>'+(S.mode==='group'?'<p><b>Decide as a crew, and everyone tap the same one.</b></p>':'');
   SC.forEach(function(s,i){
     h+='<button type="button" class="scen" data-a="pick" data-i="'+i+'"><b>'+esc(s.name)+(s.heavy?' · a heavier one':'')+(s.me?' · this one is about you':'')+'</b><span>'+esc(s.story)+'</span></button>';
   });
@@ -383,7 +387,7 @@ function vStation(){
     '<div class="card"><span class="label">What it is</span><p>'+esc(t.what)+'</p></div>'+
     '<div class="card sage"><span class="label">Why it works</span><p>'+esc(t.why)+'</p></div>'+
     '<div class="card"><span class="label">Loosed</span><p>'+esc(LOOSED[S.stn])+'</p></div>'+
-    '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Take turns, one verse each.':'Read it slowly, out loud or in your head.')+'</p>'+t.verse+'</div>'+
+    '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Read it quietly to your crew, one verse each.':'Read it slowly, out loud or in your head.')+'</p>'+t.verse+'</div>'+
     '<div class="card"><span class="label">Look for</span><p>'+esc(LOOK[S.stn])+'</p></div>'+
     '<div class="card gold"><span class="label">Think about this</span><p>'+esc(t.think)+'</p><p class="muted">Take a moment. You don\'t need to write anything.</p></div>'+
     '<div class="row">'+backBtn()+'<button class="btn" data-a="sub" type="button">I\'ve thought about it</button></div>';
@@ -534,8 +538,9 @@ function afterGate(g){
 }
 function finishStation(){
   var k='st'+S.stn;
-  if(!S.stnDone[k]){S.stnDone[k]=true;S.points+=10;}
-  if(S.mode==='group'){S.gate=S.stn+1;S.picked=null;S.wordMsg='';S.screen='gate';}
+  var again=!!S.stnDone[k];
+  if(!again){S.stnDone[k]=true;S.points+=10;}
+  if(S.mode==='group'&&!again){S.gate=S.stn+1;S.picked=null;S.wordMsg='';S.screen='gate';}
   else{afterGate(S.stn+1);}
 }
 function nextSub(){
@@ -558,7 +563,7 @@ app.addEventListener('click',function(e){
   var a=t.getAttribute('data-a'),i=parseInt(t.getAttribute('data-i'),10);
   if(a==='modegroup'){S.mode='group';go('crew');}
   else if(a==='modesolo'){S.mode='solo';go('lazarus');}
-  else if(a==='crewpick'){S.crew=CREWS[i];render();}
+  else if(a==='crewpick'){S.crew=CREWS[i];S.crewOwn='';render();}
   else if(a==='crewgo'){go('lazarus');}
   else if(a==='sillydone'){if(!S.silly[i]){S.silly[i]=true;S.points+=5;}render();}
   else if(a==='q1'){S.q1=i;render();keepVisible();}
@@ -592,7 +597,7 @@ app.addEventListener('click',function(e){
   }
   else if(a==='tofinish'){resetStillIfRunning();finishStation();render();focusHead();}
   else if(a==='tocard'){go('card');}
-  else if(a==='another'){S.stn=0;S.sub=0;S.picked=null;go('pick');}
+  else if(a==='another'){S.stn=0;S.sub=0;S.picked=null;S.know=null;S.mood=null;S.stillState='idle';go('pick');}
   else if(a==='restart'){S=fresh();go('welcome');}
 });
 app.addEventListener('input',function(e){
@@ -600,6 +605,11 @@ app.addEventListener('input',function(e){
   if(id==='who')S.who=e.target.value;
   else if(id==='kind')S.kind=e.target.value;
   else if(id==='pledge')S.pledge=e.target.value;
+  else if(id==='crewown'){
+    S.crewOwn=e.target.value;S.crew=e.target.value.trim();
+    var go=document.getElementById('crewgo');if(go)go.disabled=!S.crew;
+    app.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false');});
+  }
 });
 
 app.addEventListener('submit',function(e){
