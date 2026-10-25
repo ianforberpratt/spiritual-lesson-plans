@@ -223,7 +223,7 @@ var LOOK=[
  "Who actually moves the stone, Jesus or the people standing there? Notice what the stone was blocking.",
  "What is still on Lazarus when he walks out? Who is told to help, and what does the psalmist say about speaking up?"
 ];
-var CREWS=['The Untied Kingdom','The Knot Ninjas','The Stone Rollers','The Bracelet Bandits','The Open Door Crew','The Sidekick Society'];
+var CREWS=['Aura Farmers','Team Delulu','The Chill Guys','Locked-In Llamas','The Soft Launch','Gentle Menace','Main Character Energy','No Cap Collective','The Unbothered Unicorns','Pocket Pals'];
 var GATES=[
  {word:'banana',badge:null,silly:"Sky-write it! With your whole arm, write \"Loose him\" in the air in the biggest, fanciest letters you can. Then tell the person next to you what \"loose\" means in three words or fewer."},
  {word:'pickle',badge:'Sherlock of Kindness',silly:"Detective eyebrows! Look at the person next to you and say one kind thing you notice: a good laugh, great effort, a cool vibe."},
@@ -232,7 +232,7 @@ var GATES=[
  {word:'hiccup',badge:'Bridge Builder',silly:"The Squeeze! Stand in a circle and pass a hand squeeze, or a shoulder tap, all the way around. Time it, then beat your record."}
 ];
 
-function fresh(){return {screen:'welcome',mode:'group',crew:'',points:0,stnDone:{},gate:0,silly:{},wordMsg:'',q1:null,whole:null,weight:null,sc:null,stn:0,sub:0,picked:null,scored:{},first:0,total:0,know:null,mood:null,small:{},stillLeft:30,stillState:'idle',kind:'',who:'',pledge:''};}
+function fresh(){return {screen:'welcome',mode:'group',crew:'',crewOwn:'',points:0,stnDone:{},gate:0,silly:{},wordMsg:'',q1:null,whole:null,weight:null,sc:null,stn:0,sub:0,picked:null,scored:{},first:0,total:0,know:null,mood:null,small:{},stillLeft:30,stillState:'idle',kind:'',who:'',pledge:''};}
 var S=fresh();
 var timer=null;
 function clearTimer(){if(timer){clearInterval(timer);timer=null;}}
@@ -262,6 +262,7 @@ function render(){
   var a=document.getElementById('who');if(a)a.value=S.who;
   var b=document.getElementById('kind');if(b)b.value=S.kind;
   var c=document.getElementById('pledge');if(c)c.value=S.pledge;
+  var d=document.getElementById('crewown');if(d)d.value=S.crewOwn;
 }
 function bestMark(S1){return S1;}
 
@@ -286,9 +287,10 @@ function vWelcome(){return ''+
  '<div class="row"><button class="btn" data-a="modegroup" type="button">With my crew</button><button class="btn ghost" data-a="modesolo" type="button">On my own</button></div>';}
 
 function vCrew(){
-  var h='<span class="label">Crew setup</span><h2>Pick your crew name, together.</h2><p>Decide as a group, then everyone taps the same one. The silliest name wins.</p><div class="chips" role="group" aria-label="Crew names">';
-  CREWS.forEach(function(c,i){h+='<button type="button" class="chip" data-a="crewpick" data-i="'+i+'" aria-pressed="'+(S.crew===c?'true':'false')+'">'+esc(c)+'</button>';});
-  h+='</div><div class="row"><button class="btn ghost" data-a="restart" type="button">Back</button><button class="btn" data-a="crewgo" type="button"'+(S.crew?'':' disabled')+'>Next</button></div>';
+  var h='<span class="label">Crew setup</span><h2>Pick your crew name, together.</h2><p>Decide as a group, then everyone taps the same one. Or make up your own. The silliest name wins.</p><div class="chips" role="group" aria-label="Crew names">';
+  CREWS.forEach(function(c,i){h+='<button type="button" class="chip" data-a="crewpick" data-i="'+i+'" aria-pressed="'+(S.crew===c&&!S.crewOwn?'true':'false')+'">'+esc(c)+'</button>';});
+  h+='</div><label class="field" for="crewown">Or write your own crew name</label><input type="text" id="crewown" maxlength="30" autocomplete="off" placeholder="Your own name">'+
+  '<div class="row"><button class="btn ghost" data-a="restart" type="button">Back</button><button class="btn" id="crewgo" data-a="crewgo" type="button"'+(S.crew?'':' disabled')+'>Next</button></div>';
   return h;
 }
 
@@ -558,7 +560,7 @@ app.addEventListener('click',function(e){
   var a=t.getAttribute('data-a'),i=parseInt(t.getAttribute('data-i'),10);
   if(a==='modegroup'){S.mode='group';go('crew');}
   else if(a==='modesolo'){S.mode='solo';go('lazarus');}
-  else if(a==='crewpick'){S.crew=CREWS[i];render();}
+  else if(a==='crewpick'){S.crew=CREWS[i];S.crewOwn='';render();}
   else if(a==='crewgo'){go('lazarus');}
   else if(a==='sillydone'){if(!S.silly[i]){S.silly[i]=true;S.points+=5;}render();}
   else if(a==='q1'){S.q1=i;render();keepVisible();}
@@ -600,6 +602,11 @@ app.addEventListener('input',function(e){
   if(id==='who')S.who=e.target.value;
   else if(id==='kind')S.kind=e.target.value;
   else if(id==='pledge')S.pledge=e.target.value;
+  else if(id==='crewown'){
+    S.crewOwn=e.target.value;S.crew=e.target.value.trim();
+    var go=document.getElementById('crewgo');if(go)go.disabled=!S.crew;
+    app.querySelectorAll('.chip').forEach(function(c){c.setAttribute('aria-pressed','false');});
+  }
 });
 
 app.addEventListener('submit',function(e){
