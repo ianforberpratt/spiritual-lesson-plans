@@ -46,6 +46,7 @@ while (my $c = $srv->accept) {
   my $file;
   if (-d $fs) {
     $file = "$fs/index.html" if -f "$fs/index.html";
+    $file = "$fs.html" if !$file && $path !~ m{/$} && -f "$fs.html";   # dir without index: fall through to cleanUrls
   } elsif (-f $fs) {
     $file = $fs;
   } elsif ($path !~ /\.[a-z0-9]+$/i && -f "$fs.html") {

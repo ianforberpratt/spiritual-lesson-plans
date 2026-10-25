@@ -327,3 +327,7 @@
 @media (prefers-reduced-motion: reduce) {
   .piw-choice { transition: none; }
 }
+
+/* ---------- "Also under Put It to Work" link block (static, below the exercise) ---------- */
+.piw-more-wrap { border-top: 1px solid var(--rule); padding-block: clamp(32px, 5vw, 56px); }
+.piw-more-title { font-size: clamp(1.5rem, 3.2vw, 2rem); margin: 0.2rem 0 0.8rem; }

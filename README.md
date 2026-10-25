@@ -19,6 +19,7 @@ what-we-believe.html    /what-we-believe
 about.html              /about
 not-broken.html         /not-broken (standalone interactive, linked from /for-you)
 put-it-to-work.html     /put-it-to-work (standalone interactive, linked from /for-you)
+put-it-to-work/alongside.html  /put-it-to-work/alongside (standalone interactive: mental-health practice, evergreen, indexed; mounts in a shadow root; stores nothing; same privacy rules as /put-it-to-work)
 alongside.html          /alongside (standalone phone lab for the Alongside Sunday school lesson; self-contained, stores nothing, noindex, not linked from nav)
 404.html
 assets/css/style.css   Shared styles (palette + components)

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Static privacy check for the Put It to Work tab (/put-it-to-work).
+# Static privacy check for the Put It to Work tab (/put-it-to-work) and its Alongside page (/put-it-to-work/alongside).
 #
 # The page promises "Nothing is saved or sent anywhere." This fails the build if the
 # tab's own files gain any way to persist or transmit what a visitor types.
@@ -9,7 +9,7 @@
 #   sh scripts/check-put-it-to-work-privacy.sh        (run from anywhere)
 
 cd "$(dirname "$0")/.." || exit 2
-FILES="put-it-to-work.html assets/js/put-it-to-work.js assets/css/put-it-to-work.css"
+FILES="put-it-to-work.html assets/js/put-it-to-work.js assets/css/put-it-to-work.css put-it-to-work/alongside.html"
 CASES=$(ls content/put-it-to-work/*.json 2>/dev/null)
 fail=0
 
@@ -37,7 +37,11 @@ fi
 if grep -n -E '<script[^>]*src=' put-it-to-work.html | grep -v -E 'src="/assets/js/put-it-to-work\.js"'; then
   bad "put-it-to-work.html loads a script other than put-it-to-work.js"
 fi
-hosts=$(grep -o -h -E 'https?://[A-Za-z0-9.-]+' put-it-to-work.html assets/js/put-it-to-work.js assets/css/put-it-to-work.css | sort -u \
+# The Alongside page (put-it-to-work/alongside.html) is fully inline: it must load no script file at all.
+if grep -n -E '<script[^>]*src=' put-it-to-work/alongside.html; then
+  bad "put-it-to-work/alongside.html loads a script file (it must be inline-only)"
+fi
+hosts=$(grep -o -h -E 'https?://[A-Za-z0-9.-]+' put-it-to-work.html assets/js/put-it-to-work.js assets/css/put-it-to-work.css put-it-to-work/alongside.html | sort -u \
   | grep -v -E '^https?://(fonts\.googleapis\.com|fonts\.gstatic\.com|www\.spirituallessonplans\.org|www\.w3\.org|schema\.org|creativecommons\.org)$')
 [ -z "$hosts" ] || bad "unexpected external hosts: $hosts"
 
