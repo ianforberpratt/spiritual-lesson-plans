@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Browser privacy test for /put-it-to-work/alongside: types a unique canary string into EVERY
-// text box the practice offers, walks the 5-minute path, the full solo path and the group path,
+// text box the practice offers, walks the solo path and the group path,
 // and fails if the canary (or any POST, beacon, storage write or cookie) shows up anywhere.
 //
 //   perl scripts/serve.pl . 8099 &            # local preview server (mirrors Vercel cleanUrls)
@@ -18,7 +18,7 @@ const fail = m => { failures.push(m); console.log('FAIL: ' + m); };
 
 (async () => {
   const browser = await chromium.launch();
-  for (const mode of ['quick', 'solo', 'group']) {
+  for (const mode of ['solo', 'group']) {
     const ctx = await browser.newContext({ viewport: { width: 420, height: 900 }, reducedMotion: 'reduce' });
     const page = await ctx.newPage();
     const requests = [];
@@ -55,7 +55,7 @@ const fail = m => { failures.push(m); console.log('FAIL: ' + m); };
       await fill('#who', CANARY + ' who'); await B('Next');
       await page.click('.chip >> nth=2'); await B('Make my card');
     } else {
-      await B(mode === 'group' ? 'With a group' : 'The full practice');
+      await B(mode === 'group' ? 'With a group' : 'Start on your own');
       if (mode === 'group') { await fill('#crewown', CANARY + ' crew'); await B('Next'); }
       await B('Next');
       await B('Keep reading'); await B('Keep reading');
