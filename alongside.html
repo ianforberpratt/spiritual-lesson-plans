@@ -279,7 +279,7 @@ function vWelcome(){return ''+
  '<li><b>Turn it toward you.</b> The same step, for yourself.</li></ul>'+
  '<p class="muted" style="margin:0">We learn to help by understanding first, then trying, then looking inward. That is the order here.</p></div>'+
  '<div class="card"><ul style="margin:0;padding-left:1.2rem">'+
- '<li><b>With your crew:</b> you move together. When you finish a station, freeze like a statue until Ian says the Crew Word. Expect silly challenges, badges, and Crew Points that you earn as a team.</li>'+
+ '<li><b>With your crew:</b> you move together. When you finish a station, pause and reflect on your worth and value until Ian says the Crew Word. Expect silly challenges, badges, and Crew Points that you earn as a team.</li>'+
  '<li><b>On your own:</b> skip the waiting and go at your own pace.</li>'+
  '<li>Nothing you type here is saved or sent.</li>'+
  '<li>There are no grades. A different answer teaches you something too.</li>'+
@@ -300,7 +300,7 @@ function vGate(){
   if(g===0){h+='<h2>Ready, crew?</h2><p>Before the practice, everybody gets on the same page.</p>';}
   else{h+='<h2>You finished '+esc(ST[g-1].n)+'.</h2><p><b>+10 Crew Points.</b></p><div class="card sage"><span class="label">Badge earned</span><h3>'+esc(G.badge)+'</h3></div>';}
   h+='<div class="card gold"><span class="label">Silly challenge</span><p>'+esc(G.silly)+'</p><button class="btn ghost" data-a="sillydone" data-i="'+g+'" type="button"'+(S.silly[g]?' disabled':'')+'>'+(S.silly[g]?'Done · +5':'We did it! +5')+'</button></div>'+
-  '<div class="card sky"><span class="label">Now wait for the crew</span><div class="pulse" aria-hidden="true"></div><p style="text-align:center;margin:0">Freeze like a statue until everyone is done. When Ian says the <b>Crew Word</b>, type it below.</p></div>'+
+  '<div class="card sky"><span class="label">Pause and reflect</span><div class="pulse" aria-hidden="true"></div><p style="text-align:center">While the crew finishes, just think about your worth and value.</p><p style="text-align:center"><b>Write down one thing you like about yourself.</b> Paper or your notes app is fine. It is just for you.</p><p style="text-align:center;margin:0">When Ian says the <b>Crew Word</b>, type it below.</p></div>'+
   '<form id="wordForm" autocomplete="off"><label class="field" for="word">Crew Word</label><input type="text" id="word" autocapitalize="none" autocomplete="off" placeholder="Wait for it...">';
   if(S.wordMsg)h+='<p class="muted" role="status">'+esc(S.wordMsg)+'</p>';
   h+='<button class="btn" type="submit">Unlock the next part</button></form>';
