@@ -48,6 +48,20 @@
 .al-minute h2{font-size:1.6rem;margin:0 0 .8rem}
 .al-list{margin:0 0 1.2rem;padding-left:1.3rem}
 .al-list li{margin-bottom:.55rem}
+.al-origin .al-beat{animation:alfade .6s ease both}
+.al-origin.al-stepping .al-beat.al-hide{display:none}
+@keyframes alfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.al-origin .al-beat{animation:none}}
+.piw-subnav{border-bottom:1px solid var(--rule,#e6dfd0);background:var(--cream,#faf5ea)}
+.piw-subnav .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;align-items:center;justify-content:space-between;padding-block:.65rem}
+.piw-crumb{margin:0;font-size:.85rem;color:var(--ink-soft,#5b5a6b)}
+.piw-crumb a{color:inherit;text-decoration:none}.piw-crumb a:hover{text-decoration:underline}
+.piw-crumb [aria-current]{font-weight:600;color:var(--ink,#2d2b3f)}
+.piw-tabs{display:flex;gap:.4rem;list-style:none;margin:0;padding:0}
+.piw-tabs a{display:inline-block;padding:.4rem .9rem;border-radius:999px;font-size:.85rem;font-weight:600;text-decoration:none;color:var(--ink,#2d2b3f);border:1px solid transparent}
+.piw-tabs a:hover{border-color:var(--rule,#d9d2c1)}
+.piw-tabs a[aria-current="page"]{background:var(--gold,#e8a94d);color:#2d2b3f}
+.al-note{background:var(--cream,#faf5ea);border-left:4px solid var(--gold,#e8a94d);padding:.8rem 1rem;border-radius:6px;color:inherit}
 .al-crisis{background:var(--cream);border-left:4px solid var(--gold);padding:.9rem 1.1rem;border-radius:var(--radius)}
 </style>
 <script type="application/ld+json">
@@ -86,6 +100,7 @@
     </ul>
   </div>
 </nav>
+<div class="piw-subnav"><div class="wrap"><p class="piw-crumb"><a href="/">Home</a> &rsaquo; <a href="/put-it-to-work">Put It to Work</a> &rsaquo; <span aria-current="page">Alongside</span></p><ul class="piw-tabs" aria-label="In Put It to Work"><li><a href="/put-it-to-work">The exercise</a></li><li><a href="/put-it-to-work/alongside" aria-current="page">Alongside</a></li></ul></div></div>
 
 <main id="main" class="al-main">
   <section class="al-intro">
@@ -95,6 +110,25 @@
       <p class="al-sub">Mental health, human and spiritual care</p>
       <p>Mental health is hard. For almost everyone, at some point. If you are struggling, or someone you love is, you are not alone, and you are not failing. This is a short, guided practice for anyone in the world: four ways to show up for a friend and for yourself, with human actions and spiritual ones side by side, drawing on wisdom from many traditions and from none.</p>
       <p>You do not have to believe anything in particular to use it. Pick the words that feel like yours. Try the 5-minute version, do the full practice, or run it with a group. Nothing you type is saved or sent, and you can share it with anyone you love.</p>
+    </div>
+  </section>
+
+  <section class="al-minute al-origin" aria-labelledby="al-origin-title">
+    <div class="wrap al-narrow">
+      <h2 id="al-origin-title">Where the idea comes from: a story about being unwrapped</h2>
+      <p>The heart of Alongside is one old story from the Bible, in the Gospel of John, chapter 11. A man named Lazarus has died, and his sisters and friends are heartbroken. His friend Jesus arrives, weeps with them, and calls Lazarus out. Lazarus walks out alive, but he is still wrapped in the cloths of the grave, his hands and feet bound and his face covered.</p>
+      <div class="al-beat">
+      <p>Then comes the line that matters: <i>&ldquo;Loose him, and let him go.&rdquo;</i> (John 11:44, KJV). It is spoken to the people standing around him.</p>
+      <p>Notice what happens. Lazarus is called out, but he does not unwrap himself. The people near him do it, one cloth at a time.</p>
+      </div>
+      <div class="al-beat">
+      <p>That is the idea behind this practice. Many of us walk around wrapped in something: worry, grief, shame, exhaustion, a label we did not choose. It is not who you are, and you can be loosed from it. But hardly anyone is loosed alone. It happens when other people see us, notice, listen, help with one small thing, and bring in more help. The same four steps work in both directions. They are how others can loosen you, and how you can loosen someone you love.</p>
+      </div>
+      <div class="al-beat">
+      <p class="al-note">This is a story, offered the way people have shared stories for thousands of years, to learn from. It is not meant to ask you to join or believe anything. You do not have to be religious, or Christian, to use it. Many traditions carry the same truth in their own words, and you will meet some of them inside. Take what helps.</p>
+      <p><b>An invitation:</b> try it once or twice, by yourself, and see whether it lifts you. Then share it with someone you love.</p>
+      </div>
+      <p class="al-more-wrap" hidden><button type="button" class="btn btn-gold" id="al-more">Read on</button></p>
     </div>
   </section>
 
@@ -255,9 +289,37 @@ textarea{min-height:6rem;resize:vertical}
 .help-panel{position:fixed;left:max(14px,env(safe-area-inset-left,0px));right:max(14px,env(safe-area-inset-right,0px));bottom:calc(70px + env(safe-area-inset-bottom,0px));z-index:21;max-width:30rem;margin-inline:auto;background:var(--surface);color:var(--fg);font-family:var(--font-body);border:2px solid var(--gold);border-radius:14px;padding:1rem 1.2rem;box-shadow:0 6px 24px rgba(0,0,0,.25)}
 .help-panel p{margin:0 0 .6rem}
 .help-panel p:last-child{margin:0}
+@keyframes alin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.enter>*{animation:alin .5s ease both}
+.enter>*:nth-child(2){animation-delay:.06s}.enter>*:nth-child(3){animation-delay:.12s}.enter>*:nth-child(4){animation-delay:.18s}.enter>*:nth-child(5){animation-delay:.24s}.enter>*:nth-child(n+6){animation-delay:.3s}
+.fb{animation:alin .45s ease both}
+.fresh{animation:alin .7s ease both}
+details.dd{padding:0}
+details.dd summary{cursor:pointer;list-style:none;padding:.9rem 1.2rem;font-family:var(--font-ui);font-weight:600;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-text)}
+details.dd summary::-webkit-details-marker{display:none}
+details.dd summary::after{content:"+";float:right;font-size:1.1rem;line-height:1}
+details.dd[open] summary::after{content:"\2212"}
+details.dd .dd-body{padding:0 1.2rem 1rem;animation:alin .4s ease both}
+details.dd summary:focus-visible{outline:3px solid var(--accent-text);outline-offset:2px;border-radius:12px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style></template>
 
+<script>
+(function(){
+  var sec=document.querySelector('.al-origin');if(!sec)return;
+  var beats=sec.querySelectorAll('.al-beat'),wrap=sec.querySelector('.al-more-wrap'),btn=document.getElementById('al-more');
+  if(!beats.length||!wrap||!btn)return;
+  var shown=0;
+  sec.classList.add('al-stepping');
+  for(var i=0;i<beats.length;i++)beats[i].classList.add('al-hide');
+  wrap.hidden=false;
+  btn.addEventListener('click',function(){
+    if(shown<beats.length){beats[shown].classList.remove('al-hide');shown++;}
+    if(shown>=beats.length){wrap.hidden=true;}
+    else{btn.textContent='Read on ('+shown+' of '+beats.length+')';}
+  });
+})();
+</script>
 <script>
 // The site's main.js is deliberately not loaded here, so the page carries its own tiny menu toggle.
 (function(){
@@ -422,7 +484,7 @@ var MOODS=[
  {l:'Rather not say',m:"That's completely fine. You don't owe anyone an answer. The rest is here for you anyway."}
 ];
 
-function fresh(){return {screen:'welcome',mode:'solo',crew:'',crewOwn:'',points:0,stnDone:{},gate:0,silly:{},wordMsg:'',q1:null,whole:null,weight:null,sacred:0,sc:null,stn:0,sub:0,picked:null,scored:{},first:0,total:0,know:null,mood:null,small:{},stillLeft:30,stillState:'idle',kind:'',who:'',pledge:''};}
+function fresh(){return {sp:0,fresh:false,screen:'welcome',mode:'solo',crew:'',crewOwn:'',points:0,stnDone:{},gate:0,silly:{},wordMsg:'',q1:null,whole:null,weight:null,sacred:0,sc:null,stn:0,sub:0,picked:null,scored:{},first:0,total:0,know:null,mood:null,small:{},stillLeft:30,stillState:'idle',kind:'',who:'',pledge:''};}
 var S=fresh();
 var timer=null;
 function clearTimer(){if(timer){clearInterval(timer);timer=null;}}
@@ -446,10 +508,15 @@ function focusHead(){
   var h=app.querySelector('h1,h2');if(h){h.setAttribute('tabindex','-1');try{h.focus({preventScroll:true});}catch(e){}}
 }
 function go(name){clearTimer();S.screen=name;render();focusHead();}
+var lastKey='';
 function render(){
   setProg(progN());
   var f={welcome:vWelcome,quick:vQuick,crew:vCrew,words:vWords,gate:vGate,story:vStory,whole:vWhole,pick:vPick,stn:vStation,finish:vFinish,lightened:vLightened,card:vCard}[S.screen];
+  var key=S.screen+':'+S.stn+':'+S.sub;
   app.innerHTML=fill(f());
+  app.classList.remove('enter');
+  if(key!==lastKey){void app.offsetWidth;app.classList.add('enter');lastKey=key;}
+  S.fresh=false;
   var a=root.getElementById('who');if(a)a.value=S.who;
   var b=root.getElementById('kind');if(b)b.value=S.kind;
   var c=root.getElementById('pledge');if(c)c.value=S.pledge;
@@ -461,6 +528,7 @@ function vWelcome(){return ''+
  '<h2>Alongside</h2>'+
  '<p class="big">You are loved. Full stop. That is not conditional.</p>'+
  '<div class="card gold"><span class="label">Our big idea</span><p style="margin:0">Heavy things are meant to be lightened, and not alone. Whatever you hold sacred, you are loved and worthy, and so is the person next to you.</p></div>'+
+ '<div class="card sage"><span class="label">The story behind it</span><p>In a story from the Bible (John 11), Lazarus is called out of the grave but is still wrapped in grave clothes. The words that follow are spoken to the people around him: <i>&ldquo;Loose him, and let him go.&rdquo;</i> He does not unwrap himself. Other people do it.</p><p style="margin:0">That is this practice. Being loosed from what weighs on us is usually something done together, by people who see us. These steps work for you and for someone you love. You do not need any particular belief to use them.</p></div>'+
  '<p>This is a guided practice on mental health, with human actions and spiritual ones side by side. It draws on wisdom from many traditions, and you choose the words that feel like home. It works on a phone or a computer. Try the 5-minute version, do the full practice, or run it with a group.</p>'+
  '<div class="card sky"><span class="label">How it works</span><ul class="steps3">'+
  '<li><b>Read this.</b> A short idea, and why it works.</li>'+
@@ -514,17 +582,23 @@ function crewFinale(){
   return h;
 }
 
+var JO=['For months, Jo had been carrying something heavy: a parent who was sick, a job that asked for too much, and a feeling that everyone else was coping just fine. So Jo told no one. "I\'m fine," Jo said at work, at dinner, to the neighbors. Smiling took more energy every day, and the nights got long. Jo started to believe that something was wrong with Jo.','One evening a neighbor, Ruth, stopped on the sidewalk and said, "You don\'t have to tell me anything. Want some company?" She did not give advice. She did not tell Jo to cheer up. She sat on the step and said nothing for a while. Then Jo said, "I\'m so tired." Ruth nodded. "That makes sense," she said.','Over the next weeks, Jo said a little more to a few people. A coworker said, "Honestly, I\'ve been struggling too." A sibling started calling on Sundays. A counselor helped Jo make a plan. The weight did not disappear, but it was shared, and it got lighter. Jo found out that the thing Jo thought made Jo broken was something many people carry quietly. Jo was never the only one.'];
+function storyParas(){
+  var h='',n=Math.min(S.sp,JO.length-1);
+  for(var i=0;i<=n;i++)h+='<p class="scripture'+(i===n&&S.fresh&&n>0?' fresh':'')+'">'+JO[i]+'</p>';
+  if(S.sp<JO.length-1)h+='<div class="row"><button class="btn" data-a="more" type="button">Keep reading</button></div>';
+  return h;
+}
 function vStory(){
   var opts=['Being told to cheer up','Being listened to, and finding out Jo was not alone','Making the problem disappear'];
   var h='<span class="label">Start here · Read this</span><h2>Nobody carries it alone.</h2>'+
   '<div class="card sage"><span class="label">Why we start with a story</span><p>A story lets you look at a hard thing from a little distance, so it is easier to think about. Jo is made up, so nobody is on the spot. As you read, watch for what helps Jo, and what does not.</p></div>'+
   '<div class="card sky"><span class="label">A story to read out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Read it quietly to your crew, a few lines each.':'Read it slowly, out loud or in your head.')+'</p>'+
   '<p class="ref">Jo\'s story · made up, but true to life</p>'+
-  '<p class="scripture">For months, Jo had been carrying something heavy: a parent who was sick, a job that asked for too much, and a feeling that everyone else was coping just fine. So Jo told no one. "I\'m fine," Jo said at work, at dinner, to the neighbors. Smiling took more energy every day, and the nights got long. Jo started to believe that something was wrong with Jo.<br><br>'+
-  'One evening a neighbor, Ruth, stopped on the sidewalk and said, "You don\'t have to tell me anything. Want some company?" She did not give advice. She did not tell Jo to cheer up. She sat on the step and said nothing for a while. Then Jo said, "I\'m so tired." Ruth nodded. "That makes sense," she said.<br><br>'+
-  'Over the next weeks, Jo said a little more to a few people. A coworker said, "Honestly, I\'ve been struggling too." A sibling started calling on Sundays. A counselor helped Jo make a plan. The weight did not disappear, but it was shared, and it got lighter. Jo found out that the thing Jo thought made Jo broken was something many people carry quietly. Jo was never the only one.</p>'+
-  '<p class="muted" style="margin:0">Jo is not a real person. The story is made up, and many people will recognize it.</p></div>'+
-  '<div class="card"><span class="label">Many voices, one idea</span>'+
+  storyParas()+
+  '<p class="muted" style="margin:0">Jo is not a real person. The story is made up, and many people will recognize it.</p></div>';
+  if(S.sp<JO.length-1)return h;
+  h+='<div class="card"><span class="label">Many voices, one idea</span>'+
   Q('Galatians 6:2 (King James Version)','Bear ye one another\'s burdens.')+
   Q('Ecclesiastes 4:9–10 (KJV)','Two are better than one. For if they fall, the one will lift up his fellow: but woe to him that is alone when he falleth; for he hath not another to help him up.')+
   Q('Quran 94:5–6 (Sahih International)','For indeed, with hardship [will be] ease. Indeed, with hardship [will be] ease.')+
@@ -608,9 +682,9 @@ function vStation(){
     '<div class="card"><span class="label">What it is</span><p>'+esc(t.what)+'</p></div>'+
     '<div class="card sage"><span class="label">Why it works</span><p>'+esc(t.why)+'</p></div>'+
     '<div class="card"><span class="label">How to do it</span><p>'+esc(t.how)+'</p></div>'+
-    '<div class="card"><span class="label">What to skip</span><p>'+esc(t.skip)+'</p></div>'+
+    '<details class="card dd"><summary>What to skip</summary><div class="dd-body"><p>'+esc(t.skip)+'</p></div></details>'+
     '<div class="card"><span class="label">Lightening the load</span><p>'+esc(LOOSED[S.stn])+'</p></div>'+
-    '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Read it quietly to your crew, one line each.':'Read it slowly, out loud or in your head.')+'</p>'+t.verse+'<p class="muted" style="margin:.8rem 0 0"><b>In plain words:</b> '+esc(t.plain)+'</p></div>'+
+    '<div class="card sky"><span class="label">Read this out loud</span><p class="muted" style="margin-bottom:.6rem">'+(S.mode==='group'?'Read it quietly to your crew, one line each.':'Read it slowly, out loud or in your head.')+'</p>'+t.verse+'<details class="dd" style="margin-top:.6rem"><summary style="padding-left:0">In plain words</summary><div class="dd-body" style="padding-left:0"><p class="muted" style="margin:0">'+esc(t.plain)+'</p></div></details></div>'+
     '<div class="card"><span class="label">Look for</span><p>'+esc(LOOK[S.stn])+'</p></div>'+
     '<div class="card gold"><span class="label">Think about this</span><p>'+esc(t.think)+'</p><p class="muted">Take a moment. You don\'t need to write anything.</p></div>'+
     '<div class="row">'+backBtn()+'<button class="btn" data-a="sub" type="button">I\'ve thought about it</button></div>';
@@ -822,6 +896,7 @@ app.addEventListener('click',function(e){
   else if(a==='towords'){if(S.mode==='quick'){S.stn=0;S.sub=2;go('quick');}else{go('story');}}
   else if(a==='sillydone'){if(!S.silly[i]){S.silly[i]=true;S.points+=5;}render();}
   else if(a==='word'){tryWord();}
+  else if(a==='more'){S.sp++;S.fresh=true;render();var fp=app.querySelector('.fresh');if(fp)fp.scrollIntoView({block:'nearest',behavior:'smooth'});}
   else if(a==='q1'){S.q1=i;render();keepVisible();}
   else if(a==='towhole'){go('whole');}
   else if(a==='backstory'){go('story');}

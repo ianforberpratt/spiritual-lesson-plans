@@ -58,6 +58,7 @@ const fail = m => { failures.push(m); console.log('FAIL: ' + m); };
       await B(mode === 'group' ? 'With a group' : 'The full practice');
       if (mode === 'group') { await fill('#crewown', CANARY + ' crew'); await B('Next'); }
       await B('Next');
+      await B('Keep reading'); await B('Keep reading');
       await page.click('button.opt >> nth=1'); await B('Next');
       await page.click('button.opt >> nth=1'); await B('Next');
       if (mode === 'group') { await fill('#word', CANARY + ' word'); await B('Unlock the next part'); await fill('#word', 'banana'); await B('Unlock the next part'); }
