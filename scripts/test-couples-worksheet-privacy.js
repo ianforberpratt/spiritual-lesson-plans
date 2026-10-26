@@ -114,6 +114,27 @@ const ok = m => console.log('ok:   ' + m);
   const afterLoad = requests.slice(loadRequests).filter(r => !r.url.startsWith('mailto:') && !r.url.startsWith('data:'));
   afterLoad.length ? fail('requests after load: ' + afterLoad.map(r => r.url).join(', ')) : ok('zero network requests after the page loads');
 
+  // --- feedback box: a separate, user-initiated send of ONLY what is typed into it
+  const FB = 'FEEDBACK-CANARY-3d9e1f';
+  let fbCount = 0, fbBody = '', fbMethod = '';
+  await page.route('**/api/feedback', async r => { fbCount++; fbMethod = r.request().method(); fbBody = r.request().postData() || ''; await r.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' }); });
+  await page.fill('#sheet textarea >> nth=0', CANARY + ' worksheet answer still on the page');
+  const beforeFb = requests.length;
+  await page.check('input[name=fbrate] >> nth=0');
+  await page.fill('#fbWorked', FB + ' worked');
+  await page.fill('#fbHelp', FB + ' help');
+  await page.waitForTimeout(200);
+  requests.length === beforeFb ? ok('typing in the feedback box makes no request') : fail('requests fired while typing feedback');
+  await page.click('#fbSend');
+  await page.waitForTimeout(500);
+  fbCount === 1 && fbMethod === 'POST' ? ok('Send makes exactly one POST to /api/feedback') : fail('expected one POST, saw ' + fbCount + ' ' + fbMethod);
+  fbBody.includes(FB) ? ok('feedback text is in the message') : fail('feedback text missing from message');
+  !fbBody.includes(CANARY) ? ok('worksheet answers are NOT in the feedback message') : fail('worksheet answer leaked into feedback message');
+  (await page.innerText('#fbStatus')).includes('Thank you') ? ok('thank-you shown') : fail('no thank-you shown');
+  // empty send is refused locally
+  await page.click('#fbSend'); await page.waitForTimeout(200);
+  fbCount === 1 ? ok('empty feedback is not sent') : fail('empty feedback was sent');
+
   await browser.close();
   console.log(failures.length ? `\n${failures.length} FAILURE(S)` : '\nALL CHECKS PASSED');
   process.exit(failures.length ? 1 : 0);

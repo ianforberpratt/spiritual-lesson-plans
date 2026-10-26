@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Marriage Worksheet: Overfunctioning and Underfunctioning</title>
-<meta name="description" content="A private worksheet for couples who love each other and are tired. Nothing you type is saved or sent. Save it as a PDF or email it to yourself.">
+<meta name="description" content="A private worksheet for couples who love each other and are tired. Your answers are never saved or sent. Save it as a PDF or email it to yourself.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://www.spirituallessonplans.org/couples-worksheet">
 <meta name="theme-color" content="#333E63">
@@ -73,10 +73,20 @@ li{margin-bottom:.5rem}
 .fallback.on{display:block}
 .fallback textarea{min-height:12rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;overflow:auto}
 noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
+.fbk{position:relative}
+.fbk label.q{display:block}
+.fbk .hint{font-family:var(--font-ui);font-size:.92rem;color:var(--muted);margin:-.3rem 0 .5rem}
+.fbk .opts{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .8rem}
+@media (max-width:420px){.fbk .opts{grid-template-columns:1fr}}
+.fbk .opt{display:flex;gap:.5rem;align-items:center;font-family:var(--font-ui);margin:.15rem 0;cursor:pointer}
+.fbk .opt input{width:1.1rem;height:1.1rem;accent-color:var(--gold)}
+.fbk .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fbk .actions{margin:.8rem 0 .6rem}
+.fstatus{font-family:var(--font-ui);font-size:.95rem;color:var(--muted);min-height:1.4rem;margin:0 0 .8rem}
 @media print{
   :root{--bg:#fff;--surface:#fff;--fg:#000;--muted:#333;--line:#bbb;--field:#fff;--gold-soft:#f2f2f2;--sage-soft:#f2f2f2;--accent-text:#333;color-scheme:light}
   body{font-size:11pt}
-  .top,.actions,.status,.privacy,.fallback,noscript{display:none!important}
+  .top,.actions,.status,.privacy,.fallback,.fbk,noscript{display:none!important}
   .names{margin-bottom:.6rem}
   section{border:0;padding:0;margin:0 0 1rem;break-inside:auto}
   .item,.note{break-inside:avoid}
@@ -93,7 +103,7 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
 <h1>Parts of Our Marriage Are Great. Parts Are Quietly Falling Apart. Here&#x27;s What We&#x27;re Doing About It.</h1>
 <p class="lede">A worksheet for couples who love each other and are tired. Ten minutes to start, more if you want it.</p>
 <noscript><p>This worksheet needs JavaScript for the Save as PDF and email buttons. You can still read it, and you can print this page.</p></noscript>
-<div class="privacy"><p><strong>Private by design.</strong> Nothing you type here is saved, stored, or sent to anyone. It stays on this page until you close it. To keep your answers, use <em>Save as PDF</em> or <em>Email to myself</em> before you leave.</p></div>
+<div class="privacy"><p><strong>Private by design.</strong> Nothing you type in the worksheet is saved, stored, or sent to anyone. It stays on this page until you close it. To keep your answers, use <em>Save as PDF</em> or <em>Email to myself</em> before you leave. (The optional feedback box at the very bottom is separate. It sends only what you type in it, and only if you press Send.)</p></div>
 <div class="names">
 <div><label for="nameA">Partner A (optional name)</label><input type="text" id="nameA" autocomplete="off" aria-label="Partner A name, optional"></div>
 <div><label for="nameB">Partner B (optional name)</label><input type="text" id="nameB" autocomplete="off" aria-label="Partner B name, optional"></div>
@@ -199,7 +209,26 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
 <button type="button" class="btn" data-act="email">Email to myself</button>
 <button type="button" class="btn ghost" data-act="clear">Start over</button>
 </div>
-<p class="plug"><strong>This worksheet is hosted on Spiritual Lesson Plans,</strong> a free site that tries to help all of us approach life with tools like this one. No accounts, nothing collected. <a href="/">Take a look around</a>.</p>
+<section class="fbk" id="feedback" aria-labelledby="fbk-h">
+<h2 id="fbk-h">Help us make this better</h2>
+<p>Totally optional, and separate from your worksheet. This box sends only what you type in it, and only when you press Send. Your worksheet answers never go with it. Please leave out names and private details about your marriage.</p>
+<form id="fbForm" novalidate>
+<div class="item"><p class="q" id="fbq1">How was this worksheet for you?</p>
+<div class="opts" role="radiogroup" aria-labelledby="fbq1">
+<label class="opt"><input type="radio" name="fbrate" value="It helped"> It helped</label>
+<label class="opt"><input type="radio" name="fbrate" value="Somewhat"> Somewhat</label>
+<label class="opt"><input type="radio" name="fbrate" value="It missed the mark"> It missed the mark</label>
+<label class="opt"><input type="radio" name="fbrate" value="It confused me"> It confused me</label>
+</div></div>
+<div class="item"><label class="q" for="fbWorked">What worked?</label><textarea id="fbWorked" rows="3"></textarea></div>
+<div class="item"><label class="q" for="fbHelp">What would you like help with?</label><p class="hint">A question, a place you got stuck, or something you wish this had. You can also tell us how you would like to help make it better.</p><textarea id="fbHelp" rows="3"></textarea></div>
+<div class="item"><label class="q" for="fbFrom">Want a reply? Your email (optional)</label><input type="text" id="fbFrom" inputmode="email" autocomplete="email"></div>
+<input type="text" class="hp" id="fbHp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<p class="fstatus" id="fbStatus" role="status" aria-live="polite"></p>
+<div class="actions"><button type="submit" class="btn" id="fbSend">Send</button></div>
+</form>
+</section>
+<p class="plug"><strong>This worksheet is hosted on Spiritual Lesson Plans,</strong> a free site that tries to help all of us approach life with tools like this one. No accounts, and nothing you write in the worksheet is collected. <a href="/">Take a look around</a>.</p>
 <p class="plug" style="padding-top:0;font-size:.88rem">The words overfunctioning and underfunctioning came to us from a conversation on the Reimagining Love podcast with Dr. Alexandra Solomon.</p>
 </main>
 <script>
@@ -237,9 +266,12 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
     var t = ev.target;
     if (t.tagName === 'TEXTAREA') autosize(t);
     if (t === nameA || t === nameB) names();
-    dirty = true;
+    if (sheet.contains(t) || t === nameA || t === nameB) dirty = true;
   });
-  document.addEventListener('change', function () { dirty = true; });
+  document.addEventListener('change', function (ev) {
+    var t = ev.target;
+    if (sheet.contains(t) || t === nameA || t === nameB) dirty = true;
+  });
 
   function toText() {
     var n = names();
@@ -334,7 +366,7 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
 
   function doClear() {
     if (!dirty || window.confirm('Clear everything on this page? Nothing is saved, so this cannot be undone.')) {
-      var inputs = document.querySelectorAll('input, textarea, select');
+      var inputs = document.querySelectorAll('#sheet input, #sheet textarea, #sheet select, #nameA, #nameB');
       for (var i = 0; i < inputs.length; i++) {
         var el = inputs[i];
         if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
@@ -353,6 +385,47 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
       if (a === 'pdf') doPdf(); else if (a === 'email') doEmail(); else doClear();
     });
   }
+
+  // ---- Feedback: separate from the worksheet. Sends ONLY what is typed in this form, only on Send. ----
+  var fbForm = document.getElementById('fbForm');
+  var fbStatus = document.getElementById('fbStatus');
+  var fbSend = document.getElementById('fbSend');
+  var KIND = { 'It helped': 'Just saying hi', 'Somewhat': 'Idea', 'It missed the mark': 'Not happy', 'It confused me': 'Confused' };
+  function fval(id) { return (document.getElementById(id).value || '').trim(); }
+
+  fbForm.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    if (document.getElementById('fbHp').value) { fbForm.reset(); return; }
+    var rate = fbForm.querySelector('input[name=fbrate]:checked');
+    var worked = fval('fbWorked'), help = fval('fbHelp'), from = fval('fbFrom');
+    if (!rate && !worked && !help) { fbStatus.textContent = 'Add a rating or a few words first.'; return; }
+    var lines = ['[Couples worksheet]'];
+    if (rate) lines.push('How was it: ' + rate.value);
+    if (worked) lines.push('', 'What worked:', worked);
+    if (help) lines.push('', 'Help / what I would like:', help);
+    var message = lines.join('\n');
+    var kind = rate ? KIND[rate.value] : 'Question';
+    fbSend.disabled = true; fbSend.textContent = 'Sending…'; fbStatus.textContent = 'Sending…';
+
+    fetch('/api/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ kind: kind, message: message, from: from, hp: '', page: window.location.origin + window.location.pathname })
+    }).then(function (res) {
+      return res.json().catch(function () { return {}; }).then(function (data) { return { ok: res.ok, status: res.status, data: data }; });
+    }).then(function (r) {
+      if (r.ok) { fbStatus.textContent = 'Thank you. Got it.'; fbForm.reset(); return; }
+      if (r.status === 400 && r.data && r.data.error) { fbStatus.textContent = r.data.error; return; }
+      throw new Error('send failed');
+    }).catch(function () {
+      fbStatus.textContent = '';
+      fbStatus.appendChild(document.createTextNode('Couldn\u2019t send that. '));
+      var a = document.createElement('a');
+      a.href = 'mailto:ianforberpratt@gmail.com?subject=' + encodeURIComponent('Spiritual Lesson Plans feedback: Couples worksheet') + '&body=' + encodeURIComponent(message + (from ? '\n\nFrom: ' + from : ''));
+      a.textContent = 'Email us directly instead.';
+      fbStatus.appendChild(a);
+    }).then(function () { fbSend.disabled = false; fbSend.textContent = 'Send'; });
+  });
 
   window.addEventListener('beforeprint', sizeAll);
   window.addEventListener('beforeunload', function (ev) {
