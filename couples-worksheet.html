@@ -190,6 +190,7 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
 <button type="button" class="btn" data-act="share">Make a picture to share</button>
 <button type="button" class="btn ghost" id="clearBtn">Start over</button>
 </div>
+<div class="noprint" style="margin:0 0 1rem"><label for="noteIn" style="font-family:var(--font-ui);font-weight:600;display:block;margin-bottom:.25rem">Add a short note to the picture (optional)</label><input type="text" id="noteIn" maxlength="76" autocomplete="off" placeholder="For example: Our real answers, taken separately."><p class="tip" style="margin:.3rem 0 0">Shown only on the picture you make. Nothing is sent anywhere.</p></div>
 <div class="shareimg" id="shareBox" hidden>
 <img id="shareImg" alt="Your shareable picture of who carries what" width="540">
 <p id="shareNote">On a phone, press and hold the picture to save it.</p>
@@ -388,8 +389,23 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
       y += 30 * S;
       text(W / 2, y, 'Who carries what?', 30 * S, INK, 700, 'middle', SERIF);
       y += 24 * S;
-      text(W / 2, y, shortName(n.A, 16) + ' & ' + shortName(n.B, 16), 16 * S, MUTED, 600, 'middle');
-      y += 26 * S;
+      text(W / 2, y, shortName(n.A, 16) + ' & ' + shortName(n.B, 16), 22 * S, INK, 600, 'middle');
+      y += 24 * S;
+      var noteEl = document.getElementById('noteIn');
+      var noteVal = noteEl ? (noteEl.value || '').trim().slice(0, 76) : '';
+      if (noteVal) {
+        var words = noteVal.split(/\s+/), ln = '', lines = [];
+        for (var wi = 0; wi < words.length; wi++) {
+          if ((ln + ' ' + words[wi]).trim().length > 38 && ln) { lines.push(ln); ln = words[wi]; } else ln = (ln + ' ' + words[wi]).trim();
+        }
+        if (ln) lines.push(ln);
+        for (var li = 0; li < lines.length && li < 2; li++) { text(W / 2, y, lines[li], 15 * S, GOLD, 600, 'middle'); y += 20 * S; }
+        y += 4 * S;
+      }
+      text(W / 2, y, 'Each shape is one person\u2019s own answers.', 12.5 * S, MUTED, 400, 'middle');
+      y += 17 * S;
+      text(W / 2, y, 'The closer a shape is to a name, the more that person carries.', 12.5 * S, MUTED, 400, 'middle');
+      y += 22 * S;
     }
     // legend
     var lg = [];
@@ -420,7 +436,7 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
       }
       text(x0 - 6 * S, y + 6 * S, d.name, 17 * S, INK, 700, 'start', SERIF);
       text(x1 + 6 * S, y + 6 * S, d.sub, 11.5 * S, MUTED, 400, 'end');
-      y += 30 * S;
+      y += 40 * S;
       // track
       o.push('<line x1="' + x0 + '" y1="' + y + '" x2="' + x1 + '" y2="' + y + '" stroke="' + LINE + '" stroke-width="' + 6 * S + '" stroke-linecap="round"/>');
       for (var t = -2; t <= 2; t++) {
@@ -436,6 +452,19 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
       }
       if (a !== null) marker('A', xv(a), y - (near ? 5 * S : 0));
       if (b !== null) marker('B', xv(b), y + (near ? 5 * S : 0));
+      var ly = y - 15 * S, lfs = 11.5 * S;
+      if (a !== null && b !== null) {
+        var xa = xv(a), xb = xv(b), gap = Math.abs(xa - xb);
+        var left = xa <= xb ? 'A' : 'B', xl = Math.min(xa, xb), xr = Math.max(xa, xb), mid = (xa + xb) / 2;
+        if (gap >= 90 * S) {
+          text(xa, ly, shortName(n.A, 10), lfs, GOLD, 700, 'middle');
+          text(xb, ly, shortName(n.B, 10), lfs, SLATE, 700, 'middle');
+        } else {
+          text(Math.min(xl + 10 * S, mid - 3 * S), ly, shortName(left === 'A' ? n.A : n.B, 10), lfs, left === 'A' ? GOLD : SLATE, 700, 'end');
+          text(Math.max(xr - 10 * S, mid + 3 * S), ly, shortName(left === 'A' ? n.B : n.A, 10), lfs, left === 'A' ? SLATE : GOLD, 700, 'start');
+        }
+      } else if (a !== null) text(xv(a), ly, shortName(n.A, 10), lfs, GOLD, 700, 'middle');
+      else if (b !== null) text(xv(b), ly, shortName(n.B, 10), lfs, SLATE, 700, 'middle');
       y += 24 * S;
       var cap = lean(c, n);
       text(cx, y, cap, 14 * S, INK, 600, 'middle');
@@ -638,6 +667,7 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
       var all = document.querySelectorAll('input[type=radio][name=exp]');
       for (var i = 0; i < all.length; i++) all[i].checked = false;
       nameA.value = ''; nameB.value = '';
+      var ne = document.getElementById('noteIn'); if (ne) ne.value = '';
       fb.classList.remove('on'); fbText.value = '';
       document.getElementById('shareBox').hidden = true;
       setResp('A');

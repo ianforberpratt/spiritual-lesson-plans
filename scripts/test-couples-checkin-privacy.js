@@ -138,7 +138,8 @@ const B_TICKS = { r1: -1, r2: 0, r3: 0, r4: 0, r5: 0, r6: -1, r7: -2, r8: -1, r9
   fs.writeFileSync(OUT + '/checkin-print.pdf', pdf);
   await page.emulateMedia({ media: 'screen' });
 
-  // share picture
+  // share picture (with an optional note typed into the picture)
+  await page.fill('#noteIn', 'CanaryNote our real answers, taken separately');
   await page.click('[data-act=share]');
   await page.waitForSelector('#shareBox:not([hidden])', { timeout: 5000 }).catch(() => { });
   const shareVisible = await page.$eval('#shareBox', b => !b.hidden);
@@ -178,7 +179,7 @@ const B_TICKS = { r1: -1, r2: 0, r3: 0, r4: 0, r5: 0, r6: -1, r7: -2, r8: -1, r9
   await page.click('#clearBtn');
   await page.waitForTimeout(150);
   const left = await page.$$eval('#sheet input[type=radio]:checked', xs => xs.length);
-  const nm = await page.$eval('#nameA', i => i.value);
+  const nm = await page.$eval('#nameA', i => i.value) + await page.$eval('#noteIn', i => i.value);
   const resHidden = await page.$eval('#results', r => r.hidden);
   (left === 0 && nm === '' && resHidden) ? ok('Start over clears ticks, names and picture') : fail(`Start over left ${left} ticks, name "${nm}", results hidden=${resHidden}`);
   await page.click('#showBtn');
