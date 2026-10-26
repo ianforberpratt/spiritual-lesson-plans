@@ -21,7 +21,7 @@ not-broken.html         /not-broken (standalone interactive, linked from /for-yo
 put-it-to-work.html     /put-it-to-work (standalone interactive, linked from /for-you)
 put-it-to-work/alongside.html  /put-it-to-work/alongside (standalone interactive: mental-health practice, evergreen, indexed; mounts in a shadow root; stores nothing; same privacy rules as /put-it-to-work)
 alongside.html          /alongside (standalone phone lab for the Alongside Sunday school lesson; self-contained, stores nothing, noindex, not linked from nav)
-couples-worksheet.html /couples-worksheet (3-minute tick-box check-in for couples: who carries more of Doing/Thinking/Feeling, live chart, shareable PNG, Save as PDF, Email to myself, separate feedback box; self-contained, stores nothing, noindex, not linked from nav, not in the sitemap; test: scripts/test-couples-checkin-privacy.js)
+couples-worksheet.html /couples-worksheet (quick tick-box check-in for couples (20 ticks): who carries more of Doing/Thinking/Feeling, how much they share (affection, intimacy, talks...), live chart, short and longer shareable PNGs, love-framed read-first pop-ups, Save as PDF, Email to myself, separate feedback box; self-contained, stores nothing, noindex, not linked from nav, not in the sitemap; test: scripts/test-couples-checkin-privacy.js)
 couples-worksheet-deeper.html /couples-worksheet-deeper (the long ten-part worksheet; same privacy rules; test: scripts/test-couples-worksheet-privacy.js)
 404.html
 assets/css/style.css   Shared styles (palette + components)

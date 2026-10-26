@@ -22,8 +22,8 @@ const ok = m => console.log('ok:   ' + m);
 
 const ROWS = ['r1', 'r2', 'r3', 'r4', 'r5', 'r6', 'r7', 'r8', 'r9'];
 // Partner A says: "I carry most of Doing and Thinking." Partner B says: "It's fairly even."
-const A_TICKS = { r1: -2, r2: -2, r3: -1, r4: -2, r5: -1, r6: -2, r7: 1, r8: 0, r9: 1, f1: -1, f2: 2, f3: -1 };
-const B_TICKS = { r1: -1, r2: 0, r3: 0, r4: 0, r5: 0, r6: -1, r7: -2, r8: -1, r9: -1, f1: 0, f2: 1, f3: 1 };
+const A_TICKS = { r1: -2, r2: -2, r3: -1, r4: -2, r5: -1, r6: -2, r7: 1, r8: 0, r9: 1, c1: -1, c2: 0, c3: -2, c4: -1, c5: 1, c6: -2, c7: 0, c8: -1, f1: -1, f2: 2, f3: -1 };
+const B_TICKS = { r1: -1, r2: 0, r3: 0, r4: 0, r5: 0, r6: -1, r7: -2, r8: -1, r9: -1, c1: 1, c2: 1, c3: 0, c4: 0, c5: -1, c6: 1, c7: 1, c8: 0, f1: 0, f2: 1, f3: 1 };
 
 (async () => {
   const browser = await chromium.launch();
@@ -55,9 +55,25 @@ const B_TICKS = { r1: -1, r2: 0, r3: 0, r4: 0, r5: 0, r6: -1, r7: -2, r8: -1, r9
   const loadRequests = requests.length;
 
   const rowCount = await page.$$eval('#sheet .row', rs => rs.length);
-  rowCount === 12 ? ok('12 tick rows (9 who-carries-it + 3 how-it-feels)') : fail('expected 12 rows, saw ' + rowCount);
+  rowCount === 20 ? ok('20 tick rows (9 who-carries-it + 8 what-we-share + 3 how-it-feels)') : fail('expected 20 rows, saw ' + rowCount);
   const taCount = await page.$$eval('#sheet textarea', t => t.length);
   taCount === 0 ? ok('no free-text boxes in the main check-in') : fail('main check-in has ' + taCount + ' text boxes');
+
+  // love-framed "read this first" pop-ups
+  const whyCount = await page.$$eval('details.why', d => d.length);
+  whyCount === 7 ? ok('7 "read this first" pop-ups (intro, 5 sections, how to talk)') : fail('expected 7 pop-ups, saw ' + whyCount);
+  const closedAtStart = await page.$$eval('details.why', d => d.every(x => !x.open));
+  closedAtStart ? ok('pop-ups start closed, so the page stays short') : fail('some pop-ups start open');
+  await page.click('details.why >> nth=0 >> summary');
+  const topTxt = await page.innerText('details.why >> nth=0');
+  /flashlight, not a courtroom/.test(topTxt) && /Nobody is the villain/.test(topTxt) ? ok('intro pop-up opens with the no-shame framing') : fail('intro pop-up text missing');
+  const tryLines = await page.$$eval('details.why', d => d.filter(x => /Try this:/.test(x.textContent)).length);
+  tryLines === 6 ? ok('six pop-ups end with one small loving action to try') : fail('"Try this" lines: ' + tryLines);
+  const sectionWhy = await page.$$eval('#sheet section.dom', ss => ss.map(sec => !!sec.querySelector('details.why')));
+  sectionWhy.every(Boolean) && sectionWhy.length === 5 ? ok('every one of the 5 question sections has its own pop-up') : fail('sections without pop-up: ' + JSON.stringify(sectionWhy));
+
+  const headerTxt = (await page.innerText('.top')).trim();
+  (headerTxt === 'Things you can use' && !/Spiritual Lesson Plans/i.test(headerTxt)) ? ok('header says "Things you can use" (no site name)') : fail('header was: ' + headerTxt);
 
   // names flow through
   await page.fill('#nameA', NAME_A);
@@ -94,12 +110,14 @@ const B_TICKS = { r1: -1, r2: 0, r3: 0, r4: 0, r5: 0, r6: -1, r7: -2, r8: -1, r9
   const chartText = await page.innerText('#chart');
   /You see this differently/.test(chartText) ? ok('gap between the two views is called out') : fail('no "see this differently" callout. Chart: ' + chartText.replace(/\n+/g, ' | '));
   /carries (a bit|much) more/.test(chartText) ? ok('lean caption uses names') : fail('no lean caption');
+  /What we share/.test(chartText) && /Heart talks/.test(chartText) ? ok('"What we share" rows are on the chart') : fail('closeness rows missing from chart');
+  /Physical intimacy/.test(chartText) ? ok('intimacy row is shown on the couple\'s own picture') : fail('intimacy row missing from own picture');
   chartText.includes(NAME_A.slice(0, 11)) ? ok('names are on the chart') : fail('names missing from chart');
 
   // switching back restores partner 1's ticks
   await page.click('#otherBtn');
   const restored = await page.$$eval('#sheet input[type=radio]:checked', xs => xs.length);
-  restored === 12 ? ok('partner 1 ticks restored when switching back') : fail('partner 1 had ' + restored + ' ticks restored');
+  restored === 20 ? ok('partner 1 ticks restored when switching back') : fail('partner 1 had ' + restored + ' ticks restored');
   await page.click('#showBtn');
 
   // the answers are 12 per partner, and keyboard/aria
@@ -130,8 +148,9 @@ const B_TICKS = { r1: -1, r2: 0, r3: 0, r4: 0, r5: 0, r6: -1, r7: -2, r8: -1, r9
     resp: getComputedStyle(document.querySelector('.resp')).display,
     chart: getComputedStyle(document.querySelector('#chart')).display,
     fbk: getComputedStyle(document.querySelector('.fbk')).display,
+    why: getComputedStyle(document.querySelector('details.why')).display,
   }));
-  (printState.bar === 'none' && printState.privacy === 'none' && printState.resp === 'none' && printState.fbk === 'none' && printState.chart !== 'none')
+  (printState.bar === 'none' && printState.privacy === 'none' && printState.resp === 'none' && printState.fbk === 'none' && printState.why === 'none' && printState.chart !== 'none')
     ? ok('print hides controls and feedback, keeps the chart') : fail('print state wrong: ' + JSON.stringify(printState));
   const pdf = await page.pdf({ format: 'Letter', printBackground: false });
   pdf.length > 5000 ? ok('print produces a PDF (' + pdf.length + ' bytes)') : fail('PDF too small');
@@ -146,6 +165,14 @@ const B_TICKS = { r1: -1, r2: 0, r3: 0, r4: 0, r5: 0, r6: -1, r7: -2, r8: -1, r9
   shareVisible ? ok('shareable picture is created') : fail('share picture did not appear');
   const imgInfo = await page.$eval('#shareImg', i => ({ src: i.src.slice(0, 5), w: i.naturalWidth, h: i.naturalHeight }));
   (imgInfo.src === 'blob:' && imgInfo.w === 1080 && imgInfo.h > 600) ? ok(`picture is a local PNG ${imgInfo.w}x${imgInfo.h}`) : fail('bad share image: ' + JSON.stringify(imgInfo));
+
+  const compactH = imgInfo.h;
+  (await page.getAttribute('#shareImg', 'data-shared-rows')) === '' ? ok('short picture has the bars only, no closeness rows') : fail('short picture had closeness rows');
+  compactH < 1900 ? ok('short picture is ' + compactH + ' px tall (the longer one is built separately)') : fail('short picture too tall: ' + compactH);
+  await page.click('[data-act=shareFull]');
+  await page.waitForFunction(() => { const i = document.getElementById('shareImg'); return i && i.complete && i.getAttribute('data-shared-rows'); });
+  const sharedRows = await page.getAttribute('#shareImg', 'data-shared-rows');
+  (sharedRows && sharedRows.includes('c1') && !sharedRows.includes('c6')) ? ok('shareable picture leaves out physical intimacy (rows: ' + sharedRows + ')') : fail('share picture rows were: ' + sharedRows);
 
   // --- privacy verdicts (before anything is fetched from the page)
   const hits = await page.evaluate(() => window.__hits);
