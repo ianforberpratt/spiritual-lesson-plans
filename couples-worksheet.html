@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Marriage Worksheet: Overfunctioning and Underfunctioning</title>
-<meta name="description" content="A private worksheet for couples who love each other and are tired. Your answers are never saved or sent. Save it as a PDF or email it to yourself.">
+<title>Who Carries What? A 3-Minute Check-In for Couples</title>
+<meta name="description" content="A free, private 3-minute check-in for couples. Tick a few boxes and see a picture of who carries what. Your answers are never saved or sent.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://www.spirituallessonplans.org/couples-worksheet">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.spirituallessonplans.org/couples-worksheet">
-<meta property="og:title" content="Parts of Our Marriage Are Great. Parts Are Quietly Falling Apart.">
-<meta property="og:description" content="A free, private worksheet for couples who love each other and are tired. Ten minutes to start. Your answers are never saved or sent.">
+<meta property="og:title" content="Who Carries What? A 3-Minute Check-In for Couples">
+<meta property="og:description" content="Tick a few boxes and see a picture of who carries what in your marriage. Free, private, and nothing is saved or sent.">
 <meta property="og:image" content="https://www.spirituallessonplans.org/assets/img/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -37,53 +37,65 @@ body{background:var(--bg);color:var(--fg);font-family:var(--font-body);font-size
 .wrap{max-width:46rem;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
 h1{font-size:clamp(1.7rem,6.5vw,2.5rem);margin:1.6rem 0 .8rem}
-h2{font-size:1.55rem;margin:0 0 .8rem}
-h3{font-size:1.2rem;margin:1.6rem 0 .5rem}
+h2{font-size:1.45rem;margin:0 0 .3rem}
+h2 small{font-family:var(--font-ui);font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);display:block;margin-top:.25rem}
+h3{font-size:1.15rem;margin:1.4rem 0 .5rem}
 p{margin:0 0 1rem}
 a{color:var(--accent-text)}
 button,input,select,textarea{font-family:inherit}
-button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .top{background:var(--band);color:var(--band-fg)}
 .top .bar{padding-block:.7rem;font-family:var(--font-ui);font-weight:600;letter-spacing:.05em;font-size:.9rem}
 .top a{color:#A9C8E0;text-decoration:none}
 .lede{font-size:1.15rem;color:var(--muted)}
 .privacy{background:var(--sage-soft);border-radius:12px;padding:.9rem 1.1rem;margin:0 0 1.2rem;font-family:var(--font-ui);font-size:1rem}
 .privacy p{margin:0}
-.names{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:0 0 1.2rem}
-.names label{font-family:var(--font-ui);font-weight:600;font-size:.85rem;display:block;margin-bottom:.2rem;color:var(--accent-text)}
-.names input{width:100%}
+.names{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:0 0 .9rem}
+.names label,.who-label{font-family:var(--font-ui);font-weight:600;font-size:.85rem;display:block;margin-bottom:.2rem;color:var(--accent-text)}
 input[type=text],textarea,select{background:var(--field);color:var(--fg);border:1.5px solid var(--line);border-radius:8px;padding:.5rem .65rem;font-size:1rem;width:100%}
-textarea{resize:vertical;line-height:1.5;display:block;overflow:hidden}
-.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 1.6rem}
-.btn{background:var(--btn-bg);color:var(--btn-fg);border:0;border-radius:999px;padding:.65rem 1.2rem;font-family:var(--font-ui);font-weight:600;font-size:1rem;cursor:pointer}
+textarea{resize:vertical;line-height:1.5;display:block}
+.resp{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:center;font-family:var(--font-ui);margin:0 0 .4rem;background:var(--gold-soft);border-radius:12px;padding:.7rem 1rem}
+.resp strong{width:100%}
+.resp label{display:flex;gap:.45rem;align-items:center;cursor:pointer;font-weight:600}
+.resp input{width:1.15rem;height:1.15rem;accent-color:var(--gold)}
+.tip{font-family:var(--font-ui);font-size:.95rem;color:var(--muted);margin:.2rem 0 1.2rem}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin:1rem 0 1.4rem}
+.btn{background:var(--btn-bg);color:var(--btn-fg);border:0;border-radius:999px;padding:.65rem 1.2rem;font-family:var(--font-ui);font-weight:600;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}
 .btn.ghost{background:transparent;color:var(--fg);border:1.5px solid var(--line)}
-.status{font-family:var(--font-ui);font-size:.95rem;color:var(--muted);min-height:1.4rem;margin:-.8rem 0 1rem}
-section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem .4rem;margin:0 0 1.4rem}
-.item{border-top:1px solid var(--line);padding:.9rem 0 .4rem;margin:0}
-.item .q{font-family:var(--font-ui);font-weight:600;margin:0 0 .5rem}
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
-@media (max-width:560px){.pair{grid-template-columns:1fr}}
-.field{margin:0 0 .6rem}
-.who{font-family:var(--font-ui);font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-text);display:block;margin-bottom:.2rem}
-.sub{font-family:var(--font-ui);font-size:.85rem;color:var(--muted);display:block;margin:.5rem 0 .2rem}
-.note{background:var(--gold-soft);border-radius:12px;padding:.9rem 1.1rem .1rem;margin:1rem 0 1rem}
-.steps{padding-left:1.3rem}
-ol{padding-left:1.3rem}
-li{margin-bottom:.5rem}
+.status{font-family:var(--font-ui);font-size:.95rem;color:var(--muted);min-height:1.4rem;margin:-.6rem 0 1rem}
+section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem .6rem;margin:0 0 1.4rem}
+.dl{color:var(--muted);font-size:.98rem;margin-bottom:.4rem}
+.row{border-top:1px solid var(--line);padding:.8rem 0 .7rem}
+.row .q{font-family:var(--font-ui);font-weight:600;margin:0 0 .45rem}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:.25rem}
+.scale label{display:flex;flex-direction:column;align-items:center;gap:.25rem;cursor:pointer;font-family:var(--font-ui);font-size:.74rem;color:var(--muted);text-align:center;line-height:1.15;min-width:0;overflow-wrap:anywhere}
+.scale input{appearance:none;-webkit-appearance:none;width:1.9rem;height:1.9rem;border:2px solid var(--line);border-radius:50%;background:var(--field);margin:0;cursor:pointer;flex:none}
+.scale input:checked{border:.6rem solid var(--gold);background:var(--field)}
+.scale label:has(input:checked){color:var(--fg);font-weight:600}
+.actions.center{justify-content:center}
+.results{background:var(--surface)}
+.chartcard{background:#FCF9F0;color:#2A3150;border:1px solid #DDD3BA;border-radius:14px;padding:.6rem;margin:0 0 1rem}
+.chartcard svg{display:block;width:100%;height:auto}
+.start{background:var(--gold-soft);border-radius:12px;padding:.8rem 1rem .1rem;margin:0 0 1rem}
+.read li{margin-bottom:.45rem}
 .chk{display:flex;gap:.6rem;align-items:flex-start;margin:.2rem 0 .7rem;cursor:pointer}
-.chk input[type=checkbox],.chk input[type=radio]{margin-top:.4rem;width:1.15rem;height:1.15rem;flex:none;accent-color:var(--gold)}
-.chk.own{align-items:center;cursor:default}
-.chk.own input.inline{flex:1;margin-left:.2rem}
-.exp{border-top:0}
-.closing{color:var(--muted);margin-top:1.4rem}
+.chk input[type=radio]{margin-top:.4rem;width:1.15rem;height:1.15rem;flex:none;accent-color:var(--gold)}
+.shareimg{margin:0 0 1rem;text-align:center}
+.shareimg img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:12px}
+.shareimg p{font-family:var(--font-ui);font-size:.95rem;color:var(--muted)}
+details{font-family:var(--font-ui);margin:0 0 1.2rem}
+details summary{cursor:pointer;font-weight:600;color:var(--accent-text)}
+details p,details li{font-size:.97rem}
+.closing{color:var(--muted);margin-top:1.2rem}
 .plug{text-align:center;color:var(--muted);font-family:var(--font-ui);font-size:.98rem;padding:1.2rem 0 2.4rem}
 .plug strong{color:var(--fg)}
 .fallback{display:none;margin:0 0 1.2rem}
 .fallback.on{display:block}
-.fallback textarea{min-height:12rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem;overflow:auto}
+.fallback textarea{min-height:12rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9rem}
 noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
 .fbk{position:relative}
-.fbk label.q{display:block}
+.fbk .item{border-top:1px solid var(--line);padding:.9rem 0 .4rem}
+.fbk label.q,.fbk p.q{font-family:var(--font-ui);font-weight:600;margin:0 0 .5rem;display:block}
 .fbk .hint{font-family:var(--font-ui);font-size:.92rem;color:var(--muted);margin:-.3rem 0 .5rem}
 .fbk .opts{display:grid;grid-template-columns:1fr 1fr;gap:.2rem .8rem}
 @media (max-width:420px){.fbk .opts{grid-template-columns:1fr}}
@@ -95,13 +107,12 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
 @media print{
   :root{--bg:#fff;--surface:#fff;--fg:#000;--muted:#333;--line:#bbb;--field:#fff;--gold-soft:#f2f2f2;--sage-soft:#f2f2f2;--accent-text:#333;color-scheme:light}
   body{font-size:11pt}
-  .top,.actions,.status,.privacy,.fallback,.fbk,noscript{display:none!important}
-  .names{margin-bottom:.6rem}
-  section{border:0;padding:0;margin:0 0 1rem;break-inside:auto}
-  .item,.note{break-inside:avoid}
+  .top,.actions,.status,.privacy,.fallback,.fbk,noscript,.resp,.tip,.shareimg,details,.noprint{display:none!important}
+  section{border:0;padding:0;margin:0 0 1rem;break-inside:avoid}
+  .row{break-inside:avoid}
   h2{break-after:avoid}
-  textarea,select,input[type=text]{border:0;border-bottom:1px solid #999;border-radius:0;padding:.2rem 0;resize:none;appearance:none;-webkit-appearance:none;background:transparent}
-  textarea:placeholder-shown{min-height:2.2rem}
+  .scale input:checked{border-color:#000}
+  .chartcard{border:1px solid #999;break-inside:avoid}
   *:focus,*:focus-visible{outline:none!important;box-shadow:none!important}
 }
 </style>
@@ -109,120 +120,103 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
 <body>
 <header class="top"><div class="wrap bar"><a href="/">Spiritual Lesson Plans</a></div></header>
 <main class="wrap">
-<h1>Parts of Our Marriage Are Great. Parts Are Quietly Falling Apart. Here&#x27;s What We&#x27;re Doing About It.</h1>
-<p class="lede">A worksheet for couples who love each other and are tired. Ten minutes to start, more if you want it.</p>
-<noscript><p>This worksheet needs JavaScript for the Save as PDF and email buttons. You can still read it, and you can print this page.</p></noscript>
-<div class="privacy"><p><strong>Private by design.</strong> Nothing you type in the worksheet is saved, stored, or sent to anyone. It stays on this page until you close it. To keep your answers, use <em>Save as PDF</em> or <em>Email to myself</em> before you leave. (The optional feedback box at the very bottom is separate. It sends only what you type in it, and only if you press Send.)</p></div>
+<h1>Who Carries What? A 3-Minute Check-In for Couples</h1>
+<p class="lede">Tick a few boxes. See a picture of how the load is shared in your marriage, and where it might be quietly heavy for one of you.</p>
+<noscript><p>This check-in needs JavaScript to draw your picture. You can still read it.</p></noscript>
+<div class="privacy"><p><strong>Private by design.</strong> Nothing you tick or type is saved, stored, or sent to anyone. The picture is drawn on your own device and disappears when you close the page. To keep it, use <em>Save as PDF</em>, <em>Email to myself</em>, or <em>Make a picture to share</em>. (The optional feedback box at the very bottom is separate. It sends only what you type in it, and only if you press Send.)</p></div>
+
 <div class="names">
-<div><label for="nameA">Partner A (optional name)</label><input type="text" id="nameA" autocomplete="off" aria-label="Partner A name, optional"></div>
-<div><label for="nameB">Partner B (optional name)</label><input type="text" id="nameB" autocomplete="off" aria-label="Partner B name, optional"></div>
+<div><label for="nameA">Partner 1 (first name, optional)</label><input type="text" id="nameA" autocomplete="off" maxlength="24"></div>
+<div><label for="nameB">Partner 2 (first name, optional)</label><input type="text" id="nameB" autocomplete="off" maxlength="24"></div>
 </div>
-<div class="actions" data-actions>
-<button type="button" class="btn" data-act="pdf">Save as PDF</button>
-<button type="button" class="btn" data-act="email">Email to myself</button>
-<button type="button" class="btn ghost" data-act="clear">Start over</button>
+<div class="resp" role="radiogroup" aria-label="Who is answering right now">
+<strong>Who is answering right now?</strong>
+<label><input type="radio" name="resp" value="A" checked> <span data-lbl="a">Partner 1</span></label>
+<label><input type="radio" name="resp" value="B"> <span data-lbl="b">Partner 2</span></label>
 </div>
-<p class="status" id="status" role="status" aria-live="polite"></p>
-<div class="fallback" id="fallback"><p><strong>Copy your answers from here:</strong></p><textarea id="fallbackText" readonly aria-label="Your worksheet as plain text"></textarea></div>
+<p class="tip">Best way: answer separately, one after the other, then look at the picture together. Think about the last month, not how you wish it were.</p>
+
 <div id="sheet">
-
-<section data-title="Start here: the 10-minute version">
-<h2>Start here: the 10-minute version</h2>
-<p>Short on time? Do these three steps tonight and come back to the rest later. A few words about the words: <strong>overfunctioning</strong> means doing more than your share, often out of love, worry, or habit. <strong>Underfunctioning</strong> means doing less than you could, often because the other person already covers it. Neither word is about worth. They describe roles in a dance two people learned together.</p>
-<ol class="steps">
-<li><strong>Each of you, alone, for two minutes:</strong> finish this sentence. &ldquo;The thing I carry in our marriage that nobody sees is ______.&rdquo;</li>
-</ol>
-<div class="item" data-q="The thing I carry in our marriage that nobody sees is ______."><p class="q">The thing I carry in our marriage that nobody sees is ______.</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f1"><span class="whoA">Partner A</span></label><textarea id="f1" rows="3" aria-label="The thing I carry in our marriage that nobody sees is ______. (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f2"><span class="whoB">Partner B</span></label><textarea id="f2" rows="3" aria-label="The thing I carry in our marriage that nobody sees is ______. (Partner B)"></textarea></div></div></div>
-<ol class="steps" start="2">
-<li><strong>Together, for five minutes:</strong> read your sentences aloud. The only rule is to listen. No fixing, no defending, no &ldquo;but.&rdquo;</li>
-<li><strong>Together, for three minutes:</strong> pick one thing from Part 6 to try for the next 30 days.</li>
-</ol>
-<div class="item checks" data-q="Our 10-minute checklist">
-<label class="chk" for="f3"><input type="checkbox" id="f3" data-text="We each wrote our sentence"><span>We each wrote our sentence</span></label>
-<label class="chk" for="f4"><input type="checkbox" id="f4" data-text="We read them aloud and only listened"><span>We read them aloud and only listened</span></label>
-<label class="chk" for="f5"><input type="checkbox" id="f5" data-text="We picked one experiment and put it on the calendar"><span>We picked one experiment and put it on the calendar</span></label>
+<section class="dom" data-domain="doing"><h2>Doing <small>The visible work</small></h2><p class="dl">Tasks anyone could see you doing.</p>
+<div class="row" data-name="r1" data-label="Money, bills, and paperwork"><p class="q">Money, bills, and paperwork</p><div class="scale" role="radiogroup" aria-label="Money, bills, and paperwork"><label><input type="radio" name="r1" value="-2" data-aria="Money, bills, and paperwork"><span data-lbl="s0"></span></label><label><input type="radio" name="r1" value="-1" data-aria="Money, bills, and paperwork"><span data-lbl="s1"></span></label><label><input type="radio" name="r1" value="0" data-aria="Money, bills, and paperwork"><span data-lbl="s2"></span></label><label><input type="radio" name="r1" value="1" data-aria="Money, bills, and paperwork"><span data-lbl="s3"></span></label><label><input type="radio" name="r1" value="2" data-aria="Money, bills, and paperwork"><span data-lbl="s4"></span></label></div></div>
+<div class="row" data-name="r2" data-label="Appointments, schedules, and school"><p class="q">Appointments, schedules, and school</p><div class="scale" role="radiogroup" aria-label="Appointments, schedules, and school"><label><input type="radio" name="r2" value="-2" data-aria="Appointments, schedules, and school"><span data-lbl="s0"></span></label><label><input type="radio" name="r2" value="-1" data-aria="Appointments, schedules, and school"><span data-lbl="s1"></span></label><label><input type="radio" name="r2" value="0" data-aria="Appointments, schedules, and school"><span data-lbl="s2"></span></label><label><input type="radio" name="r2" value="1" data-aria="Appointments, schedules, and school"><span data-lbl="s3"></span></label><label><input type="radio" name="r2" value="2" data-aria="Appointments, schedules, and school"><span data-lbl="s4"></span></label></div></div>
+<div class="row" data-name="r3" data-label="Household tasks and errands"><p class="q">Household tasks and errands</p><div class="scale" role="radiogroup" aria-label="Household tasks and errands"><label><input type="radio" name="r3" value="-2" data-aria="Household tasks and errands"><span data-lbl="s0"></span></label><label><input type="radio" name="r3" value="-1" data-aria="Household tasks and errands"><span data-lbl="s1"></span></label><label><input type="radio" name="r3" value="0" data-aria="Household tasks and errands"><span data-lbl="s2"></span></label><label><input type="radio" name="r3" value="1" data-aria="Household tasks and errands"><span data-lbl="s3"></span></label><label><input type="radio" name="r3" value="2" data-aria="Household tasks and errands"><span data-lbl="s4"></span></label></div></div>
+</section>
+<section class="dom" data-domain="thinking"><h2>Thinking <small>The invisible planning</small></h2><p class="dl">The mental load: the noticing, deciding, and remembering nobody sees.</p>
+<div class="row" data-name="r4" data-label="Noticing what needs to happen before it becomes a problem"><p class="q">Noticing what needs to happen before it becomes a problem</p><div class="scale" role="radiogroup" aria-label="Noticing what needs to happen before it becomes a problem"><label><input type="radio" name="r4" value="-2" data-aria="Noticing what needs to happen before it becomes a problem"><span data-lbl="s0"></span></label><label><input type="radio" name="r4" value="-1" data-aria="Noticing what needs to happen before it becomes a problem"><span data-lbl="s1"></span></label><label><input type="radio" name="r4" value="0" data-aria="Noticing what needs to happen before it becomes a problem"><span data-lbl="s2"></span></label><label><input type="radio" name="r4" value="1" data-aria="Noticing what needs to happen before it becomes a problem"><span data-lbl="s3"></span></label><label><input type="radio" name="r4" value="2" data-aria="Noticing what needs to happen before it becomes a problem"><span data-lbl="s4"></span></label></div></div>
+<div class="row" data-name="r5" data-label="Researching and deciding what to do about it"><p class="q">Researching and deciding what to do about it</p><div class="scale" role="radiogroup" aria-label="Researching and deciding what to do about it"><label><input type="radio" name="r5" value="-2" data-aria="Researching and deciding what to do about it"><span data-lbl="s0"></span></label><label><input type="radio" name="r5" value="-1" data-aria="Researching and deciding what to do about it"><span data-lbl="s1"></span></label><label><input type="radio" name="r5" value="0" data-aria="Researching and deciding what to do about it"><span data-lbl="s2"></span></label><label><input type="radio" name="r5" value="1" data-aria="Researching and deciding what to do about it"><span data-lbl="s3"></span></label><label><input type="radio" name="r5" value="2" data-aria="Researching and deciding what to do about it"><span data-lbl="s4"></span></label></div></div>
+<div class="row" data-name="r6" data-label="Following up until it is really done"><p class="q">Following up until it is really done</p><div class="scale" role="radiogroup" aria-label="Following up until it is really done"><label><input type="radio" name="r6" value="-2" data-aria="Following up until it is really done"><span data-lbl="s0"></span></label><label><input type="radio" name="r6" value="-1" data-aria="Following up until it is really done"><span data-lbl="s1"></span></label><label><input type="radio" name="r6" value="0" data-aria="Following up until it is really done"><span data-lbl="s2"></span></label><label><input type="radio" name="r6" value="1" data-aria="Following up until it is really done"><span data-lbl="s3"></span></label><label><input type="radio" name="r6" value="2" data-aria="Following up until it is really done"><span data-lbl="s4"></span></label></div></div>
+</section>
+<section class="dom" data-domain="feeling"><h2>Feeling <small>The quiet kind</small></h2><p class="dl">The emotional work. It often looks like harmony from the outside.</p>
+<div class="row" data-name="r7" data-label="Going along to keep the peace"><p class="q">Going along to keep the peace</p><div class="scale" role="radiogroup" aria-label="Going along to keep the peace"><label><input type="radio" name="r7" value="-2" data-aria="Going along to keep the peace"><span data-lbl="s0"></span></label><label><input type="radio" name="r7" value="-1" data-aria="Going along to keep the peace"><span data-lbl="s1"></span></label><label><input type="radio" name="r7" value="0" data-aria="Going along to keep the peace"><span data-lbl="s2"></span></label><label><input type="radio" name="r7" value="1" data-aria="Going along to keep the peace"><span data-lbl="s3"></span></label><label><input type="radio" name="r7" value="2" data-aria="Going along to keep the peace"><span data-lbl="s4"></span></label></div></div>
+<div class="row" data-name="r8" data-label="Noticing and smoothing everyone&#x27;s mood"><p class="q">Noticing and smoothing everyone&#x27;s mood</p><div class="scale" role="radiogroup" aria-label="Noticing and smoothing everyone&#x27;s mood"><label><input type="radio" name="r8" value="-2" data-aria="Noticing and smoothing everyone&#x27;s mood"><span data-lbl="s0"></span></label><label><input type="radio" name="r8" value="-1" data-aria="Noticing and smoothing everyone&#x27;s mood"><span data-lbl="s1"></span></label><label><input type="radio" name="r8" value="0" data-aria="Noticing and smoothing everyone&#x27;s mood"><span data-lbl="s2"></span></label><label><input type="radio" name="r8" value="1" data-aria="Noticing and smoothing everyone&#x27;s mood"><span data-lbl="s3"></span></label><label><input type="radio" name="r8" value="2" data-aria="Noticing and smoothing everyone&#x27;s mood"><span data-lbl="s4"></span></label></div></div>
+<div class="row" data-name="r9" data-label="Carrying everyone&#x27;s expectations: family, community, faith"><p class="q">Carrying everyone&#x27;s expectations: family, community, faith</p><div class="scale" role="radiogroup" aria-label="Carrying everyone&#x27;s expectations: family, community, faith"><label><input type="radio" name="r9" value="-2" data-aria="Carrying everyone&#x27;s expectations: family, community, faith"><span data-lbl="s0"></span></label><label><input type="radio" name="r9" value="-1" data-aria="Carrying everyone&#x27;s expectations: family, community, faith"><span data-lbl="s1"></span></label><label><input type="radio" name="r9" value="0" data-aria="Carrying everyone&#x27;s expectations: family, community, faith"><span data-lbl="s2"></span></label><label><input type="radio" name="r9" value="1" data-aria="Carrying everyone&#x27;s expectations: family, community, faith"><span data-lbl="s3"></span></label><label><input type="radio" name="r9" value="2" data-aria="Carrying everyone&#x27;s expectations: family, community, faith"><span data-lbl="s4"></span></label></div></div>
+</section>
+<section class="dom" data-domain="feel"><h2>How it feels <small>Three quick ticks</small></h2><p class="dl">Not about who does what. About how it lands on you.</p>
+<div class="row" data-name="f1" data-label="Overall, the split feels..." data-key="fair"><p class="q">Overall, the split feels...</p><div class="scale" role="radiogroup" aria-label="Overall, the split feels..."><label><input type="radio" name="f1" value="-2" data-aria="Overall, the split feels..." data-fixed="Much worse for me"><span>Much worse for me</span></label><label><input type="radio" name="f1" value="-1" data-aria="Overall, the split feels..." data-fixed="Worse for me"><span>Worse for me</span></label><label><input type="radio" name="f1" value="0" data-aria="Overall, the split feels..." data-fixed="Fair"><span>Fair</span></label><label><input type="radio" name="f1" value="1" data-aria="Overall, the split feels..." data-fixed="Worse for them"><span>Worse for them</span></label><label><input type="radio" name="f1" value="2" data-aria="Overall, the split feels..." data-fixed="Much worse for them"><span>Much worse for them</span></label></div></div>
+<div class="row" data-name="f2" data-label="How worn out am I from carrying my share?" data-key="tired"><p class="q">How worn out am I from carrying my share?</p><div class="scale" role="radiogroup" aria-label="How worn out am I from carrying my share?"><label><input type="radio" name="f2" value="-2" data-aria="How worn out am I from carrying my share?" data-fixed="Not at all"><span>Not at all</span></label><label><input type="radio" name="f2" value="-1" data-aria="How worn out am I from carrying my share?" data-fixed="A little"><span>A little</span></label><label><input type="radio" name="f2" value="0" data-aria="How worn out am I from carrying my share?" data-fixed="Some"><span>Some</span></label><label><input type="radio" name="f2" value="1" data-aria="How worn out am I from carrying my share?" data-fixed="Quite"><span>Quite</span></label><label><input type="radio" name="f2" value="2" data-aria="How worn out am I from carrying my share?" data-fixed="Worn out"><span>Worn out</span></label></div></div>
+<div class="row" data-name="f3" data-label="How close do I feel to my partner these days?" data-key="close"><p class="q">How close do I feel to my partner these days?</p><div class="scale" role="radiogroup" aria-label="How close do I feel to my partner these days?"><label><input type="radio" name="f3" value="-2" data-aria="How close do I feel to my partner these days?" data-fixed="Distant"><span>Distant</span></label><label><input type="radio" name="f3" value="-1" data-aria="How close do I feel to my partner these days?" data-fixed="A bit far"><span>A bit far</span></label><label><input type="radio" name="f3" value="0" data-aria="How close do I feel to my partner these days?" data-fixed="Okay"><span>Okay</span></label><label><input type="radio" name="f3" value="1" data-aria="How close do I feel to my partner these days?" data-fixed="Close"><span>Close</span></label><label><input type="radio" name="f3" value="2" data-aria="How close do I feel to my partner these days?" data-fixed="Very close"><span>Very close</span></label></div></div>
+</section>
 </div>
-<p>Worth doing the rest when you have an evening. The parts below show <em>why</em> you each carry what you carry, which is usually the missing piece.</p>
-</section>
 
-<section data-title="Part 1: The scripts we were handed">
-<h2>Part 1: The scripts we were handed</h2>
-<p>Long before you met, each of you absorbed a script for how a marriage works. Nobody sat you down and taught it. You watched it at the dinner table. Those scripts are why two loving people can both feel unseen. Fill in your own column alone, then compare. Where the answers differ, you have found a place worth being curious about, not a place where one of you is wrong.</p>
-<div class="item" data-q="Who made the big decisions in the home I grew up in?"><p class="q">Who made the big decisions in the home I grew up in?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f6"><span class="whoA">Partner A</span></label><textarea id="f6" rows="2" aria-label="Who made the big decisions in the home I grew up in? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f7"><span class="whoB">Partner B</span></label><textarea id="f7" rows="2" aria-label="Who made the big decisions in the home I grew up in? (Partner B)"></textarea></div></div></div><div class="item" data-q="Who did the daily work: meals, money, kids, errands?"><p class="q">Who did the daily work: meals, money, kids, errands?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f8"><span class="whoA">Partner A</span></label><textarea id="f8" rows="2" aria-label="Who did the daily work: meals, money, kids, errands? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f9"><span class="whoB">Partner B</span></label><textarea id="f9" rows="2" aria-label="Who did the daily work: meals, money, kids, errands? (Partner B)"></textarea></div></div></div><div class="item" data-q="What did I see a &quot;good&quot; husband or wife doing?"><p class="q">What did I see a &quot;good&quot; husband or wife doing?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f10"><span class="whoA">Partner A</span></label><textarea id="f10" rows="2" aria-label="What did I see a &quot;good&quot; husband or wife doing? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f11"><span class="whoB">Partner B</span></label><textarea id="f11" rows="2" aria-label="What did I see a &quot;good&quot; husband or wife doing? (Partner B)"></textarea></div></div></div><div class="item" data-q="How did the adults around me handle disagreement? (Talked it out, went quiet, got loud, left the room)"><p class="q">How did the adults around me handle disagreement? (Talked it out, went quiet, got loud, left the room)</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f12"><span class="whoA">Partner A</span></label><textarea id="f12" rows="2" aria-label="How did the adults around me handle disagreement? (Talked it out, went quiet, got loud, left the room) (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f13"><span class="whoB">Partner B</span></label><textarea id="f13" rows="2" aria-label="How did the adults around me handle disagreement? (Talked it out, went quiet, got loud, left the room) (Partner B)"></textarea></div></div></div><div class="item" data-q="What was I praised for as a child? (Helping, achieving, being quiet, being strong)"><p class="q">What was I praised for as a child? (Helping, achieving, being quiet, being strong)</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f14"><span class="whoA">Partner A</span></label><textarea id="f14" rows="2" aria-label="What was I praised for as a child? (Helping, achieving, being quiet, being strong) (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f15"><span class="whoB">Partner B</span></label><textarea id="f15" rows="2" aria-label="What was I praised for as a child? (Helping, achieving, being quiet, being strong) (Partner B)"></textarea></div></div></div><div class="item" data-q="What did I learn about asking for help?"><p class="q">What did I learn about asking for help?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f16"><span class="whoA">Partner A</span></label><textarea id="f16" rows="2" aria-label="What did I learn about asking for help? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f17"><span class="whoB">Partner B</span></label><textarea id="f17" rows="2" aria-label="What did I learn about asking for help? (Partner B)"></textarea></div></div></div><div class="item" data-q="What did I learn about saying no?"><p class="q">What did I learn about saying no?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f18"><span class="whoA">Partner A</span></label><textarea id="f18" rows="2" aria-label="What did I learn about saying no? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f19"><span class="whoB">Partner B</span></label><textarea id="f19" rows="2" aria-label="What did I learn about saying no? (Partner B)"></textarea></div></div></div><div class="item" data-q="How did my family or culture expect a marriage to begin? (Arranged, chosen, something in between)"><p class="q">How did my family or culture expect a marriage to begin? (Arranged, chosen, something in between)</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f20"><span class="whoA">Partner A</span></label><textarea id="f20" rows="2" aria-label="How did my family or culture expect a marriage to begin? (Arranged, chosen, something in between) (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f21"><span class="whoB">Partner B</span></label><textarea id="f21" rows="2" aria-label="How did my family or culture expect a marriage to begin? (Arranged, chosen, something in between) (Partner B)"></textarea></div></div></div><div class="item" data-q="What do I still expect without having said it out loud?"><p class="q">What do I still expect without having said it out loud?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f22"><span class="whoA">Partner A</span></label><textarea id="f22" rows="2" aria-label="What do I still expect without having said it out loud? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f23"><span class="whoB">Partner B</span></label><textarea id="f23" rows="2" aria-label="What do I still expect without having said it out loud? (Partner B)"></textarea></div></div></div>
-<div class="note"><p><strong>A note on scripts you are rewriting.</strong> Many couples are living differently from how they were raised, and that is hard in both directions. One person may have grown up expecting the other to decide, while both of you now want to decide together. The old script does not vanish because you changed your mind. It shows up as a pause before speaking, a &ldquo;whatever you think,&rdquo; or a habit of going along. The other person may have learned to carry everything alone and call it strength. Neither habit is a flaw in character. Both are old instructions, and old instructions can be updated slowly, on purpose.</p>
-<p><strong>Check yourself:</strong> Did I describe my partner&rsquo;s script as &ldquo;the old way&rdquo; and mine as &ldquo;normal&rdquo;? If so, rewrite both as simply <em>different</em>.</p></div>
-</section>
+<div class="actions center"><button type="button" class="btn" id="showBtn">See the picture</button><button type="button" class="btn ghost" id="otherBtn">Now it is <span data-lbl="otherNext">my partner</span>&rsquo;s turn</button></div>
+<p class="status" id="status" role="status" aria-live="polite"></p>
 
-<section data-title="Part 2: Who carries what">
-<h2>Part 2: Who carries what</h2>
-<p>Each of you picks an answer for every row, separately, without looking at the other&rsquo;s. Then compare. The surprises are the point. The feeling box under each answer asks how you each feel about the current split, because a fair split on paper can still feel heavy.</p>
-<div class="item" data-q="Money, bills, big financial decisions"><p class="q">Money, bills, big financial decisions</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f24"><span class="whoA">Partner A</span></label><select id="f24" data-kind="carry" aria-label="Money, bills, big financial decisions (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f25">How I feel about it</label><textarea id="f25" rows="1" data-kind="feel" aria-label="Money, bills, big financial decisions (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f26"><span class="whoB">Partner B</span></label><select id="f26" data-kind="carry" aria-label="Money, bills, big financial decisions (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f27">How I feel about it</label><textarea id="f27" rows="1" data-kind="feel" aria-label="Money, bills, big financial decisions (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Planning, calendars, schedules"><p class="q">Planning, calendars, schedules</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f28"><span class="whoA">Partner A</span></label><select id="f28" data-kind="carry" aria-label="Planning, calendars, schedules (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f29">How I feel about it</label><textarea id="f29" rows="1" data-kind="feel" aria-label="Planning, calendars, schedules (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f30"><span class="whoB">Partner B</span></label><select id="f30" data-kind="carry" aria-label="Planning, calendars, schedules (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f31">How I feel about it</label><textarea id="f31" rows="1" data-kind="feel" aria-label="Planning, calendars, schedules (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Kids: school, doctors, daily care"><p class="q">Kids: school, doctors, daily care</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f32"><span class="whoA">Partner A</span></label><select id="f32" data-kind="carry" aria-label="Kids: school, doctors, daily care (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f33">How I feel about it</label><textarea id="f33" rows="1" data-kind="feel" aria-label="Kids: school, doctors, daily care (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f34"><span class="whoB">Partner B</span></label><select id="f34" data-kind="carry" aria-label="Kids: school, doctors, daily care (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f35">How I feel about it</label><textarea id="f35" rows="1" data-kind="feel" aria-label="Kids: school, doctors, daily care (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Household work and errands"><p class="q">Household work and errands</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f36"><span class="whoA">Partner A</span></label><select id="f36" data-kind="carry" aria-label="Household work and errands (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f37">How I feel about it</label><textarea id="f37" rows="1" data-kind="feel" aria-label="Household work and errands (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f38"><span class="whoB">Partner B</span></label><select id="f38" data-kind="carry" aria-label="Household work and errands (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f39">How I feel about it</label><textarea id="f39" rows="1" data-kind="feel" aria-label="Household work and errands (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Extended family and in-laws"><p class="q">Extended family and in-laws</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f40"><span class="whoA">Partner A</span></label><select id="f40" data-kind="carry" aria-label="Extended family and in-laws (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f41">How I feel about it</label><textarea id="f41" rows="1" data-kind="feel" aria-label="Extended family and in-laws (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f42"><span class="whoB">Partner B</span></label><select id="f42" data-kind="carry" aria-label="Extended family and in-laws (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f43">How I feel about it</label><textarea id="f43" rows="1" data-kind="feel" aria-label="Extended family and in-laws (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Emotional temperature (noticing moods, smoothing things over)"><p class="q">Emotional temperature (noticing moods, smoothing things over)</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f44"><span class="whoA">Partner A</span></label><select id="f44" data-kind="carry" aria-label="Emotional temperature (noticing moods, smoothing things over) (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f45">How I feel about it</label><textarea id="f45" rows="1" data-kind="feel" aria-label="Emotional temperature (noticing moods, smoothing things over) (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f46"><span class="whoB">Partner B</span></label><select id="f46" data-kind="carry" aria-label="Emotional temperature (noticing moods, smoothing things over) (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f47">How I feel about it</label><textarea id="f47" rows="1" data-kind="feel" aria-label="Emotional temperature (noticing moods, smoothing things over) (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Starting hard conversations"><p class="q">Starting hard conversations</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f48"><span class="whoA">Partner A</span></label><select id="f48" data-kind="carry" aria-label="Starting hard conversations (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f49">How I feel about it</label><textarea id="f49" rows="1" data-kind="feel" aria-label="Starting hard conversations (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f50"><span class="whoB">Partner B</span></label><select id="f50" data-kind="carry" aria-label="Starting hard conversations (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f51">How I feel about it</label><textarea id="f51" rows="1" data-kind="feel" aria-label="Starting hard conversations (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Affection, romance, quality time"><p class="q">Affection, romance, quality time</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f52"><span class="whoA">Partner A</span></label><select id="f52" data-kind="carry" aria-label="Affection, romance, quality time (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f53">How I feel about it</label><textarea id="f53" rows="1" data-kind="feel" aria-label="Affection, romance, quality time (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f54"><span class="whoB">Partner B</span></label><select id="f54" data-kind="carry" aria-label="Affection, romance, quality time (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f55">How I feel about it</label><textarea id="f55" rows="1" data-kind="feel" aria-label="Affection, romance, quality time (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Faith, traditions, holidays"><p class="q">Faith, traditions, holidays</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f56"><span class="whoA">Partner A</span></label><select id="f56" data-kind="carry" aria-label="Faith, traditions, holidays (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f57">How I feel about it</label><textarea id="f57" rows="1" data-kind="feel" aria-label="Faith, traditions, holidays (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f58"><span class="whoB">Partner B</span></label><select id="f58" data-kind="carry" aria-label="Faith, traditions, holidays (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f59">How I feel about it</label><textarea id="f59" rows="1" data-kind="feel" aria-label="Faith, traditions, holidays (Partner B): how I feel about it"></textarea></div></div></div><div class="item" data-q="Saying no and setting limits"><p class="q">Saying no and setting limits</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f60"><span class="whoA">Partner A</span></label><select id="f60" data-kind="carry" aria-label="Saying no and setting limits (Partner A): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f61">How I feel about it</label><textarea id="f61" rows="1" data-kind="feel" aria-label="Saying no and setting limits (Partner A): how I feel about it"></textarea></div><div class="field" data-who="B"><label class="who" for="f62"><span class="whoB">Partner B</span></label><select id="f62" data-kind="carry" aria-label="Saying no and setting limits (Partner B): who carries it"><option value="">Pick one</option><option value="Mostly me">Mostly me</option><option value="Mostly my partner">Mostly my partner</option><option value="Shared evenly">Shared evenly</option><option value="Nobody, it slips">Nobody, it slips</option></select><label class="sub" for="f63">How I feel about it</label><textarea id="f63" rows="1" data-kind="feel" aria-label="Saying no and setting limits (Partner B): how I feel about it"></textarea></div></div></div>
-<div class="note"><p><strong>Look for three things:</strong></p>
+<section class="results" id="results" hidden aria-labelledby="res-h">
+<h2 id="res-h">Your picture <small id="resSub">Who carries more, in each area</small></h2>
+<div class="chartcard" id="chart" role="img" aria-label="Chart of who carries more in each area"></div>
+<div class="start" id="startHere"></div>
+<h3>How to read it</h3>
+<ul class="read">
+<li><strong>The middle is shared.</strong> A dot toward one side means that person carries more of that area. It does not need to be 50/50 everywhere. What matters is whether it feels fair to both of you.</li>
+<li><strong>This is a role, never a worth.</strong> Overfunctioning is doing more than your share, often out of love, worry, or habit. Underfunctioning is doing less than you could, often because the other person already covers it. The two feed each other, and nobody planned it.</li>
+<li><strong>The quiet kind counts.</strong> If one of you leans heavily in <em>Feeling</em>, that person may be going along to keep the peace. It can look like harmony and still be costly.</li>
+<li><strong>Two different pictures are not a mistake.</strong> Research on couples finds partners often see the split differently. A gap between your dots is the best place to start talking.</li>
+</ul>
+<h3>Talk about it for ten minutes</h3>
 <ol>
-<li>Rows where you both said &ldquo;mostly me.&rdquo; You may both be overfunctioning there, each carrying alone.</li>
-<li>Rows where you both said &ldquo;mostly my partner.&rdquo; Nobody feels in charge, and things slip.</li>
-<li>Rows with a heavy feeling in the feeling box, even if the split looks fair. That is where the unseen weight lives.</li>
-</ol></div>
-</section>
-
-<section data-title="Part 3: The dance">
-<h2>Part 3: The dance</h2>
-<p>Overfunctioning and underfunctioning feed each other. When one person does more, the other has less room to step in. When one person steps back, the other feels they must do more. Each move makes the other move feel necessary. Nobody planned it, and nobody is the villain.</p>
-<p>Pick one row from Part 2 where you carry the most, and trace the loop below. Write one line for each step. (If you are doing this together, one of you can go first, then the other.)</p>
-<div class="item" data-q="1. The area where I tend to step in first:"><p class="q">1. The area where I tend to step in first:</p><div class="field" data-who=""><textarea id="f64" rows="2" aria-label="1. The area where I tend to step in first:"></textarea></div></div><div class="item" data-q="2. What I tell myself when I do: (&quot;It&#x27;s faster if I do it,&quot; &quot;Nobody else will,&quot; &quot;I&#x27;m the responsible one&quot;)"><p class="q">2. What I tell myself when I do: (&quot;It&#x27;s faster if I do it,&quot; &quot;Nobody else will,&quot; &quot;I&#x27;m the responsible one&quot;)</p><div class="field" data-who=""><textarea id="f65" rows="2" aria-label="2. What I tell myself when I do: (&quot;It&#x27;s faster if I do it,&quot; &quot;Nobody else will,&quot; &quot;I&#x27;m the responsible one&quot;)"></textarea></div></div><div class="item" data-q="3. What I feel while carrying it: (Tired, proud, resentful, needed, alone)"><p class="q">3. What I feel while carrying it: (Tired, proud, resentful, needed, alone)</p><div class="field" data-who=""><textarea id="f66" rows="2" aria-label="3. What I feel while carrying it: (Tired, proud, resentful, needed, alone)"></textarea></div></div><div class="item" data-q="4. What my partner probably does in response:"><p class="q">4. What my partner probably does in response:</p><div class="field" data-who=""><textarea id="f67" rows="2" aria-label="4. What my partner probably does in response:"></textarea></div></div><div class="item" data-q="5. What that response makes me believe:"><p class="q">5. What that response makes me believe:</p><div class="field" data-who=""><textarea id="f68" rows="2" aria-label="5. What that response makes me believe:"></textarea></div></div><div class="item" data-q="6. What I am afraid would happen if I stopped:"><p class="q">6. What I am afraid would happen if I stopped:</p><div class="field" data-who=""><textarea id="f69" rows="2" aria-label="6. What I am afraid would happen if I stopped:"></textarea></div></div>
-<p>Now flip it. If you tend to do less in some area, answer these:</p>
-<div class="item" data-q="What do I assume my partner will handle?"><p class="q">What do I assume my partner will handle?</p><div class="field" data-who=""><textarea id="f70" rows="2" aria-label="What do I assume my partner will handle?"></textarea></div></div><div class="item" data-q="What have I stopped offering to do because it never goes my way?"><p class="q">What have I stopped offering to do because it never goes my way?</p><div class="field" data-who=""><textarea id="f71" rows="2" aria-label="What have I stopped offering to do because it never goes my way?"></textarea></div></div><div class="item" data-q="Where do I go along with something because speaking up feels costly?"><p class="q">Where do I go along with something because speaking up feels costly?</p><div class="field" data-who=""><textarea id="f72" rows="2" aria-label="Where do I go along with something because speaking up feels costly?"></textarea></div></div><div class="item" data-q="What would I take on, if I felt it was truly safe to?"><p class="q">What would I take on, if I felt it was truly safe to?</p><div class="field" data-who=""><textarea id="f73" rows="2" aria-label="What would I take on, if I felt it was truly safe to?"></textarea></div></div>
-<div class="note"><p><strong>The quiet kind.</strong> Overfunctioning is not always tasks. It can be emotional: managing the mood in the room, going along to keep the peace, carrying everyone&rsquo;s expectations, or never asking for what you need. This kind is easy to miss because it looks like harmony. Ask yourself whether either of you does it, and what it costs.</p></div>
-</section>
-
-<section data-title="Part 4: Faith and values">
-<h2>Part 4: Faith and values</h2>
-<p>Faith, or the lack of it, shapes how each of you thinks about marriage, authority, sacrifice, and what a good life asks of a person. You do not need to share beliefs to share a home. You do need to understand what the other person&rsquo;s beliefs ask of them. The goal here is not to decide whose view is right. It is to know what each of you is holding.</p>
-<p>Write in your own words, in your own terms. Each person describes their own faith or worldview, and nobody describes the other&rsquo;s.</p>
-<div class="item" data-q="What did I learn, from faith or family values, about what a marriage is for?"><p class="q">What did I learn, from faith or family values, about what a marriage is for?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f74"><span class="whoA">Partner A</span></label><textarea id="f74" rows="2" aria-label="What did I learn, from faith or family values, about what a marriage is for? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f75"><span class="whoB">Partner B</span></label><textarea id="f75" rows="2" aria-label="What did I learn, from faith or family values, about what a marriage is for? (Partner B)"></textarea></div></div></div><div class="item" data-q="What did I learn about who leads in a marriage, if anyone?"><p class="q">What did I learn about who leads in a marriage, if anyone?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f76"><span class="whoA">Partner A</span></label><textarea id="f76" rows="2" aria-label="What did I learn about who leads in a marriage, if anyone? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f77"><span class="whoB">Partner B</span></label><textarea id="f77" rows="2" aria-label="What did I learn about who leads in a marriage, if anyone? (Partner B)"></textarea></div></div></div><div class="item" data-q="What does my faith or worldview ask of me as a spouse?"><p class="q">What does my faith or worldview ask of me as a spouse?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f78"><span class="whoA">Partner A</span></label><textarea id="f78" rows="2" aria-label="What does my faith or worldview ask of me as a spouse? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f79"><span class="whoB">Partner B</span></label><textarea id="f79" rows="2" aria-label="What does my faith or worldview ask of me as a spouse? (Partner B)"></textarea></div></div></div><div class="item" data-q="What does it ask of me as a parent?"><p class="q">What does it ask of me as a parent?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f80"><span class="whoA">Partner A</span></label><textarea id="f80" rows="2" aria-label="What does it ask of me as a parent? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f81"><span class="whoB">Partner B</span></label><textarea id="f81" rows="2" aria-label="What does it ask of me as a parent? (Partner B)"></textarea></div></div></div><div class="item" data-q="What practices or rhythms keep me steady? (Prayer, meditation, rest, service, community)"><p class="q">What practices or rhythms keep me steady? (Prayer, meditation, rest, service, community)</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f82"><span class="whoA">Partner A</span></label><textarea id="f82" rows="2" aria-label="What practices or rhythms keep me steady? (Prayer, meditation, rest, service, community) (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f83"><span class="whoB">Partner B</span></label><textarea id="f83" rows="2" aria-label="What practices or rhythms keep me steady? (Prayer, meditation, rest, service, community) (Partner B)"></textarea></div></div></div><div class="item" data-q="Where do my beliefs and my partner&#x27;s meet easily?"><p class="q">Where do my beliefs and my partner&#x27;s meet easily?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f84"><span class="whoA">Partner A</span></label><textarea id="f84" rows="2" aria-label="Where do my beliefs and my partner&#x27;s meet easily? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f85"><span class="whoB">Partner B</span></label><textarea id="f85" rows="2" aria-label="Where do my beliefs and my partner&#x27;s meet easily? (Partner B)"></textarea></div></div></div><div class="item" data-q="Where do they rub, and what does the rub feel like in daily life?"><p class="q">Where do they rub, and what does the rub feel like in daily life?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f86"><span class="whoA">Partner A</span></label><textarea id="f86" rows="2" aria-label="Where do they rub, and what does the rub feel like in daily life? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f87"><span class="whoB">Partner B</span></label><textarea id="f87" rows="2" aria-label="Where do they rub, and what does the rub feel like in daily life? (Partner B)"></textarea></div></div></div><div class="item" data-q="What do I want our children to receive from each of our traditions?"><p class="q">What do I want our children to receive from each of our traditions?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f88"><span class="whoA">Partner A</span></label><textarea id="f88" rows="2" aria-label="What do I want our children to receive from each of our traditions? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f89"><span class="whoB">Partner B</span></label><textarea id="f89" rows="2" aria-label="What do I want our children to receive from each of our traditions? (Partner B)"></textarea></div></div></div><div class="item" data-q="What would make me feel my faith is respected in our home?"><p class="q">What would make me feel my faith is respected in our home?</p><div class="pair"><div class="field" data-who="A"><label class="who" for="f90"><span class="whoA">Partner A</span></label><textarea id="f90" rows="2" aria-label="What would make me feel my faith is respected in our home? (Partner A)"></textarea></div><div class="field" data-who="B"><label class="who" for="f91"><span class="whoB">Partner B</span></label><textarea id="f91" rows="2" aria-label="What would make me feel my faith is respected in our home? (Partner B)"></textarea></div></div></div>
-<div class="note"><p><strong>A gentle rule for this section:</strong> ask questions to understand, not to win. If you notice yourself preparing a rebuttal, stop and ask instead: &ldquo;Can you tell me more about what that means to you?&rdquo;</p></div>
-</section>
-
-<section data-title="Part 5: Talk it through">
-<h2>Part 5: Talk it through</h2>
-<p>Pick a calm time, not the middle of an argument. Fifteen to thirty minutes, phones away. Mornings often work better than late nights. If your first language differs, use the one that feels most like home to the person who is sharing.</p>
-<p><strong>Ground rules.</strong> One person speaks at a time. The listener repeats back what they heard before answering. No fixing, no defending, no &ldquo;but.&rdquo; Either of you can pause the conversation and resume it later.</p>
-<ol>
-<li><strong>Start with what&rsquo;s good.</strong> Each of you names one thing about your partner that you are grateful for, and be specific.</li>
-<li><strong>Share what you found.</strong> Each of you shares one surprise from Parts 1 to 4. Not a complaint, a discovery.</li>
-<li><strong>Ask the two care questions.</strong> &ldquo;When I do or say [something], what happens for you?&rdquo; and &ldquo;What would you like more of from me?&rdquo;</li>
-<li><strong>Listen for the &lsquo;no.&rsquo;</strong> Ask: &ldquo;When you say no to me, how does it land? When does it get heard, and when doesn&rsquo;t it?&rdquo; Then honor the answer, even if it is uncomfortable.</li>
-<li><strong>Name one thing you each want to carry less, and one thing you each would like to carry more.</strong> Sometimes the two fit together like puzzle pieces.</li>
-<li><strong>End with thanks.</strong> Thank each other for being brave enough to look.</li>
+<li>Each finish this sentence out loud, and only listen: &ldquo;The thing I carry that nobody sees is ______.&rdquo;</li>
+<li>Look at where your two dots are farthest apart. Ask with real curiosity: &ldquo;What do you see that I don&rsquo;t?&rdquo;</li>
+<li>Pick one experiment below and put it on the calendar.</li>
 </ol>
-<div class="note"><p><strong>If it gets heated:</strong> stop, breathe, and say, &ldquo;I want to keep going. Can we take ten minutes and come back?&rdquo; Then actually come back.</p>
-<p><strong>If something painful comes up that either of you does not want to explore, that is okay.</strong> Some memories belong to the person who holds them. You can say, &ldquo;I&rsquo;m not ready to talk about that,&rdquo; and the other person&rsquo;s job is to respect it.</p></div>
-</section>
-
-<section data-title="Part 6: One small experiment">
-<h2>Part 6: One small experiment</h2>
-<p>Pick one. Only one. Trying to change everything at once is its own kind of overfunctioning. Try it for 30 days, then check in.</p>
-<div class="item exp" data-q="Our experiment (pick one)" data-kind="experiment" role="radiogroup" aria-label="Pick one experiment">
-<label class="chk" for="f92"><input type="radio" name="exp" id="f92" data-text="Morning heart talk. Fifteen minutes, three times a week, no logistics allowed."><span><strong>Morning heart talk.</strong> Fifteen minutes, three times a week, no logistics allowed.</span></label><label class="chk" for="f93"><input type="radio" name="exp" id="f93" data-text="Hand over one domain fully. One person teaches it patiently once, then steps back, even if it is done differently."><span><strong>Hand over one domain fully.</strong> One person teaches it patiently once, then steps back, even if it is done differently.</span></label><label class="chk" for="f94"><input type="radio" name="exp" id="f94" data-text="Write a family-support plan together. How much, how long, and when you will review it."><span><strong>Write a family-support plan together.</strong> How much, how long, and when you will review it.</span></label><label class="chk" for="f95"><input type="radio" name="exp" id="f95" data-text="One small daily affection. A hug, sitting close, a kind word. Only what is genuine."><span><strong>One small daily affection.</strong> A hug, sitting close, a kind word. Only what is genuine.</span></label><label class="chk" for="f96"><input type="radio" name="exp" id="f96" data-text="Practice a gentle no. One person says no to one small thing this week, and the other responds with thanks, not pushback."><span><strong>Practice a gentle no.</strong> One person says no to one small thing this week, and the other responds with thanks, not pushback.</span></label><label class="chk" for="f97"><input type="radio" name="exp" id="f97" data-text="A weekly ten-minute check-in. What felt heavy this week? What felt good?"><span><strong>A weekly ten-minute check-in.</strong> What felt heavy this week? What felt good?</span></label><div class="chk own"><input type="radio" name="exp" id="f98" data-own="f99" aria-label="My own idea"><label for="f99"><strong>My own idea:</strong></label> <input type="text" id="f99" class="inline" aria-label="My own idea"></div>
+<h3>Pick one to try for 30 days</h3>
+<div role="radiogroup" aria-label="Pick one experiment">
+<label class="chk"><input type="radio" name="exp" value="0" data-text="Morning heart talk. Fifteen minutes, a few mornings a week, no logistics allowed."><span>Morning heart talk. Fifteen minutes, a few mornings a week, no logistics allowed.</span></label><label class="chk"><input type="radio" name="exp" value="1" data-text="Hand one area over completely. One person teaches it patiently once, then steps back, even if it is done differently."><span>Hand one area over completely. One person teaches it patiently once, then steps back, even if it is done differently.</span></label><label class="chk"><input type="radio" name="exp" value="2" data-text="A weekly ten-minute check-in. What felt heavy this week? What felt good?"><span>A weekly ten-minute check-in. What felt heavy this week? What felt good?</span></label><label class="chk"><input type="radio" name="exp" value="3" data-text="One small daily affection. A hug, sitting close, a kind word. Only what is genuine."><span>One small daily affection. A hug, sitting close, a kind word. Only what is genuine.</span></label><label class="chk"><input type="radio" name="exp" value="4" data-text="Practice a gentle no. One person says no to one small thing, and the other responds with thanks, not pushback."><span>Practice a gentle no. One person says no to one small thing, and the other responds with thanks, not pushback.</span></label><label class="chk"><input type="radio" name="exp" value="5" data-text="Write a family-support plan together. How much, how long, and when you will review it."><span>Write a family-support plan together. How much, how long, and when you will review it.</span></label>
 </div>
-<h3>Write your plan</h3>
-<div class="item" data-q="My experiment"><p class="q">My experiment</p><div class="field" data-who=""><textarea id="f100" rows="2" aria-label="My experiment"></textarea></div></div><div class="item" data-q="What it will look like day to day"><p class="q">What it will look like day to day</p><div class="field" data-who=""><textarea id="f101" rows="2" aria-label="What it will look like day to day"></textarea></div></div><div class="item" data-q="When we will start"><p class="q">When we will start</p><div class="field" data-who=""><textarea id="f102" rows="2" aria-label="When we will start"></textarea></div></div><div class="item" data-q="When we will check in"><p class="q">When we will check in</p><div class="field" data-who=""><textarea id="f103" rows="2" aria-label="When we will check in"></textarea></div></div>
-<h3>Thirty-day check-in</h3>
-<p>Come back to this in a month. Mark where you are, then talk about it. (If you are filling this in now, jot down how you will know.)</p>
-<div class="item" data-q="How is the experiment going?"><p class="q">How is the experiment going?</p><div class="field"><label class="who" for="f104">Status</label><select id="f104" data-kind="status" aria-label="How is the experiment going? status"><option value="">Pick one</option><option value="Not started">Not started</option><option value="Going well">Going well</option><option value="Struggling">Struggling</option><option value="Adjusted it">Adjusted it</option><option value="Keeping it">Keeping it</option></select></div><div class="field" data-who=""><textarea id="f105" rows="2" aria-label="How is the experiment going? (notes)"></textarea></div></div><div class="item" data-q="Did either of us feel more seen?"><p class="q">Did either of us feel more seen?</p><div class="field" data-who=""><textarea id="f106" rows="2" aria-label="Did either of us feel more seen? (notes)"></textarea></div></div><div class="item" data-q="What got in the way?"><p class="q">What got in the way?</p><div class="field" data-who=""><textarea id="f107" rows="2" aria-label="What got in the way? (notes)"></textarea></div></div><div class="item" data-q="What do we keep, change, or try next?"><p class="q">What do we keep, change, or try next?</p><div class="field" data-who=""><textarea id="f108" rows="2" aria-label="What do we keep, change, or try next? (notes)"></textarea></div></div>
-<p class="closing"><em>This worksheet is a listening tool, not a diagnosis. If you are feeling unsafe, or if something heavy keeps coming up that you cannot work through together, please reach out to a trusted counselor or clergy person.</em></p>
-</section>
-</div>
-<div class="actions" data-actions>
+<p class="noprint" style="font-family:var(--font-ui);font-size:.95rem;color:var(--muted)">Only one. Trying to change everything at once is its own kind of overfunctioning.</p>
+<div class="actions noprint">
 <button type="button" class="btn" data-act="pdf">Save as PDF</button>
 <button type="button" class="btn" data-act="email">Email to myself</button>
-<button type="button" class="btn ghost" data-act="clear">Start over</button>
+<button type="button" class="btn" data-act="share">Make a picture to share</button>
+<button type="button" class="btn ghost" id="clearBtn">Start over</button>
 </div>
+<div class="noprint" style="margin:0 0 1rem"><label for="noteIn" style="font-family:var(--font-ui);font-weight:600;display:block;margin-bottom:.25rem">Add a short note to the picture (optional)</label><input type="text" id="noteIn" maxlength="76" autocomplete="off" placeholder="For example: Our real answers, taken separately."><p class="tip" style="margin:.3rem 0 0">Shown only on the picture you make. Nothing is sent anywhere.</p></div>
+<div class="shareimg" id="shareBox" hidden>
+<img id="shareImg" alt="Your shareable picture of who carries what" width="540">
+<p id="shareNote">On a phone, press and hold the picture to save it.</p>
+<a class="btn" id="shareDl" download="who-carries-what.png">Download picture</a>
+<p style="margin-top:.8rem">This picture shows only the three bars and the names you typed. It does not show your individual answers. Make sure you both are comfortable sharing it.</p>
+</div>
+<div class="fallback" id="fallback"><p><strong>Copy your answers from here:</strong></p><textarea id="fallbackText" readonly aria-label="Your check-in as plain text"></textarea></div>
+<p class="closing"><em>This is a conversation starter, not a diagnosis. If you ever feel unsafe, or something heavy keeps coming up that you cannot work through together, please reach out to a trusted counselor or clergy person.</em></p>
+</section>
+
+<details>
+<summary>What is this based on?</summary>
+<p>This check-in borrows <em>formats and ideas</em> from published research on who does the work in couples, so the questions are not made up from scratch:</p>
+<ul>
+<li>The five-step &ldquo;who carries it&rdquo; scale and the fairness question follow formats used in household-labor research (Blair and Lichter&rsquo;s fairness items, described in <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4114516" rel="noopener">Le and Aune, 2011</a>).</li>
+<li>The Thinking and Feeling areas follow research on the &ldquo;mental load&rdquo;: cognitive labor (anticipating, deciding, following up) and emotional labor, and how tired people feel carrying them (see <a href="https://arxiv.org/html/2505.11426v1" rel="noopener">Barigozzi and colleagues, 2025</a>). That work also found that partners often disagree about who organizes what.</li>
+<li>The words overfunctioning and underfunctioning come from Bowen family systems theory, and reached us through the Reimagining Love podcast with Dr. Alexandra Solomon.</li>
+</ul>
+<p><strong>What it is not.</strong> It is not a validated clinical test. We did not find a published scale that measures overfunctioning itself in couples, so the picture is a simple summary of your own ticks, not a score compared to other people. It cannot diagnose anything. Use it to start a kind, curious conversation.</p>
+</details>
+
 <section class="fbk" id="feedback" aria-labelledby="fbk-h">
 <h2 id="fbk-h">Help us make this better</h2>
-<p>Totally optional, and separate from your worksheet. This box sends only what you type in it, and only when you press Send. Your worksheet answers never go with it. Please leave out names and private details about your marriage.</p>
+<p>Totally optional, and separate from your check-in. This box sends only what you type in it, and only when you press Send. Your ticks never go with it. Please leave out names and private details about your marriage.</p>
 <form id="fbForm" novalidate>
-<div class="item"><p class="q" id="fbq1">How was this worksheet for you?</p>
+<div class="item"><p class="q" id="fbq1">How was this for you?</p>
 <div class="opts" role="radiogroup" aria-labelledby="fbq1">
 <label class="opt"><input type="radio" name="fbrate" value="It helped"> It helped</label>
 <label class="opt"><input type="radio" name="fbrate" value="Somewhat"> Somewhat</label>
@@ -237,122 +231,392 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
 <div class="actions"><button type="submit" class="btn" id="fbSend">Send</button></div>
 </form>
 </section>
-<p class="plug"><strong>This worksheet is hosted on Spiritual Lesson Plans,</strong> a free site that tries to help all of us approach life with tools like this one. No accounts, and nothing you write in the worksheet is collected. <a href="/">Take a look around</a>.</p>
+
+<p class="plug"><strong>Want to go deeper?</strong> There is a longer, ten-part worksheet about the scripts you each inherited, faith and values, and more: <a href="/couples-worksheet-deeper">the deeper worksheet</a>.</p>
+<p class="plug" style="padding-top:0"><strong>This check-in is hosted on Spiritual Lesson Plans,</strong> a free site that tries to help all of us approach life with tools like this one. No accounts, and nothing you tick or type in the check-in is collected. <a href="/">Take a look around</a>.</p>
 <p class="plug" style="padding-top:0;font-size:.88rem">The words overfunctioning and underfunctioning came to us from a conversation on the Reimagining Love podcast with Dr. Alexandra Solomon.</p>
 </main>
 <script>
 (function () {
   'use strict';
+  var DOMAINS = [{"id": "doing", "name": "Doing", "sub": "The visible work", "rows": ["r1", "r2", "r3"], "labels": {"r1": "Money, bills, and paperwork", "r2": "Appointments, schedules, and school", "r3": "Household tasks and errands"}}, {"id": "thinking", "name": "Thinking", "sub": "The invisible planning", "rows": ["r4", "r5", "r6"], "labels": {"r4": "Noticing what needs to happen before it becomes a problem", "r5": "Researching and deciding what to do about it", "r6": "Following up until it is really done"}}, {"id": "feeling", "name": "Feeling", "sub": "The quiet kind", "rows": ["r7", "r8", "r9"], "labels": {"r7": "Going along to keep the peace", "r8": "Noticing and smoothing everyone's mood", "r9": "Carrying everyone's expectations: family, community, faith"}}];
+  var FEEL = [{"id": "f1", "label": "Overall, the split feels...", "lbls": ["Much worse for me", "Worse for me", "Fair", "Worse for them", "Much worse for them"], "key": "fair"}, {"id": "f2", "label": "How worn out am I from carrying my share?", "lbls": ["Not at all", "A little", "Some", "Quite", "Worn out"], "key": "tired"}, {"id": "f3", "label": "How close do I feel to my partner these days?", "lbls": ["Distant", "A bit far", "Okay", "Close", "Very close"], "key": "close"}];
   var sheet = document.getElementById('sheet');
   var statusEl = document.getElementById('status');
-  var fb = document.getElementById('fallback');
-  var fbText = document.getElementById('fallbackText');
   var nameA = document.getElementById('nameA');
   var nameB = document.getElementById('nameB');
-  var TITLE = "Parts of Our Marriage Are Great. Parts Are Quietly Falling Apart. Here's What We're Doing About It.";
+  var results = document.getElementById('results');
+  var chartEl = document.getElementById('chart');
+  var fb = document.getElementById('fallback');
+  var fbText = document.getElementById('fallbackText');
+  var views = { A: {}, B: {} };   // raw ticks per partner, kept only in this page's memory
+  var resp = 'A';
   var dirty = false;
+  var expText = '';
 
   function say(t) { statusEl.textContent = t; }
-
-  function autosize(t) {
-    t.style.height = 'auto';
-    t.style.height = (t.scrollHeight + 2) + 'px';
+  function nm() {
+    return { A: (nameA.value.trim() || 'Partner 1').slice(0, 24), B: (nameB.value.trim() || 'Partner 2').slice(0, 24) };
   }
-  function sizeAll() {
-    var all = sheet.querySelectorAll('textarea');
-    for (var i = 0; i < all.length; i++) autosize(all[i]);
-  }
+  function other(r) { return r === 'A' ? 'B' : 'A'; }
 
-  function names() {
-    var a = nameA.value.trim() || 'Partner A';
-    var b = nameB.value.trim() || 'Partner B';
-    var xs = document.querySelectorAll('.whoA'); for (var i = 0; i < xs.length; i++) xs[i].textContent = a;
-    var ys = document.querySelectorAll('.whoB'); for (var j = 0; j < ys.length; j++) ys[j].textContent = b;
-    return { A: a, B: b };
+  function setText(sel, t) {
+    var xs = document.querySelectorAll(sel);
+    for (var i = 0; i < xs.length; i++) xs[i].textContent = t;
   }
 
-  document.addEventListener('input', function (ev) {
-    var t = ev.target;
-    if (t.tagName === 'TEXTAREA') autosize(t);
-    if (t === nameA || t === nameB) names();
-    if (sheet.contains(t) || t === nameA || t === nameB) dirty = true;
-  });
+  function refreshLabels() {
+    var n = nm();
+    var me = n[resp], ot = n[other(resp)];
+    var hasNames = !!(nameA.value.trim() && nameB.value.trim());
+    var pLbl = hasNames ? ot : 'my partner';
+    setText('[data-lbl="a"]', n.A);
+    setText('[data-lbl="b"]', n.B);
+    setText('[data-lbl="otherNext"]', n[other(resp)]);
+    var scales = sheet.querySelectorAll('.row');
+    for (var r = 0; r < scales.length; r++) {
+      var row = scales[r];
+      var label = row.getAttribute('data-label');
+      var inputs = row.querySelectorAll('input[type=radio]');
+      var spans = row.querySelectorAll('.scale label span');
+      var fixed = inputs[0].hasAttribute('data-fixed');
+      var texts = fixed ? null : ['Me', 'Mostly me', 'Evenly', 'Mostly ' + (hasNames ? ot : 'them'), (hasNames ? ot : 'Them')];
+      for (var k = 0; k < inputs.length; k++) {
+        var t = fixed ? inputs[k].getAttribute('data-fixed') : texts[k];
+        if (!fixed) spans[k].textContent = t;
+        else {
+          // the "them" wording in feeling rows follows the partner name
+          var shown = t.replace('them', hasNames ? ot : 'them');
+          spans[k].textContent = shown;
+        }
+        inputs[k].setAttribute('aria-label', label + ': ' + (spans[k].textContent));
+      }
+    }
+  }
+
+  // show the current partner's saved ticks on screen
+  function loadView() {
+    var inputs = sheet.querySelectorAll('input[type=radio]');
+    for (var i = 0; i < inputs.length; i++) {
+      var v = views[resp][inputs[i].name];
+      inputs[i].checked = (v !== undefined && Number(inputs[i].value) === v);
+    }
+  }
+
+  function setResp(r) {
+    resp = r;
+    var rs = document.querySelectorAll('input[name=resp]');
+    for (var i = 0; i < rs.length; i++) rs[i].checked = (rs[i].value === r);
+    loadView();
+    refreshLabels();
+    results.hidden = true;
+    document.getElementById('shareBox').hidden = true;
+  }
+
   document.addEventListener('change', function (ev) {
     var t = ev.target;
-    if (sheet.contains(t) || t === nameA || t === nameB) dirty = true;
+    if (t.name === 'resp') { setResp(t.value); return; }
+    if (sheet.contains(t) && t.type === 'radio') {
+      views[resp][t.name] = Number(t.value);
+      dirty = true;
+      if (!results.hidden) render();
+    }
+    if (t.name === 'exp') { expText = t.getAttribute('data-text'); dirty = true; }
+  });
+  document.addEventListener('input', function (ev) {
+    var t = ev.target;
+    if (t === nameA || t === nameB) { refreshLabels(); dirty = true; if (!results.hidden) render(); }
   });
 
-  function toText() {
-    var n = names();
-    var out = [];
-    out.push(TITLE);
-    if (nameA.value.trim() || nameB.value.trim()) out.push('Partners: ' + n.A + ' and ' + n.B);
-    var secs = sheet.querySelectorAll('section');
-    for (var s = 0; s < secs.length; s++) {
-      var lines = [];
-      var items = secs[s].querySelectorAll('.item');
-      for (var k = 0; k < items.length; k++) {
-        var it = items[k];
-        var q = it.getAttribute('data-q');
-        var parts = [];
-        if (it.getAttribute('data-kind') === 'experiment') {
-          var r = it.querySelector('input[type=radio]:checked');
-          if (r) {
-            var own = r.getAttribute('data-own');
-            var txt = own ? ((document.getElementById(own).value || '').trim()) : r.getAttribute('data-text');
-            if (txt) parts.push(own ? 'My own idea: ' + txt : txt);
-          }
-        } else if (it.classList.contains('checks')) {
-          var cbs = it.querySelectorAll('input[type=checkbox]:checked');
-          for (var c = 0; c < cbs.length; c++) parts.push('[x] ' + cbs[c].getAttribute('data-text'));
-        } else {
-          var fields = it.querySelectorAll('.field');
-          if (fields.length) {
-            for (var f = 0; f < fields.length; f++) {
-              var who = fields[f].getAttribute('data-who');
-              var label = who === 'A' ? n.A : who === 'B' ? n.B : '';
-              var sel = fields[f].querySelector('select');
-              var tx = fields[f].querySelector('textarea');
-              var bits = [];
-              if (sel && sel.value) bits.push(sel.value);
-              if (tx && tx.value.trim()) bits.push(tx.value.trim());
-              if (bits.length) parts.push((label ? label + ': ' : '') + bits.join(' | '));
-            }
-          }
-        }
-        if (parts.length) lines.push(q + '\n  ' + parts.join('\n  '));
-      }
-      if (lines.length) out.push('== ' + secs[s].getAttribute('data-title') + ' ==\n' + lines.join('\n\n'));
+  // ---------- math ----------
+  function sign(view) { return view === 'A' ? 1 : -1; }     // axis: negative = Partner 1 carries more
+  function answered(view) { return Object.keys(views[view]).length > 0; }
+  function domainMean(view, d) {
+    var s = 0, c = 0;
+    for (var i = 0; i < d.rows.length; i++) {
+      var v = views[view][d.rows[i]];
+      if (v !== undefined) { s += v * sign(view); c++; }
     }
-    return { text: out.join('\n\n'), filled: out.length > 1 + (nameA.value.trim() || nameB.value.trim() ? 1 : 0) };
+    return c ? s / c : null;
+  }
+  function feelVal(view, id) {
+    var v = views[view][id];
+    if (v === undefined) return null;
+    return id === 'f1' ? v * sign(view) : v + 2;     // fairness on the shared axis; tired/close as 0..4
+  }
+  function lean(m, n) {
+    var a = Math.abs(m);
+    if (a < 0.35) return 'Close to shared';
+    var who = m < 0 ? n.A : n.B;
+    return who + (a < 1.1 ? ' carries a bit more' : ' carries much more');
+  }
+  function combined(d) {
+    var a = domainMean('A', d), b = domainMean('B', d);
+    if (a !== null && b !== null) return (a + b) / 2;
+    return a !== null ? a : b;
   }
 
-  function copyText(text) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(text);
+  // ---------- drawing ----------
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  var GOLD = '#B88A2E', SLATE = '#333E63', INK = '#2A3150', MUTED = '#5C6483', LINE = '#DDD3BA', CREAM = '#FCF9F0';
+  var SERIF = "Georgia, 'Times New Roman', serif", SANS = "system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif";
+
+  function shortName(s, k) { return s.length > k ? s.slice(0, k - 1) + '…' : s; }
+
+  function drawChart(W, share) {
+    var n = nm();
+    var S = W / 400, fs = 14 * S, pad = 22 * S;
+    var x0 = pad + 10 * S, x1 = W - pad - 10 * S, cx = (x0 + x1) / 2, half = (x1 - x0) / 2;
+    var y = pad, o = [];
+    function xv(v) { return cx + (v / 2) * half; }
+    function text(x, yy, s, size, fill, weight, anchor, fam) {
+      o.push('<text x="' + x.toFixed(1) + '" y="' + yy.toFixed(1) + '" font-size="' + size.toFixed(1) + '" fill="' + fill + '" font-weight="' + (weight || 400) +
+        '" text-anchor="' + (anchor || 'start') + '" font-family="' + (fam || SANS) + '">' + esc(s) + '</text>');
     }
+    function marker(view, x, yy) {
+      var r = 8 * S;
+      if (view === 'A') o.push('<circle cx="' + x.toFixed(1) + '" cy="' + yy.toFixed(1) + '" r="' + r + '" fill="' + GOLD + '" stroke="#fff" stroke-width="' + 2 * S + '"/>');
+      else {
+        var q = r * 1.15;
+        var pts = [[x, yy - q], [x + q, yy], [x, yy + q], [x - q, yy]].map(function (p) { return p[0].toFixed(1) + ',' + p[1].toFixed(1); }).join(' ');
+        o.push('<polygon points="' + pts + '" fill="' + SLATE + '" stroke="#fff" stroke-width="' + 2 * S + '"/>');
+      }
+    }
+    o.push('<rect x="0" y="0" width="' + W + '" height="__H__" fill="' + CREAM + '"/>');
+
+    var haveA = answered('A'), haveB = answered('B');
+    if (share) {
+      y += 30 * S;
+      text(W / 2, y, 'Who carries what?', 30 * S, INK, 700, 'middle', SERIF);
+      y += 24 * S;
+      text(W / 2, y, shortName(n.A, 16) + ' & ' + shortName(n.B, 16), 22 * S, INK, 600, 'middle');
+      y += 24 * S;
+      var noteEl = document.getElementById('noteIn');
+      var noteVal = noteEl ? (noteEl.value || '').trim().slice(0, 76) : '';
+      if (noteVal) {
+        var words = noteVal.split(/\s+/), ln = '', lines = [];
+        for (var wi = 0; wi < words.length; wi++) {
+          if ((ln + ' ' + words[wi]).trim().length > 38 && ln) { lines.push(ln); ln = words[wi]; } else ln = (ln + ' ' + words[wi]).trim();
+        }
+        if (ln) lines.push(ln);
+        for (var li = 0; li < lines.length && li < 2; li++) { text(W / 2, y, lines[li], 15 * S, GOLD, 600, 'middle'); y += 20 * S; }
+        y += 4 * S;
+      }
+      text(W / 2, y, 'Each shape is one person\u2019s own answers.', 12.5 * S, MUTED, 400, 'middle');
+      y += 17 * S;
+      text(W / 2, y, 'The closer a shape is to a name, the more that person carries.', 12.5 * S, MUTED, 400, 'middle');
+      y += 22 * S;
+    }
+    // legend
+    var lg = [];
+    if (haveA) lg.push(['A', shortName(n.A, 14) + (haveB ? '' : ' (view)')]);
+    if (haveB) lg.push(['B', shortName(n.B, 14) + (haveA ? '' : ' (view)')]);
+    var widths = lg.map(function (it) { return 24 * S + it[1].length * 7.6 * S + 22 * S; });
+    var total = widths.reduce(function (a, b) { return a + b; }, 0) - 22 * S;
+    var lx = share ? W / 2 - total / 2 : x0;
+    y += 6 * S;
+    for (var l = 0; l < lg.length; l++) {
+      marker(lg[l][0], lx + 8 * S, y - 4 * S);
+      text(lx + 22 * S, y, lg[l][1], 12.5 * S, INK, 600);
+      lx += widths[l];
+    }
+    y += 22 * S;
+    // axis ends
+    text(x0 - 6 * S, y, '← ' + shortName(n.A, 11) + ' carries more', 11 * S, MUTED, 600, 'start');
+    text(x1 + 6 * S, y, shortName(n.B, 11) + ' carries more →', 11 * S, MUTED, 600, 'end');
+    y += 18 * S;
+
+    for (var i = 0; i < DOMAINS.length; i++) {
+      var d = DOMAINS[i];
+      var a = domainMean('A', d), b = domainMean('B', d), c = combined(d);
+      if (c === null) {
+        text(x0 - 6 * S, y + 6 * S, d.name, 17 * S, INK, 700, 'start', SERIF);
+        text(x0 - 6 * S, y + 24 * S, 'Not answered yet', 12.5 * S, MUTED, 400);
+        y += 42 * S; continue;
+      }
+      text(x0 - 6 * S, y + 6 * S, d.name, 17 * S, INK, 700, 'start', SERIF);
+      text(x1 + 6 * S, y + 6 * S, d.sub, 11.5 * S, MUTED, 400, 'end');
+      y += 40 * S;
+      // track
+      o.push('<line x1="' + x0 + '" y1="' + y + '" x2="' + x1 + '" y2="' + y + '" stroke="' + LINE + '" stroke-width="' + 6 * S + '" stroke-linecap="round"/>');
+      for (var t = -2; t <= 2; t++) {
+        var tall = t === 0 ? 9 : 5;
+        o.push('<line x1="' + xv(t).toFixed(1) + '" y1="' + (y - tall * S) + '" x2="' + xv(t).toFixed(1) + '" y2="' + (y + tall * S) + '" stroke="' + (t === 0 ? MUTED : '#C9BF9F') + '" stroke-width="' + (t === 0 ? 2 : 1.2) * S + '"/>');
+      }
+      var near = (a !== null && b !== null && Math.abs(xv(a) - xv(b)) < 18 * S);
+      if (a !== null && b !== null) {
+        o.push('<line x1="' + xv(a).toFixed(1) + '" y1="' + y + '" x2="' + xv(b).toFixed(1) + '" y2="' + y + '" stroke="' + MUTED + '" stroke-width="' + 2 * S + '" stroke-dasharray="' + 4 * S + ' ' + 3 * S + '"/>');
+      } else {
+        var only = a !== null ? a : b;
+        o.push('<line x1="' + cx + '" y1="' + y + '" x2="' + xv(only).toFixed(1) + '" y2="' + y + '" stroke="' + (a !== null ? GOLD : SLATE) + '" stroke-width="' + 6 * S + '" stroke-linecap="round" opacity="0.35"/>');
+      }
+      if (a !== null) marker('A', xv(a), y - (near ? 5 * S : 0));
+      if (b !== null) marker('B', xv(b), y + (near ? 5 * S : 0));
+      var ly = y - 15 * S, lfs = 11.5 * S;
+      if (a !== null && b !== null) {
+        var xa = xv(a), xb = xv(b), gap = Math.abs(xa - xb);
+        var left = xa <= xb ? 'A' : 'B', xl = Math.min(xa, xb), xr = Math.max(xa, xb), mid = (xa + xb) / 2;
+        if (gap >= 90 * S) {
+          text(xa, ly, shortName(n.A, 10), lfs, GOLD, 700, 'middle');
+          text(xb, ly, shortName(n.B, 10), lfs, SLATE, 700, 'middle');
+        } else {
+          text(Math.min(xl + 10 * S, mid - 3 * S), ly, shortName(left === 'A' ? n.A : n.B, 10), lfs, left === 'A' ? GOLD : SLATE, 700, 'end');
+          text(Math.max(xr - 10 * S, mid + 3 * S), ly, shortName(left === 'A' ? n.B : n.A, 10), lfs, left === 'A' ? SLATE : GOLD, 700, 'start');
+        }
+      } else if (a !== null) text(xv(a), ly, shortName(n.A, 10), lfs, GOLD, 700, 'middle');
+      else if (b !== null) text(xv(b), ly, shortName(n.B, 10), lfs, SLATE, 700, 'middle');
+      y += 24 * S;
+      var cap = lean(c, n);
+      text(cx, y, cap, 14 * S, INK, 600, 'middle');
+      if (a !== null && b !== null && Math.abs(a - b) >= 1) {
+        y += 18 * S;
+        text(cx, y, 'You see this differently', 12.5 * S, GOLD, 600, 'middle');
+      }
+      y += 30 * S;
+    }
+
+    // how it feels
+    y += 4 * S;
+    text(x0 - 6 * S, y, 'How it feels', 17 * S, INK, 700, 'start', SERIF);
+    y += 24 * S;
+    var any = false;
+    function dots(view, val, yy, xx) {
+      for (var k = 0; k < 5; k++) {
+        o.push('<circle cx="' + (xx + k * 13 * S).toFixed(1) + '" cy="' + yy + '" r="' + 4.6 * S + '" fill="' + (k <= val ? (view === 'A' ? GOLD : SLATE) : 'none') + '" stroke="' + (view === 'A' ? GOLD : SLATE) + '" stroke-width="' + 1.4 * S + '"/>');
+      }
+    }
+    // fairness
+    var fa = feelVal('A', 'f1'), fbv = feelVal('B', 'f1');
+    var fv = (fa !== null && fbv !== null) ? (fa + fbv) / 2 : (fa !== null ? fa : fbv);
+    if (fv !== null) {
+      any = true;
+      var ft = Math.abs(fv) < 0.5 ? 'Feels fair' : ('Feels less fair to ' + (fv < 0 ? n.A : n.B));
+      text(x0 - 6 * S, y, 'Fairness:', 13 * S, MUTED, 600);
+      text(x0 + 66 * S, y, ft + (fa !== null && fbv !== null && Math.abs(fa - fbv) >= 2 ? ' (you each see it differently)' : ''), 13 * S, INK, 600);
+      y += 24 * S;
+    }
+    var rowsF = [['f2', 'Worn out'], ['f3', 'Feel close']];
+    for (var q = 0; q < rowsF.length; q++) {
+      var va = feelVal('A', rowsF[q][0]), vb = feelVal('B', rowsF[q][0]);
+      if (va === null && vb === null) continue;
+      any = true;
+      text(x0 - 6 * S, y + 4 * S, rowsF[q][1] + ':', 13 * S, MUTED, 600);
+      var px = x0 + 92 * S;
+      if (va !== null) { marker('A', px, y); dots('A', va, y, px + 18 * S); px += 18 * S + 5 * 13 * S + 10 * S; }
+      if (vb !== null) { marker('B', px, y); dots('B', vb, y, px + 18 * S); }
+      y += 26 * S;
+    }
+    if (!any) { text(x0 - 6 * S, y, 'Not answered yet', 12.5 * S, MUTED, 400); y += 24 * S; }
+
+    if (share) {
+      y += 6 * S;
+      text(W / 2, y, 'A conversation starter, not a diagnosis.', 12.5 * S, MUTED, 400, 'middle');
+      y += 24 * S;
+      text(W / 2, y, 'Free and private: spirituallessonplans.org/couples-worksheet', 11.5 * S, INK, 600, 'middle');
+      y += 18 * S;
+    }
+    y += pad * 0.6;
+    var H = Math.ceil(y);
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '">' + o.join('').replace('__H__', H) + '</svg>';
+    return { svg: svg, w: W, h: H };
+  }
+
+  function render() {
+    var n = nm();
+    var c = drawChart(400, false);
+    chartEl.innerHTML = c.svg;
+    var svgEl = chartEl.querySelector('svg');
+    svgEl.removeAttribute('width'); svgEl.removeAttribute('height');
+    var haveA = answered('A'), haveB = answered('B');
+    document.getElementById('resSub').textContent = (haveA && haveB) ? 'Both views, side by side' : 'One view so far. Add your partner’s for the full picture';
+    // where to start
+    var best = null, bestScore = -1, gapName = null, gapVal = 0;
+    for (var i = 0; i < DOMAINS.length; i++) {
+      var d = DOMAINS[i], cm = combined(d);
+      if (cm === null) continue;
+      if (Math.abs(cm) > bestScore) { bestScore = Math.abs(cm); best = d; }
+      var a = domainMean('A', d), b = domainMean('B', d);
+      if (a !== null && b !== null && Math.abs(a - b) > gapVal) { gapVal = Math.abs(a - b); gapName = d; }
+    }
+    var html = '';
+    if (best && bestScore >= 0.35) {
+      html += '<p><strong>Biggest lean:</strong> ' + esc(best.name) + ' (' + esc(best.sub.toLowerCase()) + '). ' + esc(lean(combined(best), n)) + '.</p>';
+    } else if (best) {
+      html += '<p><strong>Mostly shared.</strong> Nothing leans strongly. That is worth celebrating out loud.</p>';
+    }
+    if (gapName && gapVal >= 1) {
+      html += '<p><strong>Biggest difference in your views:</strong> ' + esc(gapName.name) + '. This is a good first topic: ask each other what you see.</p>';
+    }
+    if (!best) html = '<p>Tick a few rows above, then come back to this picture.</p>';
+    document.getElementById('startHere').innerHTML = html;
+  }
+
+  function showResults() {
+    if (!answered('A') && !answered('B')) { say('Tick a few rows first, then your picture will appear.'); return false; }
+    say('');
+    results.hidden = false;
+    render();
+    return true;
+  }
+
+  document.getElementById('showBtn').addEventListener('click', function () {
+    if (showResults()) results.scrollIntoView();
+  });
+  document.getElementById('otherBtn').addEventListener('click', function () {
+    setResp(other(resp));
+    say('Your turn, ' + nm()[resp] + '. Answer for yourself.');
+    window.scrollTo(0, document.getElementById('sheet').offsetTop - 80);
+  });
+
+  // ---------- text for email ----------
+  function answerWord(m, view) {
+    var n = nm(), me = n[view], ot = n[other(view)];
+    return [me + ' carries it', me + ' carries more', 'Evenly shared', ot + ' carries more', ot + ' carries it'][m + 2];
+  }
+  function toText() {
+    var n = nm();
+    var out = ['Who carries what? A 3-minute check-in', 'Partners: ' + n.A + ' and ' + n.B];
+    var views2 = ['A', 'B'];
+    for (var v = 0; v < 2; v++) {
+      var view = views2[v];
+      if (!answered(view)) continue;
+      var lines = ['== ' + n[view] + '’s view =='];
+      for (var i = 0; i < DOMAINS.length; i++) {
+        var d = DOMAINS[i];
+        for (var r = 0; r < d.rows.length; r++) {
+          var m = views[view][d.rows[r]];
+          if (m !== undefined) lines.push(d.name + ' - ' + d.labels[d.rows[r]] + ': ' + answerWord(m, view));
+        }
+      }
+      for (var f = 0; f < FEEL.length; f++) {
+        var fm = views[view][FEEL[f].id];
+        if (fm !== undefined) lines.push(FEEL[f].label + ' ' + FEEL[f].lbls[fm + 2]);
+      }
+      out.push(lines.join('\n'));
+    }
+    var pic = ['== The picture =='];
+    for (var j = 0; j < DOMAINS.length; j++) {
+      var c = combined(DOMAINS[j]);
+      if (c !== null) pic.push(DOMAINS[j].name + ' (' + DOMAINS[j].sub.toLowerCase() + '): ' + lean(c, n));
+    }
+    out.push(pic.join('\n'));
+    if (expText) out.push('Our 30-day experiment: ' + expText);
+    return { text: out.join('\n\n'), filled: answered('A') || answered('B') };
+  }
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
     return Promise.reject(new Error('no clipboard'));
   }
-
-  function showFallback(text) {
-    fbText.value = text;
-    fb.classList.add('on');
-    fbText.focus();
-    fbText.select();
-  }
+  function showFallback(text) { fbText.value = text; fb.classList.add('on'); fbText.focus(); fbText.select(); }
 
   function doEmail() {
     var r = toText();
     fb.classList.remove('on');
-    if (!r.filled) { say('Nothing to send yet. Fill in a few boxes first.'); return; }
-    var subject = 'My marriage worksheet';
+    if (!r.filled) { say('Nothing to send yet. Tick a few rows first.'); return; }
+    var subject = 'Our check-in: who carries what';
     var url = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(r.text);
-    if (url.length < 1900) {
-      say('Opening your email app. Add your own address and send.');
-      window.location.href = url;
-      return;
-    }
-    var shortUrl = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent('Paste your worksheet here (it was copied from the page).');
+    if (url.length < 1900) { say('Opening your email app. Add your own address and send.'); window.location.href = url; return; }
+    var shortUrl = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent('Paste your check-in here (it was copied from the page).');
     copyText(r.text).then(function () {
       say('Your answers are copied. Paste them into the email that opens, add your own address, and send.');
       window.location.href = shortUrl;
@@ -361,61 +625,84 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
       showFallback(r.text);
     });
   }
-
   function doPdf() {
+    if (!showResults()) return;
     fb.classList.remove('on');
     if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
-    sizeAll();
     var old = document.title;
-    document.title = 'Marriage worksheet';
+    document.title = 'Who carries what - our check-in';
     say('In the print window, choose Save as PDF.');
     window.print();
     document.title = old;
   }
-
+  function doShare() {
+    if (!showResults()) return;
+    var c = drawChart(1080, true);
+    var img = new Image();
+    img.onload = function () {
+      var cv = document.createElement('canvas');
+      cv.width = c.w; cv.height = c.h;
+      var ctx = cv.getContext('2d');
+      ctx.fillStyle = CREAM; ctx.fillRect(0, 0, c.w, c.h);
+      ctx.drawImage(img, 0, 0, c.w, c.h);
+      cv.toBlob(function (blob) {
+        if (!blob) { say('Could not make the picture on this device.'); return; }
+        var u = URL.createObjectURL(blob);
+        var im = document.getElementById('shareImg');
+        im.src = u;
+        var dl = document.getElementById('shareDl');
+        dl.href = u;
+        document.getElementById('shareBox').hidden = false;
+        say('Your picture is ready below.');
+        document.getElementById('shareBox').scrollIntoView();
+      }, 'image/png');
+    };
+    img.onerror = function () { say('Could not make the picture on this device.'); };
+    img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(c.svg);
+  }
   function doClear() {
     if (!dirty || window.confirm('Clear everything on this page? Nothing is saved, so this cannot be undone.')) {
-      var inputs = document.querySelectorAll('#sheet input, #sheet textarea, #sheet select, #nameA, #nameB');
-      for (var i = 0; i < inputs.length; i++) {
-        var el = inputs[i];
-        if (el.type === 'checkbox' || el.type === 'radio') el.checked = false;
-        else if (el.tagName === 'SELECT') el.selectedIndex = 0;
-        else el.value = '';
-      }
+      views = { A: {}, B: {} };
+      expText = '';
+      var all = document.querySelectorAll('input[type=radio][name=exp]');
+      for (var i = 0; i < all.length; i++) all[i].checked = false;
+      nameA.value = ''; nameB.value = '';
+      var ne = document.getElementById('noteIn'); if (ne) ne.value = '';
       fb.classList.remove('on'); fbText.value = '';
-      names(); sizeAll(); dirty = false; say('Cleared.');
+      document.getElementById('shareBox').hidden = true;
+      setResp('A');
+      dirty = false; say('Cleared.');
     }
   }
-
   var btns = document.querySelectorAll('[data-act]');
   for (var b = 0; b < btns.length; b++) {
     btns[b].addEventListener('click', function (ev) {
       var a = ev.currentTarget.getAttribute('data-act');
-      if (a === 'pdf') doPdf(); else if (a === 'email') doEmail(); else doClear();
+      if (a === 'pdf') doPdf(); else if (a === 'email') doEmail(); else if (a === 'share') doShare(); else doClear();
     });
   }
+  var clr = document.getElementById('clearBtn');
+  if (clr) clr.addEventListener('click', doClear);
 
-  // ---- Feedback: separate from the worksheet. Sends ONLY what is typed in this form, only on Send. ----
+  // ---------- Feedback: separate. Sends ONLY what is typed in this form, only on Send. ----------
   var fbForm = document.getElementById('fbForm');
   var fbStatus = document.getElementById('fbStatus');
   var fbSend = document.getElementById('fbSend');
   var KIND = { 'It helped': 'Just saying hi', 'Somewhat': 'Idea', 'It missed the mark': 'Not happy', 'It confused me': 'Confused' };
   function fval(id) { return (document.getElementById(id).value || '').trim(); }
-
   fbForm.addEventListener('submit', function (ev) {
     ev.preventDefault();
     if (document.getElementById('fbHp').value) { fbForm.reset(); return; }
     var rate = fbForm.querySelector('input[name=fbrate]:checked');
     var worked = fval('fbWorked'), help = fval('fbHelp'), from = fval('fbFrom');
     if (!rate && !worked && !help) { fbStatus.textContent = 'Add a rating or a few words first.'; return; }
-    var lines = ['[Couples worksheet]'];
+    var lines = ['[Couples check-in]'];
     if (rate) lines.push('How was it: ' + rate.value);
     if (worked) lines.push('', 'What worked:', worked);
     if (help) lines.push('', 'Help / what I would like:', help);
     var message = lines.join('\n');
     var kind = rate ? KIND[rate.value] : 'Question';
     fbSend.disabled = true; fbSend.textContent = 'Sending…'; fbStatus.textContent = 'Sending…';
-
     fetch('/api/feedback', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -428,19 +715,16 @@ noscript p{background:var(--gold-soft);padding:1rem;border-radius:12px}
       throw new Error('send failed');
     }).catch(function () {
       fbStatus.textContent = '';
-      fbStatus.appendChild(document.createTextNode('Couldn\u2019t send that. '));
+      fbStatus.appendChild(document.createTextNode('Couldn’t send that. '));
       var a = document.createElement('a');
-      a.href = 'mailto:ianforberpratt@gmail.com?subject=' + encodeURIComponent('Spiritual Lesson Plans feedback: Couples worksheet') + '&body=' + encodeURIComponent(message + (from ? '\n\nFrom: ' + from : ''));
+      a.href = 'mailto:ianforberpratt@gmail.com?subject=' + encodeURIComponent('Spiritual Lesson Plans feedback: Couples check-in') + '&body=' + encodeURIComponent(message + (from ? '\n\nFrom: ' + from : ''));
       a.textContent = 'Email us directly instead.';
       fbStatus.appendChild(a);
     }).then(function () { fbSend.disabled = false; fbSend.textContent = 'Send'; });
   });
 
-  window.addEventListener('beforeprint', sizeAll);
-  window.addEventListener('beforeunload', function (ev) {
-    if (dirty) { ev.preventDefault(); ev.returnValue = ''; }
-  });
-  sizeAll();
+  window.addEventListener('beforeunload', function (ev) { if (dirty) { ev.preventDefault(); ev.returnValue = ''; } });
+  refreshLabels();
 })();
 </script>
 </body>

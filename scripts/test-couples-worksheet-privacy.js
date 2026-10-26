@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Browser test for /couples-worksheet: types a unique canary into EVERY text box, picks every dropdown,
+// Browser test for /couples-worksheet-deeper (the long worksheet): types a unique canary into EVERY text box, picks every dropdown,
 // ticks the boxes, then fails if the canary (or any POST, beacon, storage write, cookie or websocket)
 // leaves the page. Also checks that the email text and the print/PDF output contain the answers.
 //
@@ -42,7 +42,7 @@ const ok = m => console.log('ok:   ' + m);
     const f = window.fetch; window.fetch = function () { hit('fetch'); return f.apply(this, arguments); };
   });
 
-  await page.goto(BASE + '/couples-worksheet');
+  await page.goto(BASE + (process.env.PAGE_PATH || '/couples-worksheet-deeper'));
   await page.waitForSelector('#sheet');
   const loadRequests = requests.length;
 
