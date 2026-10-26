@@ -21,6 +21,7 @@ not-broken.html         /not-broken (standalone interactive, linked from /for-yo
 put-it-to-work.html     /put-it-to-work (standalone interactive, linked from /for-you)
 put-it-to-work/alongside.html  /put-it-to-work/alongside (standalone interactive: mental-health practice, evergreen, indexed; mounts in a shadow root; stores nothing; same privacy rules as /put-it-to-work)
 alongside.html          /alongside (standalone phone lab for the Alongside Sunday school lesson; self-contained, stores nothing, noindex, not linked from nav)
+couples-worksheet.html /couples-worksheet (standalone private worksheet for couples on overfunctioning/underfunctioning; fields, Save as PDF, Email to myself; self-contained, stores nothing, noindex, not linked from nav, not in the sitemap)
 404.html
 assets/css/style.css   Shared styles (palette + components)
 assets/js/main.js      Nav toggle + scroll-reveal
