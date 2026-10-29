@@ -1,5 +1,12 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/three-degrees",
+      "destination": "/put-it-to-work/three-degrees",
+      "permanent": true
+    }
+  ]
 }

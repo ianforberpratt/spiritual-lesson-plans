@@ -17,11 +17,11 @@ lessons.html           /lessons
 for-mentors.html        /for-mentors
 what-we-believe.html    /what-we-believe
 about.html              /about
-not-broken.html         /not-broken (standalone interactive, linked from /for-you)
+not-broken.html         /not-broken (standalone interactive, linked from /for-you; the third practice in the Put It to Work switcher)
 put-it-to-work.html     /put-it-to-work (standalone interactive, linked from /for-you)
 put-it-to-work/alongside.html  /put-it-to-work/alongside (standalone interactive: mental-health practice, evergreen, indexed; mounts in a shadow root; stores nothing; same privacy rules as /put-it-to-work)
 alongside.html          /alongside (standalone phone lab for the Alongside Sunday school lesson; self-contained, stores nothing, noindex, not linked from nav)
-three-degrees.html /three-degrees (standalone page on the three degrees: video (assets/video/three-degrees-journey.mp4), the zigzag and no-retrograde passages, four cases, a "your own Wednesday" box that stores nothing; no analytics or site-wide scripts, same privacy rule as /put-it-to-work; linked from /for-you)
+put-it-to-work/three-degrees.html /put-it-to-work/three-degrees (301 from the old /three-degrees in vercel.json; standalone page on the three degrees: video (assets/video/three-degrees-journey.mp4), the zigzag and no-retrograde passages, four cases, a "your own it-felt-fixed" box that stores nothing; no analytics or site-wide scripts, same privacy rule as /put-it-to-work; linked from /for-you)
 couples-worksheet.html /couples-worksheet (quick tick-box check-in for couples (20 ticks): who carries more of Doing/Thinking/Feeling, how much they share (affection, intimacy, talks...), live chart, short and longer shareable PNGs, love-framed read-first pop-ups, Save as PDF, Email to myself, separate feedback box; self-contained, stores nothing, noindex, not linked from nav, not in the sitemap; test: scripts/test-couples-checkin-privacy.js)
 couples-worksheet-deeper.html /couples-worksheet-deeper (the long ten-part worksheet; same privacy rules; test: scripts/test-couples-worksheet-privacy.js)
 404.html

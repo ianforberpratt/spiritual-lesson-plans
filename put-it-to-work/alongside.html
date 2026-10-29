@@ -52,15 +52,22 @@
 .al-origin.al-stepping .al-beat.al-hide{display:none}
 @keyframes alfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.al-origin .al-beat{animation:none}}
-.piw-subnav{border-bottom:1px solid var(--rule,#e6dfd0);background:var(--cream,#faf5ea)}
-.piw-subnav .wrap{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;align-items:center;justify-content:space-between;padding-block:.65rem}
-.piw-crumb{margin:0;font-size:.85rem;color:var(--ink-soft,#5b5a6b)}
-.piw-crumb a{color:inherit;text-decoration:none}.piw-crumb a:hover{text-decoration:underline}
-.piw-crumb [aria-current]{font-weight:600;color:var(--ink,#2d2b3f)}
-.piw-tabs{display:flex;gap:.4rem;list-style:none;margin:0;padding:0}
-.piw-tabs a{display:inline-block;padding:.4rem .9rem;border-radius:999px;font-size:.85rem;font-weight:600;text-decoration:none;color:var(--ink,#2d2b3f);border:1px solid transparent}
-.piw-tabs a:hover{border-color:var(--rule,#d9d2c1)}
-.piw-tabs a[aria-current="page"]{background:var(--gold,#e8a94d);color:#2d2b3f}
+.piw-sw{border-bottom:1px solid var(--rule,#e6dfd0);background:var(--cream,#faf5ea)}
+.piw-sw .wrap{padding-block:.9rem 1rem}
+.piw-sw-lead{margin:0 0 .6rem;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--gold-text,#935f1a)}
+.piw-sw-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+.piw-sw-card{display:grid;grid-template-columns:auto 1fr;column-gap:.7rem;align-items:start;height:100%;box-sizing:border-box;padding:.8rem .95rem;border:1.5px solid var(--rule,#d9d2c1);border-radius:14px;background:var(--paper,#fff);color:var(--ink,#2d2b3f);text-decoration:none;transition:border-color .15s,transform .15s}
+.piw-sw-card:hover{border-color:var(--gold,#e8a94d);transform:translateY(-1px)}
+.piw-sw-card:focus-visible{outline:3px solid var(--focus,#935f1a);outline-offset:2px}
+.piw-sw-card[aria-current="page"]{border-color:var(--gold,#e8a94d);background:linear-gradient(180deg,var(--paper,#fff),var(--cream,#faf5ea));box-shadow:0 0 0 2px var(--gold,#e8a94d) inset}
+.piw-sw-num{grid-row:1/4;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--gold,#e8a94d);color:#2d2b3f;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.piw-sw-t{font-family:var(--serif,var(--font-serif,Georgia,serif));font-size:1.08rem;line-height:1.2;font-weight:600}
+.piw-sw-d{font-size:.88rem;line-height:1.35;color:var(--ink-soft,#5b5a6b);margin-top:.15rem}
+.piw-sw-m{font-size:.78rem;color:var(--ink-faint,#6b6579);margin-top:.35rem}
+.piw-sw-here{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-text,#935f1a);display:block;margin:.12rem 0 0}
+@media (max-width:760px){.piw-sw-list{grid-template-columns:1fr}.piw-sw-card{padding:.7rem .85rem}.piw-sw-d{display:none}.piw-sw-card[aria-current="page"] .piw-sw-d{display:block}}
+@media (prefers-reduced-motion:reduce){.piw-sw-card{transition:none}.piw-sw-card:hover{transform:none}}
+
 .al-fine{font-size:.9rem;color:var(--ink-soft,#5b5a6b);margin-top:-.4rem}
 .al-start{font-size:1.1rem;padding:.9rem 2rem}
 .al-note{background:var(--cream,#faf5ea);border-left:4px solid var(--gold,#e8a94d);padding:.8rem 1rem;border-radius:6px;color:inherit}
@@ -102,7 +109,7 @@
     </ul>
   </div>
 </nav>
-<div class="piw-subnav"><div class="wrap"><p class="piw-crumb"><a href="/">Home</a> &rsaquo; <a href="/put-it-to-work">Put It to Work</a> &rsaquo; <span aria-current="page">Alongside</span></p><ul class="piw-tabs" aria-label="In Put It to Work"><li><a href="/put-it-to-work">The exercise</a></li><li><a href="/put-it-to-work/alongside" aria-current="page">Alongside</a></li></ul></div></div>
+<div class="piw-sw" role="navigation" aria-label="Put It to Work: choose a practice"><div class="wrap"><p class="piw-sw-lead">Put It to Work · choose a practice</p><ul class="piw-sw-list"><li><a class="piw-sw-card" href="/put-it-to-work"><span class="piw-sw-num" aria-hidden="true">1</span><span class="piw-sw-t">A family’s story</span><span class="piw-sw-d">Work a real case, one step at a time</span><span class="piw-sw-m">10–20 min · alone or group</span></a></li><li><a class="piw-sw-card" href="/put-it-to-work/alongside" aria-current="page"><span class="piw-sw-num" aria-hidden="true">2</span><span class="piw-sw-t">Alongside<span class="piw-sw-here">You’re here</span></span><span class="piw-sw-d">Show up for someone you love, and for yourself</span><span class="piw-sw-m">15–30 min · alone or group</span></a></li><li><a class="piw-sw-card" href="/put-it-to-work/three-degrees"><span class="piw-sw-num" aria-hidden="true">3</span><span class="piw-sw-t">There is no retrograde step</span><span class="piw-sw-d">For when something felt fixed, and then it wasn’t</span><span class="piw-sw-m">About 10 min · alone</span></a></li></ul></div></div>
 
 <main id="main" class="al-main">
   <section class="al-intro">
