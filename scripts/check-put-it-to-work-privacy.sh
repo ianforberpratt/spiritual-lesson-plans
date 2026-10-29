@@ -9,7 +9,7 @@
 #   sh scripts/check-put-it-to-work-privacy.sh        (run from anywhere)
 
 cd "$(dirname "$0")/.." || exit 2
-FILES="put-it-to-work.html assets/js/put-it-to-work.js assets/css/put-it-to-work.css put-it-to-work/alongside.html"
+FILES="put-it-to-work.html assets/js/put-it-to-work.js assets/css/put-it-to-work.css put-it-to-work/alongside.html put-it-to-work/three-degrees.html"
 CASES=$(ls content/put-it-to-work/*.json 2>/dev/null)
 fail=0
 
