@@ -35,7 +35,7 @@
   --ink:#362F4B; --gold-text:#935F1A; --sage-text:#3F5236; --ink-soft:rgba(54,47,75,.74); --ink-faint:#6B6579;
   --rule:rgba(54,47,75,.14); --card:#FFFFFF; --sky-deep:#5F93AD; --hero-top:#E4EDF2; --hero-bot:#FBF5EA;
   --hill1:#E6E8D6; --hill2:#C3D0B7; --hill3:#8CA37E; --mount:#A9C9D9; --focus:#935F1A;
-  --serif:"Fraunces",Georgia,"Iowan Old Style",serif; --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --font-serif:"Fraunces",Georgia,"Iowan Old Style",serif; --gutter:clamp(22px,5vw,44px); --max-width:1240px; --serif:"Fraunces",Georgia,"Iowan Old Style",serif; --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#1E1A2C; --cream:#25203A; --gold:#E8A94C; --gold-deep:#E8A94C; --sky:#7FA7BC; --sage:#9DB48F;
@@ -48,13 +48,10 @@
   --rule:rgba(251,245,234,.16); --card:#2B2542; --sky-deep:#8DB8CE; --hero-top:#2A2A45; --hero-bot:#25203A;
   --hill1:#2E3350; --hill2:#3A4A52; --hill3:#51654B; --mount:#40587A; --focus:#F0BC6A; color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--sans);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0}
-.wrap{max-width:1040px;margin:0 auto}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.65 var(--sans);padding:0}
+.pg{max-width:1072px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px),env(safe-area-inset-right,0px))}
 a{color:var(--gold-text)} a:focus-visible,button:focus-visible,textarea:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;text-wrap:balance;margin:0}
-header.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0;flex-wrap:wrap}
-.brand{font-family:var(--serif);font-weight:600;font-size:19px;color:var(--ink);text-decoration:none}
-.top span{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
 .hero{background:linear-gradient(180deg,var(--hero-top),var(--hero-bot));border-radius:28px;overflow:hidden;margin-bottom:56px}
 .hero-copy{padding:48px 40px 8px;max-width:760px}
 .eyebrow{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-text);font-weight:600;margin:0 0 14px}
@@ -138,12 +135,45 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--ink-faint)}
 @media (max-width:760px){.piw-sw-list{grid-template-columns:1fr}.piw-sw-card{padding:.7rem .85rem}.piw-sw-d{display:none}.piw-sw-card[aria-current="page"] .piw-sw-d{display:block}}
 @media (prefers-reduced-motion:reduce){.piw-sw-card{transition:none}.piw-sw-card:hover{transform:none}}
 
+
+/* Site header (same as the other Put It to Work pages) */
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:.6rem 1rem;z-index:100;text-decoration:none}
+.skip-link:focus{left:0}
+.wrap{max-width:var(--max-width);margin:0 auto;padding:0 var(--gutter)}
+.pg .piw-sw .wrap{max-width:none;padding:.9rem 1.1rem 1rem}
+.site-nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+.site-nav .wrap{display:flex;align-items:center;justify-content:center;gap:clamp(32px,5vw,64px);height:82px;position:relative}
+.site-nav .brand{font-family:var(--font-serif);font-size:clamp(1.3rem,1vw + 1.05rem,1.6rem);font-weight:500;letter-spacing:.015em;color:var(--ink);text-decoration:none;white-space:nowrap}
+.site-nav .brand strong{font-weight:500;color:inherit}
+.nav-links{display:flex;align-items:center;gap:clamp(20px,3vw,40px);list-style:none;margin:0;padding:0}
+.nav-links a{color:var(--ink-soft);text-decoration:none;font-size:.88rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;position:relative;padding:6px 0;white-space:nowrap}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--ink)}
+.nav-links a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold-deep)}
+.nav-toggle{display:none;position:absolute;right:var(--gutter);background:none;border:none;color:var(--ink);width:44px;height:44px;font-size:1.25rem;cursor:pointer}
+@media (min-width:1241px) and (max-width:1560px){.site-nav .wrap{gap:clamp(14px,2vw,32px)}.nav-links{gap:clamp(12px,1.5vw,22px)}.nav-links a{font-size:.8rem;letter-spacing:.05em}}
+@media (max-width:1240px){.nav-toggle{display:block}.nav-links{position:absolute;top:82px;left:0;right:0;background:var(--paper);border-bottom:1px solid var(--rule);flex-direction:column;align-items:stretch;gap:0;padding:4px var(--gutter) 20px;display:none}.nav-links.open{display:flex}.nav-links li{border-top:1px solid var(--rule)}.nav-links a{display:block;padding:18px 0}.nav-links a[aria-current="page"]::after{display:none}}
 </style>
 </head>
 <body>
 <!-- Privacy: the "Your own “it felt fixed”" box promises nothing is saved or sent. Like /put-it-to-work, this page loads no tracking script, no main.js, no feedback widget. Keep it that way. -->
-<div class="wrap">
-<header class="top"><a class="brand" href="/">Spiritual Lesson Plans</a><span>Free · Every faith welcome</span></header>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<nav class="site-nav" aria-label="Main">
+  <div class="wrap">
+    <a href="/" class="brand">Spiritual <strong>Lesson Plans</strong></a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">&#9776;</button>
+    <ul class="nav-links" id="primary-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/lessons">Lessons</a></li>
+      <li><a href="/for-mentors">For Mentors</a></li>
+      <li><a href="/for-you">For You</a></li>
+      <li><a href="/put-it-to-work" aria-current="page">Put It to Work</a></li>
+      <li><a href="/what-we-believe">What We Believe</a></li>
+      <li><a href="/about">About</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="pg">
 <div class="piw-sw" role="navigation" aria-label="Put It to Work: choose a practice"><div class="wrap"><p class="piw-sw-lead">Put It to Work · choose a practice</p><ul class="piw-sw-list"><li><a class="piw-sw-card" href="/put-it-to-work"><span class="piw-sw-num" aria-hidden="true">1</span><span class="piw-sw-t">A family’s story</span><span class="piw-sw-d">Work a real case, one step at a time</span><span class="piw-sw-m">10–20 min · alone or group</span></a></li><li><a class="piw-sw-card" href="/put-it-to-work/alongside"><span class="piw-sw-num" aria-hidden="true">2</span><span class="piw-sw-t">Alongside</span><span class="piw-sw-d">Show up for someone you love, and for yourself</span><span class="piw-sw-m">15–30 min · alone or group</span></a></li><li><a class="piw-sw-card" href="/put-it-to-work/three-degrees" aria-current="page"><span class="piw-sw-num" aria-hidden="true">3</span><span class="piw-sw-t">There is no retrograde step<span class="piw-sw-here">You’re here</span></span><span class="piw-sw-d">For when something felt fixed, and then it wasn’t</span><span class="piw-sw-m">About 10 min · alone</span></a></li></ul></div></div>
 
 <div class="hero">
@@ -172,11 +202,11 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--ink-faint)}
 </div>
 
 <section id="watch">
-  <h2>Not a ladder. A journey.</h2>
-  <p class="intro">Forty-two seconds on the three degrees, the zigzag, and what stays improved.</p>
-  <video controls playsinline preload="metadata" style="width:100%;max-width:380px;border-radius:20px;display:block;background:var(--cream)" aria-describedby="narr"><source src="/assets/video/three-degrees-journey.mp4" type="video/mp4">Your browser can't play this video. The words are written below.</video>
+  <h2>Watch and listen</h2>
+  <p class="intro">About a minute and a half on the three degrees, and what stays improved.</p>
+  <video controls playsinline preload="metadata" poster="/assets/video/no-retrograde-step-poster.jpg" style="width:100%;max-width:380px;border-radius:20px;display:block;background:var(--cream)" aria-describedby="narr"><source src="/assets/video/no-retrograde-step.mp4" type="video/mp4">Your browser can't play this video. The words are written below.</video>
   <details class="narr" id="narr"><summary>Read the words of the video</summary>
-    <p>Not a ladder. A journey. Mary Baker Eddy marked out three degrees, in just a few lines. The first: physical. Fear, pride, sickness. The wind, the earthquake, the fire. The Lord was not in them. The second: moral. Honesty, compassion, hope. The moment of coming to our senses. The third: understanding. A gentle whisper. "Lazarus, come out." Wisdom, love, health. And the human road zigzags. Mrs. Eddy calls it a "zigzag course," a pendulum between sin and the hope of forgiveness. So, put it to the test. Dana settles a long disagreement with a colleague. Later, the old resentment is back, louder. Has she lost the second degree? Reason it from the book. "An improved belief cannot retrograde." The road zigzags. What improved, stays improved. Don't take my word for it. Test it in your own day.</p>
+    <p>Have you ever prayed, or worked hard on something, and it didn’t seem to stick? Like you had gone backwards? There is a thought that comforts. There is no retrograde step. In Science and Health, Mary Baker Eddy gives three degrees of thought. Physical: fear, pride, sickness. Moral: honesty, compassion, hope. Spiritual: understanding, wisdom, love. Degrees of unfolding understanding. Let’s walk them. Understanding unfolds, one degree at a time. And no one unfolds alone. Honesty. Compassion. Hope. Understanding is unfolding. Fear and pride get loud. So we stay watchful. They aren’t real, and your light stays lit. The road may bend, but what we’ve understood doesn’t slide back. The sun keeps rising. Wisdom. Love. Understanding. We have all we need, right where we stand. There is no retrograde step. Stay watchful. We have all we need. We are loved.</p>
   </details>
 </section>
 
@@ -327,6 +357,9 @@ footer{padding:28px 0 40px;font-size:13px;color:var(--ink-faint)}
 
 <script>
 (function(){
+  var nb=document.querySelector('.nav-toggle'),nl=document.getElementById('primary-nav');
+  if(nb&&nl){nb.addEventListener('click',function(){var o=nl.classList.toggle('open');nb.setAttribute('aria-expanded',o?'true':'false')})}
+
   var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
   function pick(i){tabs.forEach(function(t,k){var on=k===i;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;document.getElementById('c'+k).hidden=!on});}
   tabs.forEach(function(t,i){t.addEventListener('click',function(){pick(i)});t.addEventListener('keydown',function(e){var n=e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:-1;if(n>-1){pick(n);tabs[n].focus();e.preventDefault()}})});
