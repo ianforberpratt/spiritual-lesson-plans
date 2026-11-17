@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cup or Scoreboard? (Grade 6-8 — full) &mdash; Spiritual Lesson Plans</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF5EA; --gold:#E8A94C; --gold-text:#935F1A;
+  --sage:#8CA37E; --sage-text:#3F5236; --sky:#A9C9D9; --sky-text:#4E7A93;
+  --ink:#362F4B; --ink-soft:rgba(54,47,75,.74); --rule:rgba(54,47,75,.22);
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; }
+body{
+  background:#EAE2D2; color:var(--ink);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh; display:flex; flex-direction:column; align-items:center;
+}
+.toolbar{
+  width:100%; background:var(--ink); color:var(--cream);
+  padding:14px 20px; display:flex; justify-content:space-between; align-items:center;
+  gap:16px; flex-wrap:wrap;
+}
+.toolbar a{ color:var(--cream); text-decoration:none; font-size:14px; opacity:.9; }
+.toolbar a:hover, .toolbar a:focus{ opacity:1; text-decoration:underline; }
+.toolbar button{
+  background:var(--gold); color:#3B2A0E; border:none; border-radius:4px;
+  padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer;
+}
+.sheet-wrap{ padding:36px 16px 48px; width:100%; display:flex; justify-content:center; }
+.sheet{ background:#fff; box-shadow:0 12px 40px rgba(0,0,0,.18); width:816px; max-width:100%; padding:48px; }
+.page{ position:relative; height:9.9in; overflow:hidden; display:flex; flex-direction:column; }
+.page + .page{ margin-top:44px; border-top:1px dashed var(--rule); padding-top:44px; height:calc(9.9in + 44px); }
+.eyebrow{ font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); text-align:center; margin:0 0 8px; }
+h1{ font-family:"Fraunces",Georgia,serif; font-weight:600; color:var(--ink); margin:0 0 8px; text-align:center; font-size:30px; line-height:1.15; }
+.rule{ width:56px; height:3px; background:var(--gold); margin:0 auto 12px; border-radius:2px; }
+.frame{ font-family:"Fraunces",Georgia,serif; font-style:italic; line-height:1.5; color:var(--ink-soft); text-align:center; font-size:15px; margin:0 auto 14px; max-width:60ch; }
+h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; color:var(--ink); font-size:17px; margin:0 0 8px; }
+.quote{ font-family:"Fraunces",Georgia,serif; font-style:italic; color:var(--ink-soft); text-align:center; font-size:13.5px; line-height:1.45; margin:0 auto 2px; max-width:62ch; }
+.cite{ color:var(--ink-soft); text-align:center; font-size:11.5px; margin:0 0 12px; }
+.pull{ font-family:"Fraunces",Georgia,serif; font-weight:600; color:var(--gold-text); text-align:center; font-size:17px; line-height:1.4; margin:10px 0 0; }
+.pfoot{ position:absolute; left:0; right:0; bottom:0; display:flex; justify-content:space-between; gap:12px; font-size:10.5px; color:var(--ink-soft); border-top:1px solid var(--rule); padding-top:6px; }
+.write{ border-bottom:1.5px solid var(--ink); height:26px; }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+svg text{ font-family:"Inter",sans-serif; }
+svg .serif{ font-family:"Fraunces",Georgia,serif; }
+@media print{
+  .toolbar{ display:none; }
+  body{ background:#fff; min-height:0; display:block; }
+  .sheet-wrap{ padding:0; display:block; }
+  .sheet{ box-shadow:none; width:auto; max-width:none; padding:0; }
+  .page{ break-after:page; page-break-after:always; }
+  .page:last-child{ break-after:auto; page-break-after:auto; }
+  .page + .page{ margin-top:0; border-top:none; padding-top:0; height:9.9in; }
+  @page{ size:letter; margin:0.5in; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+
+.ladderwrap{ display:flex; gap:20px; align-items:flex-start; margin-top:6px; }
+.ladder{ flex:1.6; display:flex; flex-direction:column; gap:10px; }
+.rung{ display:flex; border:2px solid var(--ink); border-radius:12px; overflow:hidden; }
+.rn{ flex:0 0 44px; background:var(--ink); color:var(--gold); font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:26px; display:flex; align-items:center; justify-content:center; }
+.rb{ padding:8px 14px 6px; flex:1; }
+.rb b{ font-size:12px; letter-spacing:.12em; color:var(--gold-text); }
+.rb p{ margin:2px 0 4px; font-size:15px; line-height:1.4; }
+.rb .write{ height:42px; }
+aside{ flex:1; border:1.5px solid var(--rule); background:var(--cream); border-radius:12px; padding:12px 14px; }
+aside h3{ font-family:"Fraunces",Georgia,serif; font-size:14px; margin:6px 0 4px; }
+.tests{ margin:0; padding-left:18px; font-size:13.5px; line-height:1.55; }
+.grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px 12px; }
+.act{ border:1.5px solid var(--rule); border-radius:10px; padding:7px 10px; background:#fff; }
+.at{ display:flex; gap:8px; font-size:13px; line-height:1.35; min-height:36px; }
+.an{ font-weight:700; color:var(--gold-text); flex:0 0 auto; }
+.opts{ display:flex; gap:14px; margin-top:6px; font-size:12px; font-weight:600; }
+.o{ display:inline-flex; align-items:center; gap:5px; }
+.o i{ width:15px; height:15px; border:2px solid var(--ink); border-radius:50%; display:inline-block; }
+.testbox{ margin-top:10px; border:2px solid var(--gold); border-radius:12px; background:var(--cream); padding:10px 16px; font-size:14.5px; line-height:1.45; }
+.testbox b{ font-size:11px; letter-spacing:.14em; color:var(--gold-text); margin-right:6px; }
+.flip{ transform:rotate(180deg); font-size:10.5px; color:var(--ink-soft); text-align:center; margin-top:8px; }
+.refl p{ margin:8px 0 0; font-size:13.5px; }
+
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <a href="/lessons/11-14/the-cup-and-the-center">&larr; Back to the lesson</a>
+  <button type="button" onclick="window.print()">Print this page</button>
+</div>
+<div class="sheet-wrap">
+  <div class="sheet">
+<div class="page">
+<p class="eyebrow">A CARD SORT · CUP OR SCOREBOARD?</p>
+<h1>Cup or Scoreboard?</h1>
+<div class="rule"></div>
+<p class="frame">Same act, different thought behind it. This is how to tell, and what to do when you weren&rsquo;t even in the fight.</p>
+<p class="quote">&ldquo;Be still, and know that I am God.&rdquo;</p>
+<p class="cite">&mdash; Psalm 46:10, NIV</p>
+<h2 style="text-align:center;">The Four Steps <span style="font-weight:400; font-size:14px;">(for when you weren&rsquo;t even in it)</span></h2>
+<div class="ladderwrap"><div class="ladder"><div class="rung"><div class="rn">1</div><div class="rb"><b>NAME THE FEAR</b><p>What am I afraid of, exactly? Say it plainly. Naming it isn&rsquo;t dwelling; it&rsquo;s meeting.</p><div class="write"></div></div></div>
+<div class="rung"><div class="rn">2</div><div class="rb"><b>SPOT THE STORY</b><p>What&rsquo;s the picture in my head? It&rsquo;s a picture, not the truth about anyone.</p><div class="write"></div></div></div>
+<div class="rung"><div class="rn">3</div><div class="rb"><b>FIND THE MIDDLE</b><p>What&rsquo;s true about both of them at once? Does it need a loser?</p><div class="write"></div></div></div>
+<div class="rung"><div class="rn">4</div><div class="rb"><b>DO THE CUP</b><p>One small kind thing, specific, possible, something I&rsquo;d do for either of them.</p><div class="write"></div></div></div>
+</div><aside><div style="text-align:center;"><figure style="margin:0; "><div role="img" aria-label="A wheel: rim is the cup, hub is the center"><svg viewBox="0 0 240 260" width="210" height="228" xmlns="http://www.w3.org/2000/svg"><circle cx="210.0" cy="120.0" r="5" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="211.6" cy="140.9" r="9" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="208.3" cy="162.5" r="7" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="190.4" cy="176.1" r="5" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="178.6" cy="193.5" r="9" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="162.5" cy="208.3" r="7" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="140.0" cy="207.7" r="5" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="120.0" cy="214.0" r="9" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="98.2" cy="215.5" r="7" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="81.0" cy="201.1" r="5" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="61.4" cy="193.5" r="9" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="43.4" cy="181.1" r="7" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="38.9" cy="159.0" r="5" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="28.4" cy="140.9" r="9" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="22.0" cy="120.0" r="7" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="32.3" cy="100.0" r="5" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="35.3" cy="79.2" r="9" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="43.4" cy="58.9" r="7" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="63.9" cy="49.6" r="5" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="79.2" cy="35.3" r="9" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="98.2" cy="24.5" r="7" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="120.0" cy="30.0" r="5" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="140.9" cy="28.4" r="9" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="162.5" cy="31.7" r="7" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="176.1" cy="49.6" r="5" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="193.5" cy="61.4" r="9" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="208.3" cy="77.5" r="7" fill="#A9C9D9" stroke="#362F4B" stroke-width="2"/><circle cx="207.7" cy="100.0" r="5" fill="#fff" stroke="#362F4B" stroke-width="2"/><circle cx="120" cy="120" r="84" fill="none" stroke="#362F4B" stroke-width="9"/><line x1="151.4" y1="133.0" x2="192.1" y2="149.8" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="133.0" y1="151.4" x2="149.8" y2="192.1" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="107.0" y1="151.4" x2="90.2" y2="192.1" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="88.6" y1="133.0" x2="47.9" y2="149.8" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="88.6" y1="107.0" x2="47.9" y2="90.2" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="107.0" y1="88.6" x2="90.2" y2="47.9" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="133.0" y1="88.6" x2="149.8" y2="47.9" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="151.4" y1="107.0" x2="192.1" y2="90.2" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><circle cx="120" cy="120" r="34" fill="#fff" stroke="#362F4B" stroke-width="5"/><path d="M120.0,132.3 C100.5,115.3 110.7,100.8 120.0,111.0 C129.3,100.8 139.6,115.3 120.0,132.3 Z" fill="#E8A94C" stroke="#362F4B" stroke-width="3" stroke-linejoin="round"/><text x="120" y="250" text-anchor="middle" font-size="14" font-weight="700" fill="#362F4B">rim = CUP &nbsp;&middot;&nbsp; hub = CENTER</text></svg></div><figcaption class="sr">A wheel with a bumpy rim and a heart in the hub. Caption: rim equals cup, hub equals center.</figcaption></figure></div><h3>Four tests for a steady sentence</h3><ul class="tests"><li>Present tense.</li><li>Plain words.</li><li>True of everyone at once.</li><li>Still true on the worst day.</li></ul></aside></div>
+<div class="pfoot"><span>Spiritual Lesson Plans &middot; spirituallessonplans.org</span><span>Free to use, adapt, and share &middot; CC BY-SA 4.0</span></div>
+</div>
+<div class="page">
+<h1 style="font-size:26px; margin-top:0;">Sort the acts: cup or scoreboard?</h1><div class="rule"></div>
+<p class="frame" style="font-size:14px; margin-bottom:10px;">Mark one circle for each act. A <b>cup</b> is done <em>for</em> the person. A <b>scoreboard</b> is done to be thanked, to win, to look like the good one, or so nobody blames you.</p>
+<div class="grid"><div class="act"><div class="at"><span class="an">1</span><span>Texting someone &ldquo;thinking of you&rdquo; with no ask.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">2</span><span>Posting that you &ldquo;stand with&rdquo; someone so people see it.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">3</span><span>Sitting with a friend at lunch after a fight, not talking about it.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">4</span><span>Telling everyone what really happened so you look informed.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">5</span><span>Bringing someone a snack because they skipped lunch.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">6</span><span>Fixing a friend&rsquo;s problem before they asked, so you feel useful.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">7</span><span>Saying &ldquo;that sounded rough&rdquo; and nothing else.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">8</span><span>Apologizing so the awkwardness stops.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">9</span><span>Apologizing because you&rsquo;re actually sorry.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">10</span><span>Inviting the left-out kid in so people see you&rsquo;re nice.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">11</span><span>Inviting the left-out kid in because you remember that feeling.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+<div class="act"><div class="at"><span class="an">12</span><span>Praying quietly for both people and telling no one.</span></div><div class="opts"><span class="o"><i></i>Cup</span><span class="o"><i></i>Scoreboard</span><span class="o"><i></i>It depends</span></div></div>
+</div>
+<div class="testbox"><b>THE TEST</b> Would I give this same cup, with the same warmth, to the person who&rsquo;s hardest for me to love?<div class="flip">Many of these are &ldquo;it depends.&rdquo; That&rsquo;s the answer. Check the thought first.</div></div>
+<p class="pull" style="margin:8px 0 6px; font-size:16px;">Same act. Different thought. Check the thought first.</p>
+<div class="refl"><p>A cup I could do this week, no names, that I&rsquo;d give anyone:</p><div class="write"></div><p>Which one on the sheet is hardest for me to be honest about?</p><div class="write"></div></div>
+<div class="pfoot"><span>Spiritual Lesson Plans &middot; spirituallessonplans.org</span><span>Free to use, adapt, and share &middot; CC BY-SA 4.0</span></div>
+</div>
+
+  </div>
+</div>
+</body>
+</html>

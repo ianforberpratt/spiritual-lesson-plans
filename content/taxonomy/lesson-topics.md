@@ -48,6 +48,7 @@ one or two a teacher would actually search under, not every theme that's technic
 - when-someone-feels-like-the-enemy (all bands)
 - finding-the-bigger-us (all bands, primary tag)
 - rescue-or-faith (21-plus, secondary tag)
+- the-cup-and-the-center (all bands, primary tag)
 
 ## doubt-and-hard-questions-about-god
 "Wrestling honestly with who God is, or whether the words you were handed still fit."
@@ -62,6 +63,7 @@ one or two a teacher would actually search under, not every theme that's technic
 - rescue-or-faith (all bands, primary tag — acting from calm, grounded thought rather than panic)
 - learning-to-hear-the-nudge (all bands)
 - what-lasts (all bands, primary tag — where you're actually placing your trust and attention)
+- the-cup-and-the-center (all bands, secondary tag — a four-step practice for acting from calm, grounded thought when someone is hurting)
 
 ## disappointment-and-hard-days
 "A plan fell through, a mistake won't stop replaying, or today is just off."
