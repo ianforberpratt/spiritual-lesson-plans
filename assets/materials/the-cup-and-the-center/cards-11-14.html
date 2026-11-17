@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Cards (Grade 6-8) &mdash; Spiritual Lesson Plans</title>
+<meta name="robots" content="noindex, follow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF5EA; --gold:#E8A94C; --gold-text:#935F1A;
+  --sage:#8CA37E; --sage-text:#3F5236; --sky:#A9C9D9; --sky-text:#4E7A93;
+  --ink:#362F4B; --ink-soft:rgba(54,47,75,.74); --rule:rgba(54,47,75,.22);
+}
+*{ box-sizing:border-box; }
+html,body{ margin:0; }
+body{
+  background:#EAE2D2; color:var(--ink);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  min-height:100vh; display:flex; flex-direction:column; align-items:center;
+}
+.toolbar{
+  width:100%; background:var(--ink); color:var(--cream);
+  padding:14px 20px; display:flex; justify-content:space-between; align-items:center;
+  gap:16px; flex-wrap:wrap;
+}
+.toolbar a{ color:var(--cream); text-decoration:none; font-size:14px; opacity:.9; }
+.toolbar a:hover, .toolbar a:focus{ opacity:1; text-decoration:underline; }
+.toolbar button{
+  background:var(--gold); color:#3B2A0E; border:none; border-radius:4px;
+  padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer;
+}
+.sheet-wrap{ padding:36px 16px 48px; width:100%; display:flex; justify-content:center; }
+.sheet{ background:#fff; box-shadow:0 12px 40px rgba(0,0,0,.18); width:816px; max-width:100%; padding:48px; }
+.page{ position:relative; height:9.9in; overflow:hidden; display:flex; flex-direction:column; }
+.page + .page{ margin-top:44px; border-top:1px dashed var(--rule); padding-top:44px; height:calc(9.9in + 44px); }
+.eyebrow{ font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-text); text-align:center; margin:0 0 8px; }
+h1{ font-family:"Fraunces",Georgia,serif; font-weight:600; color:var(--ink); margin:0 0 8px; text-align:center; font-size:30px; line-height:1.15; }
+.rule{ width:56px; height:3px; background:var(--gold); margin:0 auto 12px; border-radius:2px; }
+.frame{ font-family:"Fraunces",Georgia,serif; font-style:italic; line-height:1.5; color:var(--ink-soft); text-align:center; font-size:15px; margin:0 auto 14px; max-width:60ch; }
+h2{ font-family:"Fraunces",Georgia,serif; font-weight:600; color:var(--ink); font-size:17px; margin:0 0 8px; }
+.quote{ font-family:"Fraunces",Georgia,serif; font-style:italic; color:var(--ink-soft); text-align:center; font-size:13.5px; line-height:1.45; margin:0 auto 2px; max-width:62ch; }
+.cite{ color:var(--ink-soft); text-align:center; font-size:11.5px; margin:0 0 12px; }
+.pull{ font-family:"Fraunces",Georgia,serif; font-weight:600; color:var(--gold-text); text-align:center; font-size:17px; line-height:1.4; margin:10px 0 0; }
+.pfoot{ position:absolute; left:0; right:0; bottom:0; display:flex; justify-content:space-between; gap:12px; font-size:10.5px; color:var(--ink-soft); border-top:1px solid var(--rule); padding-top:6px; }
+.write{ border-bottom:1.5px solid var(--ink); height:26px; }
+.sr{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+svg text{ font-family:"Inter",sans-serif; }
+svg .serif{ font-family:"Fraunces",Georgia,serif; }
+@media print{
+  .toolbar{ display:none; }
+  body{ background:#fff; min-height:0; display:block; }
+  .sheet-wrap{ padding:0; display:block; }
+  .sheet{ box-shadow:none; width:auto; max-width:none; padding:0; }
+  .page{ break-after:page; page-break-after:always; }
+  .page:last-child{ break-after:auto; page-break-after:auto; }
+  .page + .page{ margin-top:0; border-top:none; padding-top:0; height:9.9in; }
+  @page{ size:letter; margin:0.5in; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+}
+
+.cgrid{ display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:248px; gap:0; border:1.5px dashed var(--rule); margin-top:4px; }
+.cd{ border:1.5px dashed var(--rule); padding:26px 28px; display:flex; flex-direction:column; justify-content:center; position:relative; background:#fff; }
+.cd p{ font-family:"Fraunces",Georgia,serif; font-size:21px; line-height:1.4; margin:0; }
+.cnum{ position:absolute; top:12px; left:16px; font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:18px; color:var(--gold-text); }
+.cd.back{ align-items:center; background:var(--cream); text-align:center; gap:8px; }
+.cd.back b{ font-family:"Fraunces",Georgia,serif; font-size:14px; letter-spacing:.04em; color:var(--ink-soft); font-weight:500; }
+.safety{ font-size:12.5px; color:var(--ink-soft); text-align:center; margin:8px 0 0; font-style:italic; }
+.page h1{ font-size:26px; }
+.page .frame{ font-size:14px; margin-bottom:8px; }
+
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <a href="/lessons/11-14/the-cup-and-the-center">&larr; Back to the lesson</a>
+  <button type="button" onclick="window.print()">Print this page</button>
+</div>
+<div class="sheet-wrap">
+  <div class="sheet">
+<div class="page">
+<p class="eyebrow">CARDS · THE GROUP CHAT BLEW UP</p>
+<h1>Case Cards</h1>
+<div class="rule"></div>
+<p class="frame">Optional extra cases to swap into the four steps. Cut apart.</p>
+<div class="cgrid"><div class="cd"><span class="cnum">1</span><p>Two friends stop speaking after a joke. The group chat splits.</p></div>
+<div class="cd"><span class="cnum">2</span><p>You find out you were left out of a plan from someone&rsquo;s story.</p></div>
+<div class="cd"><span class="cnum">3</span><p>A teammate gets benched and is furious at the coach, and at you.</p></div>
+<div class="cd"><span class="cnum">4</span><p>Someone shares something private that was told to them, and the person finds out.</p></div>
+<div class="cd"><span class="cnum">5</span><p>A friend&rsquo;s family is going through something. They won&rsquo;t say, but they&rsquo;re off.</p></div>
+<div class="cd"><span class="cnum">6</span><p>You told the truth, and it made a friend angry.</p></div>
+</div>
+<p class="safety">Anyone may pass, trade, or choose another. No names. If anyone&rsquo;s safety is at risk, tell a trusted adult now.</p>
+<div class="pfoot"><span>Spiritual Lesson Plans &middot; spirituallessonplans.org</span><span>Free to use, adapt, and share &middot; CC BY-SA 4.0</span></div>
+</div>
+<div class="page">
+<p class="eyebrow">Card backs &middot; print on the reverse of the cards (flip on the long edge), or skip this page</p>
+<div class="cgrid"><div class="cd back"><div role="img" aria-label="A wheel and a cup"><svg viewBox="0 0 200 160" width="170" height="136" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="80" r="52" fill="none" stroke="#362F4B" stroke-width="7"/><line x1="88.5" y1="87.7" x2="112.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="98.5" x2="87.6" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="98.5" x2="52.4" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="87.7" x2="27.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="72.3" x2="27.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="61.5" x2="52.4" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="61.5" x2="87.6" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="88.5" y1="72.3" x2="112.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><circle cx="70" cy="80" r="20" fill="#fff" stroke="#362F4B" stroke-width="5"/><path d="M70.0,87.0 C58.5,77.0 64.5,68.5 70.0,74.5 C75.5,68.5 81.5,77.0 70.0,87.0 Z" fill="#E8A94C" stroke="#362F4B" stroke-width="2.5" stroke-linejoin="round"/><path d="M124.0,59.3 L176.0,59.3 L166.6,108.7 L133.4,108.7 Z" fill="#fff" stroke="#362F4B" stroke-width="3" stroke-linejoin="round"/><path d="M128.2,73.1 L171.8,73.1" stroke="#362F4B" stroke-width="2.5" stroke-dasharray="3 5" fill="none"/></svg></div><b>The Cup and the Center</b></div>
+<div class="cd back"><div role="img" aria-label="A wheel and a cup"><svg viewBox="0 0 200 160" width="170" height="136" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="80" r="52" fill="none" stroke="#362F4B" stroke-width="7"/><line x1="88.5" y1="87.7" x2="112.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="98.5" x2="87.6" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="98.5" x2="52.4" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="87.7" x2="27.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="72.3" x2="27.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="61.5" x2="52.4" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="61.5" x2="87.6" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="88.5" y1="72.3" x2="112.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><circle cx="70" cy="80" r="20" fill="#fff" stroke="#362F4B" stroke-width="5"/><path d="M70.0,87.0 C58.5,77.0 64.5,68.5 70.0,74.5 C75.5,68.5 81.5,77.0 70.0,87.0 Z" fill="#E8A94C" stroke="#362F4B" stroke-width="2.5" stroke-linejoin="round"/><path d="M124.0,59.3 L176.0,59.3 L166.6,108.7 L133.4,108.7 Z" fill="#fff" stroke="#362F4B" stroke-width="3" stroke-linejoin="round"/><path d="M128.2,73.1 L171.8,73.1" stroke="#362F4B" stroke-width="2.5" stroke-dasharray="3 5" fill="none"/></svg></div><b>The Cup and the Center</b></div>
+<div class="cd back"><div role="img" aria-label="A wheel and a cup"><svg viewBox="0 0 200 160" width="170" height="136" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="80" r="52" fill="none" stroke="#362F4B" stroke-width="7"/><line x1="88.5" y1="87.7" x2="112.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="98.5" x2="87.6" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="98.5" x2="52.4" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="87.7" x2="27.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="72.3" x2="27.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="61.5" x2="52.4" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="61.5" x2="87.6" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="88.5" y1="72.3" x2="112.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><circle cx="70" cy="80" r="20" fill="#fff" stroke="#362F4B" stroke-width="5"/><path d="M70.0,87.0 C58.5,77.0 64.5,68.5 70.0,74.5 C75.5,68.5 81.5,77.0 70.0,87.0 Z" fill="#E8A94C" stroke="#362F4B" stroke-width="2.5" stroke-linejoin="round"/><path d="M124.0,59.3 L176.0,59.3 L166.6,108.7 L133.4,108.7 Z" fill="#fff" stroke="#362F4B" stroke-width="3" stroke-linejoin="round"/><path d="M128.2,73.1 L171.8,73.1" stroke="#362F4B" stroke-width="2.5" stroke-dasharray="3 5" fill="none"/></svg></div><b>The Cup and the Center</b></div>
+<div class="cd back"><div role="img" aria-label="A wheel and a cup"><svg viewBox="0 0 200 160" width="170" height="136" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="80" r="52" fill="none" stroke="#362F4B" stroke-width="7"/><line x1="88.5" y1="87.7" x2="112.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="98.5" x2="87.6" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="98.5" x2="52.4" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="87.7" x2="27.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="72.3" x2="27.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="61.5" x2="52.4" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="61.5" x2="87.6" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="88.5" y1="72.3" x2="112.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><circle cx="70" cy="80" r="20" fill="#fff" stroke="#362F4B" stroke-width="5"/><path d="M70.0,87.0 C58.5,77.0 64.5,68.5 70.0,74.5 C75.5,68.5 81.5,77.0 70.0,87.0 Z" fill="#E8A94C" stroke="#362F4B" stroke-width="2.5" stroke-linejoin="round"/><path d="M124.0,59.3 L176.0,59.3 L166.6,108.7 L133.4,108.7 Z" fill="#fff" stroke="#362F4B" stroke-width="3" stroke-linejoin="round"/><path d="M128.2,73.1 L171.8,73.1" stroke="#362F4B" stroke-width="2.5" stroke-dasharray="3 5" fill="none"/></svg></div><b>The Cup and the Center</b></div>
+<div class="cd back"><div role="img" aria-label="A wheel and a cup"><svg viewBox="0 0 200 160" width="170" height="136" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="80" r="52" fill="none" stroke="#362F4B" stroke-width="7"/><line x1="88.5" y1="87.7" x2="112.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="98.5" x2="87.6" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="98.5" x2="52.4" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="87.7" x2="27.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="72.3" x2="27.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="61.5" x2="52.4" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="61.5" x2="87.6" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="88.5" y1="72.3" x2="112.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><circle cx="70" cy="80" r="20" fill="#fff" stroke="#362F4B" stroke-width="5"/><path d="M70.0,87.0 C58.5,77.0 64.5,68.5 70.0,74.5 C75.5,68.5 81.5,77.0 70.0,87.0 Z" fill="#E8A94C" stroke="#362F4B" stroke-width="2.5" stroke-linejoin="round"/><path d="M124.0,59.3 L176.0,59.3 L166.6,108.7 L133.4,108.7 Z" fill="#fff" stroke="#362F4B" stroke-width="3" stroke-linejoin="round"/><path d="M128.2,73.1 L171.8,73.1" stroke="#362F4B" stroke-width="2.5" stroke-dasharray="3 5" fill="none"/></svg></div><b>The Cup and the Center</b></div>
+<div class="cd back"><div role="img" aria-label="A wheel and a cup"><svg viewBox="0 0 200 160" width="170" height="136" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><circle cx="70" cy="80" r="52" fill="none" stroke="#362F4B" stroke-width="7"/><line x1="88.5" y1="87.7" x2="112.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="98.5" x2="87.6" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="98.5" x2="52.4" y2="122.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="87.7" x2="27.5" y2="97.6" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="51.5" y1="72.3" x2="27.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="62.3" y1="61.5" x2="52.4" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="77.7" y1="61.5" x2="87.6" y2="37.5" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><line x1="88.5" y1="72.3" x2="112.5" y2="62.4" stroke="#362F4B" stroke-width="5" stroke-linecap="round"/><circle cx="70" cy="80" r="20" fill="#fff" stroke="#362F4B" stroke-width="5"/><path d="M70.0,87.0 C58.5,77.0 64.5,68.5 70.0,74.5 C75.5,68.5 81.5,77.0 70.0,87.0 Z" fill="#E8A94C" stroke="#362F4B" stroke-width="2.5" stroke-linejoin="round"/><path d="M124.0,59.3 L176.0,59.3 L166.6,108.7 L133.4,108.7 Z" fill="#fff" stroke="#362F4B" stroke-width="3" stroke-linejoin="round"/><path d="M128.2,73.1 L171.8,73.1" stroke="#362F4B" stroke-width="2.5" stroke-dasharray="3 5" fill="none"/></svg></div><b>The Cup and the Center</b></div>
+</div>
+<p class="safety">Anyone may pass, trade, or choose another. No names. If anyone&rsquo;s safety is at risk, tell a trusted adult now.</p>
+<div class="pfoot"><span>Spiritual Lesson Plans &middot; spirituallessonplans.org</span><span>Free to use, adapt, and share &middot; CC BY-SA 4.0</span></div>
+</div>
+
+  </div>
+</div>
+</body>
+</html>
