@@ -8,5 +8,16 @@
       "destination": "/put-it-to-work/three-degrees",
       "permanent": true
     }
+  ],
+  "headers": [
+    {
+      "source": "/honest-questions/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
   ]
 }
