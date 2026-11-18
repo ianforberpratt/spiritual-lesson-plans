@@ -68,13 +68,28 @@
     </div>
   </article>
 
-  <!-- Installments are rendered by app.js from series.json and posts/N.html -->
-  <div id="installments"></div>
-  <noscript>
-    <section class="slot is-soon"><p class="slot-state">Coming soon</p>
-    <h2 class="slot-title">Three more posts</h2>
-    <p class="slot-when">Saturday, November 21 &middot; Tuesday, November 24 &middot; Friday, November 27, at 6&nbsp;PM Central. Turn on JavaScript to see them here as they go live.</p></section>
-  </noscript>
+  <!-- Placeholders are plain HTML so they show without JavaScript. app.js only swaps one for
+       the live post once its time has passed and posts/N.html exists. -->
+  <div id="installments">
+    <section class="slot is-soon" id="post-1" data-post="1">
+      <p class="slot-state">Coming soon</p>
+      <p class="slot-label">Installment 1</p>
+      <h2 class="slot-title">The Gap Nobody Mentions</h2>
+      <p class="slot-when">Saturday, November 21 &middot; 6&nbsp;PM Central</p>
+    </section>
+    <section class="slot is-soon" id="post-2" data-post="2">
+      <p class="slot-state">Coming soon</p>
+      <p class="slot-label">Installment 2</p>
+      <h2 class="slot-title">What We&rsquo;re Quietly Protecting</h2>
+      <p class="slot-when">Tuesday, November 24 &middot; 6&nbsp;PM Central</p>
+    </section>
+    <section class="slot is-soon" id="post-3" data-post="3">
+      <p class="slot-state">Coming soon</p>
+      <p class="slot-label">Installment 3</p>
+      <h2 class="slot-title">The Tender Spot: What We Miss</h2>
+      <p class="slot-when">Friday, November 27 &middot; 6&nbsp;PM Central</p>
+    </section>
+  </div>
 
   <section class="respond" id="respond" aria-labelledby="respond-h">
     <h2 id="respond-h">I&rsquo;d love your thoughts</h2>

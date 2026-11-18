@@ -54,7 +54,11 @@
         var body = bodies[idx];
         var isLive = now >= when && body != null;
         if (isLive) liveCount++;
-        mount.appendChild(isLive ? livePost(item, when, body) : soonSlot(item, when));
+        if (isLive) {
+          var slot = document.getElementById("post-" + item.id);
+          var post = livePost(item, when, body);
+          if (slot) slot.replaceWith(post); else mount.appendChild(post);
+        }
       });
       markProgress(c, liveCount, items, bodies);
     });
@@ -74,18 +78,6 @@
         return t;
       })
       .catch(function () { return null; });
-  }
-
-  function soonSlot(item, when) {
-    var s = el("section", "slot is-soon");
-    s.id = "post-" + item.id;
-    s.setAttribute("data-post", item.id);
-    s.appendChild(el("p", "slot-state", "Coming soon"));
-    s.appendChild(el("p", "slot-label", item.label));
-    var t = el("h2", "slot-title" + (item.title ? "" : " is-empty"), item.title || "Title to come");
-    s.appendChild(t);
-    s.appendChild(el("p", "slot-when", fmtDate(when) + " · " + fmtTime(when)));
-    return s;
   }
 
   function livePost(item, when, html) {
