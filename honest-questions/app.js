@@ -20,6 +20,7 @@
   else if (asof && !isNaN(new Date(asof))) now = new Date(asof);
 
   var TZ = "America/Chicago";
+  var BASE = window.HQ_BASE || "";
 
   function fmtDate(d) {
     return new Intl.DateTimeFormat("en-US", { timeZone: TZ, weekday: "long", month: "long", day: "numeric" }).format(d);
@@ -38,7 +39,7 @@
   var cfg = null;
   var mount = document.getElementById("installments");
 
-  fetch("series.json", { cache: "no-cache" })
+  fetch(BASE + "series.json", { cache: "no-cache" })
     .then(function (r) { if (!r.ok) throw new Error("series.json " + r.status); return r.json(); })
     .then(function (c) { cfg = c; return build(c); })
     .then(function () { setupFeedback(); setupAnalytics(); })
@@ -60,7 +61,7 @@
   }
 
   function loadBody(item) {
-    return fetch("posts/" + item.id + ".html", { cache: "no-cache" })
+    return fetch(BASE + "posts/" + item.id + ".html", { cache: "no-cache" })
       .then(function (r) {
         if (!r.ok) return null;
         var type = r.headers.get("content-type") || "";

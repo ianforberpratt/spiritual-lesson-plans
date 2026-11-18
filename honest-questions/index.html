@@ -7,6 +7,15 @@
 <meta name="description" content="A short series on two things we often hesitate to say out loud: how we talk about our shrinking numbers, and how we show human compassion.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="style.css">
+<script>
+/* Work at /honest-questions, /honest-questions/ or a domain root: find this page's own folder. */
+(function () {
+  var p = location.pathname, last = p.split("/").pop(), b = p.replace(/[^\/]*$/, "");
+  if (last && last.indexOf(".") === -1) b = p + "/";
+  window.HQ_BASE = b;
+  if (b !== p.replace(/[^\/]*$/, "")) document.write('<link rel="stylesheet" href="' + b + 'style.css">');
+})();
+</script>
 </head>
 <body>
 
@@ -83,6 +92,6 @@
   </div>
 </footer>
 
-<script src="app.js"></script>
+<script>document.write('<script src="' + HQ_BASE + 'app.js"><\/script>');</script>
 </body>
 </html>
