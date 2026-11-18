@@ -1,0 +1,12 @@
+{
+  "name": "Honest Questions CS",
+  "timezone": "America/Chicago",
+  "feedbackEmail": "",
+  "analytics": { "goatcounter": "" },
+  "installments": [
+    { "id": "preview", "label": "Preview", "title": "Why I Keep Writing to You (and What's Coming)", "publishAt": "2026-11-18T18:00:00-06:00", "inline": true },
+    { "id": "1", "label": "Installment 1", "title": "", "publishAt": "2026-11-21T18:00:00-06:00" },
+    { "id": "2", "label": "Installment 2", "title": "", "publishAt": "2026-11-24T18:00:00-06:00" },
+    { "id": "3", "label": "Installment 3", "title": "", "publishAt": "2026-11-27T18:00:00-06:00" }
+  ]
+}
