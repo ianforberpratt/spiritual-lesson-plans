@@ -1,0 +1,147 @@
+/* Dimmer: page styles. Loaded after style.css, so nav, footer, buttons, type and palette are the site's own.
+   Everything here is namespaced dm- so nothing leaks into (or out of) other pages. */
+
+.dm-main {
+  background: var(--cream);
+  color: var(--ink);
+  min-height: 60vh;
+}
+.dm-narrow { max-width: 40rem; }
+
+/* ---------- Stage: the glowing light and its slider ---------- */
+.dm-stage {
+  --lvl: 0.12;
+  background: var(--ink);
+  color: var(--cream);
+  padding: clamp(14px, 3vw, 26px) 0 clamp(16px, 3vw, 26px);
+  overflow: hidden;
+}
+.dm-art { max-width: 20rem; margin: 0 auto; }
+.dm-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.dm-halo, .dm-glow, .dm-rays, .dm-fil {
+  transform-box: view-box;
+  transform-origin: 50% 47%;
+}
+.dm-halo { opacity: calc(0.05 + var(--lvl) * 0.5); transform: scale(calc(0.6 + var(--lvl) * 0.6)); }
+.dm-glow { opacity: calc(0.18 + var(--lvl) * 0.82); transform: scale(calc(0.5 + var(--lvl) * 0.7)); animation: dm-breathe 5s ease-in-out infinite; }
+.dm-rays { opacity: calc((var(--lvl) - 0.35) * 1.5); }
+.dm-fil { opacity: calc(0.25 + var(--lvl) * 0.75); }
+@keyframes dm-breathe {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.12); }
+}
+
+.dm-slider-row { max-width: 24rem; margin: 6px auto 0; display: grid; gap: 4px; }
+.dm-slider-label {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--on-dark);
+}
+.dm-slider-hint { font-family: var(--font-serif); font-size: 1.05rem; color: var(--gold); min-height: 1.5em; }
+
+.dm-stage input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 44px; margin: 0; background: transparent; cursor: pointer;
+}
+.dm-stage input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px; border-radius: 999px;
+  background: linear-gradient(90deg, #5A5272, #E8A94C 70%, #FFE7AE);
+}
+.dm-stage input[type="range"]::-moz-range-track {
+  height: 10px; border-radius: 999px;
+  background: linear-gradient(90deg, #5A5272, #E8A94C 70%, #FFE7AE);
+}
+.dm-stage input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 30px; height: 30px; margin-top: -10px; border-radius: 50%;
+  background: var(--cream); border: 3px solid var(--gold); box-shadow: 0 0 0 4px rgba(232, 169, 76, 0.25);
+}
+.dm-stage input[type="range"]::-moz-range-thumb {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--cream); border: 3px solid var(--gold); box-shadow: 0 0 0 4px rgba(232, 169, 76, 0.25);
+}
+.dm-stage input[type="range"]:focus-visible { outline: none; }
+.dm-stage input[type="range"]:focus-visible::-webkit-slider-thumb { outline: 3px solid var(--cream); outline-offset: 2px; }
+.dm-stage input[type="range"]:focus-visible::-moz-range-thumb { outline: 3px solid var(--cream); outline-offset: 2px; }
+
+/* ---------- Screens ---------- */
+.dm-screen { padding: clamp(24px, 5vw, 44px) 0 clamp(28px, 5vw, 48px); }
+.dm-screen-in { animation: dm-rise 0.5s ease both; }
+@keyframes dm-rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.dm-h { font-family: var(--font-serif); font-weight: 500; line-height: 1.15; margin: 0 0 0.6rem; text-wrap: balance; }
+h1.dm-h { font-size: clamp(2.6rem, 11vw, 3.8rem); }
+h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
+.dm-h:focus { outline: none; }
+.dm-lede { font-family: var(--font-serif); font-size: clamp(1.3rem, 4.5vw, 1.6rem); line-height: 1.35; margin: 0 0 1.1rem; }
+.dm-help { color: var(--ink-soft); margin: 0 0 1rem; }
+.dm-belief { font-style: italic; }
+
+.dm-offramp {
+  margin: 1.2rem 0 0; padding: 0.9rem 1.1rem; border-radius: 12px;
+  background: #EDF2E8; border: 1px solid rgba(63, 82, 54, 0.3); color: var(--sage-text);
+  font-size: 0.98rem; line-height: 1.55;
+}
+
+.dm-choices { display: grid; gap: 0.65rem; margin-bottom: 1.2rem; }
+.dm-choice {
+  display: block; width: 100%; text-align: left; cursor: pointer;
+  font-family: var(--font-sans); font-size: 1.1rem; line-height: 1.4; font-weight: 500; color: var(--ink);
+  background: var(--paper); border: 2px solid var(--rule-strong); border-radius: 14px;
+  padding: 0.95rem 1.1rem; min-height: 3.4rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.dm-choice:hover { border-color: var(--gold-deep); }
+.dm-choice[aria-pressed="true"] { border-color: var(--gold-deep); background: #FBEFD6; }
+
+.dm-nav { display: flex; gap: 0.7rem; flex-wrap: wrap; margin-top: 1.3rem; }
+.dm-btn {
+  font-family: var(--font-sans); font-weight: 600; font-size: 1.05rem; cursor: pointer;
+  min-height: 3.1rem; padding: 0.6rem 1.5rem; border-radius: 12px; border: 2px solid var(--ink);
+}
+.dm-btn-primary { background: var(--ink); color: var(--cream); }
+.dm-btn-primary:hover { background: #4A4066; }
+.dm-btn-ghost { background: transparent; color: var(--ink); border-color: var(--rule-strong); }
+.dm-btn-ghost:hover { border-color: var(--ink); }
+.dm-btn:focus-visible, .dm-choice:focus-visible, .dm-own textarea:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 2px; }
+
+/* ---------- The card ---------- */
+.dm-card {
+  background: var(--paper); border: 1px solid var(--rule-strong); border-top: 6px solid var(--gold);
+  border-radius: 14px; padding: clamp(18px, 4vw, 30px); box-shadow: 0 10px 30px rgba(54, 47, 75, 0.1);
+}
+.dm-card-title { font-size: clamp(1.8rem, 7vw, 2.4rem); margin-bottom: 0.4rem; }
+.dm-sec { padding: 0.9rem 0; border-top: 1px solid var(--rule); }
+.dm-sec:first-of-type { border-top: 0; }
+.dm-sec-h {
+  font-family: var(--font-sans); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold-text); margin: 0 0 0.3rem;
+}
+.dm-sec p { margin: 0 0 0.5rem; }
+.dm-sec p:last-child { margin-bottom: 0; }
+.dm-belief-line { font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; }
+.dm-twist { color: var(--ink-soft); }
+.dm-quote { margin: 0; padding: 0.2rem 0 0.2rem 1rem; border-left: 3px solid var(--gold); }
+.dm-quote p { font-family: var(--font-serif); font-size: 1.2rem; line-height: 1.45; margin: 0 0 0.3rem; white-space: pre-line; }
+.dm-quote cite { display: block; font-style: normal; font-size: 0.88rem; color: var(--ink-faint); }
+.dm-card-foot {
+  margin: 0.4rem 0 0; padding-top: 0.9rem; border-top: 1px solid var(--rule);
+  font-size: 0.9rem; font-style: italic; color: var(--ink-faint); text-align: center;
+}
+
+.dm-own { margin-top: 1.4rem; }
+.dm-own-label { display: block; font-weight: 600; margin-bottom: 0.4rem; }
+.dm-own textarea {
+  width: 100%; min-height: 5.5rem; resize: vertical; font-family: var(--font-sans); font-size: 1.02rem;
+  color: var(--ink); background: var(--paper); border: 2px solid var(--rule-strong); border-radius: 12px; padding: 0.7rem 0.9rem;
+}
+.dm-own-note { margin: 0.35rem 0 0; font-size: 0.9rem; color: var(--ink-faint); }
+
+.dm-static { padding-block: clamp(28px, 5vw, 56px); }
+.dm-static h1 { font-family: var(--font-serif); font-weight: 500; font-size: clamp(2.6rem, 11vw, 3.8rem); margin: 0 0 0.5rem; }
+.dm-credit-wrap { padding-bottom: clamp(28px, 4vw, 48px); }
+.dm-credit { font-size: 0.9rem; color: var(--ink-faint); line-height: 1.6; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dm-screen-in, .dm-glow { animation: none; }
+  .dm-choice { transition: none; }
+}
