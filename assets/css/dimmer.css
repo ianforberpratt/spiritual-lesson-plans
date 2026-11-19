@@ -315,3 +315,8 @@ h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
 .dm-true p:last-child { margin-bottom: 0; }
 .dm-reveal-late { animation: dm-rise 0.9s ease 1.2s both; }
 @media (prefers-reduced-motion: reduce) { .dm-reveal-late { animation: none; } }
+
+/* Plain-language notes, "how to use" steps */
+.dm-sub { margin: 0 0 0.25rem !important; font-size: 0.92rem; color: var(--ink-faint); font-style: italic; }
+.dm-howto { margin: 0; padding-left: 1.3rem; }
+.dm-howto li { margin-bottom: 0.2rem; }

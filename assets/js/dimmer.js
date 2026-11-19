@@ -16,22 +16,27 @@
   /* ---------------------------- Copy ---------------------------- */
   var DIMS = [
     { id: 'busy', label: 'Busy',
+      signal: 'You\u2019re speeding up and can\u2019t say why.',
       hint: 'I keep moving so I don\u2019t have to feel it.',
       line: 'You stay in motion so nothing has to land.',
       lens: 'A dimmer isn’t an off switch. The light is still there; it’s just hard to see while you’re moving this fast.' },
     { id: 'scrolling', label: 'Scrolling',
+      signal: 'You pick up your phone in a quiet moment.',
       hint: 'I fill the quiet with a screen.',
       line: 'The feed fills the quiet so you don’t have to.',
       lens: 'A dimmer isn’t an off switch. The light is still there, turned down low enough that a screen can seem brighter than it.' },
     { id: 'fine', label: '“Fine”',
+      signal: 'You hear yourself say \u201Cfine\u201D and it isn\u2019t quite true.',
       hint: 'I say it so nobody asks.',
       line: 'You say it so no one asks, including you.',
       lens: 'A dimmer isn’t an off switch. The light is still there, and “fine” is a lampshade over it, not a verdict on it.' },
     { id: 'helpful', label: 'Helpful',
+      signal: 'You\u2019re looking after everyone else and haven\u2019t asked how you are.',
       hint: 'I look after everyone else first.',
       line: 'You tend everyone else’s light and skip your own.',
       lens: 'A dimmer isn’t an off switch. The light is still there; it has just been pointed at everyone else’s room.' },
     { id: 'funny', label: 'Funny',
+      signal: 'You reach for a joke when something real comes up.',
       hint: 'I make a joke and move on.',
       line: 'You joke your way past it.',
       lens: 'A dimmer isn’t an off switch. The light is still there, and every real laugh you make is proof you can still make something glow.' }
@@ -103,6 +108,7 @@
       id: 'custom', label: text,
       line: 'You have your own way of going dim: \u201C' + text + '\u201D.',
       lens: 'A dimmer isn\u2019t an off switch. The light is still there, and the way you turn it down is yours to notice, not a verdict on you.',
+      signal: 'You catch yourself doing it: \u201C' + text + '\u201D.',
       hint: 'In my own way: \u201C' + text + '\u201D' };
   }
   function getDim() { return state.dim === 'custom' ? customDim(state.customDim) : byId(DIMS, state.dim); }
@@ -312,7 +318,7 @@
           h('li', { text: 'One thing to try this week' }),
           h('li', { text: 'A line to hold onto' })
         ]),
-        h('p', { class: 'dm-get-note', text: 'Five taps. No typing needed. A mirror, not a test.' })
+        h('p', { class: 'dm-get-note', text: 'It names your pattern, gives you a signal to watch for, and one thing to do. Five taps, no typing. A mirror, not a test.' })
       ]),
       h('p', { class: 'dm-fine', text: 'A spiritual reflection, open to any tradition and not tied to any one faith. Free. Nothing you type is saved or tracked. Stop any time.' }),
       offramp()
@@ -322,7 +328,7 @@
     return h('div', { class: 'dm-screen-in' }, [
       h('p', { class: 'eyebrow', text: 'One more tap' }),
       h('h2', { class: 'dm-h', tabindex: '-1', text: 'What has gotten through lately?' }),
-      h('p', { class: 'dm-help', text: 'A flicker. Tap one thing that got through recently.' }),
+      h('p', { class: 'dm-help', text: 'A flicker is anything that helped you feel more like yourself lately. Tap one.' }),
       choiceList(FLICKERS, 'flicker'),
       otherBlock('flicker', 'What got through?', 'For example: a long shower, my dog, a phone call'),
       ahead(),
@@ -373,18 +379,25 @@
     var mine = state.own.replace(/^\s+|\s+$/g, '');
     return mine ? { text: mine, ref: 'Your own line' } : { text: '“' + QUOTE_TEXT + QUOTE_TRAIL + '”', ref: QUOTE_REF };
   }
+  var HOW_TO = ['Catch your signal.', 'Do your one minute.', 'Say the line below to yourself.'];
+  var SUB_PATTERN = 'A pattern, not a cause.';
+  var SUB_TURNS_UP = 'What helps you feel more like yourself.';
   function cardParts() {
     var c = current(), hd = holdParts();
-    return [
-      { label: 'How you go dim', lines: [c.dim.line] },
+    var parts = [
+      { label: 'How you go dim', sub: SUB_PATTERN, lines: [c.dim.line] },
       { label: 'One way to see it', lines: [c.dim.lens] },
-      { label: 'The belief to question', lines: ['“This is just who I am now.”'] },
-      { label: 'What’s still true', lines: ['Nothing is missing from you.'] },
-      { label: 'What turns you up', lines: [c.fl.turnsUp] },
+      { label: 'The belief to question', lines: ['\u201CThis is just who I am now.\u201D'] },
+      { label: 'What\u2019s still true', lines: ['Nothing is missing from you.'] },
+      { label: 'What turns you up', sub: SUB_TURNS_UP, lines: [c.fl.turnsUp] },
+      { label: 'Your signal', lines: [c.dim.signal] },
       { label: 'Right now, in one minute', lines: [c.fl.now] },
+      { label: 'How to use this card', lines: HOW_TO.map(function (t, i) { return (i + 1) + '. ' + t; }) },
       { label: 'Try this week', lines: [c.fl.act, (c.fl.twist[c.dim.id] || FALLBACK_TWIST)] },
-      { label: 'Hold onto this', lines: [hd.text, '— ' + hd.ref] }
+      { label: 'Hold onto this', lines: [hd.text, '\u2014 ' + hd.ref] }
     ];
+    parts.forEach(function (p) { if (p.sub) { p.lines = [p.sub].concat(p.lines); } });
+    return parts;
   }
   function plainText() {
     var out = ['YOUR DIMMER SETTINGS', ''];
@@ -502,6 +515,33 @@
     }, 'image/png');
   }
 
+  function wallpaperCanvas() {
+    var W = 1170, H = 2532, cv = document.createElement('canvas'), ctx = cv.getContext('2d');
+    cv.width = W; cv.height = H;
+    var c = current(), hd = holdParts();
+    ctx.fillStyle = '#362F4B'; ctx.fillRect(0, 0, W, H);
+    var g = ctx.createRadialGradient(W / 2, 1000, 20, W / 2, 1000, 760);
+    g.addColorStop(0, 'rgba(255,231,174,0.5)'); g.addColorStop(0.4, 'rgba(232,169,76,0.28)'); g.addColorStop(1, 'rgba(232,169,76,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 300, W, 1500);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    var y = 900;
+    function block(label, text, font, color, lh) {
+      ctx.font = '700 30px ' + SANS; ctx.fillStyle = '#E8A94C'; y += 80; ctx.fillText(label, W / 2, y);
+      ctx.font = font; ctx.fillStyle = color;
+      wrapLines(ctx, text, 900).forEach(function (l) { y += lh; ctx.fillText(l, W / 2, y); });
+      y += 40;
+    }
+    y -= 80;
+    block('WHEN YOU NOTICE', c.dim.signal, '500 54px ' + SERIF, '#FBF5EA', 70);
+    block('DO THIS', c.fl.now, '400 44px ' + SANS, '#FFE7AE', 62);
+    block('THEN REMEMBER', hd.text, 'italic 400 40px ' + SERIF, 'rgba(251,245,234,0.9)', 56);
+    ctx.font = '400 28px ' + SANS; ctx.fillStyle = 'rgba(251,245,234,0.6)'; y += 8;
+    ctx.fillText(hd.ref, W / 2, y + 10);
+    ctx.font = '600 28px ' + SANS; ctx.fillStyle = 'rgba(232,169,76,0.85)';
+    ctx.fillText('Dimmer  \u00B7  spirituallessonplans.org/dimmer', W / 2, H - 150);
+    return cv;
+  }
+
   function buildShare() {
     // ---- Keep your card ----
     personalMail = h('a', { class: 'dm-btn dm-btn-ghost dm-linkbtn', id: 'dm-email-self', href: '#', text: 'Email my card to myself' });
@@ -511,8 +551,10 @@
       h('p', { text: 'Save it so you can come back to it. Your card is made on this device. Nothing is uploaded.' }),
       h('div', { class: 'dm-nav dm-nav-tight' }, [
         h('button', { type: 'button', class: 'dm-btn dm-btn-primary', 'data-act': 'save-card', text: 'Save my card as an image' }),
+        h('button', { type: 'button', class: 'dm-btn dm-btn-ghost', 'data-act': 'save-wallpaper', text: 'Save as phone wallpaper' }),
         personalMail
       ]),
+      h('p', { class: 'dm-own-note', text: 'Set the wallpaper as your lock screen. It shows your signal, your one minute and your line, so it reminds you when you see your phone.' }),
       h('p', { class: 'dm-own-note', text: 'Email opens your own email app with your card filled in. Nothing goes through this site.' })
     ]);
 
@@ -602,12 +644,14 @@
 
     var card = h('article', { class: 'dm-card', 'aria-labelledby': 'dm-card-title' }, [
       h('h2', { class: 'dm-h dm-card-title', id: 'dm-card-title', tabindex: '-1', text: 'Your Dimmer Settings' }),
-      cardSection('How you go dim', [h('p', { text: dim.line })]),
+      cardSection('How you go dim', [h('p', { class: 'dm-sub', text: SUB_PATTERN }), h('p', { text: dim.line })]),
       cardSection('One way to see it', [h('p', { text: dim.lens })]),
       cardSection('The belief to question', [h('p', { class: 'dm-belief-line', text: '“This is just who I am now.”' })]),
       cardSection('What’s still true', [h('p', { text: 'Nothing is missing from you.' })]),
-      cardSection('What turns you up', [h('p', { text: fl.turnsUp })]),
+      cardSection('What turns you up', [h('p', { class: 'dm-sub', text: SUB_TURNS_UP }), h('p', { text: fl.turnsUp })]),
+      cardSection('Your signal', [h('p', { text: dim.signal })]),
       cardSection('Right now, in one minute', [h('p', { text: fl.now })]),
+      cardSection('How to use this card', [h('ol', { class: 'dm-howto' }, HOW_TO.map(function (t) { return h('li', { text: t }); }))]),
       cardSection('Try this week', [h('p', { text: fl.act }), h('p', { class: 'dm-twist', text: (fl.twist[dim.id] || FALLBACK_TWIST) })]),
       cardSection('Hold onto this', [holdQuote]),
       h('p', { class: 'dm-card-foot', text: 'A mirror, not a diagnosis.' })
@@ -702,6 +746,7 @@
       return;
     }
     if (act === 'custom-go') { commitCustom(t.getAttribute('data-kind')); return; }
+    if (act === 'save-wallpaper') { saveCanvas(wallpaperCanvas(), 'my-dimmer-wallpaper.png'); return; }
     if (act === 'save-card') { saveCanvas(personalCanvas(), 'my-dimmer-settings.png'); return; }
     if (act === 'next') { go(state.step + 1); return; }
     if (act === 'back') { go(state.step - 1); return; }
