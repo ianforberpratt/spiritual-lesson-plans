@@ -217,3 +217,14 @@ h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
 .dm-define { margin: 0 0 0.5rem; font-size: 1.05rem; }
 .dm-choice-label { display: block; font-weight: 600; }
 .dm-choice-hint { display: block; margin-top: 0.15rem; font-weight: 400; font-size: 0.95rem; color: var(--ink-soft); }
+
+.dm-choice-other { border-style: dashed; margin-bottom: 0.65rem; }
+.dm-custom { margin: 0 0 1rem; }
+.dm-custom[hidden] { display: none; }
+.dm-custom input[type="text"] {
+  width: 100%; font-family: var(--font-sans); font-size: 1.05rem; color: var(--ink); background: var(--paper);
+  border: 2px solid var(--rule-strong); border-radius: 12px; padding: 0.75rem 0.9rem; min-height: 3.1rem;
+}
+.dm-custom input:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 2px; }
+.dm-custom .dm-btn { margin-top: 0.8rem; }
+.dm-custom .dm-btn[disabled] { opacity: 0.5; cursor: not-allowed; }

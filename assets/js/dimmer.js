@@ -90,11 +90,26 @@
         funny: 'Skip the funny. Just be plainly kind.' } }
   ];
 
+  /* Used when the visitor puts in their own flicker. Their words are shown with textContent only. */
+  var CUSTOM_TWIST = {
+    busy: 'Put it in the calendar like it matters. It does.',
+    scrolling: 'Phone in another room while you do it.',
+    fine: 'Afterward, tell one person what it was, in one true sentence.',
+    helpful: 'This one is for you. Don\u2019t turn it into a favor for anyone else.',
+    funny: 'Keep it plain. No bit, no caption.' };
+  function customFlicker(text, dimId) {
+    return {
+      turnsUp: '\u201C' + text + '\u201D gets through. That is worth noticing. It is yours, and it is one of your ways back.',
+      now: 'Take one minute with it, or a small piece of it, right now.',
+      act: 'Make room for it this week: give it ten unhurried minutes, on purpose, before the week gets away from you.',
+      twist: (function () { var t = {}; t[dimId] = CUSTOM_TWIST[dimId] || CUSTOM_TWIST.busy; return t; })() };
+  }
+
   /* Slider level (0 to 1) when each screen is reached. Dragging by hand is never overridden downward. */
   var STEP_LEVEL = [0.12, 0.36, 0.58, 0.78, 0.96];
 
   /* ---------------------------- State (memory only) ---------------------------- */
-  var state = { step: 0, dim: null, flicker: null, level: STEP_LEVEL[0], own: '' };
+  var state = { step: 0, dim: null, flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
 
   var root = document.getElementById('dimmer');
   if (!root) { return; }
@@ -258,6 +273,16 @@
       h('h2', { class: 'dm-h', tabindex: '-1', text: 'What has gotten through lately?' }),
       h('p', { class: 'dm-help', text: 'A flicker. Tap one thing that got through recently.' }),
       choiceList(FLICKERS, 'flicker'),
+      h('button', { type: 'button', class: 'dm-choice dm-choice-other', 'data-act': 'other', 'aria-expanded': state.flicker === 'custom' ? 'true' : 'false' }, [
+        h('span', { class: 'dm-choice-label', text: 'Something else' }),
+        h('span', { class: 'dm-choice-hint', text: 'Put in your own.' })
+      ]),
+      h('div', { class: 'dm-custom', id: 'dm-custom-panel', hidden: 'hidden' }, [
+        h('label', { class: 'dm-own-label', for: 'dm-custom-text', text: 'What got through?' }),
+        h('input', { type: 'text', id: 'dm-custom-text', maxlength: '80', autocomplete: 'off', autocorrect: 'off', spellcheck: 'true', 'aria-describedby': 'dm-custom-note', placeholder: 'For example: a long shower, my dog, a phone call' }),
+        h('p', { class: 'dm-own-note', id: 'dm-custom-note', text: 'This stays on this page. It is not saved or sent anywhere.' }),
+        h('button', { type: 'button', class: 'dm-btn dm-btn-primary', 'data-act': 'custom-go', disabled: 'disabled', text: 'Continue' })
+      ]),
       nav(true, null)
     ]);
   }
@@ -285,7 +310,8 @@
 
   function buildCard() {
     secCount = 0;
-    var dim = byId(DIMS, state.dim), fl = byId(FLICKERS, state.flicker);
+    var dim = byId(DIMS, state.dim);
+    var fl = state.flicker === 'custom' ? customFlicker(state.custom, dim.id) : byId(FLICKERS, state.flicker);
     var holdQuote = h('blockquote', { class: 'dm-quote', id: 'dm-hold' });
     renderHold(holdQuote);
     var own = h('div', { class: 'dm-own' }, [
@@ -362,15 +388,40 @@
   }
   function go(step) { state.step = step; render(true); }
 
+  function commitCustom() {
+    var v = document.getElementById('dm-custom-text').value.replace(/^\s+|\s+$/g, '');
+    if (!v) { return; }
+    state.flicker = 'custom';
+    state.custom = v;
+    go(state.step + 1);
+  }
+  function onInput(e) {
+    if (e.target && e.target.id === 'dm-custom-text') {
+      var go_ = screen.querySelector('[data-act="custom-go"]');
+      if (go_) { go_.disabled = !e.target.value.replace(/^\s+|\s+$/g, ''); }
+    }
+  }
+  function onKey(e) {
+    if (e.key === 'Enter' && e.target && e.target.id === 'dm-custom-text') { e.preventDefault(); commitCustom(); }
+  }
+
   function onClick(e) {
     var t = e.target.closest ? e.target.closest('button') : null;
     if (!t || locked) { return; }
     var act = t.getAttribute('data-act');
+    if (act === 'other') {
+      var panel = document.getElementById('dm-custom-panel');
+      panel.hidden = false;
+      t.setAttribute('aria-expanded', 'true');
+      document.getElementById('dm-custom-text').focus();
+      return;
+    }
+    if (act === 'custom-go') { commitCustom(); return; }
     if (act === 'next') { go(state.step + 1); return; }
     if (act === 'back') { go(state.step - 1); return; }
     if (act === 'restart') {
       tweenId++;
-      state = { step: 0, dim: null, flicker: null, level: STEP_LEVEL[0], own: '' };
+      state = { step: 0, dim: null, flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
       applyLevel(state.level);
       go(0);
       return;
@@ -401,6 +452,8 @@
   root.appendChild(stage);
   root.appendChild(screen);
   root.addEventListener('click', onClick);
+  root.addEventListener('input', onInput);
+  root.addEventListener('keydown', onKey);
   wireMenu();
   render(false);
 })();

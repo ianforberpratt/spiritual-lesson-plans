@@ -89,6 +89,41 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     if (store.l || store.s || store.c) fail(`storage not empty: ${JSON.stringify(store)}`);
     await ctx.close();
   }
+
+  // "Something else": put in your own flicker (all five dim types; canary on the first)
+  for (let d = 0; d < 5; d++) {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    const reqs = [];
+    page.on('request', r => reqs.push({ m: r.method(), u: r.url(), b: r.postData() || '' }));
+    page.on('pageerror', e => fail(`[custom ${d}] page error: ${e.message}`));
+    await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
+    await page.addInitScript(() => { window.__hits = []; const si = Storage.prototype.setItem; Storage.prototype.setItem = function () { window.__hits.push('setItem'); return si.apply(this, arguments); }; });
+    await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
+    await page.click(`.dm-choice:has(.dm-choice-label:text-is("${DIMS[d]}"))`);
+    await page.waitForSelector('.dm-choice-other');
+    if (!(await page.isDisabled('[data-act="custom-go"]', { strict: false }).catch(() => true))) fail('custom Continue should start disabled');
+    await page.click('.dm-choice-other');
+    if (await page.isDisabled('[data-act="custom-go"]')) { /* expected: empty */ } else fail('custom Continue enabled while empty');
+    const text = d === 0 ? CANARY : 'a long shower';
+    await page.fill('#dm-custom-text', text);
+    await page.keyboard.press('Enter');
+    await page.waitForSelector('text=This is just who I am now');
+    await page.click('button:text-is("Continue")');
+    await page.click('button:text-is("See my card")');
+    await page.waitForSelector('.dm-card');
+    const card = await page.innerText('.dm-card');
+    for (const need of [text, 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'A mirror, not a diagnosis.', 'Science and Health, p. 261'])
+      if (!card.includes(need)) fail(`[custom ${d}] card missing: ${need}`);
+    if (/undefined|null|NaN|\[object/.test(card)) fail(`[custom ${d}] card has placeholder junk`);
+    if (!(await page.innerText('#dimmer')).includes(OFF)) fail(`[custom ${d}] card missing 988`);
+    if ((await page.evaluate(() => window.__hits)).length) fail(`[custom ${d}] storage written`);
+    for (const r of reqs) { if (r.m !== 'GET') fail('custom: non-GET request'); if (r.u.includes(CANARY) || r.b.includes(CANARY)) fail('custom: canary appeared in a request'); }
+    const st = await page.evaluate(() => ({ l: localStorage.length, s: sessionStorage.length, c: document.cookie }));
+    if (st.l || st.s || st.c) fail('custom: storage not empty');
+    if (d === 0) { await page.click('button:text-is("Start over")'); await page.waitForSelector('.dm-choice-label'); if ((await page.innerText('#dimmer')).includes(CANARY)) fail('custom canary survived Start over'); }
+    await ctx.close();
+  }
   console.log(`distinct cards: ${cards.size} / 25`);
   if (cards.size !== 25) fail('expected 25 distinct cards');
 
