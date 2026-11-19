@@ -97,19 +97,28 @@
     fine: 'Afterward, tell one person what it was, in one true sentence.',
     helpful: 'This one is for you. Don\u2019t turn it into a favor for anyone else.',
     funny: 'Keep it plain. No bit, no caption.' };
+  var FALLBACK_TWIST = 'Do it slowly, and don\u2019t turn it into a task.';
+  function customDim(text) {
+    return {
+      id: 'custom', label: text,
+      line: 'You have your own way of going dim: \u201C' + text + '\u201D.',
+      lens: 'A dimmer isn\u2019t an off switch. The light is still there, and the way you turn it down is yours to notice, not a verdict on you.',
+      hint: 'In my own way: \u201C' + text + '\u201D' };
+  }
+  function getDim() { return state.dim === 'custom' ? customDim(state.customDim) : byId(DIMS, state.dim); }
   function customFlicker(text, dimId) {
     return {
       turnsUp: '\u201C' + text + '\u201D gets through. That is worth noticing. It is yours, and it is one of your ways back.',
       now: 'Take one minute with it, or a small piece of it, right now.',
       act: 'Make room for it this week: give it ten unhurried minutes, on purpose, before the week gets away from you.',
-      twist: (function () { var t = {}; t[dimId] = CUSTOM_TWIST[dimId] || CUSTOM_TWIST.busy; return t; })() };
+      twist: (function () { var t = {}; t[dimId] = CUSTOM_TWIST[dimId] || FALLBACK_TWIST; return t; })() };
   }
 
   /* Slider level (0 to 1) when each screen is reached. Dragging by hand is never overridden downward. */
   var STEP_LEVEL = [0.12, 0.36, 0.58, 0.78, 0.96];
 
   /* ---------------------------- State (memory only) ---------------------------- */
-  var state = { step: 0, dim: null, flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
+  var state = { step: 0, dim: null, customDim: '', flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
 
   var root = document.getElementById('dimmer');
   if (!root) { return; }
@@ -242,7 +251,7 @@
   function ahead() {
     return h('p', { class: 'dm-ahead' }, [
       h('span', { class: 'dm-ahead-ico', 'aria-hidden': 'true' }),
-      h('span', { text: 'Your card comes at the end. You can save it, email it to yourself, or share it.' })
+      h('span', { text: 'Your card comes at the end: save it, email it, or share it.' })
     ]);
   }
   function offramp() {
@@ -265,6 +274,23 @@
     return list;
   }
 
+  function otherBlock(kind, question, placeholder) {
+    var pre = kind === 'dim' ? 'dm-dim' : 'dm-';
+    var chosen = state[kind === 'dim' ? 'dim' : 'flicker'] === 'custom';
+    return h('div', { class: 'dm-other' }, [
+      h('button', { type: 'button', class: 'dm-choice dm-choice-other', 'data-act': 'other', 'data-kind': kind, 'aria-expanded': chosen ? 'true' : 'false' }, [
+        h('span', { class: 'dm-choice-label', text: 'Something else' }),
+        h('span', { class: 'dm-choice-hint', text: 'Put in your own.' })
+      ]),
+      h('div', { class: 'dm-custom', id: pre + 'custom-panel', hidden: 'hidden' }, [
+        h('label', { class: 'dm-own-label', for: pre + 'custom-text', text: question }),
+        h('input', { type: 'text', id: pre + 'custom-text', 'data-kind': kind, maxlength: '80', autocomplete: 'off', autocorrect: 'off', spellcheck: 'true', 'aria-describedby': pre + 'custom-note', placeholder: placeholder }),
+        h('p', { class: 'dm-own-note', id: pre + 'custom-note', text: 'This stays on this page. It is not saved or sent anywhere.' }),
+        h('button', { type: 'button', class: 'dm-btn dm-btn-primary', 'data-act': 'custom-go', 'data-kind': kind, disabled: 'disabled', text: 'Continue' })
+      ])
+    ]);
+  }
+
   function screenOpening() {
     function li(strong, rest) { return h('li', null, [h('strong', { text: strong }), ' ' + rest]); }
     return h('div', { class: 'dm-screen-in' }, [
@@ -276,18 +302,19 @@
       h('p', { class: 'dm-define', text: 'Going dim is how you turn your feelings down so you can keep going. It isn\u2019t a flaw, just a way of getting through, and most of us have a favorite.' }),
       h('p', { class: 'dm-help', text: 'Tap the one that is most like you.' }),
       choiceList(DIMS, 'dim'),
+      otherBlock('dim', 'How do you go dim?', 'For example: I sleep, I eat, I clean, I go quiet'),
       h('div', { class: 'dm-get' }, [
-        h('h2', { class: 'dm-get-h', text: 'In three minutes, you get a shareable card: Your Dimmer Settings' }),
+        h('h2', { class: 'dm-get-h', text: 'You finish with a shareable card' }),
         h('ul', { class: 'dm-get-list' }, [
-          li('How you go dim.', 'One honest line, in your own pattern.'),
-          li('What turns you up.', 'The thing that is already getting through.'),
-          li('A tool for right now.', 'One minute, matched to you.'),
-          li('One small thing to try this week.', 'Outward, and small.'),
-          li('A line to hold onto.', 'Or bring your own.')
+          h('li', { text: 'How you go dim' }),
+          h('li', { text: 'What turns you up' }),
+          h('li', { text: 'A tool for right now' }),
+          h('li', { text: 'One thing to try this week' }),
+          h('li', { text: 'A line to hold onto' })
         ]),
-        h('p', { class: 'dm-get-note', text: 'Save it as an image, email it to yourself, or pass it on to someone you love. A mirror, not a test. Five taps, and no typing needed.' })
+        h('p', { class: 'dm-get-note', text: 'Five taps. No typing needed. A mirror, not a test.' })
       ]),
-      h('p', { class: 'dm-fine', text: 'This is a spiritual reflection, open to any tradition and not tied to any one faith. It is free, nothing you type is saved or tracked, and you can stop any time.' }),
+      h('p', { class: 'dm-fine', text: 'A spiritual reflection, open to any tradition and not tied to any one faith. Free. Nothing you type is saved or tracked. Stop any time.' }),
       offramp()
     ]);
   }
@@ -297,16 +324,7 @@
       h('h2', { class: 'dm-h', tabindex: '-1', text: 'What has gotten through lately?' }),
       h('p', { class: 'dm-help', text: 'A flicker. Tap one thing that got through recently.' }),
       choiceList(FLICKERS, 'flicker'),
-      h('button', { type: 'button', class: 'dm-choice dm-choice-other', 'data-act': 'other', 'aria-expanded': state.flicker === 'custom' ? 'true' : 'false' }, [
-        h('span', { class: 'dm-choice-label', text: 'Something else' }),
-        h('span', { class: 'dm-choice-hint', text: 'Put in your own.' })
-      ]),
-      h('div', { class: 'dm-custom', id: 'dm-custom-panel', hidden: 'hidden' }, [
-        h('label', { class: 'dm-own-label', for: 'dm-custom-text', text: 'What got through?' }),
-        h('input', { type: 'text', id: 'dm-custom-text', maxlength: '80', autocomplete: 'off', autocorrect: 'off', spellcheck: 'true', 'aria-describedby': 'dm-custom-note', placeholder: 'For example: a long shower, my dog, a phone call' }),
-        h('p', { class: 'dm-own-note', id: 'dm-custom-note', text: 'This stays on this page. It is not saved or sent anywhere.' }),
-        h('button', { type: 'button', class: 'dm-btn dm-btn-primary', 'data-act': 'custom-go', disabled: 'disabled', text: 'Continue' })
-      ]),
+      otherBlock('flicker', 'What got through?', 'For example: a long shower, my dog, a phone call'),
       ahead(),
       nav(true, null)
     ]);
@@ -351,7 +369,7 @@
   var personalMail = null;
 
   function current() {
-    var dim = byId(DIMS, state.dim);
+    var dim = getDim();
     var fl = state.flicker === 'custom' ? customFlicker(state.custom, dim.id) : byId(FLICKERS, state.flicker);
     return { dim: dim, fl: fl };
   }
@@ -368,7 +386,7 @@
       { label: 'What’s still true', lines: ['Nothing is missing from you.'] },
       { label: 'What turns you up', lines: [c.fl.turnsUp] },
       { label: 'Right now, in one minute', lines: [c.fl.now] },
-      { label: 'Try this week', lines: [c.fl.act, c.fl.twist[c.dim.id]] },
+      { label: 'Try this week', lines: [c.fl.act, (c.fl.twist[c.dim.id] || FALLBACK_TWIST)] },
       { label: 'Hold onto this', lines: [hd.text, '— ' + hd.ref] }
     ];
   }
@@ -573,7 +591,7 @@
 
   function buildCard() {
     secCount = 0;
-    var dim = byId(DIMS, state.dim);
+    var dim = getDim();
     var fl = state.flicker === 'custom' ? customFlicker(state.custom, dim.id) : byId(FLICKERS, state.flicker);
     var holdQuote = h('blockquote', { class: 'dm-quote', id: 'dm-hold' });
     renderHold(holdQuote);
@@ -594,7 +612,7 @@
       cardSection('What’s still true', [h('p', { text: 'Nothing is missing from you.' })]),
       cardSection('What turns you up', [h('p', { text: fl.turnsUp })]),
       cardSection('Right now, in one minute', [h('p', { text: fl.now })]),
-      cardSection('Try this week', [h('p', { text: fl.act }), h('p', { class: 'dm-twist', text: fl.twist[dim.id] })]),
+      cardSection('Try this week', [h('p', { text: fl.act }), h('p', { class: 'dm-twist', text: (fl.twist[dim.id] || FALLBACK_TWIST) })]),
       cardSection('Hold onto this', [holdQuote]),
       h('p', { class: 'dm-card-foot', text: 'A mirror, not a diagnosis.' })
     ]);
@@ -654,21 +672,26 @@
   }
   function go(step) { state.step = step; render(true); }
 
-  function commitCustom() {
-    var v = document.getElementById('dm-custom-text').value.replace(/^\s+|\s+$/g, '');
+  function commitCustom(kind) {
+    var pre = kind === 'dim' ? 'dm-dim' : 'dm-';
+    var v = document.getElementById(pre + 'custom-text').value.replace(/^\s+|\s+$/g, '');
     if (!v) { return; }
-    state.flicker = 'custom';
-    state.custom = v;
+    if (kind === 'dim') { state.dim = 'custom'; state.customDim = v; }
+    else { state.flicker = 'custom'; state.custom = v; }
     go(state.step + 1);
   }
   function onInput(e) {
-    if (e.target && e.target.id === 'dm-custom-text') {
-      var go_ = screen.querySelector('[data-act="custom-go"]');
-      if (go_) { go_.disabled = !e.target.value.replace(/^\s+|\s+$/g, ''); }
+    var t = e.target;
+    if (t && t.getAttribute && t.getAttribute('data-kind') && /custom-text$/.test(t.id)) {
+      var btn = t.parentNode.querySelector('[data-act="custom-go"]');
+      if (btn) { btn.disabled = !t.value.replace(/^\s+|\s+$/g, ''); }
     }
   }
   function onKey(e) {
-    if (e.key === 'Enter' && e.target && e.target.id === 'dm-custom-text') { e.preventDefault(); commitCustom(); }
+    var t = e.target;
+    if (e.key === 'Enter' && t && t.getAttribute && t.getAttribute('data-kind') && /custom-text$/.test(t.id)) {
+      e.preventDefault(); commitCustom(t.getAttribute('data-kind'));
+    }
   }
 
   function onClick(e) {
@@ -676,20 +699,20 @@
     if (!t || locked) { return; }
     var act = t.getAttribute('data-act');
     if (act === 'other') {
-      var panel = document.getElementById('dm-custom-panel');
-      panel.hidden = false;
+      var pre = t.getAttribute('data-kind') === 'dim' ? 'dm-dim' : 'dm-';
+      document.getElementById(pre + 'custom-panel').hidden = false;
       t.setAttribute('aria-expanded', 'true');
-      document.getElementById('dm-custom-text').focus();
+      document.getElementById(pre + 'custom-text').focus();
       return;
     }
-    if (act === 'custom-go') { commitCustom(); return; }
+    if (act === 'custom-go') { commitCustom(t.getAttribute('data-kind')); return; }
     if (act === 'save-card') { saveCanvas(personalCanvas(), 'my-dimmer-settings.png'); return; }
     if (act === 'next') { go(state.step + 1); return; }
     if (act === 'back') { go(state.step - 1); return; }
     if (act === 'restart') {
       personalMail = null;
       tweenId++;
-      state = { step: 0, dim: null, flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
+      state = { step: 0, dim: null, customDim: '', flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
       applyLevel(state.level);
       go(0);
       return;
