@@ -50,7 +50,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     await page.waitForSelector('.dm-card');
     const card = await page.innerText('.dm-card');
     const all = await page.innerText('#dimmer');
-    for (const need of ['Your Dimmer Settings', 'HOW YOU GO DIM', 'ONE WAY TO SEE IT', 'THE BELIEF TO QUESTION', 'This is just who I am now.', 'NOTHING IS MISSING'.slice(0, 0), 'Nothing is missing from you.', 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'HOLD ONTO THIS', 'Hold thought steadfastly to the enduring, the good, and the true, and you will bring these into your experience proportionably to their occupancy of your thoughts.', 'Mary Baker Eddy, Science and Health, p. 261:4', 'A mirror, not a diagnosis.'])
+    for (const need of ['Your Dimmer Settings', 'HOW YOU GO DIM', 'ONE WAY TO SEE IT', 'THE BELIEF TO QUESTION', 'This is just who I am now.', 'NOTHING IS MISSING'.slice(0, 0), 'Nothing is missing from you.', 'WHAT TURNS YOU UP', 'YOUR SIGNAL', 'RIGHT NOW, IN ONE MINUTE', 'HOW TO USE THIS CARD', 'Catch your signal.', 'Do your one minute.', 'A pattern, not a cause.', 'What helps you feel more like yourself.', 'TRY THIS WEEK', 'HOLD ONTO THIS', 'Hold thought steadfastly to the enduring, the good, and the true, and you will bring these into your experience proportionably to their occupancy of your thoughts.', 'Mary Baker Eddy, Science and Health, p. 261:4', 'A mirror, not a diagnosis.'])
       if (need && !card.includes(need)) fail(`[${d},${f}] card missing: ${need}`);
     if (/undefined|null|NaN|\[object/.test(card)) fail(`[${d},${f}] card has placeholder junk`);
     if (/depress|dissociat|anxiety|disorder|diagnos(?!is\.)/i.test(card.replace('A mirror, not a diagnosis.', ''))) fail(`[${d},${f}] clinical term on card`);
@@ -111,7 +111,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     await page.click('button:text-is("See my card")');
     await page.waitForSelector('.dm-card');
     const card = await page.innerText('.dm-card');
-    for (const need of [text, 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'A mirror, not a diagnosis.', 'Science and Health, p. 261:4'])
+    for (const need of [text, 'WHAT TURNS YOU UP', 'YOUR SIGNAL', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'A mirror, not a diagnosis.', 'Science and Health, p. 261:4'])
       if (!card.includes(need)) fail(`[custom ${d}] card missing: ${need}`);
     if (/undefined|null|NaN|\[object/.test(card)) fail(`[custom ${d}] card has placeholder junk`);
     if (!(await page.innerText('#dimmer')).includes(OFF)) fail(`[custom ${d}] card missing 988`);
@@ -147,6 +147,9 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     // save my card as image
     const [dl1] = await Promise.all([page.waitForEvent('download'), page.click('button:text-is("Save my card as an image")')]);
     if (!/\.png$/.test(dl1.suggestedFilename())) fail('personal card download is not a png');
+    const [dlw] = await Promise.all([page.waitForEvent('download'), page.click('button:text-is("Save as phone wallpaper")')]);
+    if (!/wallpaper\.png$/.test(dlw.suggestedFilename())) fail('wallpaper download wrong name');
+    if (!mailSelf.includes('YOUR SIGNAL') || !mailSelf.includes('You pick up your phone in a quiet moment.') || !mailSelf.includes('HOW TO USE THIS CARD')) fail('email body missing signal / how-to');
     // gift card
     const dims = await page.evaluate(() => { const c = document.querySelector('.dm-gift-canvas'); const d = c.getContext('2d').getImageData(540, 700, 1, 1).data; return { w: c.width, h: c.height, px: Array.from(d) }; });
     if (dims.w !== 1080 || dims.h !== 1350) fail('gift canvas wrong size');
@@ -248,7 +251,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     await page.click('button:text-is("See my card")');
     await page.waitForSelector('.dm-card');
     const card = await page.innerText('.dm-card');
-    for (const need of [mine, 'ONE WAY TO SEE IT', "A dimmer isn\u2019t an off switch", 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'Do it slowly', 'A mirror, not a diagnosis.'])
+    for (const need of [mine, 'ONE WAY TO SEE IT', "A dimmer isn\u2019t an off switch", 'YOUR SIGNAL', 'You catch yourself doing it', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'Do it slowly', 'A mirror, not a diagnosis.'])
       if (!card.includes(need)) fail(`[custom dim${customFlick ? ' x custom' : ''}] card missing: ${need}`);
     if (/undefined|null|NaN|\[object/.test(card)) fail('[custom dim] card has placeholder junk');
     if (!(await page.innerText('#dimmer')).includes(OFF)) fail('[custom dim] card missing 988');
