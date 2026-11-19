@@ -6,10 +6,10 @@
   'use strict';
 
   /* ===================== EDIT HERE: the quote and the safety line ===================== */
-  // Ian: confirm the full wording against your edition. Only the fragment below is used today.
-  var QUOTE_TEXT = 'Hold thought steadfastly to the enduring, the good, and the true';
-  var QUOTE_TRAIL = '…'; // shown after the fragment because the sentence continues; set to '' to drop it
-  var QUOTE_REF = 'Mary Baker Eddy, Science and Health, p. 261';
+  // Full sentence, as supplied by Ian from his edition (Science and Health, p. 261:4).
+  var QUOTE_TEXT = 'Hold thought steadfastly to the enduring, the good, and the true, and you will bring these into your experience proportionably to their occupancy of your thoughts.';
+  var QUOTE_TRAIL = ''; // optional text shown after the quote (the full sentence is used, so none is needed)
+  var QUOTE_REF = 'Mary Baker Eddy, Science and Health, p. 261:4';
   var OFFRAMP = 'If this feels like more than numb, please talk to someone. In the US, you can call or text 988. Elsewhere, search for your local crisis line.';
   /* ==================================================================================== */
 
@@ -115,7 +115,7 @@
   }
 
   /* Slider level (0 to 1) when each screen is reached. Dragging by hand is never overridden downward. */
-  var STEP_LEVEL = [0.12, 0.36, 0.58, 0.78, 0.96];
+  var STEP_LEVEL = [0.12, 0.38, 0.7, 0.96];
 
   /* ---------------------------- State (memory only) ---------------------------- */
   var state = { step: 0, dim: null, customDim: '', flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
@@ -169,7 +169,7 @@
 
   /* ---------------------------- Stage (light + slider), built once ---------------------------- */
   var stage, slider, valueText, screen, trail;
-  var TRAIL = ['How you go dim', 'What turns you up', 'The belief', 'What\u2019s true', 'Your card'];
+  var TRAIL = ['How you go dim', 'What turns you up', 'What\u2019s true', 'Your card'];
 
   function levelWord(v) {
     return v < 0.25 ? 'very dim' : v < 0.5 ? 'dim' : v < 0.75 ? 'warm' : v < 0.97 ? 'bright' : 'full light';
@@ -202,7 +202,7 @@
     var items = trail.children;
     for (var i = 0; i < items.length; i++) {
       var done = i < state.step, now = i === state.step;
-      items[i].className = (done ? 'done ' : '') + (now ? 'now ' : '') + (state.step === 4 && i === 4 ? 'ready' : '');
+      items[i].className = (done ? 'done ' : '') + (now ? 'now ' : '') + (state.step === 3 && i === 3 ? 'ready' : '');
       if (now) { items[i].setAttribute('aria-current', 'step'); } else { items[i].removeAttribute('aria-current'); }
       var sr = items[i].querySelector('.dm-sr');
       if (sr) { items[i].removeChild(sr); }
@@ -329,21 +329,17 @@
       nav(true, null)
     ]);
   }
+  // One screen, one tap: the belief, then (a beat later) what is still true.
   function screenBelief() {
     return h('div', { class: 'dm-screen-in' }, [
       h('p', { class: 'eyebrow', text: 'The belief to question' }),
-      h('h2', { class: 'dm-h dm-belief', tabindex: '-1', text: '“This is just who I am now.”' }),
-      h('p', { text: 'What you feel is real. That conclusion isn’t a sentence. It’s a belief, and beliefs can be questioned.' }),
-      ahead(),
-      nav(true, 'Continue')
-    ]);
-  }
-  function screenStill() {
-    return h('div', { class: 'dm-screen-in' }, [
-      h('p', { class: 'eyebrow', text: 'What’s still true' }),
-      h('h2', { class: 'dm-h', tabindex: '-1', text: 'Nothing is missing from you.' }),
-      h('p', { text: 'A dimmer is a setting, not a subtraction.' }),
-      ahead(),
+      h('h2', { class: 'dm-h dm-belief', tabindex: '-1', text: '\u201CThis is just who I am now.\u201D' }),
+      h('p', { text: 'What you feel is real. That conclusion isn\u2019t a sentence. It\u2019s a belief, and beliefs can be questioned.' }),
+      h('div', { class: 'dm-true dm-reveal-late' }, [
+        h('p', { class: 'eyebrow', text: 'What\u2019s still true' }),
+        h('p', { class: 'dm-true-line', text: 'Nothing is missing from you.' }),
+        h('p', { text: 'A dimmer is a setting, not a subtraction.' })
+      ]),
       ahead(),
       nav(true, 'See my card')
     ]);
@@ -651,14 +647,14 @@
   var locked = false;
 
   function render(focus) {
-    var views = [screenOpening, screenFlicker, screenBelief, screenStill, buildCard];
+    var views = [screenOpening, screenFlicker, screenBelief, buildCard];
     while (screen.firstChild) { screen.removeChild(screen.firstChild); }
     screen.appendChild(h('div', { class: 'wrap dm-narrow' }, [views[state.step]()]));
     setLevel(STEP_LEVEL[state.step]);
     // The light takes on your dim type's character until the belief is questioned, then warms for the rest.
-    if (state.dim && state.step >= 1 && state.step <= 2) { stage.setAttribute('data-dim', state.dim); }
+    if (state.dim && state.step === 1) { stage.setAttribute('data-dim', state.dim); }
     else { stage.removeAttribute('data-dim'); }
-    stage.classList.toggle('dm-lit', state.step === 4);
+    stage.classList.toggle('dm-lit', state.step === 3);
     updateTrail();
     if (focus) { pulse(); }
     if (focus) {
