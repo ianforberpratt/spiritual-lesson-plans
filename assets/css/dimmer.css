@@ -228,3 +228,30 @@ h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
 .dm-custom input:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 2px; }
 .dm-custom .dm-btn { margin-top: 0.8rem; }
 .dm-custom .dm-btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+/* ---------- "Your card comes at the end" cue, keep it / pass it on ---------- */
+.dm-ahead {
+  display: flex; align-items: center; gap: 0.6rem; margin: 1.3rem 0 0; padding: 0.65rem 0.9rem;
+  border-radius: 12px; background: #FBEFD6; border: 1px dashed var(--gold-deep); font-size: 0.95rem; line-height: 1.45; color: var(--ink);
+}
+.dm-ahead-ico {
+  flex: none; width: 1.5rem; height: 1.9rem; border-radius: 4px; border: 2px solid var(--gold-deep);
+  background: linear-gradient(var(--gold-deep) 0 3px, transparent 3px) 3px 5px / 12px 3px no-repeat, linear-gradient(var(--gold-deep) 0 3px, transparent 3px) 3px 11px / 12px 3px no-repeat, var(--paper);
+}
+.dm-share { margin-top: 1.8rem; padding: 1.2rem 1.2rem 1.3rem; background: var(--paper); border: 1px solid var(--rule-strong); border-radius: 14px; }
+.dm-share-h { font-family: var(--font-serif); font-weight: 500; font-size: 1.45rem; margin: 0 0 0.4rem; }
+.dm-share p { margin: 0 0 0.7rem; }
+.dm-nav-tight { margin-top: 0.8rem; }
+.dm-linkbtn { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.dm-fieldset { border: 0; margin: 0.4rem 0 0.2rem; padding: 0; }
+.dm-fieldset legend { padding: 0; }
+.dm-radio { display: flex; align-items: flex-start; gap: 0.6rem; margin: 0.45rem 0; }
+.dm-radio input { margin-top: 0.35rem; width: 1.15rem; height: 1.15rem; accent-color: var(--gold-deep); flex: none; }
+.dm-radio label { line-height: 1.4; cursor: pointer; }
+.dm-gift-own {
+  width: 100%; font-family: var(--font-sans); font-size: 1.02rem; color: var(--ink); background: var(--paper);
+  border: 2px solid var(--rule-strong); border-radius: 12px; padding: 0.6rem 0.8rem; margin: 0.2rem 0 0.4rem;
+}
+.dm-gift-own:focus-visible, .dm-radio input:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 2px; }
+.dm-gift-preview { margin: 1rem auto 0.4rem; max-width: 20rem; }
+.dm-gift-canvas { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 26px rgba(54, 47, 75, 0.25); }

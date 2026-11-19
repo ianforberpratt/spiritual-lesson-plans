@@ -124,6 +124,52 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     if (d === 0) { await page.click('button:text-is("Start over")'); await page.waitForSelector('.dm-choice-label'); if ((await page.innerText('#dimmer')).includes(CANARY)) fail('custom canary survived Start over'); }
     await ctx.close();
   }
+
+  // Keep it / pass it on: buttons, mailto, share links, downloads, no network
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce', acceptDownloads: true });
+    const page = await ctx.newPage();
+    const reqs = [];
+    page.on('request', r => reqs.push({ m: r.method(), u: r.url(), b: r.postData() || '' }));
+    page.on('pageerror', e => fail(`[share] page error: ${e.message}`));
+    await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
+    await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
+    // the "card comes at the end" cue is on the opening and on every middle screen
+    if (!(await page.innerText('#dimmer')).includes('shareable card')) fail('opening does not say the card is shareable');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Scrolling"))');
+    await page.waitForSelector('.dm-ahead');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Music that stops me"))');
+    for (const b of ['Continue', 'See my card']) { await page.waitForSelector('.dm-ahead', { state: 'attached' }).catch(() => {}); await page.click(`button:text-is("${b}")`); }
+    await page.waitForSelector('.dm-card');
+    const mailSelf = decodeURIComponent(await page.getAttribute('#dm-email-self', 'href'));
+    if (!mailSelf.startsWith('mailto:?subject=My Dimmer Settings')) fail('email-to-self link is not a mailto');
+    for (const need of ['YOUR DIMMER SETTINGS', 'The feed fills the quiet', 'spirituallessonplans.org/dimmer', '988', 'A mirror, not a diagnosis.']) if (!mailSelf.includes(need)) fail('email body missing: ' + need);
+    await page.fill('#dm-own-text', CANARY + ' mine');
+    if (!decodeURIComponent(await page.getAttribute('#dm-email-self', 'href')).includes(CANARY)) fail('email body did not pick up own line');
+    // save my card as image
+    const [dl1] = await Promise.all([page.waitForEvent('download'), page.click('button:text-is("Save my card as an image")')]);
+    if (!/\.png$/.test(dl1.suggestedFilename())) fail('personal card download is not a png');
+    // gift card
+    const dims = await page.evaluate(() => { const c = document.querySelector('.dm-gift-canvas'); const d = c.getContext('2d').getImageData(540, 700, 1, 1).data; return { w: c.width, h: c.height, px: Array.from(d) }; });
+    if (dims.w !== 1080 || dims.h !== 1350) fail('gift canvas wrong size');
+    if (dims.px[3] === 0) fail('gift canvas is blank');
+    const wa0 = decodeURIComponent(await page.getAttribute('#dm-wa', 'href'));
+    if (!wa0.startsWith('https://wa.me/?text=')) fail('WhatsApp link wrong');
+    if (wa0.includes('I fill the quiet with a screen')) fail('answers leaked into the gift message without opt-in');
+    if (!wa0.includes('spirituallessonplans.org/dimmer')) fail('gift message missing link');
+    await page.check('#dm-gift-incl');
+    if (!decodeURIComponent(await page.getAttribute('#dm-wa', 'href')).includes('I fill the quiet with a screen')) fail('opt-in did not add how I go dim');
+    await page.uncheck('#dm-gift-incl');
+    await page.fill('#dm-gift-own', 'Worth three minutes. ' + CANARY);
+    if (!decodeURIComponent(await page.getAttribute('#dm-wa', 'href')).includes('Worth three minutes')) fail('own gift line not used');
+    if (!(await page.getAttribute('#dm-fb', 'href')).includes(encodeURIComponent('https://www.spirituallessonplans.org/dimmer'))) fail('Facebook link wrong');
+    if (!decodeURIComponent(await page.getAttribute('#dm-email-friend', 'href')).startsWith('mailto:?subject=Thought of you')) fail('email-a-friend link wrong');
+    const [dl2] = await Promise.all([page.waitForEvent('download'), page.click('button:text-is("Save image")')]);
+    if (!/\.png$/.test(dl2.suggestedFilename())) fail('gift card download is not a png');
+    for (const r of reqs) { if (r.m !== 'GET') fail('share: non-GET request'); if (r.u.includes(CANARY) || r.b.includes(CANARY)) fail('share: canary appeared in a request'); if (/wa\.me|facebook\.com/.test(r.u)) fail('share: page requested a share host on its own'); }
+    if (SHOTS) { await page.evaluate(() => document.querySelector('.dm-share').scrollIntoView()); await page.screenshot({ path: `${SHOTS}/mobile-share.png`, fullPage: true }); }
+    await ctx.close();
+  }
   console.log(`distinct cards: ${cards.size} / 25`);
   if (cards.size !== 25) fail('expected 25 distinct cards');
 
