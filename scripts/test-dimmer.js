@@ -40,11 +40,10 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     if (!opening.includes(OFF)) fail('opening missing 988 off-ramp');
     if (!opening.includes('Not anxious. Not depressed. Just… dim. Take three minutes.')) fail('opening hook missing');
     if (d === 0 && f === 0 && SHOTS) await page.screenshot({ path: `${SHOTS}/mobile-1-opening.png` });
-    await page.click('button:text-is("Begin")');
-    await page.click(`.dm-choice:text-is("${DIMS[d]}")`);
-    await page.waitForSelector(`.dm-choice:text-is("${FLICKERS[f]}")`);
+    await page.click(`.dm-choice:has(.dm-choice-label:text-is("${DIMS[d]}"))`);
+    await page.waitForSelector(`.dm-choice:has(.dm-choice-label:text-is("${FLICKERS[f]}"))`);
     if (d === 0 && f === 0 && SHOTS) await page.screenshot({ path: `${SHOTS}/mobile-2-flicker.png` });
-    await page.click(`.dm-choice:text-is("${FLICKERS[f]}")`);
+    await page.click(`.dm-choice:has(.dm-choice-label:text-is("${FLICKERS[f]}"))`);
     await page.waitForSelector('text=This is just who I am now');
     await page.click('button:text-is("Continue")');
     await page.waitForSelector('text=Nothing is missing from you.');
@@ -52,7 +51,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     await page.waitForSelector('.dm-card');
     const card = await page.innerText('.dm-card');
     const all = await page.innerText('#dimmer');
-    for (const need of ['Your Dimmer Settings', 'HOW YOU GO DIM', 'ONE WAY TO SEE IT', 'THE BELIEF TO QUESTION', 'This is just who I am now.', 'NOTHING IS MISSING'.slice(0, 0), 'Nothing is missing from you.', 'WHAT TURNS YOU UP', 'TRY THIS WEEK', 'HOLD ONTO THIS', 'Hold thought steadfastly to the enduring, the good, and the true', 'Mary Baker Eddy, Science and Health, p. 261', 'A mirror, not a diagnosis.'])
+    for (const need of ['Your Dimmer Settings', 'HOW YOU GO DIM', 'ONE WAY TO SEE IT', 'THE BELIEF TO QUESTION', 'This is just who I am now.', 'NOTHING IS MISSING'.slice(0, 0), 'Nothing is missing from you.', 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'HOLD ONTO THIS', 'Hold thought steadfastly to the enduring, the good, and the true', 'Mary Baker Eddy, Science and Health, p. 261', 'A mirror, not a diagnosis.'])
       if (need && !card.includes(need)) fail(`[${d},${f}] card missing: ${need}`);
     if (/undefined|null|NaN|\[object/.test(card)) fail(`[${d},${f}] card has placeholder junk`);
     if (/depress|dissociat|anxiety|disorder|diagnos(?!is\.)/i.test(card.replace('A mirror, not a diagnosis.', ''))) fail(`[${d},${f}] clinical term on card`);
@@ -73,7 +72,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
       if (!lab) fail('slider has no accessible name');
       if (!(await page.getAttribute('#dm-slider', 'aria-valuetext'))) fail('slider has no aria-valuetext');
       await page.click('button:text-is("Start over")');
-      await page.waitForSelector('button:text-is("Begin")');
+      await page.waitForSelector('.dm-choice:has(.dm-choice-label:text-is("Busy"))');
       if ((await page.innerText('#dimmer')).includes(CANARY)) fail('canary survived Start over');
     }
     await page.waitForTimeout(150);
@@ -117,7 +116,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
   const rctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
   const rp = await rctx.newPage(); await rp.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
   await rp.goto(BASE + '/dimmer'); await rp.waitForSelector('.dm-h');
-  const anim = await rp.evaluate(() => [...document.querySelectorAll('.dm-glow,.dm-screen-in')].map(e => getComputedStyle(e).animationName));
+  const anim = await rp.evaluate(() => [...document.querySelectorAll('.dm-glow,.dm-screen-in,.dm-mote')].map(e => getComputedStyle(e).animationName));
   if (anim.some(a => a !== 'none')) fail('animations still running under reduced motion: ' + anim.join(','));
   await rctx.close();
   // And motion allowed: the glow does breathe
@@ -125,6 +124,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
   const mp = await mctx.newPage(); await mp.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
   await mp.goto(BASE + '/dimmer'); await mp.waitForSelector('.dm-h');
   if ((await mp.evaluate(() => getComputedStyle(document.querySelector('.dm-glow')).animationName)) === 'none') fail('glow does not animate when motion is allowed');
+  if ((await mp.evaluate(() => getComputedStyle(document.querySelector('.dm-mote')).animationName)) === 'none') fail('motes do not animate when motion is allowed');
   await mctx.close();
 
   await browser.close();

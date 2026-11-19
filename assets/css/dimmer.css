@@ -73,6 +73,14 @@ h1.dm-h { font-size: clamp(2.6rem, 11vw, 3.8rem); }
 h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
 .dm-h:focus { outline: none; }
 .dm-lede { font-family: var(--font-serif); font-size: clamp(1.3rem, 4.5vw, 1.6rem); line-height: 1.35; margin: 0 0 1.1rem; }
+.dm-start { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.5rem, 5.5vw, 1.9rem); line-height: 1.2; margin: 1.4rem 0 0.3rem; }
+.dm-recognize { font-size: 1.12rem; line-height: 1.6; }
+.dm-get { background: var(--paper); border: 1px solid var(--rule-strong); border-left: 5px solid var(--gold); border-radius: 12px; padding: 1.1rem 1.2rem; margin: 1.3rem 0 0; }
+.dm-get-h { font-family: var(--font-serif); font-weight: 500; font-size: 1.3rem; line-height: 1.25; margin: 0 0 0.7rem; }
+.dm-get-list { margin: 0 0 0.7rem; padding-left: 1.2rem; }
+.dm-get-list li { margin-bottom: 0.4rem; }
+.dm-get-note { margin: 0; font-size: 0.95rem; color: var(--ink-soft); font-style: italic; }
+.dm-fine { margin: 1.3rem 0 0; font-size: 0.95rem; color: var(--ink-soft); }
 .dm-help { color: var(--ink-soft); margin: 0 0 1rem; }
 .dm-belief { font-style: italic; }
 
@@ -141,7 +149,71 @@ h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
 .dm-credit-wrap { padding-bottom: clamp(28px, 4vw, 48px); }
 .dm-credit { font-size: 0.9rem; color: var(--ink-faint); line-height: 1.6; }
 
+@media (max-width: 600px) { .dm-art { max-width: 11.5rem; } .dm-stage { padding-top: 8px; } }
+
 @media (prefers-reduced-motion: reduce) {
   .dm-screen-in, .dm-glow { animation: none; }
   .dm-choice { transition: none; }
 }
+
+/* ---------- Pizzazz: motes, ripple, dim-type character, warming page, card reveal ---------- */
+.dm-stage {
+  background: radial-gradient(ellipse 70% 90% at 50% 38%, rgba(232, 169, 76, calc(var(--lvl) * 0.28)), transparent 70%), var(--ink);
+}
+.dm-screen { background: radial-gradient(ellipse 90% 40% at 50% 0%, rgba(232, 169, 76, calc(var(--lvl) * 0.2)), transparent 75%); }
+
+.dm-motes { opacity: calc((var(--lvl) - 0.18) * 1.4); }
+.dm-mote {
+  fill: #FFE7AE; opacity: 0; transform-box: fill-box;
+  animation: dm-float calc(var(--d) * var(--spd, 1)) linear infinite; animation-delay: var(--dl);
+}
+@keyframes dm-float {
+  0% { transform: translate(0, 0); opacity: 0; }
+  18% { opacity: 0.95; }
+  100% { transform: translate(var(--dx), -95px); opacity: 0; }
+}
+.dm-ring { opacity: 0; transform-box: fill-box; transform-origin: center; }
+.dm-ring.go { animation: dm-ring 1s ease-out; }
+@keyframes dm-ring {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  100% { transform: scale(3.4); opacity: 0; }
+}
+
+/* The light takes on the character of how you go dim, until the belief is questioned */
+.dm-svg { transition: filter 0.8s ease, opacity 0.8s ease; }
+.dm-stage[data-dim="busy"] { --spd: 0.35; }
+.dm-stage[data-dim="busy"] .dm-glow { animation-duration: 1.3s; }
+.dm-stage[data-dim="scrolling"] .dm-svg { filter: hue-rotate(155deg) saturate(0.85); }
+.dm-stage[data-dim="fine"] .dm-svg { opacity: 0.72; }
+.dm-stage[data-dim="helpful"] .dm-rays { transform: scale(1.35); }
+.dm-stage[data-dim="funny"] { --spd: 0.45; }
+.dm-stage[data-dim="funny"] .dm-fil { animation: dm-twinkle 0.9s steps(2, jump-none) infinite; }
+@keyframes dm-twinkle { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+.dm-rays { transition: transform 0.8s ease; }
+
+/* Card reveal: sections light up one by one under a warm glow */
+.dm-card { animation: dm-lightup 1.8s ease both; }
+@keyframes dm-lightup {
+  0% { box-shadow: 0 0 0 rgba(232, 169, 76, 0); }
+  45% { box-shadow: 0 6px 60px rgba(232, 169, 76, 0.55); }
+  100% { box-shadow: 0 10px 30px rgba(54, 47, 75, 0.1); }
+}
+.dm-card .dm-sec { animation: dm-rise 0.7s ease both; animation-delay: calc(0.25s + var(--i, 0) * 0.2s); }
+.dm-card-foot { animation: dm-rise 0.7s ease both; animation-delay: 1.9s; }
+.dm-card-title {
+  background: linear-gradient(100deg, var(--ink) 40%, #B9791F 50%, var(--ink) 60%) 0 0 / 250% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;
+  animation: dm-sheen 2.2s ease 0.2s 1 both;
+}
+@keyframes dm-sheen { from { background-position: 100% 0; } to { background-position: 0 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .dm-mote, .dm-ring, .dm-card, .dm-card .dm-sec, .dm-card-foot, .dm-card-title, .dm-stage .dm-fil { animation: none !important; }
+  .dm-mote { display: none; }
+  .dm-card-title { background: none; -webkit-text-fill-color: var(--ink); color: var(--ink); }
+  .dm-svg, .dm-rays { transition: none; }
+}
+
+.dm-define { margin: 0 0 0.5rem; font-size: 1.05rem; }
+.dm-choice-label { display: block; font-weight: 600; }
+.dm-choice-hint { display: block; margin-top: 0.15rem; font-weight: 400; font-size: 0.95rem; color: var(--ink-soft); }
