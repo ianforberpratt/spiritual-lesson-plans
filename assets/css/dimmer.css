@@ -1,6 +1,7 @@
 /* Dimmer: page styles. Loaded after style.css, so nav, footer, buttons, type and palette are the site's own.
    Everything here is namespaced dm- so nothing leaks into (or out of) other pages. */
 
+#dimmer { --lvl: 0.12; } /* default; dimmer.js updates it on this element so the light, page glow and slider all follow one value */
 .dm-main {
   background: var(--cream);
   color: var(--ink);
@@ -10,7 +11,6 @@
 
 /* ---------- Stage: the glowing light and its slider ---------- */
 .dm-stage {
-  --lvl: 0.12;
   background: var(--ink);
   color: var(--cream);
   padding: clamp(14px, 3vw, 26px) 0 clamp(16px, 3vw, 26px);
@@ -255,3 +255,55 @@ h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
 .dm-gift-own:focus-visible, .dm-radio input:focus-visible { outline: 3px solid var(--gold-deep); outline-offset: 2px; }
 .dm-gift-preview { margin: 1rem auto 0.4rem; max-width: 20rem; }
 .dm-gift-canvas { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 26px rgba(54, 47, 75, 0.25); }
+
+/* ---------- Card-in-progress trail, chosen-answer glow, the lit-up finale ---------- */
+.dm-trail { list-style: none; margin: 10px auto 0; padding: 0; max-width: 24rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.dm-trail li {
+  position: relative; text-align: center; font-size: 0.68rem; line-height: 1.2; letter-spacing: 0.02em;
+  color: var(--on-dark-faint); padding-top: 18px;
+}
+.dm-trail li::before {
+  content: ""; position: absolute; top: 2px; left: 50%; width: 11px; height: 11px; margin-left: -5.5px; border-radius: 50%;
+  border: 2px solid rgba(251, 245, 234, 0.4); background: transparent; transition: background 0.5s, border-color 0.5s, box-shadow 0.5s;
+}
+.dm-trail li::after { content: ""; position: absolute; top: 7px; left: calc(-50% + 9px); width: calc(100% - 18px); height: 2px; background: rgba(251, 245, 234, 0.22); }
+.dm-trail li:first-child::after { display: none; }
+.dm-trail li.done { color: var(--on-dark); }
+.dm-trail li.done::before { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 10px rgba(232, 169, 76, 0.8); }
+.dm-trail li.done::after { background: var(--gold); }
+.dm-trail li.now { color: var(--cream); font-weight: 600; }
+.dm-trail li.now::before { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(232, 169, 76, 0.25); }
+.dm-trail li.ready::before { background: #FFE7AE; border-color: #FFE7AE; box-shadow: 0 0 16px 3px rgba(255, 231, 174, 0.9); }
+.dm-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.dm-choice[aria-pressed="true"] { box-shadow: 0 0 0 4px rgba(232, 169, 76, 0.28), 0 10px 26px rgba(232, 169, 76, 0.3); }
+.dm-choice { transition: border-color 0.2s, background 0.2s, box-shadow 0.25s, transform 0.15s; }
+.dm-choice:active { transform: scale(0.985); }
+
+.dm-stage.dm-lit { --spd: 0.55; }
+.dm-stage.dm-lit .dm-halo { opacity: 0.75; }
+.dm-stage.dm-lit .dm-glow { animation-duration: 3s; }
+.dm-stage.dm-lit .dm-rays { transform: scale(1.18); opacity: 1; }
+.dm-stage.dm-lit .dm-slider-hint { color: #FFE7AE; text-shadow: 0 0 14px rgba(255, 231, 174, 0.8); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dm-choice, .dm-trail li::before { transition: none; }
+}
+
+/* Compact stage on phones so the hook and the first tap are on screen at once */
+@media (max-width: 600px) {
+  .dm-art { max-width: 8rem; }
+  .dm-slider-row { grid-template-columns: 1fr auto; grid-template-areas: "label hint" "range range"; gap: 0 0.5rem; margin-top: 2px; }
+  .dm-slider-label { grid-area: label; align-self: end; font-size: 0.72rem; }
+  .dm-slider-hint { grid-area: hint; align-self: end; font-size: 0.95rem; min-height: 0; }
+  .dm-stage input[type="range"] { grid-area: range; height: 38px; }
+  .dm-trail { margin-top: 2px; }
+  .dm-stage { padding-bottom: 10px; }
+  .dm-screen { padding-top: 18px; }
+  h1.dm-h { font-size: clamp(2.2rem, 9vw, 2.8rem); margin-bottom: 0.3rem; }
+  .dm-lede { font-size: 1.2rem; margin-bottom: 0.7rem; }
+  .dm-recognize { font-size: 1.02rem; line-height: 1.5; margin-bottom: 0.4rem; }
+  .dm-start { margin-top: 1rem; font-size: 1.4rem; }
+  .dm-define { font-size: 0.98rem; margin-bottom: 0.35rem; }
+  .dm-help { margin-bottom: 0.6rem; font-size: 0.95rem; }
+}

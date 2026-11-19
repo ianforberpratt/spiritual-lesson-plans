@@ -159,10 +159,11 @@
     '</svg>';
 
   /* ---------------------------- Stage (light + slider), built once ---------------------------- */
-  var stage, slider, valueText, screen;
+  var stage, slider, valueText, screen, trail;
+  var TRAIL = ['How you go dim', 'What turns you up', 'The belief', 'What\u2019s true', 'Your card'];
 
   function levelWord(v) {
-    return v < 0.25 ? 'very dim' : v < 0.5 ? 'dim' : v < 0.75 ? 'warm' : 'bright';
+    return v < 0.25 ? 'very dim' : v < 0.5 ? 'dim' : v < 0.75 ? 'warm' : v < 0.97 ? 'bright' : 'full light';
   }
   function applyLevel(v) {
     root.style.setProperty('--lvl', String(v));
@@ -188,6 +189,18 @@
     window.requestAnimationFrame(frame);
   }
 
+  function updateTrail() {
+    var items = trail.children;
+    for (var i = 0; i < items.length; i++) {
+      var done = i < state.step, now = i === state.step;
+      items[i].className = (done ? 'done ' : '') + (now ? 'now ' : '') + (state.step === 4 && i === 4 ? 'ready' : '');
+      if (now) { items[i].setAttribute('aria-current', 'step'); } else { items[i].removeAttribute('aria-current'); }
+      var sr = items[i].querySelector('.dm-sr');
+      if (sr) { items[i].removeChild(sr); }
+      if (done) { items[i].appendChild(h('span', { class: 'dm-sr', text: ' (done)' })); }
+    }
+  }
+
   function pulse() {
     if (reduce || !stage) { return; }
     var ring = stage.querySelector('.dm-ring');
@@ -209,12 +222,17 @@
           h('label', { class: 'dm-slider-label', for: 'dm-slider', text: 'Drag to dim or brighten' }),
           slider,
           h('span', { class: 'dm-slider-hint' }, [valueText])
-        ])
+        ]),
+        trail = h('ol', { class: 'dm-trail', 'aria-label': 'Your card is filling in as you answer' }, TRAIL.map(function (t) {
+          return h('li', null, [t]);
+        }))
       ])
     ]);
     slider.addEventListener('input', function () {
       tweenId++; // a manual drag cancels any running animation
+      var wasFull = state.level >= 0.97;
       state.level = slider.value / 100;
+      if (state.level >= 0.97 && !wasFull) { pulse(); }
       applyLevel(state.level);
     });
     applyLevel(state.level);
@@ -298,6 +316,7 @@
       h('p', { class: 'eyebrow', text: 'The belief to question' }),
       h('h2', { class: 'dm-h dm-belief', tabindex: '-1', text: '“This is just who I am now.”' }),
       h('p', { text: 'What you feel is real. That conclusion isn’t a sentence. It’s a belief, and beliefs can be questioned.' }),
+      ahead(),
       nav(true, 'Continue')
     ]);
   }
@@ -306,6 +325,7 @@
       h('p', { class: 'eyebrow', text: 'What’s still true' }),
       h('h2', { class: 'dm-h', tabindex: '-1', text: 'Nothing is missing from you.' }),
       h('p', { text: 'A dimmer is a setting, not a subtraction.' }),
+      ahead(),
       ahead(),
       nav(true, 'See my card')
     ]);
@@ -621,6 +641,7 @@
     if (state.dim && state.step >= 1 && state.step <= 2) { stage.setAttribute('data-dim', state.dim); }
     else { stage.removeAttribute('data-dim'); }
     stage.classList.toggle('dm-lit', state.step === 4);
+    updateTrail();
     if (focus) { pulse(); }
     if (focus) {
       var hd = screen.querySelector('.dm-h');

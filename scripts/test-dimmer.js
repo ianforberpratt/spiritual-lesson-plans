@@ -170,6 +170,61 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     if (SHOTS) { await page.evaluate(() => document.querySelector('.dm-share').scrollIntoView()); await page.screenshot({ path: `${SHOTS}/mobile-share.png`, fullPage: true }); }
     await ctx.close();
   }
+
+  // REGRESSION: the dimmer must actually dim and brighten the light on EVERY screen, by keyboard and by drag.
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
+    await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
+    const glow = () => page.evaluate(() => parseFloat(getComputedStyle(document.querySelector('.dm-glow')).opacity));
+    const trailState = () => page.evaluate(() => [...document.querySelectorAll('.dm-trail li')].map(li => li.className.trim()));
+    const checkSlider = async (label) => {
+      await page.focus('#dm-slider'); await page.keyboard.press('Home'); await page.waitForTimeout(60);
+      const lo = await glow();
+      await page.keyboard.press('End'); await page.waitForTimeout(60);
+      const hi = await glow();
+      if (!(hi > lo + 0.4)) fail(`slider does not change the light on ${label} (low ${lo}, high ${hi})`);
+      const word = await page.innerText('.dm-level-word'); if (word !== 'full light') fail(`slider word on ${label} was "${word}"`);
+      // real pointer drag across the track
+      const box = await page.locator('#dm-slider').boundingBox();
+      await page.mouse.move(box.x + box.width * 0.9, box.y + box.height / 2); await page.mouse.down();
+      await page.mouse.move(box.x + box.width * 0.15, box.y + box.height / 2, { steps: 6 }); await page.mouse.up();
+      const dragged = await glow(); if (!(dragged < hi - 0.3)) fail(`pointer drag does not dim the light on ${label}`);
+    };
+    await checkSlider('landing');
+    let t = await trailState(); if (t[0] !== 'now') fail('trail: landing should mark step 1 as now');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Fine"))'.replace('Fine','\u201CFine\u201D'));
+    await page.waitForSelector('.dm-choice-other'); await checkSlider('flicker screen');
+    t = await trailState(); if (!t[0].includes('done') || !t[1].includes('now')) fail('trail: after dim type, step 1 done and step 2 now');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Being outside"))');
+    await page.waitForSelector('text=This is just who I am now'); await checkSlider('belief screen');
+    await page.click('button:text-is("Continue")'); await page.waitForSelector('text=Nothing is missing from you.'); await checkSlider('still-true screen');
+    await page.click('button:text-is("See my card")'); await page.waitForSelector('.dm-card'); await checkSlider('card screen');
+    t = await trailState(); if (!t[4].includes('ready') || t.slice(0, 4).some(x => !x.includes('done'))) fail('trail: card screen should show everything done and the card ready');
+    await ctx.close();
+  }
+
+  // CLARITY: a first-time visitor can tell what this is, why, what they get, and what going dim means.
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
+    await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
+    const t0 = await page.innerText('#dimmer');
+    for (const need of ['Not anxious. Not depressed. Just\u2026 dim. Take three minutes.', 'Have you felt dull lately?', 'tool you can use right now', 'Going dim is how you turn your feelings down', 'how do you go dim?', 'shareable card', 'How you go dim.', 'What turns you up.', 'A tool for right now.', 'One small thing to try this week.', 'A line to hold onto.', 'nothing you type is saved or tracked', 'you can stop any time', '988'])
+      if (!t0.includes(need)) fail('landing clarity: missing "' + need + '"');
+    // the first tap is above the fold on a phone
+    const firstChoiceTop = await page.evaluate(() => document.querySelector('.dm-choice').getBoundingClientRect().top);
+    if (firstChoiceTop > 844) fail('first tap is below the fold on a 390x844 phone (top=' + Math.round(firstChoiceTop) + ')');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Busy"))'); await page.waitForSelector('.dm-choice-other');
+    if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('flicker screen missing card-at-the-end cue');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Music that stops me"))'); await page.waitForSelector('text=This is just who I am now');
+    if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('belief screen missing card-at-the-end cue');
+    await page.click('button:text-is("Continue")'); await page.waitForSelector('text=Nothing is missing from you.');
+    if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('still-true screen missing card-at-the-end cue');
+    await ctx.close();
+  }
   console.log(`distinct cards: ${cards.size} / 25`);
   if (cards.size !== 25) fail('expected 25 distinct cards');
 
