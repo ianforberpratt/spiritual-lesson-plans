@@ -251,7 +251,7 @@
   function ahead() {
     return h('p', { class: 'dm-ahead' }, [
       h('span', { class: 'dm-ahead-ico', 'aria-hidden': 'true' }),
-      h('span', { text: 'Your card comes at the end. You can save it, email it to yourself, or share it.' })
+      h('span', { text: 'Your card comes at the end: save it, email it, or share it.' })
     ]);
   }
   function offramp() {
@@ -304,17 +304,17 @@
       choiceList(DIMS, 'dim'),
       otherBlock('dim', 'How do you go dim?', 'For example: I sleep, I eat, I clean, I go quiet'),
       h('div', { class: 'dm-get' }, [
-        h('h2', { class: 'dm-get-h', text: 'In three minutes, you get a shareable card: Your Dimmer Settings' }),
+        h('h2', { class: 'dm-get-h', text: 'You finish with a shareable card' }),
         h('ul', { class: 'dm-get-list' }, [
-          li('How you go dim.', 'One honest line, in your own pattern.'),
-          li('What turns you up.', 'The thing that is already getting through.'),
-          li('A tool for right now.', 'One minute, matched to you.'),
-          li('One small thing to try this week.', 'Outward, and small.'),
-          li('A line to hold onto.', 'Or bring your own.')
+          h('li', { text: 'How you go dim' }),
+          h('li', { text: 'What turns you up' }),
+          h('li', { text: 'A tool for right now' }),
+          h('li', { text: 'One thing to try this week' }),
+          h('li', { text: 'A line to hold onto' })
         ]),
-        h('p', { class: 'dm-get-note', text: 'Save it as an image, email it to yourself, or pass it on to someone you love. A mirror, not a test. Five taps, and no typing needed.' })
+        h('p', { class: 'dm-get-note', text: 'Five taps. No typing needed. A mirror, not a test.' })
       ]),
-      h('p', { class: 'dm-fine', text: 'This is a spiritual reflection, open to any tradition and not tied to any one faith. It is free, nothing you type is saved or tracked, and you can stop any time.' }),
+      h('p', { class: 'dm-fine', text: 'A spiritual reflection, open to any tradition and not tied to any one faith. Free. Nothing you type is saved or tracked. Stop any time.' }),
       offramp()
     ]);
   }

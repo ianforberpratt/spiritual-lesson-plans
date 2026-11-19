@@ -212,8 +212,9 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
     await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
     const t0 = await page.innerText('#dimmer');
-    for (const need of ['Not anxious. Not depressed. Just\u2026 dim. Take three minutes.', 'Have you felt dull lately?', 'tool you can use right now', 'Going dim is how you turn your feelings down', 'how do you go dim?', 'shareable card', 'How you go dim.', 'What turns you up.', 'A tool for right now.', 'One small thing to try this week.', 'A line to hold onto.', 'nothing you type is saved or tracked', 'you can stop any time', '988'])
+    for (const need of ['Not anxious. Not depressed. Just\u2026 dim. Take three minutes.', 'Have you felt dull lately?', 'tool you can use right now', 'Going dim is how you turn your feelings down', 'how do you go dim?', 'shareable card', 'How you go dim', 'What turns you up', 'A tool for right now', 'One thing to try this week', 'A line to hold onto', 'Nothing you type is saved or tracked', 'Stop any time', 'not tied to any one faith', '988'])
       if (!t0.includes(need)) fail('landing clarity: missing "' + need + '"');
+    if (/Dimmer does not diagnose, treat/.test(await page.content())) fail('credit paragraph should not be on the page');
     // the first tap is above the fold on a phone
     const firstChoiceTop = await page.evaluate(() => document.querySelector('.dm-choice').getBoundingClientRect().top);
     if (firstChoiceTop > 844) fail('first tap is below the fold on a 390x844 phone (top=' + Math.round(firstChoiceTop) + ')');
