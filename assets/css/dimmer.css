@@ -257,7 +257,7 @@ h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
 .dm-gift-canvas { display: block; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 26px rgba(54, 47, 75, 0.25); }
 
 /* ---------- Card-in-progress trail, chosen-answer glow, the lit-up finale ---------- */
-.dm-trail { list-style: none; margin: 10px auto 0; padding: 0; max-width: 24rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.dm-trail { list-style: none; margin: 10px auto 0; padding: 0; max-width: 24rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
 .dm-trail li {
   position: relative; text-align: center; font-size: 0.68rem; line-height: 1.2; letter-spacing: 0.02em;
   color: var(--on-dark-faint); padding-top: 18px;
@@ -307,3 +307,11 @@ h2.dm-h { font-size: clamp(1.7rem, 6vw, 2.3rem); }
   .dm-define { font-size: 0.98rem; margin-bottom: 0.35rem; }
   .dm-help { margin-bottom: 0.6rem; font-size: 0.95rem; }
 }
+
+/* Belief + what's still true on one screen: the second beat arrives a moment after the first */
+.dm-true { margin-top: 1.4rem; padding: 1rem 1.1rem; border-left: 4px solid var(--gold); background: #FBEFD6; border-radius: 0 12px 12px 0; }
+.dm-true .eyebrow { margin: 0 0 0.2rem; }
+.dm-true-line { font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.5rem, 5.5vw, 1.9rem); line-height: 1.2; margin: 0 0 0.4rem; }
+.dm-true p:last-child { margin-bottom: 0; }
+.dm-reveal-late { animation: dm-rise 0.9s ease 1.2s both; }
+@media (prefers-reduced-motion: reduce) { .dm-reveal-late { animation: none; } }

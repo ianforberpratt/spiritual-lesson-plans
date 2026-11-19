@@ -45,13 +45,12 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     if (d === 0 && f === 0 && SHOTS) await page.screenshot({ path: `${SHOTS}/mobile-2-flicker.png` });
     await page.click(`.dm-choice:has(.dm-choice-label:text-is("${FLICKERS[f]}"))`);
     await page.waitForSelector('text=This is just who I am now');
-    await page.click('button:text-is("Continue")');
     await page.waitForSelector('text=Nothing is missing from you.');
     await page.click('button:text-is("See my card")');
     await page.waitForSelector('.dm-card');
     const card = await page.innerText('.dm-card');
     const all = await page.innerText('#dimmer');
-    for (const need of ['Your Dimmer Settings', 'HOW YOU GO DIM', 'ONE WAY TO SEE IT', 'THE BELIEF TO QUESTION', 'This is just who I am now.', 'NOTHING IS MISSING'.slice(0, 0), 'Nothing is missing from you.', 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'HOLD ONTO THIS', 'Hold thought steadfastly to the enduring, the good, and the true', 'Mary Baker Eddy, Science and Health, p. 261', 'A mirror, not a diagnosis.'])
+    for (const need of ['Your Dimmer Settings', 'HOW YOU GO DIM', 'ONE WAY TO SEE IT', 'THE BELIEF TO QUESTION', 'This is just who I am now.', 'NOTHING IS MISSING'.slice(0, 0), 'Nothing is missing from you.', 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'HOLD ONTO THIS', 'Hold thought steadfastly to the enduring, the good, and the true, and you will bring these into your experience proportionably to their occupancy of your thoughts.', 'Mary Baker Eddy, Science and Health, p. 261:4', 'A mirror, not a diagnosis.'])
       if (need && !card.includes(need)) fail(`[${d},${f}] card missing: ${need}`);
     if (/undefined|null|NaN|\[object/.test(card)) fail(`[${d},${f}] card has placeholder junk`);
     if (/depress|dissociat|anxiety|disorder|diagnos(?!is\.)/i.test(card.replace('A mirror, not a diagnosis.', ''))) fail(`[${d},${f}] clinical term on card`);
@@ -64,7 +63,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
       const hold = await page.innerText('#dm-hold');
       if (!hold.includes(CANARY)) fail('own line did not show in Hold onto this');
       await page.fill('#dm-own-text', '');
-      if (!(await page.innerText('#dm-hold')).includes('Science and Health, p. 261')) fail('quote did not return after clearing own line');
+      if (!(await page.innerText('#dm-hold')).includes('Science and Health, p. 261:4')) fail('quote did not return after clearing own line');
       await page.fill('#dm-own-text', CANARY);
       // slider: keyboard-operable and labelled
       await page.focus('#dm-slider'); await page.keyboard.press('ArrowLeft');
@@ -109,11 +108,10 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     await page.fill('#dm-custom-text', text);
     await page.keyboard.press('Enter');
     await page.waitForSelector('text=This is just who I am now');
-    await page.click('button:text-is("Continue")');
     await page.click('button:text-is("See my card")');
     await page.waitForSelector('.dm-card');
     const card = await page.innerText('.dm-card');
-    for (const need of [text, 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'A mirror, not a diagnosis.', 'Science and Health, p. 261'])
+    for (const need of [text, 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'A mirror, not a diagnosis.', 'Science and Health, p. 261:4'])
       if (!card.includes(need)) fail(`[custom ${d}] card missing: ${need}`);
     if (/undefined|null|NaN|\[object/.test(card)) fail(`[custom ${d}] card has placeholder junk`);
     if (!(await page.innerText('#dimmer')).includes(OFF)) fail(`[custom ${d}] card missing 988`);
@@ -139,7 +137,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     await page.click('.dm-choice:has(.dm-choice-label:text-is("Scrolling"))');
     await page.waitForSelector('.dm-ahead');
     await page.click('.dm-choice:has(.dm-choice-label:text-is("Music that stops me"))');
-    for (const b of ['Continue', 'See my card']) { await page.waitForSelector('.dm-ahead', { state: 'attached' }).catch(() => {}); await page.click(`button:text-is("${b}")`); }
+    await page.waitForSelector('.dm-ahead', { state: 'attached' }); await page.click('button:text-is("See my card")');
     await page.waitForSelector('.dm-card');
     const mailSelf = decodeURIComponent(await page.getAttribute('#dm-email-self', 'href'));
     if (!mailSelf.startsWith('mailto:?subject=My Dimmer Settings')) fail('email-to-self link is not a mailto');
@@ -198,10 +196,10 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     await page.waitForSelector('text=What has gotten through lately?'); await checkSlider('flicker screen');
     t = await trailState(); if (!t[0].includes('done') || !t[1].includes('now')) fail('trail: after dim type, step 1 done and step 2 now');
     await page.click('.dm-choice:has(.dm-choice-label:text-is("Being outside"))');
-    await page.waitForSelector('text=This is just who I am now'); await checkSlider('belief screen');
-    await page.click('button:text-is("Continue")'); await page.waitForSelector('text=Nothing is missing from you.'); await checkSlider('still-true screen');
+    await page.waitForSelector('text=This is just who I am now'); await checkSlider('belief and still-true screen');
+    await page.waitForSelector('text=Nothing is missing from you.');
     await page.click('button:text-is("See my card")'); await page.waitForSelector('.dm-card'); await checkSlider('card screen');
-    t = await trailState(); if (!t[4].includes('ready') || t.slice(0, 4).some(x => !x.includes('done'))) fail('trail: card screen should show everything done and the card ready');
+    t = await trailState(); if (!t[3].includes('ready') || t.slice(0, 3).some(x => !x.includes('done'))) fail('trail: card screen should show everything done and the card ready');
     await ctx.close();
   }
 
@@ -222,8 +220,9 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('flicker screen missing card-at-the-end cue');
     await page.click('.dm-choice:has(.dm-choice-label:text-is("Music that stops me"))'); await page.waitForSelector('text=This is just who I am now');
     if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('belief screen missing card-at-the-end cue');
-    await page.click('button:text-is("Continue")'); await page.waitForSelector('text=Nothing is missing from you.');
-    if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('still-true screen missing card-at-the-end cue');
+    if (await page.locator('.dm-ahead').count() !== 1) fail('belief screen should show exactly one card-at-the-end cue');
+    if (await page.locator('button:text-is("Continue")').count() !== 0) fail('belief screen should have no extra Continue click');
+    const t1 = await page.innerText('#dimmer'); if (!t1.includes('Nothing is missing from you.') || !t1.includes('A dimmer is a setting, not a subtraction.')) fail('belief screen missing what is still true');
     await ctx.close();
   }
 
@@ -246,7 +245,7 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     if (customFlick) { await page.click('.dm-choice-other'); await page.fill('#dm-custom-text', 'a long shower'); await page.keyboard.press('Enter'); }
     else { await page.click('.dm-choice:has(.dm-choice-label:text-is("Music that stops me"))'); }
     await page.waitForSelector('text=This is just who I am now');
-    await page.click('button:text-is("Continue")'); await page.click('button:text-is("See my card")');
+    await page.click('button:text-is("See my card")');
     await page.waitForSelector('.dm-card');
     const card = await page.innerText('.dm-card');
     for (const need of [mine, 'ONE WAY TO SEE IT', "A dimmer isn\u2019t an off switch", 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'Do it slowly', 'A mirror, not a diagnosis.'])
