@@ -90,11 +90,26 @@
         funny: 'Skip the funny. Just be plainly kind.' } }
   ];
 
+  /* Used when the visitor puts in their own flicker. Their words are shown with textContent only. */
+  var CUSTOM_TWIST = {
+    busy: 'Put it in the calendar like it matters. It does.',
+    scrolling: 'Phone in another room while you do it.',
+    fine: 'Afterward, tell one person what it was, in one true sentence.',
+    helpful: 'This one is for you. Don\u2019t turn it into a favor for anyone else.',
+    funny: 'Keep it plain. No bit, no caption.' };
+  function customFlicker(text, dimId) {
+    return {
+      turnsUp: '\u201C' + text + '\u201D gets through. That is worth noticing. It is yours, and it is one of your ways back.',
+      now: 'Take one minute with it, or a small piece of it, right now.',
+      act: 'Make room for it this week: give it ten unhurried minutes, on purpose, before the week gets away from you.',
+      twist: (function () { var t = {}; t[dimId] = CUSTOM_TWIST[dimId] || CUSTOM_TWIST.busy; return t; })() };
+  }
+
   /* Slider level (0 to 1) when each screen is reached. Dragging by hand is never overridden downward. */
   var STEP_LEVEL = [0.12, 0.36, 0.58, 0.78, 0.96];
 
   /* ---------------------------- State (memory only) ---------------------------- */
-  var state = { step: 0, dim: null, flicker: null, level: STEP_LEVEL[0], own: '' };
+  var state = { step: 0, dim: null, flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
 
   var root = document.getElementById('dimmer');
   if (!root) { return; }
@@ -144,10 +159,11 @@
     '</svg>';
 
   /* ---------------------------- Stage (light + slider), built once ---------------------------- */
-  var stage, slider, valueText, screen;
+  var stage, slider, valueText, screen, trail;
+  var TRAIL = ['How you go dim', 'What turns you up', 'The belief', 'What\u2019s true', 'Your card'];
 
   function levelWord(v) {
-    return v < 0.25 ? 'very dim' : v < 0.5 ? 'dim' : v < 0.75 ? 'warm' : 'bright';
+    return v < 0.25 ? 'very dim' : v < 0.5 ? 'dim' : v < 0.75 ? 'warm' : v < 0.97 ? 'bright' : 'full light';
   }
   function applyLevel(v) {
     root.style.setProperty('--lvl', String(v));
@@ -173,6 +189,18 @@
     window.requestAnimationFrame(frame);
   }
 
+  function updateTrail() {
+    var items = trail.children;
+    for (var i = 0; i < items.length; i++) {
+      var done = i < state.step, now = i === state.step;
+      items[i].className = (done ? 'done ' : '') + (now ? 'now ' : '') + (state.step === 4 && i === 4 ? 'ready' : '');
+      if (now) { items[i].setAttribute('aria-current', 'step'); } else { items[i].removeAttribute('aria-current'); }
+      var sr = items[i].querySelector('.dm-sr');
+      if (sr) { items[i].removeChild(sr); }
+      if (done) { items[i].appendChild(h('span', { class: 'dm-sr', text: ' (done)' })); }
+    }
+  }
+
   function pulse() {
     if (reduce || !stage) { return; }
     var ring = stage.querySelector('.dm-ring');
@@ -194,18 +222,29 @@
           h('label', { class: 'dm-slider-label', for: 'dm-slider', text: 'Drag to dim or brighten' }),
           slider,
           h('span', { class: 'dm-slider-hint' }, [valueText])
-        ])
+        ]),
+        trail = h('ol', { class: 'dm-trail', 'aria-label': 'Your card is filling in as you answer' }, TRAIL.map(function (t) {
+          return h('li', null, [t]);
+        }))
       ])
     ]);
     slider.addEventListener('input', function () {
       tweenId++; // a manual drag cancels any running animation
+      var wasFull = state.level >= 0.97;
       state.level = slider.value / 100;
+      if (state.level >= 0.97 && !wasFull) { pulse(); }
       applyLevel(state.level);
     });
     applyLevel(state.level);
   }
 
   /* ---------------------------- Screens ---------------------------- */
+  function ahead() {
+    return h('p', { class: 'dm-ahead' }, [
+      h('span', { class: 'dm-ahead-ico', 'aria-hidden': 'true' }),
+      h('span', { text: 'Your card comes at the end. You can save it, email it to yourself, or share it.' })
+    ]);
+  }
   function offramp() {
     return h('p', { class: 'dm-offramp', text: OFFRAMP });
   }
@@ -238,7 +277,7 @@
       h('p', { class: 'dm-help', text: 'Tap the one that is most like you.' }),
       choiceList(DIMS, 'dim'),
       h('div', { class: 'dm-get' }, [
-        h('h2', { class: 'dm-get-h', text: 'In three minutes, you get a card: Your Dimmer Settings' }),
+        h('h2', { class: 'dm-get-h', text: 'In three minutes, you get a shareable card: Your Dimmer Settings' }),
         h('ul', { class: 'dm-get-list' }, [
           li('How you go dim.', 'One honest line, in your own pattern.'),
           li('What turns you up.', 'The thing that is already getting through.'),
@@ -246,7 +285,7 @@
           li('One small thing to try this week.', 'Outward, and small.'),
           li('A line to hold onto.', 'Or bring your own.')
         ]),
-        h('p', { class: 'dm-get-note', text: 'A mirror, not a test. Five taps, and no typing needed.' })
+        h('p', { class: 'dm-get-note', text: 'Save it as an image, email it to yourself, or pass it on to someone you love. A mirror, not a test. Five taps, and no typing needed.' })
       ]),
       h('p', { class: 'dm-fine', text: 'This is a spiritual reflection, open to any tradition and not tied to any one faith. It is free, nothing you type is saved or tracked, and you can stop any time.' }),
       offramp()
@@ -258,6 +297,17 @@
       h('h2', { class: 'dm-h', tabindex: '-1', text: 'What has gotten through lately?' }),
       h('p', { class: 'dm-help', text: 'A flicker. Tap one thing that got through recently.' }),
       choiceList(FLICKERS, 'flicker'),
+      h('button', { type: 'button', class: 'dm-choice dm-choice-other', 'data-act': 'other', 'aria-expanded': state.flicker === 'custom' ? 'true' : 'false' }, [
+        h('span', { class: 'dm-choice-label', text: 'Something else' }),
+        h('span', { class: 'dm-choice-hint', text: 'Put in your own.' })
+      ]),
+      h('div', { class: 'dm-custom', id: 'dm-custom-panel', hidden: 'hidden' }, [
+        h('label', { class: 'dm-own-label', for: 'dm-custom-text', text: 'What got through?' }),
+        h('input', { type: 'text', id: 'dm-custom-text', maxlength: '80', autocomplete: 'off', autocorrect: 'off', spellcheck: 'true', 'aria-describedby': 'dm-custom-note', placeholder: 'For example: a long shower, my dog, a phone call' }),
+        h('p', { class: 'dm-own-note', id: 'dm-custom-note', text: 'This stays on this page. It is not saved or sent anywhere.' }),
+        h('button', { type: 'button', class: 'dm-btn dm-btn-primary', 'data-act': 'custom-go', disabled: 'disabled', text: 'Continue' })
+      ]),
+      ahead(),
       nav(true, null)
     ]);
   }
@@ -266,6 +316,7 @@
       h('p', { class: 'eyebrow', text: 'The belief to question' }),
       h('h2', { class: 'dm-h dm-belief', tabindex: '-1', text: '“This is just who I am now.”' }),
       h('p', { text: 'What you feel is real. That conclusion isn’t a sentence. It’s a belief, and beliefs can be questioned.' }),
+      ahead(),
       nav(true, 'Continue')
     ]);
   }
@@ -274,6 +325,8 @@
       h('p', { class: 'eyebrow', text: 'What’s still true' }),
       h('h2', { class: 'dm-h', tabindex: '-1', text: 'Nothing is missing from you.' }),
       h('p', { text: 'A dimmer is a setting, not a subtraction.' }),
+      ahead(),
+      ahead(),
       nav(true, 'See my card')
     ]);
   }
@@ -283,9 +336,245 @@
     return h('section', { class: 'dm-sec' + (cls ? ' ' + cls : ''), style: '--i:' + (secCount++) }, [h('h3', { class: 'dm-sec-h', text: label })].concat(kids));
   }
 
+
+  /* ---------------------------- Keep it / pass it on ---------------------------- */
+  // Everything below is made on this device. Images are drawn on a canvas and never uploaded. Email and
+  // sharing only open the visitor's own apps (mailto:, the phone's share sheet, or a plain outbound link).
+  var SITE_URL = 'https://www.spirituallessonplans.org/dimmer';
+  var SERIF = '"Fraunces", Georgia, serif';
+  var SANS = '"Inter", Arial, sans-serif';
+  var GIFT_LINES = [
+    'This helped me put words to something I couldn’t name.',
+    'Three minutes. I’m glad I took them.',
+    'Thought of you. Take three minutes.'
+  ];
+  var personalMail = null;
+
+  function current() {
+    var dim = byId(DIMS, state.dim);
+    var fl = state.flicker === 'custom' ? customFlicker(state.custom, dim.id) : byId(FLICKERS, state.flicker);
+    return { dim: dim, fl: fl };
+  }
+  function holdParts() {
+    var mine = state.own.replace(/^\s+|\s+$/g, '');
+    return mine ? { text: mine, ref: 'Your own line' } : { text: '“' + QUOTE_TEXT + QUOTE_TRAIL + '”', ref: QUOTE_REF };
+  }
+  function cardParts() {
+    var c = current(), hd = holdParts();
+    return [
+      { label: 'How you go dim', lines: [c.dim.line] },
+      { label: 'One way to see it', lines: [c.dim.lens] },
+      { label: 'The belief to question', lines: ['“This is just who I am now.”'] },
+      { label: 'What’s still true', lines: ['Nothing is missing from you.'] },
+      { label: 'What turns you up', lines: [c.fl.turnsUp] },
+      { label: 'Right now, in one minute', lines: [c.fl.now] },
+      { label: 'Try this week', lines: [c.fl.act, c.fl.twist[c.dim.id]] },
+      { label: 'Hold onto this', lines: [hd.text, '— ' + hd.ref] }
+    ];
+  }
+  function plainText() {
+    var out = ['YOUR DIMMER SETTINGS', ''];
+    cardParts().forEach(function (p) { out.push(p.label.toUpperCase()); p.lines.forEach(function (l) { out.push(l); }); out.push(''); });
+    out.push('A mirror, not a diagnosis.', '', 'Make your own (three minutes, free, nothing saved): ' + SITE_URL, '', OFFRAMP);
+    return out.join('\n');
+  }
+  function mailto(subject, body) {
+    return 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+  function refreshPersonalLinks() {
+    if (personalMail) { personalMail.setAttribute('href', mailto('My Dimmer Settings', plainText())); }
+  }
+
+  function wrapLines(ctx, text, maxW) {
+    var words = String(text).split(/\s+/), lines = [], cur = '';
+    words.forEach(function (w) {
+      var t = cur ? cur + ' ' + w : w;
+      if (cur && ctx.measureText(t).width > maxW) { lines.push(cur); cur = w; } else { cur = t; }
+    });
+    if (cur) { lines.push(cur); }
+    return lines;
+  }
+
+  function personalCanvas() {
+    var W = 1080, PAD = 80, MAXW = W - PAD * 2, parts = cardParts();
+    var cv = document.createElement('canvas');
+    cv.width = W; cv.height = 5000;
+    function layout(ctx, dry) {
+      var y = 0;
+      if (!dry) { ctx.fillStyle = '#FBF5EA'; ctx.fillRect(0, 0, W, ctx.canvas.height); ctx.fillStyle = '#E8A94C'; ctx.fillRect(0, 0, W, 18); }
+      y = 150;
+      ctx.textBaseline = 'alphabetic'; ctx.textAlign = 'left';
+      ctx.font = '500 78px ' + SERIF;
+      if (!dry) { ctx.fillStyle = '#362F4B'; ctx.fillText('Your Dimmer Settings', PAD, y); }
+      y += 30;
+      parts.forEach(function (p) {
+        if (!dry) { ctx.strokeStyle = 'rgba(54,47,75,0.15)'; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(PAD, y + 22); ctx.lineTo(W - PAD, y + 22); ctx.stroke(); }
+        y += 74;
+        ctx.font = '700 24px ' + SANS;
+        if (!dry) { ctx.fillStyle = '#935F1A'; ctx.fillText(p.label.toUpperCase(), PAD, y); }
+        p.lines.forEach(function (line, i) {
+          var small = p.label === 'Hold onto this' && i === 1;
+          ctx.font = small ? '400 28px ' + SANS : (p.label === 'The belief to question' ? 'italic 500 40px ' + SERIF : '400 35px ' + SANS);
+          wrapLines(ctx, line, MAXW).forEach(function (l) {
+            y += small ? 42 : 52;
+            if (!dry) { ctx.fillStyle = small ? '#6B6579' : '#362F4B'; ctx.fillText(l, PAD, y); }
+          });
+          y += 6;
+        });
+      });
+      y += 70;
+      ctx.font = 'italic 400 30px ' + SANS;
+      if (!dry) { ctx.fillStyle = '#6B6579'; ctx.textAlign = 'center'; ctx.fillText('A mirror, not a diagnosis.', W / 2, y); ctx.textAlign = 'left'; }
+      y += 60;
+      ctx.font = '600 28px ' + SANS;
+      if (!dry) { ctx.fillStyle = '#935F1A'; ctx.textAlign = 'center'; ctx.fillText('Make your own: spirituallessonplans.org/dimmer', W / 2, y); ctx.textAlign = 'left'; }
+      y += 50;
+      ctx.font = '400 22px ' + SANS;
+      wrapLines(ctx, OFFRAMP, MAXW).forEach(function (l) {
+        y += 32;
+        if (!dry) { ctx.fillStyle = '#6B6579'; ctx.textAlign = 'center'; ctx.fillText(l, W / 2, y); ctx.textAlign = 'left'; }
+      });
+      return y + 70;
+    }
+    var endY = layout(cv.getContext('2d'), true);
+    cv.height = endY;
+    layout(cv.getContext('2d'), false);
+    return cv;
+  }
+
+  function drawGift(cv, line, includeDim) {
+    var W = 1080, H = 1350, ctx = cv.getContext('2d');
+    cv.width = W; cv.height = H;
+    ctx.fillStyle = '#362F4B'; ctx.fillRect(0, 0, W, H);
+    var g = ctx.createRadialGradient(540, 330, 10, 540, 330, 560);
+    g.addColorStop(0, 'rgba(255,231,174,0.95)'); g.addColorStop(0.25, 'rgba(232,169,76,0.55)'); g.addColorStop(1, 'rgba(232,169,76,0)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, W, 900);
+    // bulb
+    ctx.lineWidth = 7; ctx.strokeStyle = 'rgba(251,245,234,0.85)'; ctx.fillStyle = 'rgba(251,245,234,0.12)';
+    ctx.beginPath(); ctx.moveTo(480, 450); ctx.bezierCurveTo(440, 400, 430, 360, 430, 320); ctx.bezierCurveTo(430, 250, 480, 205, 540, 205);
+    ctx.bezierCurveTo(600, 205, 650, 250, 650, 320); ctx.bezierCurveTo(650, 360, 640, 400, 600, 450); ctx.closePath(); ctx.fill(); ctx.stroke();
+    ctx.strokeStyle = '#FFE7AE'; ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.beginPath(); ctx.moveTo(505, 440); ctx.lineTo(515, 350); ctx.lineTo(530, 385); ctx.lineTo(540, 325); ctx.lineTo(550, 385); ctx.lineTo(565, 350); ctx.lineTo(575, 440); ctx.stroke();
+    ctx.fillStyle = 'rgba(251,245,234,0.8)'; ctx.fillRect(498, 456, 84, 20); ctx.fillRect(512, 482, 56, 20);
+    ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+    var y = 640;
+    ctx.font = '700 26px ' + SANS; ctx.fillStyle = '#E8A94C'; ctx.fillText('DIMMER  ·  A THREE-MINUTE EXPERIENCE', W / 2, y); y += 40;
+    ctx.font = '500 64px ' + SERIF; ctx.fillStyle = '#FBF5EA';
+    wrapLines(ctx, 'Not anxious. Not depressed. Just… dim.', 880).forEach(function (l) { y += 76; ctx.fillText(l, W / 2, y); });
+    y += 50;
+    ctx.font = 'italic 500 44px ' + SERIF; ctx.fillStyle = '#FFE7AE';
+    wrapLines(ctx, '“' + line + '”', 840).forEach(function (l) { y += 58; ctx.fillText(l, W / 2, y); });
+    if (includeDim) {
+      y += 60;
+      ctx.font = '700 22px ' + SANS; ctx.fillStyle = '#E8A94C'; ctx.fillText('HOW I GO DIM', W / 2, y);
+      ctx.font = '400 34px ' + SANS; ctx.fillStyle = '#FBF5EA';
+      wrapLines(ctx, current().dim.hint, 840).forEach(function (l) { y += 46; ctx.fillText(l, W / 2, y); });
+    }
+    ctx.font = '400 30px ' + SANS; ctx.fillStyle = 'rgba(251,245,234,0.85)';
+    ctx.fillText('Free. Nothing you type is saved.', W / 2, 1180);
+    ctx.font = '700 40px ' + SANS; ctx.fillStyle = '#E8A94C';
+    ctx.fillText('spirituallessonplans.org/dimmer', W / 2, 1240);
+    ctx.font = '400 22px ' + SANS; ctx.fillStyle = 'rgba(251,245,234,0.62)';
+    ctx.fillText('If this feels like more than numb, call or text 988 (US).', W / 2, 1296);
+  }
+
+  function saveCanvas(cv, name) {
+    cv.toBlob(function (blob) {
+      if (!blob) { return; }
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = name;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+      window.setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+    }, 'image/png');
+  }
+
+  function buildShare() {
+    // ---- Keep your card ----
+    personalMail = h('a', { class: 'dm-btn dm-btn-ghost dm-linkbtn', id: 'dm-email-self', href: '#', text: 'Email my card to myself' });
+    refreshPersonalLinks();
+    var keep = h('section', { class: 'dm-share', 'aria-labelledby': 'dm-keep-h' }, [
+      h('h3', { class: 'dm-share-h', id: 'dm-keep-h', text: 'Keep your card' }),
+      h('p', { text: 'Save it so you can come back to it. Your card is made on this device. Nothing is uploaded.' }),
+      h('div', { class: 'dm-nav dm-nav-tight' }, [
+        h('button', { type: 'button', class: 'dm-btn dm-btn-primary', 'data-act': 'save-card', text: 'Save my card as an image' }),
+        personalMail
+      ]),
+      h('p', { class: 'dm-own-note', text: 'Email opens your own email app with your card filled in. Nothing goes through this site.' })
+    ]);
+
+    // ---- Pass it on ----
+    var giftCanvasEl = h('canvas', { class: 'dm-gift-canvas', width: '1080', height: '1350', role: 'img', 'aria-label': 'Preview of the card you can share' });
+    var radios = [];
+    var fieldset = h('fieldset', { class: 'dm-fieldset' }, [h('legend', { class: 'dm-own-label', text: 'Pick a line for your card' })]);
+    GIFT_LINES.concat(['']).forEach(function (txt, i) {
+      var id = 'dm-gl' + i;
+      var r = h('input', { type: 'radio', name: 'dm-gift-line', id: id, value: String(i) });
+      if (i === 0) { r.checked = true; }
+      radios.push(r);
+      fieldset.appendChild(h('div', { class: 'dm-radio' }, [r, h('label', { for: id, text: i < GIFT_LINES.length ? txt : 'Write my own' })]));
+    });
+    var ownLine = h('input', { type: 'text', id: 'dm-gift-own', maxlength: '110', autocomplete: 'off', 'aria-label': 'Your own line for the card', placeholder: 'In your own words', class: 'dm-gift-own' });
+    fieldset.appendChild(ownLine);
+    var incl = h('input', { type: 'checkbox', id: 'dm-gift-incl' });
+    var inclRow = h('div', { class: 'dm-radio' }, [incl, h('label', { for: 'dm-gift-incl', text: 'Include how I go dim on the card' })]);
+
+    var wa = h('a', { class: 'dm-btn dm-btn-ghost dm-linkbtn', id: 'dm-wa', target: '_blank', rel: 'noopener noreferrer', href: '#', text: 'WhatsApp' });
+    var fb = h('a', { class: 'dm-btn dm-btn-ghost dm-linkbtn', id: 'dm-fb', target: '_blank', rel: 'noopener noreferrer', href: '#', text: 'Facebook' });
+    var mailFriend = h('a', { class: 'dm-btn dm-btn-ghost dm-linkbtn', id: 'dm-email-friend', href: '#', text: 'Email a friend' });
+    var shareBtn = h('button', { type: 'button', class: 'dm-btn dm-btn-primary', 'data-act': 'share-gift', text: 'Share…' });
+    if (!navigator.share) { shareBtn.hidden = true; }
+    var saveBtn = h('button', { type: 'button', class: 'dm-btn dm-btn-ghost', 'data-act': 'save-gift', text: 'Save image' });
+
+    function giftLine() {
+      var idx = 0;
+      radios.forEach(function (r, i) { if (r.checked) { idx = i; } });
+      if (idx < GIFT_LINES.length) { return GIFT_LINES[idx]; }
+      var mine = ownLine.value.replace(/^\s+|\s+$/g, '');
+      return mine || GIFT_LINES[0];
+    }
+    function giftMessage() {
+      return 'I just tried Dimmer, a three-minute reflection for the numb middle. ' + giftLine() +
+        (incl.checked ? ' How I go dim: ' + current().dim.hint : '') +
+        ' It’s free, and nothing you type is saved: ' + SITE_URL;
+    }
+    function redraw() {
+      drawGift(giftCanvasEl, giftLine(), incl.checked);
+      wa.setAttribute('href', 'https://wa.me/?text=' + encodeURIComponent(giftMessage()));
+      fb.setAttribute('href', 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(SITE_URL));
+      mailFriend.setAttribute('href', mailto('Thought of you: Dimmer', giftMessage() + '\n\n' + OFFRAMP));
+    }
+    fieldset.addEventListener('change', redraw);
+    incl.addEventListener('change', redraw);
+    ownLine.addEventListener('input', function () { radios[GIFT_LINES.length].checked = true; redraw(); });
+    redraw();
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(redraw); }
+
+    shareBtn.addEventListener('click', function () {
+      giftCanvasEl.toBlob(function (blob) {
+        if (!blob) { return; }
+        var file = new File([blob], 'dimmer.png', { type: 'image/png' });
+        var data = { files: [file], text: giftMessage() };
+        if (navigator.canShare && navigator.canShare(data)) { navigator.share(data).catch(function () {}); }
+        else { navigator.share({ text: giftMessage() }).catch(function () {}); }
+      }, 'image/png');
+    });
+    saveBtn.addEventListener('click', function () { saveCanvas(giftCanvasEl, 'dimmer-share-card.png'); });
+
+    var pass = h('section', { class: 'dm-share', 'aria-labelledby': 'dm-pass-h' }, [
+      h('h3', { class: 'dm-share-h', id: 'dm-pass-h', text: 'Pass it on' }),
+      h('p', { text: 'Did this help? Make a card to gift someone you think of. It works for WhatsApp, Facebook, Instagram, or a text.' }),
+      fieldset, inclRow,
+      h('div', { class: 'dm-gift-preview' }, [giftCanvasEl]),
+      h('div', { class: 'dm-nav dm-nav-tight' }, [shareBtn, saveBtn, wa, fb, mailFriend]),
+      h('p', { class: 'dm-own-note', text: 'The card is made on this device. Sharing opens your own apps. Nothing goes through this site, and your answers are only on the card if you tick the box.' })
+    ]);
+    return [keep, pass];
+  }
+
   function buildCard() {
     secCount = 0;
-    var dim = byId(DIMS, state.dim), fl = byId(FLICKERS, state.flicker);
+    var dim = byId(DIMS, state.dim);
+    var fl = state.flicker === 'custom' ? customFlicker(state.custom, dim.id) : byId(FLICKERS, state.flicker);
     var holdQuote = h('blockquote', { class: 'dm-quote', id: 'dm-hold' });
     renderHold(holdQuote);
     var own = h('div', { class: 'dm-own' }, [
@@ -312,13 +601,14 @@
 
     return h('div', { class: 'dm-screen-in dm-screen-card' }, [
       card,
-      own,
+      own
+    ].concat(buildShare(), [
       offramp(),
       h('div', { class: 'dm-nav' }, [
         h('button', { type: 'button', class: 'dm-btn dm-btn-ghost', 'data-act': 'back', text: 'Back' }),
         h('button', { type: 'button', class: 'dm-btn dm-btn-ghost', 'data-act': 'restart', text: 'Start over' })
       ])
-    ]);
+    ]));
   }
 
   function renderHold(bq) {
@@ -331,6 +621,7 @@
       bq.appendChild(h('p', { text: '“' + QUOTE_TEXT + QUOTE_TRAIL + '”' }));
       bq.appendChild(h('cite', { text: QUOTE_REF }));
     }
+    refreshPersonalLinks();
   }
 
   function byId(list, id) {
@@ -350,6 +641,7 @@
     if (state.dim && state.step >= 1 && state.step <= 2) { stage.setAttribute('data-dim', state.dim); }
     else { stage.removeAttribute('data-dim'); }
     stage.classList.toggle('dm-lit', state.step === 4);
+    updateTrail();
     if (focus) { pulse(); }
     if (focus) {
       var hd = screen.querySelector('.dm-h');
@@ -362,15 +654,42 @@
   }
   function go(step) { state.step = step; render(true); }
 
+  function commitCustom() {
+    var v = document.getElementById('dm-custom-text').value.replace(/^\s+|\s+$/g, '');
+    if (!v) { return; }
+    state.flicker = 'custom';
+    state.custom = v;
+    go(state.step + 1);
+  }
+  function onInput(e) {
+    if (e.target && e.target.id === 'dm-custom-text') {
+      var go_ = screen.querySelector('[data-act="custom-go"]');
+      if (go_) { go_.disabled = !e.target.value.replace(/^\s+|\s+$/g, ''); }
+    }
+  }
+  function onKey(e) {
+    if (e.key === 'Enter' && e.target && e.target.id === 'dm-custom-text') { e.preventDefault(); commitCustom(); }
+  }
+
   function onClick(e) {
     var t = e.target.closest ? e.target.closest('button') : null;
     if (!t || locked) { return; }
     var act = t.getAttribute('data-act');
+    if (act === 'other') {
+      var panel = document.getElementById('dm-custom-panel');
+      panel.hidden = false;
+      t.setAttribute('aria-expanded', 'true');
+      document.getElementById('dm-custom-text').focus();
+      return;
+    }
+    if (act === 'custom-go') { commitCustom(); return; }
+    if (act === 'save-card') { saveCanvas(personalCanvas(), 'my-dimmer-settings.png'); return; }
     if (act === 'next') { go(state.step + 1); return; }
     if (act === 'back') { go(state.step - 1); return; }
     if (act === 'restart') {
+      personalMail = null;
       tweenId++;
-      state = { step: 0, dim: null, flicker: null, level: STEP_LEVEL[0], own: '' };
+      state = { step: 0, dim: null, flicker: null, custom: '', level: STEP_LEVEL[0], own: '' };
       applyLevel(state.level);
       go(0);
       return;
@@ -401,6 +720,8 @@
   root.appendChild(stage);
   root.appendChild(screen);
   root.addEventListener('click', onClick);
+  root.addEventListener('input', onInput);
+  root.addEventListener('keydown', onKey);
   wireMenu();
   render(false);
 })();

@@ -89,6 +89,142 @@ const OFF = 'If this feels like more than numb, please talk to someone. In the U
     if (store.l || store.s || store.c) fail(`storage not empty: ${JSON.stringify(store)}`);
     await ctx.close();
   }
+
+  // "Something else": put in your own flicker (all five dim types; canary on the first)
+  for (let d = 0; d < 5; d++) {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    const reqs = [];
+    page.on('request', r => reqs.push({ m: r.method(), u: r.url(), b: r.postData() || '' }));
+    page.on('pageerror', e => fail(`[custom ${d}] page error: ${e.message}`));
+    await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
+    await page.addInitScript(() => { window.__hits = []; const si = Storage.prototype.setItem; Storage.prototype.setItem = function () { window.__hits.push('setItem'); return si.apply(this, arguments); }; });
+    await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
+    await page.click(`.dm-choice:has(.dm-choice-label:text-is("${DIMS[d]}"))`);
+    await page.waitForSelector('.dm-choice-other');
+    if (!(await page.isDisabled('[data-act="custom-go"]', { strict: false }).catch(() => true))) fail('custom Continue should start disabled');
+    await page.click('.dm-choice-other');
+    if (await page.isDisabled('[data-act="custom-go"]')) { /* expected: empty */ } else fail('custom Continue enabled while empty');
+    const text = d === 0 ? CANARY : 'a long shower';
+    await page.fill('#dm-custom-text', text);
+    await page.keyboard.press('Enter');
+    await page.waitForSelector('text=This is just who I am now');
+    await page.click('button:text-is("Continue")');
+    await page.click('button:text-is("See my card")');
+    await page.waitForSelector('.dm-card');
+    const card = await page.innerText('.dm-card');
+    for (const need of [text, 'WHAT TURNS YOU UP', 'RIGHT NOW, IN ONE MINUTE', 'TRY THIS WEEK', 'A mirror, not a diagnosis.', 'Science and Health, p. 261'])
+      if (!card.includes(need)) fail(`[custom ${d}] card missing: ${need}`);
+    if (/undefined|null|NaN|\[object/.test(card)) fail(`[custom ${d}] card has placeholder junk`);
+    if (!(await page.innerText('#dimmer')).includes(OFF)) fail(`[custom ${d}] card missing 988`);
+    if ((await page.evaluate(() => window.__hits)).length) fail(`[custom ${d}] storage written`);
+    for (const r of reqs) { if (r.m !== 'GET') fail('custom: non-GET request'); if (r.u.includes(CANARY) || r.b.includes(CANARY)) fail('custom: canary appeared in a request'); }
+    const st = await page.evaluate(() => ({ l: localStorage.length, s: sessionStorage.length, c: document.cookie }));
+    if (st.l || st.s || st.c) fail('custom: storage not empty');
+    if (d === 0) { await page.click('button:text-is("Start over")'); await page.waitForSelector('.dm-choice-label'); if ((await page.innerText('#dimmer')).includes(CANARY)) fail('custom canary survived Start over'); }
+    await ctx.close();
+  }
+
+  // Keep it / pass it on: buttons, mailto, share links, downloads, no network
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce', acceptDownloads: true });
+    const page = await ctx.newPage();
+    const reqs = [];
+    page.on('request', r => reqs.push({ m: r.method(), u: r.url(), b: r.postData() || '' }));
+    page.on('pageerror', e => fail(`[share] page error: ${e.message}`));
+    await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
+    await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
+    // the "card comes at the end" cue is on the opening and on every middle screen
+    if (!(await page.innerText('#dimmer')).includes('shareable card')) fail('opening does not say the card is shareable');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Scrolling"))');
+    await page.waitForSelector('.dm-ahead');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Music that stops me"))');
+    for (const b of ['Continue', 'See my card']) { await page.waitForSelector('.dm-ahead', { state: 'attached' }).catch(() => {}); await page.click(`button:text-is("${b}")`); }
+    await page.waitForSelector('.dm-card');
+    const mailSelf = decodeURIComponent(await page.getAttribute('#dm-email-self', 'href'));
+    if (!mailSelf.startsWith('mailto:?subject=My Dimmer Settings')) fail('email-to-self link is not a mailto');
+    for (const need of ['YOUR DIMMER SETTINGS', 'The feed fills the quiet', 'spirituallessonplans.org/dimmer', '988', 'A mirror, not a diagnosis.']) if (!mailSelf.includes(need)) fail('email body missing: ' + need);
+    await page.fill('#dm-own-text', CANARY + ' mine');
+    if (!decodeURIComponent(await page.getAttribute('#dm-email-self', 'href')).includes(CANARY)) fail('email body did not pick up own line');
+    // save my card as image
+    const [dl1] = await Promise.all([page.waitForEvent('download'), page.click('button:text-is("Save my card as an image")')]);
+    if (!/\.png$/.test(dl1.suggestedFilename())) fail('personal card download is not a png');
+    // gift card
+    const dims = await page.evaluate(() => { const c = document.querySelector('.dm-gift-canvas'); const d = c.getContext('2d').getImageData(540, 700, 1, 1).data; return { w: c.width, h: c.height, px: Array.from(d) }; });
+    if (dims.w !== 1080 || dims.h !== 1350) fail('gift canvas wrong size');
+    if (dims.px[3] === 0) fail('gift canvas is blank');
+    const wa0 = decodeURIComponent(await page.getAttribute('#dm-wa', 'href'));
+    if (!wa0.startsWith('https://wa.me/?text=')) fail('WhatsApp link wrong');
+    if (wa0.includes('I fill the quiet with a screen')) fail('answers leaked into the gift message without opt-in');
+    if (!wa0.includes('spirituallessonplans.org/dimmer')) fail('gift message missing link');
+    await page.check('#dm-gift-incl');
+    if (!decodeURIComponent(await page.getAttribute('#dm-wa', 'href')).includes('I fill the quiet with a screen')) fail('opt-in did not add how I go dim');
+    await page.uncheck('#dm-gift-incl');
+    await page.fill('#dm-gift-own', 'Worth three minutes. ' + CANARY);
+    if (!decodeURIComponent(await page.getAttribute('#dm-wa', 'href')).includes('Worth three minutes')) fail('own gift line not used');
+    if (!(await page.getAttribute('#dm-fb', 'href')).includes(encodeURIComponent('https://www.spirituallessonplans.org/dimmer'))) fail('Facebook link wrong');
+    if (!decodeURIComponent(await page.getAttribute('#dm-email-friend', 'href')).startsWith('mailto:?subject=Thought of you')) fail('email-a-friend link wrong');
+    const [dl2] = await Promise.all([page.waitForEvent('download'), page.click('button:text-is("Save image")')]);
+    if (!/\.png$/.test(dl2.suggestedFilename())) fail('gift card download is not a png');
+    for (const r of reqs) { if (r.m !== 'GET') fail('share: non-GET request'); if (r.u.includes(CANARY) || r.b.includes(CANARY)) fail('share: canary appeared in a request'); if (/wa\.me|facebook\.com/.test(r.u)) fail('share: page requested a share host on its own'); }
+    if (SHOTS) { await page.evaluate(() => document.querySelector('.dm-share').scrollIntoView()); await page.screenshot({ path: `${SHOTS}/mobile-share.png`, fullPage: true }); }
+    await ctx.close();
+  }
+
+  // REGRESSION: the dimmer must actually dim and brighten the light on EVERY screen, by keyboard and by drag.
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
+    await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
+    const glow = () => page.evaluate(() => parseFloat(getComputedStyle(document.querySelector('.dm-glow')).opacity));
+    const trailState = () => page.evaluate(() => [...document.querySelectorAll('.dm-trail li')].map(li => li.className.trim()));
+    const checkSlider = async (label) => {
+      await page.focus('#dm-slider'); await page.keyboard.press('Home'); await page.waitForTimeout(60);
+      const lo = await glow();
+      await page.keyboard.press('End'); await page.waitForTimeout(60);
+      const hi = await glow();
+      if (!(hi > lo + 0.4)) fail(`slider does not change the light on ${label} (low ${lo}, high ${hi})`);
+      const word = await page.innerText('.dm-level-word'); if (word !== 'full light') fail(`slider word on ${label} was "${word}"`);
+      // real pointer drag across the track
+      const box = await page.locator('#dm-slider').boundingBox();
+      await page.mouse.move(box.x + box.width * 0.9, box.y + box.height / 2); await page.mouse.down();
+      await page.mouse.move(box.x + box.width * 0.15, box.y + box.height / 2, { steps: 6 }); await page.mouse.up();
+      const dragged = await glow(); if (!(dragged < hi - 0.3)) fail(`pointer drag does not dim the light on ${label}`);
+    };
+    await checkSlider('landing');
+    let t = await trailState(); if (t[0] !== 'now') fail('trail: landing should mark step 1 as now');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Fine"))'.replace('Fine','\u201CFine\u201D'));
+    await page.waitForSelector('.dm-choice-other'); await checkSlider('flicker screen');
+    t = await trailState(); if (!t[0].includes('done') || !t[1].includes('now')) fail('trail: after dim type, step 1 done and step 2 now');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Being outside"))');
+    await page.waitForSelector('text=This is just who I am now'); await checkSlider('belief screen');
+    await page.click('button:text-is("Continue")'); await page.waitForSelector('text=Nothing is missing from you.'); await checkSlider('still-true screen');
+    await page.click('button:text-is("See my card")'); await page.waitForSelector('.dm-card'); await checkSlider('card screen');
+    t = await trailState(); if (!t[4].includes('ready') || t.slice(0, 4).some(x => !x.includes('done'))) fail('trail: card screen should show everything done and the card ready');
+    await ctx.close();
+  }
+
+  // CLARITY: a first-time visitor can tell what this is, why, what they get, and what going dim means.
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
+    const page = await ctx.newPage();
+    await page.route(u => !/^127\.|^localhost$/.test(u.hostname), r => r.abort());
+    await page.goto(BASE + '/dimmer'); await page.waitForSelector('.dm-h');
+    const t0 = await page.innerText('#dimmer');
+    for (const need of ['Not anxious. Not depressed. Just\u2026 dim. Take three minutes.', 'Have you felt dull lately?', 'tool you can use right now', 'Going dim is how you turn your feelings down', 'how do you go dim?', 'shareable card', 'How you go dim.', 'What turns you up.', 'A tool for right now.', 'One small thing to try this week.', 'A line to hold onto.', 'nothing you type is saved or tracked', 'you can stop any time', '988'])
+      if (!t0.includes(need)) fail('landing clarity: missing "' + need + '"');
+    // the first tap is above the fold on a phone
+    const firstChoiceTop = await page.evaluate(() => document.querySelector('.dm-choice').getBoundingClientRect().top);
+    if (firstChoiceTop > 844) fail('first tap is below the fold on a 390x844 phone (top=' + Math.round(firstChoiceTop) + ')');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Busy"))'); await page.waitForSelector('.dm-choice-other');
+    if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('flicker screen missing card-at-the-end cue');
+    await page.click('.dm-choice:has(.dm-choice-label:text-is("Music that stops me"))'); await page.waitForSelector('text=This is just who I am now');
+    if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('belief screen missing card-at-the-end cue');
+    await page.click('button:text-is("Continue")'); await page.waitForSelector('text=Nothing is missing from you.');
+    if (!(await page.innerText('.dm-ahead')).includes('Your card comes at the end')) fail('still-true screen missing card-at-the-end cue');
+    await ctx.close();
+  }
   console.log(`distinct cards: ${cards.size} / 25`);
   if (cards.size !== 25) fail('expected 25 distinct cards');
 
