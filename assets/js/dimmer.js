@@ -248,7 +248,7 @@
         ]),
         h('p', { class: 'dm-get-note', text: 'A mirror, not a test. Five taps, and no typing needed.' })
       ]),
-      h('p', { class: 'dm-fine', text: 'This is a spiritual reflection, open to any tradition and not tied to any one faith. One passage comes from Science and Health. It is free, nothing you type is saved or tracked, and you can stop any time.' }),
+      h('p', { class: 'dm-fine', text: 'This is a spiritual reflection, open to any tradition and not tied to any one faith. It is free, nothing you type is saved or tracked, and you can stop any time.' }),
       offramp()
     ]);
   }
