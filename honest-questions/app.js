@@ -101,15 +101,48 @@
     });
   }
 
+  /* Anonymous feedback box. Posts JSON to cfg.feedbackEndpoint; the destination address lives on the
+   * server, never on this page. Email from the reader is optional. Nothing is stored here. */
   function setupFeedback() {
     var box = document.getElementById("respond-actions");
-    if (!cfg || !cfg.feedbackEmail || !box) return;
-    var subject = encodeURIComponent("Honest Questions CS: my thoughts");
-    var a = el("a", "btn", "Write to me");
-    a.href = "mailto:" + cfg.feedbackEmail + "?subject=" + subject;
-    a.addEventListener("click", function () { track("feedback-click"); });
+    if (!cfg || !cfg.feedbackEndpoint || !box) return;
+    var form = el("form", "fb");
+    form.setAttribute("novalidate", "");
+    var l1 = el("label", null, "Your thoughts");
+    l1.setAttribute("for", "fb-message");
+    var ta = el("textarea"); ta.id = "fb-message"; ta.name = "message"; ta.rows = 6; ta.maxLength = 5000; ta.required = true;
+    var l2 = el("label", null, "Your email (optional, only if you\u2019d like a reply)");
+    l2.setAttribute("for", "fb-from");
+    var em = el("input"); em.id = "fb-from"; em.name = "from"; em.type = "email"; em.autocomplete = "email";
+    var hp = el("input", "fb-hp"); hp.name = "hp"; hp.tabIndex = -1; hp.autocomplete = "off"; hp.setAttribute("aria-hidden", "true");
+    var btn = el("button", "btn", "Send"); btn.type = "submit";
+    var status = el("p", "fb-status"); status.setAttribute("role", "status");
+    form.appendChild(l1); form.appendChild(ta); form.appendChild(l2); form.appendChild(em);
+    form.appendChild(hp); form.appendChild(btn); form.appendChild(status);
+    form.addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      status.textContent = "";
+      if (!ta.value.trim()) { status.textContent = "Please write something first."; ta.focus(); return; }
+      btn.disabled = true; btn.textContent = "Sending\u2026";
+      fetch(cfg.feedbackEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: ta.value, from: em.value, hp: hp.value, kind: "Idea", page: "Honest Questions CS (series page)" })
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok) throw new Error(d.error || "failed"); });
+      }).then(function () {
+        form.innerHTML = "";
+        var ok = el("p", "fb-thanks", "Thank you. Every message is read.");
+        ok.setAttribute("role", "status");
+        form.appendChild(ok);
+        track("feedback-sent");
+      }).catch(function (e) {
+        btn.disabled = false; btn.textContent = "Send";
+        status.textContent = /email address/.test(e.message) ? "That email address doesn\u2019t look right." : "That didn\u2019t go through. Please try again in a moment.";
+      });
+    });
     box.textContent = "";
-    box.appendChild(a);
+    box.appendChild(form);
   }
 
   /* Optional, privacy-friendly view counts (GoatCounter: no cookies, no personal data).

@@ -127,3 +127,17 @@ main { padding-bottom: 2rem; }
 .coming dt:first-child { margin-top: 0; }
 .coming dd { margin: .15rem 0 0; font-size: 1rem; line-height: 1.55; }
 .coming > p { margin: 0; font-size: 1rem; }
+
+/* Feedback form */
+.fb { display: grid; gap: .5rem; }
+.fb label { font: 600 .9rem/1.3 var(--sans); margin-top: .4rem; }
+.fb textarea, .fb input[type="email"] {
+  width: 100%; font: 1rem/1.5 var(--sans); color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 8px; padding: .7rem .8rem;
+}
+.fb textarea { resize: vertical; min-height: 8rem; }
+.fb .btn { justify-self: start; margin-top: .6rem; border: 0; cursor: pointer; }
+.fb .btn:disabled { opacity: .6; cursor: default; }
+.fb-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.fb-status { margin: .2rem 0 0; min-height: 1.2em; font: .9rem/1.4 var(--sans); color: var(--warm); }
+.fb-thanks { margin: 0; font-size: 1.1rem; }
