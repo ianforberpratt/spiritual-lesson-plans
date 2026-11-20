@@ -42,7 +42,7 @@
   fetch(BASE + "series.json", { cache: "no-cache" })
     .then(function (r) { if (!r.ok) throw new Error("series.json " + r.status); return r.json(); })
     .then(function (c) { cfg = c; return build(c); })
-    .then(function () { setupFeedback(); setupAnalytics(); })
+    .then(function () { setupFeedback(); setupInvite(); setupReveal(); setupAnalytics(); })
     .catch(function (e) { console.error("Honest Questions:", e); });
 
   function build(c) {
@@ -61,6 +61,7 @@
         }
       });
       markProgress(c, liveCount, items, bodies);
+      setupCountdown(items, bodies);
     });
   }
 
@@ -81,7 +82,7 @@
   }
 
   function livePost(item, when, html) {
-    var a = el("article", "post");
+    var a = el("article", "post reveal");
     a.id = "post-" + item.id;
     a.setAttribute("data-post", item.id);
     a.appendChild(el("p", "post-kicker", item.label + " · " + fmtDate(when) + " · " + fmtTime(when)));
@@ -98,7 +99,68 @@
     items.forEach(function (item, idx) {
       var live = now >= new Date(item.publishAt) && bodies[idx] != null;
       if (live && segs[idx + 1]) segs[idx + 1].classList.add("is-live");
+      var arc = document.querySelector(".arc-" + item.id);
+      if (live && arc) arc.classList.add("on");
     });
+  }
+
+  /* "Next post in 1 day, 20 hours": ticks once a minute. Honors ?asof for testing. */
+  function setupCountdown(items, bodies) {
+    var out = document.getElementById("next-post");
+    if (!out) return;
+    var start = Date.now(), base = now.getTime();
+    var next = null;
+    items.forEach(function (item, i) {
+      var live = now >= new Date(item.publishAt) && bodies[i] != null;
+      if (!live && !next) next = item;
+    });
+    if (!next) { out.textContent = "All four posts are live. Thank you for reading."; return; }
+    var when = new Date(next.publishAt);
+    var name = next.title || next.label;
+    function plural(n, w) { return n + " " + w + (n === 1 ? "" : "s"); }
+    function tick() {
+      var ms = when.getTime() - (base + Date.now() - start);
+      var txt;
+      if (ms <= 0) txt = "The next post is coming shortly: " + name;
+      else {
+        var m = Math.floor(ms / 60000), d = Math.floor(m / 1440), h = Math.floor((m % 1440) / 60);
+        var left = d >= 1 ? plural(d, "day") + (h ? ", " + plural(h, "hour") : "") : h >= 1 ? plural(h, "hour") + (m % 60 ? ", " + plural(m % 60, "minute") : "") : plural(Math.max(m, 1), "minute");
+        txt = "Next post in " + left + ": " + name + " (" + fmtDate(when) + ", " + fmtTime(when) + ")";
+      }
+      out.textContent = txt;
+    }
+    tick();
+    setInterval(tick, 60000);
+  }
+
+  /* Fade sections in as they scroll into view. Content is fully visible without JS. */
+  function setupReveal() {
+    var nodes = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      nodes.forEach(function (n) { n.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.08, rootMargin: "0px 0px -4% 0px" });
+    nodes.forEach(function (n) { io.observe(n); });
+    // Safety net: never leave anything hidden.
+    setTimeout(function () { nodes.forEach(function (n) { n.classList.add("in"); }); }, 4000);
+  }
+
+  /* Optional invite to the wider site. Set siteInvite in series.json; remove it to hide. */
+  function setupInvite() {
+    var box = document.getElementById("invite"), c = cfg && cfg.siteInvite;
+    if (!box || !c || !c.url) return;
+    box.appendChild(el("h2", null, c.heading || "Curious about the rest?"));
+    if (c.text) box.appendChild(el("p", null, c.text));
+    var a = el("a", "btn");
+    a.href = c.url; a.target = "_blank"; a.rel = "noopener";
+    a.appendChild(document.createTextNode((c.label || "Explore") + " "));
+    a.appendChild(el("span", "arrow", "\u2192"));
+    a.addEventListener("click", function () { track("invite-click"); });
+    box.appendChild(a);
+    box.hidden = false;
   }
 
   /* Anonymous feedback box. Posts JSON to cfg.feedbackEndpoint; the destination address lives on the

@@ -17,6 +17,7 @@
 <meta property="og:image:alt" content="Honest Questions CS. Honest questions, asked in love.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="style.css">
+<script>document.documentElement.className += " js";</script>
 <script>
 /* Work at /honest-questions, /honest-questions/ or a domain root: find this page's own folder. */
 (function () {
@@ -31,6 +32,9 @@
 
 <header class="masthead">
   <div class="wrap">
+    <div class="bridge" aria-hidden="true">
+      <span class="arc arc-p on"></span><span class="arc arc-1"></span><span class="arc arc-2"></span><span class="arc arc-3"></span>
+    </div>
     <p class="mark">HonestQuestionsCS</p>
     <h1>Honest Questions CS</h1>
     <p class="lede">Three short posts and a preview about two things we often hesitate to say out loud: how we talk about our shrinking numbers, and how we show human compassion.</p>
@@ -44,6 +48,7 @@
         <li class="seg"><a href="#post-2">2</a></li>
         <li class="seg"><a href="#post-3">3</a></li>
       </ol>
+      <p class="next" id="next-post"></p>
       <p class="progress-note">A new post every three days at 6&nbsp;PM Central. They collect here, in order.</p>
     </div>
   </div>
@@ -51,8 +56,16 @@
 
 <main class="wrap" id="series">
 
+  <section class="twofold reveal" aria-label="The two questions this series keeps coming back to">
+    <p class="twofold-intro">Two things many of us find hard to say out loud. Every post comes back to them.</p>
+    <div class="twofold-grid">
+      <div class="q q-numbers"><span class="q-kicker">One</span><p class="q-title">How we talk about our shrinking numbers</p><p class="q-sub">Fewer people in our churches and Sunday schools.</p></div>
+      <div class="q q-care"><span class="q-kicker">Two</span><p class="q-title">How we show human compassion</p><p class="q-sub">To people who are hurting.</p></div>
+    </div>
+  </section>
+
   <!-- Preview post. Static on purpose: it reads even if scripts fail. -->
-  <article class="post" id="post-preview" data-post="preview">
+  <article class="post reveal" id="post-preview" data-post="preview">
     <p class="post-kicker">Preview &middot; Friday, November 20, 2026 &middot; 6&nbsp;PM Central</p>
     <h2 class="post-title">Why I Keep Writing to You (and What&rsquo;s Coming)</h2>
 
@@ -94,36 +107,44 @@
   <!-- Placeholders are plain HTML so they show without JavaScript. app.js only swaps one for
        the live post once its time has passed and posts/N.html exists. -->
   <div id="installments">
-    <section class="slot is-soon" id="post-1" data-post="1">
+    <section class="slot is-soon a1 reveal" id="post-1" data-post="1">
+      <span class="slot-num" aria-hidden="true">1</span>
       <p class="slot-state">Coming soon</p>
       <p class="slot-label">Installment 1</p>
+      <p class="slot-angle">What we say and what we do</p>
       <h2 class="slot-title">When &lsquo;That Never Happened&rsquo; Meets a Hurting Teenager</h2>
       <p class="slot-when">Sunday, November 22 &middot; 6&nbsp;PM Central</p>
       <p class="slot-abstract">&ldquo;That never happened&rdquo; comes from a fundamentally different view of what&rsquo;s real, one that starts with God and good instead of with the problem. But a hurting teenager can hear it as &ldquo;what you feel doesn&rsquo;t count.&rdquo; Some of us worry that caring about the pain in the moment compromises the absolute. This post wrestles with that honestly: can we hold the bigger view of reality and real care for someone right now?</p>
     </section>
-    <section class="slot is-soon" id="post-2" data-post="2">
+    <section class="slot is-soon a2 reveal" id="post-2" data-post="2">
+      <span class="slot-num" aria-hidden="true">2</span>
       <p class="slot-state">Coming soon</p>
       <p class="slot-label">Installment 2</p>
+      <p class="slot-angle">Commitments we hold without naming them</p>
       <h2 class="slot-title">What We&rsquo;re Quietly Protecting</h2>
       <p class="slot-when">Wednesday, November 25 &middot; 6&nbsp;PM Central</p>
       <p class="slot-abstract">Many of us follow some unspoken rules: don&rsquo;t sound like you doubt, don&rsquo;t admit when something didn&rsquo;t work, don&rsquo;t talk about the people who have left. They come from love and loyalty. This post says them out loud, so we can ask whether they&rsquo;re protecting what matters or keeping young people out, and why our shrinking numbers are so hard to talk about.</p>
     </section>
-    <section class="slot is-soon" id="post-3" data-post="3">
+    <section class="slot is-soon a3 reveal" id="post-3" data-post="3">
+      <span class="slot-num" aria-hidden="true">3</span>
       <p class="slot-state">Coming soon</p>
       <p class="slot-label">Installment 3</p>
+      <p class="slot-angle">Our own nostalgia</p>
       <h2 class="slot-title">The Church We Remember</h2>
       <p class="slot-when">Saturday, November 28 &middot; 6&nbsp;PM Central</p>
       <p class="slot-abstract">Many of us miss the full Sunday schools and busy churches we grew up in. That longing comes from love. This post asks gently what it can do to how we see the young people who are here now, and what we might notice if we looked at them with fresh eyes.</p>
     </section>
   </div>
 
-  <section class="respond" id="respond" aria-labelledby="respond-h">
+  <section class="respond reveal" id="respond" aria-labelledby="respond-h">
     <h2 id="respond-h">I&rsquo;d love your thoughts</h2>
     <p>Whatever they are. A question, a disagreement, something I got wrong, something that landed. Honest questions, asked in love, move us forward.</p>
     <p class="respond-actions" id="respond-actions">
       <span class="respond-fallback">Reply on the post where you found this page.</span>
     </p>
   </section>
+
+  <section class="invite reveal" id="invite" hidden></section>
 
 </main>
 
