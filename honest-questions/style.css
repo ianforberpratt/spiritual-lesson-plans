@@ -91,6 +91,7 @@ main { padding-bottom: 2rem; }
 .slot-label { margin: 0; font: 600 .8rem/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .slot-title { margin: .2rem 0 .4rem; font-size: 1.4rem; line-height: 1.25; font-weight: 600; }
 .slot-title.is-empty { color: var(--muted); font-style: italic; font-weight: 400; }
+.slot-abstract { margin: .75rem 0 0; font-size: 1rem; line-height: 1.55; }
 .slot-when { margin: 0; font: .95rem/1.5 var(--sans); color: var(--muted); }
 
 /* Room for charts and visuals inside later posts */
@@ -117,3 +118,12 @@ main { padding-bottom: 2rem; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 @media print { .progress, .respond { display: none; } body { background: #fff; color: #000; } }
+
+/* "What's coming" list inside the preview post */
+.coming { margin: 1.75rem 0; padding: 1.1rem 1.25rem; background: var(--warm-soft); border-radius: 10px; }
+.coming h3 { margin: 0 0 .75rem; font: 700 .8rem/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--warm); }
+.coming dl { margin: 0 0 .9rem; }
+.coming dt { font-weight: 600; margin-top: .8rem; }
+.coming dt:first-child { margin-top: 0; }
+.coming dd { margin: .15rem 0 0; font-size: 1rem; line-height: 1.55; }
+.coming > p { margin: 0; font-size: 1rem; }

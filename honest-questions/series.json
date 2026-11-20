@@ -5,8 +5,8 @@
   "analytics": { "goatcounter": "" },
   "installments": [
     { "id": "preview", "label": "Preview", "title": "Why I Keep Writing to You (and What's Coming)", "publishAt": "2026-11-20T18:00:00-06:00", "inline": true },
-    { "id": "1", "label": "Installment 1", "title": "The Gap Nobody Mentions", "publishAt": "2026-11-21T18:00:00-06:00" },
-    { "id": "2", "label": "Installment 2", "title": "What We're Quietly Protecting", "publishAt": "2026-11-24T18:00:00-06:00" },
-    { "id": "3", "label": "Installment 3", "title": "The Tender Spot: What We Miss", "publishAt": "2026-11-27T18:00:00-06:00" }
+    { "id": "1", "label": "Installment 1", "title": "The Gap Nobody Mentions", "publishAt": "2026-11-23T18:00:00-06:00" },
+    { "id": "2", "label": "Installment 2", "title": "What We're Quietly Protecting", "publishAt": "2026-11-26T18:00:00-06:00" },
+    { "id": "3", "label": "Installment 3", "title": "The Tender Spot: What We Miss", "publishAt": "2026-11-29T18:00:00-06:00" }
   ]
 }
