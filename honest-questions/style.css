@@ -91,6 +91,7 @@ a:focus-visible, button:focus-visible, textarea:focus-visible, input:focus-visib
   margin: 0 0 1rem; font-size: clamp(2.3rem, 8vw, 3.4rem); line-height: 1.05; font-weight: 600; letter-spacing: -.015em;
   animation: rise .8s .1s both;
 }
+.tagline { margin: -.2rem 0 .9rem; font: italic 600 clamp(1.5rem, 5vw, 1.9rem)/1.2 var(--serif); color: var(--gold-text); animation: rise .8s .18s both; }
 .lede { margin: 0 auto .6rem; max-width: 34rem; font-size: 1.22rem; line-height: 1.55; animation: rise .8s .25s both; }
 .lede-more { margin: 0 auto 1rem; max-width: 34rem; font-size: 1.02rem; line-height: 1.6; color: var(--ink-soft); animation: rise .8s .3s both; }
 .lede-sub { margin: 0 0 1.6rem; color: var(--ink-soft); font-size: 1rem; animation: rise .8s .35s both; }
