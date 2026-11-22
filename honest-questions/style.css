@@ -143,7 +143,7 @@ main { padding-bottom: 2rem; }
 @media (min-width: 40rem) { .post { padding: 2.2rem 2.4rem 2rem; } }
 .post-kicker { margin: 0 0 .5rem; font: 700 .78rem/1.3 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); }
 .post-title { margin: 0 0 1.25rem; font-size: clamp(1.75rem, 5.5vw, 2.3rem); line-height: 1.18; font-weight: 600; }
-.post-body > p:first-child { font-size: 1.3rem; line-height: 1.5; font-style: italic; color: var(--ink-soft); }
+.post-body > p:first-of-type { font-size: 1.3rem; line-height: 1.5; font-style: italic; color: var(--ink-soft); }
 .post-body p { margin: 0 0 1.15em; }
 .post-body h3 { font-size: 1.25rem; margin: 1.6em 0 .5em; }
 .signoff { font-style: italic; color: var(--gold-text); margin: 1.6em 0 0 !important; font-size: 1.2rem; }
@@ -292,3 +292,8 @@ main { padding-bottom: 2rem; }
 }
 .door-para.in::before { background-size: 24% 100%, 100% 100%; }
 @media (prefers-reduced-motion: reduce) { .door-para::before { background-size: 24% 100%, 100% 100%; transition: none; } }
+
+/* Series context at the top and next-steps at the end of a post */
+.series-note { margin: 0 0 1.4rem; padding: .7rem .95rem; border-left: 4px solid var(--gold); background: var(--gold-tint); border-radius: 0 10px 10px 0; font: .92rem/1.5 var(--sans); color: var(--ink-soft); }
+.series-note strong { color: var(--gold-text); }
+.series-next { margin-top: 1.4rem; padding-top: 1rem; border-top: 1px solid var(--rule); font: .95rem/1.7 var(--sans); }
