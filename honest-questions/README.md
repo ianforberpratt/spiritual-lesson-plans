@@ -34,3 +34,15 @@ is not in any sitemap. To open it up later, remove those.
 
 Deploy this folder as the root of its own site (`vercel.json` here carries the noindex header).
 Nothing needs rewriting; all paths are relative.
+
+## Reader tools (added Nov 22)
+
+- **Per-post pages with their own link card:** `p/preview.html`, `p/1.html`, `p/2.html`, `p/3.html` and
+  matching `og-*.png` cards. Sharing a post uses `/p/<id>` so Facebook shows that post's own title and card,
+  then sends readers to the series page. If you change a title in `series.json`, the matching `p/*.html` and
+  `og-*.png` need regenerating (ask Claude). They carry the full address of the current host in their tags.
+- **Add to calendar** (on Coming soon cards): builds an `.ics` file on the reader's device, 6 PM Central.
+- **Share, Listen (read aloud), reading-time, jump links, reading-progress line.**
+- **One-tap reactions** ("This helped / I'm still wrestling / I see it differently"): only appear once
+  `analytics.goatcounter` is set, because the counts live in GoatCounter.
+- **Publishing a post** is still one file: add `posts/N.html` (it appears at its scheduled time).

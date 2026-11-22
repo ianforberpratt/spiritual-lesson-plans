@@ -42,7 +42,7 @@
   fetch(BASE + "series.json", { cache: "no-cache" })
     .then(function (r) { if (!r.ok) throw new Error("series.json " + r.status); return r.json(); })
     .then(function (c) { cfg = c; return build(c); })
-    .then(function () { setupFeedback(); setupInvite(); setupReveal(); setupAnalytics(); })
+    .then(function () { setupFeedback(); setupInvite(); enhancePosts(); setupReveal(); setupProgressBar(); setupAnalytics(); })
     .catch(function (e) { console.error("Honest Questions:", e); });
 
   function build(c) {
@@ -133,9 +133,132 @@
     setInterval(tick, 60000);
   }
 
+
+  /* ---------- Per-post tools: calendar, share, listen, read time, jump links, reactions ---------- */
+  function postUrl(id) { return location.origin + BASE + "p/" + id; }
+  function toast(box, msg) {
+    var s = box.querySelector(".tool-status");
+    if (s) { s.textContent = msg; clearTimeout(s._t); s._t = setTimeout(function () { s.textContent = ""; }, 3500); }
+  }
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function icsDate(d) {
+    return d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) + "T" + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + "00Z";
+  }
+  function downloadIcs(item, when) {
+    var end = new Date(when.getTime() + 30 * 60000);
+    var title = "Honest Questions CS: " + (item.title || item.label);
+    var lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Honest Questions CS//EN", "CALSCALE:GREGORIAN", "BEGIN:VEVENT",
+      "UID:hqcs-" + item.id + "@honestquestionscs", "DTSTAMP:" + icsDate(new Date()), "DTSTART:" + icsDate(when), "DTEND:" + icsDate(end),
+      "SUMMARY:" + title.replace(/[,;]/g, " "), "DESCRIPTION:A new post is live at 6 PM Central. Read it here: " + postUrl(item.id),
+      "URL:" + postUrl(item.id), "BEGIN:VALARM", "TRIGGER:-PT10M", "ACTION:DISPLAY", "DESCRIPTION:New post in 10 minutes", "END:VALARM", "END:VEVENT", "END:VCALENDAR"];
+    var blob = new Blob([lines.join("\r\n")], { type: "text/calendar" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "honest-questions-" + item.id + ".ics";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1000);
+  }
+  function toolButton(label, onClick, cls) {
+    var b = el("button", "tool" + (cls ? " " + cls : ""), label);
+    b.type = "button";
+    b.addEventListener("click", onClick);
+    return b;
+  }
+  function sharePost(id, title, box) {
+    var url = postUrl(id);
+    if (navigator.share) {
+      navigator.share({ title: title, url: url }).catch(function () {});
+      return;
+    }
+    var done = function () { toast(box, "Link copied."); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { toast(box, url); });
+    else toast(box, url);
+  }
+  function listenToggle(article, btn) {
+    var synth = window.speechSynthesis;
+    if (synth.speaking || synth.pending) { synth.cancel(); btn.textContent = "Listen"; btn.classList.remove("is-on"); return; }
+    var parts = [];
+    var t = article.querySelector(".post-title"); if (t) parts.push(t.textContent);
+    article.querySelectorAll(".post-body p, .post-body li, .post-body h3").forEach(function (n) { if (n.textContent.trim()) parts.push(n.textContent.trim()); });
+    var i = 0;
+    function next() {
+      if (i >= parts.length) { btn.textContent = "Listen"; btn.classList.remove("is-on"); return; }
+      var u = new SpeechSynthesisUtterance(parts[i++]);
+      u.onend = next; u.onerror = function () { btn.textContent = "Listen"; btn.classList.remove("is-on"); };
+      synth.speak(u);
+    }
+    btn.textContent = "Stop"; btn.classList.add("is-on");
+    next();
+  }
+  function addReactions(article, id) {
+    if (!(cfg && cfg.analytics && cfg.analytics.goatcounter)) return; // counts need analytics; hidden until it is set
+    var body = article.querySelector(".post-body"); if (!body) return;
+    var box = el("div", "react");
+    box.appendChild(el("p", "react-q", "Did this land? One tap, no name, counted anonymously."));
+    var row = el("div", "react-row");
+    [["helped", "This helped"], ["wrestling", "I’m still wrestling"], ["different", "I see it differently"]].forEach(function (r) {
+      row.appendChild(toolButton(r[1], function () {
+        track("react-" + id + "-" + r[0]);
+        box.innerHTML = ""; box.appendChild(el("p", "react-q", "Thank you. That’s counted, anonymously."));
+      }, "tool-react"));
+    });
+    box.appendChild(row);
+    body.appendChild(box);
+  }
+  function enhancePosts() {
+    var items = {};
+    ((cfg && cfg.installments) || []).forEach(function (i) { items[i.id] = i; });
+    document.querySelectorAll(".post, .slot").forEach(function (node) {
+      var id = node.getAttribute("data-post"), item = items[id];
+      if (!id || !item) return;
+      var isPost = node.classList.contains("post");
+      var tools = el("div", "post-tools");
+      var status = el("span", "tool-status"); status.setAttribute("role", "status");
+      var title = item.title || item.label;
+      if (isPost) {
+        if ("speechSynthesis" in window && "SpeechSynthesisUtterance" in window) {
+          var lb = toolButton("Listen", function () { listenToggle(node, lb); });
+          tools.appendChild(lb);
+        }
+        // read time + jump links
+        var words = (node.querySelector(".post-body") || { textContent: "" }).textContent.trim().split(/\s+/).length;
+        var kicker = node.querySelector(".post-kicker");
+        if (kicker && words > 50) kicker.textContent += " · " + Math.max(1, Math.round(words / 200)) + " min read";
+        var claims = node.querySelector(".test-this");
+        if (claims) { claims.id = "claims-" + id; var j = el("a", "tool tool-link", "Jump to the claims ↓"); j.href = "#claims-" + id; tools.appendChild(j); }
+        var wc = node.querySelector("#whats-coming");
+        if (wc) { var j2 = el("a", "tool tool-link", "What’s coming ↓"); j2.href = "#whats-coming"; tools.appendChild(j2); }
+        tools.appendChild(toolButton("Share", function () { sharePost(id, title, tools); }));
+        tools.appendChild(status);
+        var h2 = node.querySelector(".post-title");
+        if (h2 && h2.nextSibling) h2.parentNode.insertBefore(tools, h2.nextSibling);
+        addReactions(node, id);
+      } else {
+        var when = new Date(item.publishAt);
+        tools.appendChild(toolButton("Add to my calendar", function () { downloadIcs(item, when); toast(tools, "Calendar file downloaded."); }));
+        tools.appendChild(toolButton("Share", function () { sharePost(id, title, tools); }));
+        tools.appendChild(status);
+        node.appendChild(tools);
+      }
+    });
+  }
+
+  function setupProgressBar() {
+    var bar = document.getElementById("read-progress");
+    if (!bar) return;
+    var ticking = false;
+    function update() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ")";
+      ticking = false;
+    }
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+  }
+
   /* Fade sections in as they scroll into view. Content is fully visible without JS. */
   function setupReveal() {
-    var nodes = document.querySelectorAll(".reveal");
+    var nodes = document.querySelectorAll(".reveal, .door-para");
     if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       nodes.forEach(function (n) { n.classList.add("in"); });
       return;
