@@ -42,7 +42,7 @@
   fetch(BASE + "series.json", { cache: "no-cache" })
     .then(function (r) { if (!r.ok) throw new Error("series.json " + r.status); return r.json(); })
     .then(function (c) { cfg = c; return build(c); })
-    .then(function () { setupFeedback(); setupInvite(); enhancePosts(); setupReveal(); setupProgressBar(); setupAnalytics(); })
+    .then(function () { setupFeedback(); setupInvite(); enhancePosts(); setupReveal(); setupProgressBar(); })
     .catch(function (e) { console.error("Honest Questions:", e); });
 
   function build(c) {
@@ -134,7 +134,7 @@
   }
 
 
-  /* ---------- Per-post tools: calendar, share, listen, read time, jump links, reactions ---------- */
+  /* ---------- Per-post tools: calendar, share, listen, read time, jump links ---------- */
   function postUrl(id) { return location.origin + BASE + "p/" + id; }
   function toast(box, msg) {
     var s = box.querySelector(".tool-status");
@@ -190,21 +190,6 @@
     btn.textContent = "Stop"; btn.classList.add("is-on");
     next();
   }
-  function addReactions(article, id) {
-    if (!(cfg && cfg.analytics && cfg.analytics.goatcounter)) return; // counts need analytics; hidden until it is set
-    var body = article.querySelector(".post-body"); if (!body) return;
-    var box = el("div", "react");
-    box.appendChild(el("p", "react-q", "Did this land? One tap, no name, counted anonymously."));
-    var row = el("div", "react-row");
-    [["helped", "This helped"], ["wrestling", "I’m still wrestling"], ["different", "I see it differently"]].forEach(function (r) {
-      row.appendChild(toolButton(r[1], function () {
-        track("react-" + id + "-" + r[0]);
-        box.innerHTML = ""; box.appendChild(el("p", "react-q", "Thank you. That’s counted, anonymously."));
-      }, "tool-react"));
-    });
-    box.appendChild(row);
-    body.appendChild(box);
-  }
   function enhancePosts() {
     var items = {};
     ((cfg && cfg.installments) || []).forEach(function (i) { items[i.id] = i; });
@@ -232,7 +217,6 @@
         tools.appendChild(status);
         var h2 = node.querySelector(".post-title");
         if (h2 && h2.nextSibling) h2.parentNode.insertBefore(tools, h2.nextSibling);
-        addReactions(node, id);
       } else {
         var when = new Date(item.publishAt);
         tools.appendChild(toolButton("Add to my calendar", function () { downloadIcs(item, when); toast(tools, "Calendar file downloaded."); }));
@@ -281,7 +265,6 @@
     a.href = c.url; a.target = "_blank"; a.rel = "noopener";
     a.appendChild(document.createTextNode((c.label || "Explore") + " "));
     a.appendChild(el("span", "arrow", "\u2192"));
-    a.addEventListener("click", function () { track("invite-click"); });
     box.appendChild(a);
     box.hidden = false;
   }
@@ -320,7 +303,6 @@
         var ok = el("p", "fb-thanks", "Thank you. Every message is read.");
         ok.setAttribute("role", "status");
         form.appendChild(ok);
-        track("feedback-sent");
       }).catch(function (e) {
         btn.disabled = false; btn.textContent = "Send";
         status.textContent = /email address/.test(e.message) ? "That email address doesn\u2019t look right." : "That didn\u2019t go through. Please try again in a moment.";
@@ -328,36 +310,5 @@
     });
     box.textContent = "";
     box.appendChild(form);
-  }
-
-  /* Optional, privacy-friendly view counts (GoatCounter: no cookies, no personal data).
-   * Set analytics.goatcounter in series.json to your site code. Empty = no tracking at all.
-   * Counts the page, plus a per-post "read" when about 60% of a post has been on screen. */
-  function track(name) {
-    try {
-      if (window.goatcounter && window.goatcounter.count) {
-        window.goatcounter.count({ path: "honest-questions/" + name, title: name, event: true });
-      }
-    } catch (e) {}
-  }
-  function setupAnalytics() {
-    var code = cfg && cfg.analytics && cfg.analytics.goatcounter;
-    if (!code || params.get("asof")) return; // never count test views
-    var s = document.createElement("script");
-    s.async = true;
-    s.src = "https://gc.zgo.at/count.js";
-    s.setAttribute("data-goatcounter", "https://" + code + ".goatcounter.com/count");
-    document.head.appendChild(s);
-    if (!("IntersectionObserver" in window)) return;
-    var seen = {};
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        var id = en.target.getAttribute("data-post");
-        if (en.isIntersecting && !seen[id]) { seen[id] = 1; track("read-" + id); }
-      });
-    }, { threshold: 0.6 });
-    document.querySelectorAll("[data-post]").forEach(function (n) {
-      if (n.classList.contains("post")) io.observe(n);
-    });
   }
 })();

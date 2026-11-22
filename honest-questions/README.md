@@ -21,9 +21,12 @@ Put chart images in `posts/` or an `assets/` folder inside this folder, so the p
 ## Settings in `series.json`
 
 - `feedbackEndpoint`: where the anonymous feedback box posts. Now `/api/feedback`, the lesson plans site's email function, so the destination address stays on the server and is never on this page. Blank = box hidden. On its own domain that path will not exist: point this at a function on the new project, or an absolute URL (which would need CORS).
-- `analytics.goatcounter`: your GoatCounter site code (free, no cookies, no personal data). Blank = no
-  tracking. When set, you see page views plus a "read-preview / read-1 / read-2 / read-3" count per
-  post (counted when ~60% of the post has been on screen) and "feedback-click".
+
+
+## Nothing is counted
+
+This page loads no analytics, no cookies and no third-party scripts, by design: the site promises it does not
+track readers, and this page keeps that promise. Reach is measured by replies, shares and the feedback box.
 
 ## Unlisted
 
@@ -43,6 +46,4 @@ Nothing needs rewriting; all paths are relative.
   `og-*.png` need regenerating (ask Claude). They carry the full address of the current host in their tags.
 - **Add to calendar** (on Coming soon cards): builds an `.ics` file on the reader's device, 6 PM Central.
 - **Share, Listen (read aloud), reading-time, jump links, reading-progress line.**
-- **One-tap reactions** ("This helped / I'm still wrestling / I see it differently"): only appear once
-  `analytics.goatcounter` is set, because the counts live in GoatCounter.
 - **Publishing a post** is still one file: add `posts/N.html` (it appears at its scheduled time).
