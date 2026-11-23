@@ -231,8 +231,6 @@
         if (kicker && words > 50) kicker.textContent += " · " + Math.max(1, Math.round(words / 200)) + " min read";
         var claims = node.querySelector(".test-this");
         if (claims) { claims.id = "claims-" + id; var j = el("a", "tool tool-link", "Jump to the claims ↓"); j.href = "#claims-" + id; tools.appendChild(j); }
-        var wc = node.querySelector("#whats-coming");
-        if (wc) { var j2 = el("a", "tool tool-link", "What’s coming ↓"); j2.href = "#whats-coming"; tools.appendChild(j2); }
         tools.appendChild(toolButton("Share", function () { sharePost(id, title, tools); }));
         tools.appendChild(status);
         var h2 = node.querySelector(".post-title");
