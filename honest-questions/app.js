@@ -174,23 +174,6 @@
     if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, function () { toast(box, url); });
     else toast(box, url);
   }
-  function listenToggle(article, btn) {
-    var synth = window.speechSynthesis;
-    if (synth.speaking || synth.pending) { synth.cancel(); btn.textContent = "Listen"; btn.classList.remove("is-on"); return; }
-    var parts = [];
-    var t = article.querySelector(".post-title"); if (t) parts.push(t.textContent);
-    article.querySelectorAll(".post-body p, .post-body li, .post-body h3").forEach(function (n) { if (n.textContent.trim()) parts.push(n.textContent.trim()); });
-    var i = 0;
-    function next() {
-      if (i >= parts.length) { btn.textContent = "Listen"; btn.classList.remove("is-on"); return; }
-      var u = new SpeechSynthesisUtterance(parts[i++]);
-      u.onend = next; u.onerror = function () { btn.textContent = "Listen"; btn.classList.remove("is-on"); };
-      synth.speak(u);
-    }
-    btn.textContent = "Stop"; btn.classList.add("is-on");
-    next();
-  }
-  /* If posts/<id>.mp3 exists, show an audio player (and drop the browser read-aloud button). */
   function attachAudio(node, id, tools, listenBtn) {
     fetch(BASE + "posts/" + id + ".mp3", { method: "HEAD", cache: "no-cache" }).then(function (r) {
       var type = r.headers.get("content-type") || "";
@@ -221,10 +204,7 @@
       var status = el("span", "tool-status"); status.setAttribute("role", "status");
       var title = item.title || item.label;
       if (isPost) {
-        if ("speechSynthesis" in window && "SpeechSynthesisUtterance" in window) {
-          var lb = toolButton("Listen", function () { listenToggle(node, lb); });
-          tools.appendChild(lb);
-        }
+        var lb = null; // browser read-aloud removed; a recorded reading (posts/<id>.mp3) shows its own player
         // read time + jump links
         var words = (node.querySelector(".post-body") || { textContent: "" }).textContent.trim().split(/\s+/).length;
         var kicker = node.querySelector(".post-kicker");
