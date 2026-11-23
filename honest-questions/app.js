@@ -201,7 +201,7 @@
       a.controls = true; a.preload = "none"; a.src = BASE + "posts/" + id + ".mp3";
       a.setAttribute("aria-label", "Audio reading of this post");
       wrap.appendChild(a);
-      wrap.appendChild(el("p", "audio-note", "The full text is below."));
+      wrap.appendChild(el("p", "audio-note", node.querySelector(".stand") ? "The full text, including \u201cWhere I stand,\u201d is below." : "The full text is below."));
       tools.parentNode.insertBefore(wrap, tools.nextSibling);
       if (listenBtn && listenBtn.parentNode) {
         if (window.speechSynthesis) window.speechSynthesis.cancel();
