@@ -45,7 +45,7 @@ Nothing needs rewriting; all paths are relative.
   then sends readers to the series page. If you change a title in `series.json`, the matching `p/*.html` and
   `og-*.png` need regenerating (ask Claude). They carry the full address of the current host in their tags.
 - **Add to calendar** (on Coming soon cards): builds an `.ics` file on the reader's device, 6 PM Central.
-- **Share, Listen (read aloud), reading-time, jump links, reading-progress line.**
+- **Share, reading-time, jump links, reading-progress line.** (The browser robot-voice "Listen" button was removed; a recorded reading shows its own player.)
 - **Publishing a post** is still one file: add `posts/N.html` (it appears at its scheduled time).
 
 ## Audio reading of a post
