@@ -190,6 +190,26 @@
     btn.textContent = "Stop"; btn.classList.add("is-on");
     next();
   }
+  /* If posts/<id>.mp3 exists, show an audio player (and drop the browser read-aloud button). */
+  function attachAudio(node, id, tools, listenBtn) {
+    fetch(BASE + "posts/" + id + ".mp3", { method: "HEAD", cache: "no-cache" }).then(function (r) {
+      var type = r.headers.get("content-type") || "";
+      if (!r.ok || type.indexOf("audio") === -1) return;
+      var wrap = el("div", "audio-player");
+      wrap.appendChild(el("p", "audio-label", "Listen to this post, read aloud"));
+      var a = document.createElement("audio");
+      a.controls = true; a.preload = "none"; a.src = BASE + "posts/" + id + ".mp3";
+      a.setAttribute("aria-label", "Audio reading of this post");
+      wrap.appendChild(a);
+      wrap.appendChild(el("p", "audio-note", "The full text is below."));
+      tools.parentNode.insertBefore(wrap, tools.nextSibling);
+      if (listenBtn && listenBtn.parentNode) {
+        if (window.speechSynthesis) window.speechSynthesis.cancel();
+        listenBtn.parentNode.removeChild(listenBtn);
+      }
+    }).catch(function () {});
+  }
+
   function enhancePosts() {
     var items = {};
     ((cfg && cfg.installments) || []).forEach(function (i) { items[i.id] = i; });
@@ -217,6 +237,7 @@
         tools.appendChild(status);
         var h2 = node.querySelector(".post-title");
         if (h2 && h2.nextSibling) h2.parentNode.insertBefore(tools, h2.nextSibling);
+        attachAudio(node, id, tools, lb);
       } else {
         var when = new Date(item.publishAt);
         tools.appendChild(toolButton("Add to my calendar", function () { downloadIcs(item, when); toast(tools, "Calendar file downloaded."); }));
