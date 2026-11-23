@@ -47,3 +47,13 @@ Nothing needs rewriting; all paths are relative.
 - **Add to calendar** (on Coming soon cards): builds an `.ics` file on the reader's device, 6 PM Central.
 - **Share, Listen (read aloud), reading-time, jump links, reading-progress line.**
 - **Publishing a post** is still one file: add `posts/N.html` (it appears at its scheduled time).
+
+## Audio reading of a post
+
+Drop `posts/<id>.mp3` (for example `posts/1.mp3`) next to the post and a "Listen to this post, read aloud" player
+appears under its title (it replaces the browser read-aloud button). No counting, nothing loads until someone
+presses play. Clean a recording first so no name or tags travel with it:
+
+```
+ffmpeg -i recording.m4a -map_metadata -1 -fflags +bitexact -flags:a +bitexact -ac 1 -b:a 80k posts/1.mp3
+```
