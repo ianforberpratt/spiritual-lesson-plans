@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Train-the-Trainers: Sharing Christian Science — Spiritual Lesson Plans</title>
+<title>Workshop Concept (Draft): Sharing Christian Science — Spiritual Lesson Plans</title>
 <meta name="description" content="A hands-on workshop for Christian Scientists who want to talk about Christian Science in words that meet the listener's current needs. By invitation, as a train-the-trainers event.">
 <!-- Draft one-pager: not in nav or sitemap, kept out of search until it is ready to share. -->
 <meta name="robots" content="noindex, nofollow">
@@ -70,6 +70,25 @@ svg { display: block; }
 }
 .wrap { max-width: 980px; margin: 0 auto; padding: 0 var(--gutter); }
 .section-title { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; }
+
+/* ---------- Draft banner ---------- */
+.draft {
+  background: var(--ink);
+  color: var(--on-dark);
+  font-size: .8rem;
+  line-height: 1.35;
+}
+.draft .wrap { display: flex; align-items: center; gap: 12px; padding-top: 9px; padding-bottom: 9px; }
+.draft b {
+  flex: none;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: .66rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
 
 /* ---------- Hero ---------- */
 .hero { background: var(--cream); overflow: hidden; }
@@ -267,6 +286,7 @@ svg { display: block; }
   .path { grid-template-columns: 1fr; gap: 22px; }
   .path::before { display: none; }
   .brand span { display: none; }
+  .draft .wrap { align-items: flex-start; }
   .measure { border-radius: 14px; }
 }
 
@@ -277,7 +297,9 @@ svg { display: block; }
   body { line-height: 1.38; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .wrap { max-width: none; padding: 0 .45in; }
-  .brand { padding-top: .25in; }
+  .draft { font-size: .78rem; }
+  .draft .wrap { padding-top: 6px; padding-bottom: 6px; }
+  .brand { padding-top: 12px; }
   .hero-grid { padding-top: 0; }
   .hero h1 { font-size: 2.3rem; }
   .door { max-width: 175px; margin-bottom: 10px; }
@@ -310,12 +332,16 @@ svg { display: block; }
 <body>
 <main id="main">
 
+<div class="draft" role="note">
+  <div class="wrap"><b>Draft</b><span><strong>Workshop concept.</strong> A blueprint for consideration, not a finished program.</span></div>
+</div>
+
 <!-- ===== Hero ===== -->
 <header class="hero">
   <div class="wrap">
     <div class="brand">
       <a href="/">Spiritual <strong>Lesson Plans</strong></a>
-      <span>Train-the-trainers</span>
+      <span>Workshop concept &middot; Draft</span>
     </div>
     <div class="hero-grid">
       <div>
@@ -446,7 +472,7 @@ svg { display: block; }
   <!-- Open item: whether this handout needs a line about the Church not endorsing it.
        For now the page is fully independent, so the footer carries only the license. -->
   <div class="foot">
-    <span>spirituallessonplans.org</span>
+    <span>Workshop concept &middot; Draft for consideration &middot; spirituallessonplans.org</span>
     <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a>
   </div>
 
