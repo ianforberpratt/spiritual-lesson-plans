@@ -7,15 +7,15 @@
 <meta name="description" content="A hands-on workshop for Christian Scientists who want to talk about Christian Science in words that meet the listener's current needs. By invitation, as a train-the-trainers event.">
 <!-- Draft one-pager: not in nav or sitemap, kept out of search until it is ready to share. -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#FBF5EA">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23E8A94C%22/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Self-contained, like the site's other standalone pages: same palette and type
-   as /assets/css/style.css, no scripts, nothing stored or sent. Designed to read
-   on screen and to print as a single US Letter page. */
+   as /assets/css/style.css, no scripts, nothing stored or sent. Reads on screen,
+   prints as a single US Letter page. */
 :root {
   --paper: #FFFFFF;
   --cream: #FBF5EA;
@@ -26,67 +26,61 @@
   --ink: #362F4B;
   --gold-text: #935F1A;
   --sage-text: #3F5236;
-  --ink-soft: rgba(54, 47, 75, 0.78);
+  --ink-soft: rgba(54, 47, 75, 0.8);
   --ink-faint: #6B6579;
   --rule: rgba(54, 47, 75, 0.13);
-  --on-dark: rgba(251, 245, 234, 0.9);
+  --on-dark: rgba(251, 245, 234, 0.92);
   --font-serif: "Fraunces", Georgia, "Iowan Old Style", serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --gutter: clamp(22px, 5vw, 44px);
+  --gutter: clamp(20px, 5vw, 44px);
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
-  background: var(--cream);
+  background: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
-a { color: var(--gold-text); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a { color: var(--gold-text); text-underline-offset: 3px; }
 a:hover { color: var(--ink); }
 :focus-visible { outline: 2px solid var(--gold-deep); outline-offset: 3px; border-radius: 2px; }
-
 h1, h2, h3 {
   font-family: var(--font-serif);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.12;
   letter-spacing: -0.015em;
-  margin: 0 0 .4em;
+  margin: 0 0 .35em;
   text-wrap: balance;
 }
-p { margin: 0 0 .9em; }
+p { margin: 0 0 .8em; }
 p:last-child { margin-bottom: 0; }
+svg { display: block; }
 
 .eyebrow {
-  font-size: .68rem;
+  font-size: .7rem;
   font-weight: 600;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--gold-text);
-  margin: 0 0 .7em;
+  margin: 0 0 .8em;
 }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 var(--gutter); }
+.section-title { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; }
 
-/* ---------- Sheet ---------- */
-.sheet {
-  max-width: 960px;
-  margin: 0 auto;
-  background: var(--paper);
-  padding: clamp(28px, 5vw, 48px) var(--gutter) clamp(24px, 4vw, 36px);
-}
+/* ---------- Hero ---------- */
+.hero { background: var(--cream); overflow: hidden; }
 .brand {
   display: flex;
-  align-items: baseline;
   justify-content: space-between;
+  align-items: baseline;
   gap: 16px;
-  padding-bottom: 14px;
-  margin-bottom: clamp(22px, 4vw, 34px);
-  border-bottom: 1px solid var(--rule);
+  padding: 20px 0 0;
   font-family: var(--font-serif);
   font-size: 1.05rem;
-  letter-spacing: -0.01em;
 }
 .brand a { color: var(--ink); text-decoration: none; }
 .brand strong { font-weight: 600; }
@@ -97,225 +91,386 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--gold-text);
-  text-align: right;
 }
-
-h1 {
-  font-size: clamp(1.9rem, 4.6vw, 2.9rem);
-  max-width: 17em;
-  margin-bottom: .45em;
-}
-.lead {
-  font-size: clamp(1.02rem, 1.7vw, 1.15rem);
-  line-height: 1.6;
-  color: var(--ink-soft);
-  max-width: 44em;
-}
-.lead em { font-family: var(--font-serif); color: var(--ink); }
-
-/* ---------- Skimmer strip: who / where from / how ---------- */
-.skim {
+.hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 clamp(20px, 4vw, 40px);
-  margin: clamp(20px, 3.4vw, 28px) 0 0;
-  padding-top: clamp(18px, 3vw, 24px);
-  border-top: 1px solid var(--rule);
+  grid-template-columns: 1.25fr 1fr;
+  align-items: center;
+  gap: clamp(8px, 3vw, 32px);
+  padding: clamp(14px, 3vw, 28px) 0 0;
 }
-.skim h2 { font-size: 1.2rem; }
-.skim p { font-size: .94rem; color: var(--ink-soft); }
-.skim .eyebrow { margin-bottom: .5em; color: var(--gold-text); }
+.hero h1 { font-size: clamp(2rem, 4.6vw, 2.9rem); margin-bottom: .4em; }
+.hero .sub { font-size: clamp(1.05rem, 1.9vw, 1.25rem); color: var(--ink-soft); max-width: 24em; }
+.hero .sub em { font-family: var(--font-serif); color: var(--ink); }
+.door { width: 100%; max-width: 300px; justify-self: end; margin-bottom: 18px; }
 
-/* ---------- How it works ---------- */
-.how {
-  margin: clamp(18px, 3vw, 26px) 0 0;
-  padding: clamp(16px, 2.6vw, 22px) clamp(18px, 3vw, 26px);
+/* ---------- Fact chips ---------- */
+.facts {
+  margin-top: -1px;
+  padding: 0 0 clamp(18px, 3vw, 26px);
   background: var(--cream);
-  border-left: 3px solid var(--gold);
-  border-radius: 0 3px 3px 0;
 }
-.how .eyebrow { margin-bottom: .45em; color: var(--gold-text); }
-.how p { font-size: .95rem; color: var(--ink-soft); max-width: 62ch; }
+.facts .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.fact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px 12px 14px;
+  background: var(--paper);
+  border-radius: 999px;
+  box-shadow: 0 1px 0 var(--rule), 0 6px 18px -10px rgba(54,47,75,.25);
+  font-size: .92rem;
+  line-height: 1.3;
+}
+.fact svg { flex: none; width: 34px; height: 34px; }
+.fact b { display: block; font-weight: 600; }
+.fact small { color: var(--ink-faint); font-size: .8rem; }
+.fact a { color: var(--ink); }
 
-/* ---------- Heart of the method ---------- */
-.method { margin: clamp(26px, 4.4vw, 38px) 0 0; }
-.method > h2 { font-size: clamp(1.4rem, 2.6vw, 1.75rem); margin-bottom: .2em; }
-.method > p { font-size: .94rem; color: var(--ink-soft); }
-.steps {
+/* ---------- Journey ---------- */
+.journey { padding: clamp(28px, 5vw, 44px) 0 0; }
+.path {
   list-style: none;
-  margin: 16px 0 0;
+  margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(16px, 2.6vw, 26px);
-  counter-reset: step;
+  gap: 18px;
+  position: relative;
 }
-.steps li {
-  counter-increment: step;
-  border-top: 2px solid var(--gold);
-  padding-top: 12px;
+.path::before {
+  content: "";
+  position: absolute;
+  left: 16%; right: 16%; top: 27px;
+  border-top: 2px dashed var(--gold);
+  opacity: .7;
 }
-.steps li::before {
-  content: counter(step);
-  display: block;
+.path li { position: relative; text-align: center; }
+.path .dot {
+  position: relative;
+  width: 56px; height: 56px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--gold);
+  color: var(--ink);
   font-family: var(--font-serif);
-  font-size: 1.6rem;
-  line-height: 1;
-  color: var(--gold-text);
-  margin-bottom: 8px;
+  font-size: 1.5rem;
+  box-shadow: 0 0 0 6px var(--paper);
 }
-.steps h3 { font-size: 1.08rem; margin-bottom: .35em; }
-.steps p { font-size: .9rem; line-height: 1.55; color: var(--ink-soft); }
+.path li:nth-child(2) .dot { background: var(--sage); }
+.path li:nth-child(3) .dot { background: var(--sky); }
+.path h3 { font-size: 1.15rem; margin-bottom: .2em; }
+.path p { font-size: .92rem; color: var(--ink-soft); max-width: 17em; margin: 0 auto; }
+.measure {
+  margin: 18px auto 0;
+  padding: 10px 18px;
+  max-width: 40em;
+  text-align: center;
+  font-size: .95rem;
+  color: var(--ink-soft);
+  background: var(--cream);
+  border-radius: 999px;
+}
+.measure b { color: var(--ink); font-weight: 600; }
 
-/* ---------- Feedback + materials ---------- */
-.pair {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(16px, 2.6vw, 26px);
-  margin: clamp(24px, 4vw, 34px) 0 0;
-}
-.pair > section {
-  padding: clamp(16px, 2.6vw, 22px);
+/* ---------- Three things ---------- */
+.method { padding: clamp(28px, 5vw, 44px) 0 0; }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.card {
+  padding: 20px 20px 22px;
+  border-radius: 6px;
   border: 1px solid var(--rule);
-  border-radius: 3px;
+  background: var(--paper);
+  border-top: 4px solid var(--gold);
 }
-.pair h2 { font-size: 1.2rem; }
-.pair p { font-size: .92rem; line-height: 1.58; color: var(--ink-soft); }
-.pair .free {
-  margin-top: .9em;
-  padding-top: .8em;
-  border-top: 1px solid var(--rule);
+.card:nth-child(2) { border-top-color: var(--sage); }
+.card:nth-child(3) { border-top-color: var(--sky); }
+.card .ico {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  margin-bottom: 12px;
+  background: rgba(232,169,76,.2);
+}
+.card:nth-child(2) .ico { background: rgba(140,163,126,.28); }
+.card:nth-child(3) .ico { background: rgba(169,201,217,.4); }
+.card .ico svg { width: 24px; height: 24px; stroke: var(--ink); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.card h3 { font-size: 1.2rem; }
+.card p { font-size: .92rem; color: var(--ink-soft); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tags span {
+  font-size: .76rem;
   font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--cream);
   color: var(--ink);
 }
 
+/* ---------- Feedback + materials ---------- */
+.duo { padding: clamp(26px, 4.5vw, 40px) 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.panel { padding: 22px; border-radius: 6px; background: var(--cream); }
+.panel h2 { font-size: 1.4rem; }
+.panel p { font-size: .94rem; color: var(--ink-soft); }
+.panel .eyebrow { color: var(--gold-text); }
+.loop { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-top: 14px; font-size: .8rem; font-weight: 600; }
+.loop span { padding: 5px 11px; border-radius: 999px; background: var(--paper); }
+.loop i { font-style: normal; color: var(--gold-text); font-size: 1rem; }
+.cc {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 14px; padding: 10px 14px;
+  border-radius: 6px; background: var(--paper);
+  font-size: .86rem; font-weight: 600;
+}
+.cc svg { width: 26px; height: 26px; flex: none; }
+
 /* ---------- Whose work ---------- */
 .whose {
-  margin: clamp(22px, 3.6vw, 30px) 0 0;
-  padding: clamp(18px, 3vw, 26px) clamp(20px, 3.4vw, 30px);
+  margin: clamp(26px, 4.5vw, 40px) 0 0;
   background: var(--ink);
   color: var(--on-dark);
-  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
 }
+.whose .wrap { padding-top: 26px; padding-bottom: 26px; position: relative; z-index: 1; }
 .whose .eyebrow { color: var(--gold); margin-bottom: .5em; }
-.whose p {
+.whose p:not(.eyebrow) {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  line-height: 1.45;
-  max-width: 40em;
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  line-height: 1.4;
+  max-width: 28em;
+}
+.whose::after {
+  content: "";
+  position: absolute;
+  right: -70px; top: -70px;
+  width: 260px; height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,169,76,.55), rgba(232,169,76,0) 68%);
 }
 
-.foot {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 16px;
-  font-size: .74rem;
-  color: var(--ink-faint);
-}
+.foot { display: flex; justify-content: space-between; gap: 16px; padding: 14px 0 22px; font-size: .76rem; color: var(--ink-faint); }
 .foot a { color: var(--ink-faint); }
 
+/* ---------- Full description (screen only) ---------- */
+.full { margin: 6px 0 40px; border-top: 1px solid var(--rule); padding-top: 14px; font-size: .92rem; color: var(--ink-soft); }
+.full summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.full h3 { font-size: 1.05rem; margin-top: 1.2em; }
+
 /* ---------- Phones ---------- */
-@media (max-width: 700px) {
-  .skim, .steps, .pair { grid-template-columns: 1fr; }
-  .skim > div + div { margin-top: 14px; }
+@media (max-width: 760px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .door { justify-self: center; max-width: 250px; }
+  .facts .wrap, .cards, .duo { grid-template-columns: 1fr; }
+  .fact { border-radius: 14px; }
+  .path { grid-template-columns: 1fr; gap: 22px; }
+  .path::before { display: none; }
   .brand span { display: none; }
+  .measure { border-radius: 14px; }
 }
 
 /* ---------- Print: one US Letter page ---------- */
-@page { size: letter; margin: .4in; }
+@page { size: letter; margin: 0; }
 @media print {
-  html { font-size: 12px; }
-  body { background: #fff; line-height: 1.45; }
-  .sheet { max-width: none; padding: 0; }
+  html { font-size: 11px; }
+  body { line-height: 1.38; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  .brand { margin-bottom: 10px; padding-bottom: 6px; }
-  h1 { font-size: 1.95rem; max-width: 22em; }
-  .skim, .how, .method, .pair, .whose { margin-top: 10px; }
-  .skim { padding-top: 10px; }
-  .how { padding: 8px 12px; }
-  .steps { margin-top: 8px; }
-  .steps li::before { font-size: 1.3rem; margin-bottom: 4px; }
-  .pair > div, .pair > section { padding: 10px 12px; }
-  .whose { padding: 10px 16px; }
-  .foot { margin-top: 8px; }
-  .skim, .how, .steps li, .pair > section, .whose { break-inside: avoid; }
+  .wrap { max-width: none; padding: 0 .45in; }
+  .brand { padding-top: .25in; }
+  .hero-grid { padding-top: 0; }
+  .hero h1 { font-size: 2.3rem; }
+  .door { max-width: 175px; margin-bottom: 10px; }
+  .facts { padding-bottom: 12px; }
+  .fact { padding: 6px 12px; }
+  .fact svg { width: 28px; height: 28px; }
+  .fact small { font-size: .74rem; }
+  .journey, .method { padding-top: 12px; }
+  .section-title { margin-bottom: 6px; font-size: 1.25rem; }
+  .path .dot { width: 38px; height: 38px; font-size: 1.05rem; margin-bottom: 4px; }
+  .path::before { top: 19px; }
+  .measure { margin-top: 8px; padding: 6px 14px; }
+  .card { padding: 11px 13px 12px; }
+  .card .ico { width: 32px; height: 32px; margin-bottom: 6px; }
+  .card .ico svg { width: 18px; height: 18px; }
+  .duo { padding-top: 12px; }
+  .panel { padding: 11px 14px; }
+  .panel h2 { font-size: 1.2rem; }
+  .loop { margin-top: 8px; }
+  .cc { margin-top: 8px; padding: 6px 10px; }
+  .whose { margin-top: 12px; }
+  .whose .wrap { padding-top: 12px; padding-bottom: 12px; }
+  .foot { padding: 6px 0 .2in; }
+  .full { display: none; }
+  .fact, .card, .panel, .path li { break-inside: avoid; }
   a { color: inherit; text-decoration: none; }
 }
 </style>
 </head>
 <body>
-<main class="sheet" id="main">
+<main id="main">
 
-  <div class="brand">
-    <a href="/">Spiritual <strong>Lesson Plans</strong></a>
-    <span>Train-the-trainers &middot; by invitation</span>
-  </div>
-
-  <header>
-    <p class="eyebrow">A hands-on workshop</p>
-    <h1>How do we share Christian Science, and how does it land?</h1>
-    <p class="lead">A hands-on workshop for Christian Scientists who want to talk about Christian Science in words that meet the listener's current needs. Nothing about the truth of being changes. <em>We're only looking at the door we hold open.</em></p>
-  </header>
-
-  <section class="skim" aria-label="Who it is for and where it comes from">
-    <div>
-      <p class="eyebrow">Who it's for</p>
-      <p>For Christian Scientists who want to share its ideas, its tools, and its Science in words today's world can hear. By invitation, as a train-the-trainers event.</p>
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">
+      <a href="/">Spiritual <strong>Lesson Plans</strong></a>
+      <span>Train-the-trainers</span>
     </div>
-    <div>
-      <p class="eyebrow">Where it comes from</p>
-      <p>Built from the <a href="/honest-questions">Honest Questions CS</a> series: honest questions, asked in love, about how we share what we love.</p>
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">A hands-on workshop</p>
+        <h1>How do we share Christian Science, and how does it land?</h1>
+        <p class="sub">Nothing about the truth of being changes. <em>We're only looking at the door we hold open.</em></p>
+      </div>
+      <!-- Open door: light spilling through. Decorative. -->
+      <svg class="door" viewBox="0 0 320 340" aria-hidden="true" focusable="false">
+        <circle cx="160" cy="150" r="138" fill="#A9C9D9" opacity=".38"/>
+        <circle cx="160" cy="150" r="96" fill="#E8A94C" opacity=".16"/>
+        <path d="M118 330 L8 340 H312 L222 330 Z" fill="#E8A94C" opacity=".35"/>
+        <path d="M100 330 V140 a60 60 0 0 1 120 0 V330 Z" fill="#E8A94C"/>
+        <path d="M118 330 V146 a42 42 0 0 1 84 0 V330 Z" fill="#FBF5EA" opacity=".55"/>
+        <path d="M220 152 L168 138 V338 L220 322 Z" fill="#362F4B"/>
+        <path d="M220 152 L168 138 V338 L220 322 Z" fill="none" stroke="#453c5c" stroke-width="2"/>
+        <circle cx="178" cy="236" r="4.5" fill="#E8A94C"/>
+        <path d="M100 330 V140 a60 60 0 0 1 120 0 V330" fill="none" stroke="#362F4B" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M0 336 H320" stroke="#362F4B" stroke-width="3" stroke-linecap="round"/>
+        <path d="M40 336 c2-22 10-34 22-40 -2 16 -8 30 -14 40 z" fill="#8CA37E"/>
+        <path d="M262 336 c-3-26 -12-40 -26-46 3 20 10 36 18 46 z" fill="#8CA37E"/>
+        <path d="M280 336 c0-16 6-26 16-32 0 14 -4 24 -10 32 z" fill="#3F5236" opacity=".7"/>
+        <circle cx="58" cy="90" r="4" fill="#E8A94C"/>
+        <circle cx="266" cy="66" r="5" fill="#E8A94C"/>
+        <circle cx="290" cy="150" r="3" fill="#8CA37E"/>
+        <circle cx="36" cy="170" r="3" fill="#8CA37E"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- ===== Who / where from / how it's offered ===== -->
+<section class="facts" aria-label="At a glance">
+  <div class="wrap">
+    <div class="fact">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="#E8A94C" opacity=".28"/><circle cx="13" cy="14" r="3.6" fill="none" stroke="#362F4B" stroke-width="1.6"/><circle cx="22.5" cy="15.5" r="3" fill="none" stroke="#362F4B" stroke-width="1.6"/><path d="M6.5 25c.6-4 3.2-6 6.5-6s5.9 2 6.5 6M19.5 20.5c3 0 5.4 1.4 6 4.5" fill="none" stroke="#362F4B" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span><b>Who it's for</b><small>Christian Scientists sharing in words today's world can hear</small></span>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="#8CA37E" opacity=".35"/><path d="M8 12.5c3-1.4 6-1.4 9 .5 3-1.9 6-1.9 9-.5V25c-3-1.4-6-1.4-9 .5-3-1.9-6-1.9-9-.5z M17 13v12.5" fill="none" stroke="#362F4B" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span><b>Where it comes from</b><small>The <a href="/honest-questions">Honest Questions CS</a> series</small></span>
+    </div>
+    <div class="fact">
+      <svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="17" fill="#A9C9D9" opacity=".5"/><rect x="8" y="11" width="18" height="13" rx="2" fill="none" stroke="#362F4B" stroke-width="1.6"/><path d="M8.5 12l8.5 7 8.5-7" fill="none" stroke="#362F4B" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span><b>By invitation</b><small>A train-the-trainers event</small></span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+
+<!-- ===== How it works ===== -->
+<section class="journey" aria-labelledby="how-h">
+  <h2 class="section-title" id="how-h">How it works</h2>
+  <ol class="path">
+    <li>
+      <span class="dot" aria-hidden="true">1</span>
+      <h3>Feel it</h3>
+      <p>You begin by feeling the door held open for you.</p>
+    </li>
+    <li>
+      <span class="dot" aria-hidden="true">2</span>
+      <h3>Learn the model</h3>
+      <p>Then you learn it, and take it home.</p>
+    </li>
+    <li>
+      <span class="dot" aria-hidden="true">3</span>
+      <h3>Run it with others</h3>
+      <p>Each replication reports back, with anonymous listener feedback.</p>
+    </li>
+  </ol>
+  <p class="measure"><b>You're measured on</b> fidelity to the spirit of the model, and on whether listeners feel cared for right where they are.</p>
+</section>
+
+<!-- ===== Heart of the method ===== -->
+<section class="method" aria-labelledby="method-h">
+  <h2 class="section-title" id="method-h">The heart of the method</h2>
+  <div class="cards">
+    <article class="card">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-9.3-9.5C1.4 7.5 3.6 4.5 7 4.5c2 0 3.7 1.1 5 3 1.3-1.9 3-3 5-3 3.4 0 5.6 3 4.3 6.5-1.8 4.9-9.3 9.5-9.3 9.5z"/></svg></span>
+      <h3>Reflective competence</h3>
+      <p>Begin by being cared for. See the strengths in how you already share. Then notice where a door could open wider for:</p>
+      <div class="tags"><span>a teenager</span><span>a skeptic</span><span>a longtime friend</span></div>
+    </article>
+    <article class="card">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9.5L5 20v-4H4z"/><path d="M8 9.5h8M8 12.5h5"/></svg></span>
+      <h3>An immersive simulation</h3>
+      <p>A practice room. Try your words out with real listeners' voices, and feel what lands and what doesn't.</p>
+    </article>
+    <article class="card">
+      <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1-5L16.5 3.5l4 4L9 19z"/><path d="M14 6l4 4"/></svg></span>
+      <h3>Your own curriculum</h3>
+      <p>Guided by inspiration, held inside clear boundaries and a rubric. Yours, and still true to the model.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===== Feedback + materials ===== -->
+<div class="duo">
+  <section class="panel" aria-labelledby="fb-h">
+    <p class="eyebrow">Built into the day</p>
+    <h2 id="fb-h">Listeners help shape it</h2>
+    <p>People on the receiving end say, anonymously, how it landed and where it didn't. Together we keep co-creating what success looks like, from a spiritual lens.</p>
+    <div class="loop" aria-hidden="true"><span>You share</span><i>&rarr;</i><span>They tell us</span><i>&rarr;</i><span>We refine</span><i>&circlearrowleft;</i></div>
+  </section>
+  <section class="panel" aria-labelledby="mat-h">
+    <p class="eyebrow">After the workshop</p>
+    <h2 id="mat-h">Your materials</h2>
+    <p>Bring the ideas and phrases that feel true to you. An interactive web tool turns them into talking guides and handouts in your own voice, inside the same boundaries and rubric.</p>
+    <div class="cc">
+      <svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="13" cy="13" r="11.5" fill="none" stroke="#362F4B" stroke-width="1.6"/><path d="M13 19.5c-4-2.6-5.5-4.8-5.5-7 0-1.8 1.3-3 2.9-3 1 0 1.9.5 2.6 1.4.7-.9 1.6-1.4 2.6-1.4 1.6 0 2.9 1.2 2.9 3 0 2.2-1.5 4.4-5.5 7z" fill="#E8A94C" stroke="#362F4B" stroke-width="1.2" stroke-linejoin="round"/></svg>
+      Creative Commons licensed, and free for anyone to use
     </div>
   </section>
+</div>
 
-  <section class="how" aria-labelledby="how-h">
-    <p class="eyebrow" id="how-h">How it works</p>
-    <p>This is a train-the-trainers event, by invitation. You begin by feeling the door held open for you. Then you learn the model, take it home, and run it with others. Each replication reports back, including anonymous feedback from the people you shared with. You're measured on fidelity to the spirit of the model, and on whether listeners feel cared for right where they are.</p>
-  </section>
+</div>
 
-  <section class="method" aria-labelledby="method-h">
-    <h2 id="method-h">The heart of the method</h2>
-    <p>The workshop rests on three things, built on adult learning principles.</p>
-    <ol class="steps">
-      <li>
-        <h3>Reflective competence</h3>
-        <p>You begin by being cared for, and by seeing your strengths in how you already share your practice. Then you test how your current message might land with different kinds of listeners (a teenager, a skeptic, a longtime friend) and notice where it already shines and where a door could open wider.</p>
-      </li>
-      <li>
-        <h3>An immersive simulation</h3>
-        <p>A practice room where you try out how your words land, with real listeners' voices, and feel what lands and what doesn't.</p>
-      </li>
-      <li>
-        <h3>Your own curriculum</h3>
-        <p>Guided by inspiration and held inside clear boundaries and a rubric, so what you build is yours and still true to the model.</p>
-      </li>
-    </ol>
-  </section>
-
-  <div class="pair">
-    <section aria-labelledby="fb-h">
-      <h2 id="fb-h">Feedback is built into the day</h2>
-      <p>Listener feedback is not an afterthought. It is built into the workshop itself. People on the receiving end say, anonymously and through the tool, how it landed, where it landed, and where it didn't. Together we keep co-creating what success looks like, and we come to it from a spiritual lens.</p>
-    </section>
-    <section aria-labelledby="mat-h">
-      <h2 id="mat-h">Your materials</h2>
-      <p>After the workshop, you build your own materials in an interactive web tool. You bring your inspirations, the ideas and phrases that feel true to you, and the tool turns them into talking guides and handouts in your own voice. The boundaries and the rubric stay fixed, so what you create is yours and still true to the model.</p>
-      <p class="free">Everything you create is Creative Commons licensed and free for anyone to use.</p>
-    </section>
-  </div>
-
-  <section class="whose" aria-labelledby="whose-h">
+<!-- ===== Whose work ===== -->
+<section class="whose" aria-labelledby="whose-h">
+  <div class="wrap">
     <p class="eyebrow" id="whose-h">Whose work this is</p>
     <p>This work rests on the inspired word, not on any one person. Each trainer gives it voice in their own way.</p>
-  </section>
+  </div>
+</section>
 
+<div class="wrap">
   <!-- Open item: whether this handout needs a line about the Church not endorsing it.
        For now the page is fully independent, so the footer carries only the license. -->
   <div class="foot">
     <span>spirituallessonplans.org</span>
     <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license noopener">CC BY-SA 4.0</a>
   </div>
+
+  <!-- Your full wording, kept for reference. Screen only; hidden when printed. -->
+  <details class="full">
+    <summary>Read the full description</summary>
+    <p>A hands-on workshop for Christian Scientists who want to talk about Christian Science in words that meet the listener's current needs. Nothing about the truth of being changes. We're only looking at the door we hold open.</p>
+    <h3>Who it's for</h3>
+    <p>For Christian Scientists who want to share its ideas, its tools, and its Science in words today's world can hear. By invitation, as a train-the-trainers event.</p>
+    <h3>Where it comes from</h3>
+    <p>Built from the Honest Questions CS series: honest questions, asked in love, about how we share what we love.</p>
+    <h3>How it works</h3>
+    <p>This is a train-the-trainers event, by invitation. You begin by feeling the door held open for you. Then you learn the model, take it home, and run it with others. Each replication reports back, including anonymous feedback from the people you shared with. You're measured on fidelity to the spirit of the model, and on whether listeners feel cared for right where they are.</p>
+    <h3>The heart of the method</h3>
+    <p>The workshop rests on three things, built on adult learning principles.</p>
+    <p><b>1. Reflective competence.</b> You begin by being cared for, and by seeing your strengths in how you already share your practice. Then you test how your current message might land with different kinds of listeners (a teenager, a skeptic, a longtime friend) and notice where it already shines and where a door could open wider.</p>
+    <p><b>2. An immersive simulation.</b> A practice room where you try out how your words land, with real listeners' voices, and feel what lands and what doesn't.</p>
+    <p><b>3. Your own curriculum.</b> Guided by inspiration and held inside clear boundaries and a rubric, so what you build is yours and still true to the model.</p>
+    <h3>Feedback is built into the day</h3>
+    <p>Listener feedback is not an afterthought. It is built into the workshop itself. People on the receiving end say, anonymously and through the tool, how it landed, where it landed, and where it didn't. Together we keep co-creating what success looks like, and we come to it from a spiritual lens.</p>
+    <h3>Your materials</h3>
+    <p>After the workshop, you build your own materials in an interactive web tool. You bring your inspirations, the ideas and phrases that feel true to you, and the tool turns them into talking guides and handouts in your own voice. The boundaries and the rubric stay fixed, so what you create is yours and still true to the model. Everything you create is Creative Commons licensed and free for anyone to use.</p>
+  </details>
+</div>
 
 </main>
 </body>
