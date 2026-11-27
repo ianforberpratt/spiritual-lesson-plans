@@ -57,3 +57,9 @@ presses play. Clean a recording first so no name or tags travel with it:
 ```
 ffmpeg -i recording.m4a -map_metadata -1 -fflags +bitexact -flags:a +bitexact -ac 1 -b:a 80k posts/1.mp3
 ```
+
+## Table Questions card
+
+`table-questions.html` is a one-page printable card (Honor, Welcome, Build, plus ground rules). It has its own
+styles, no scripts beyond a print button, and prints on one US Letter page. Part 3 links to it. Links inside a
+post can use `data-hq="path"` so they resolve from this folder wherever the page is hosted.
