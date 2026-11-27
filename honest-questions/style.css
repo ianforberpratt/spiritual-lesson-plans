@@ -304,3 +304,6 @@ main { padding-bottom: 2rem; }
 .audio-label { margin: 0 0 .5rem; font: 700 .85rem/1.3 var(--sans); letter-spacing: .04em; color: var(--sky-text); }
 .audio-player audio { display: block; width: 100%; }
 .audio-note { margin: .5rem 0 0; font: .82rem/1.3 var(--sans); color: var(--ink-soft); }
+
+/* The three table questions */
+.post-body .table-q { margin: .5em 0; padding-left: .95rem; border-left: 4px solid var(--sage); }
