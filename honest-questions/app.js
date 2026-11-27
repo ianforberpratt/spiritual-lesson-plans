@@ -89,6 +89,7 @@
     a.appendChild(el("h2", "post-title", item.title || item.label));
     var b = el("div", "post-body");
     b.innerHTML = html; // our own file, same origin
+    b.querySelectorAll("a[data-hq]").forEach(function (l) { l.href = BASE + l.getAttribute("data-hq"); });
     a.appendChild(b);
     return a;
   }
